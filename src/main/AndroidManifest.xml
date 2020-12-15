@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sanbot.capaBot">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <!-- no touching response from system -->
+        <meta-data
+            android:name="FORBID_TOUCH"
+            android:value="true" />
+        <!-- no system reacting to "hi! sanbot" -->
+        <meta-data
+            android:name="FORBID_WAKE_RESPONSE"
+            android:value="true" />
+        <!-- block the speech recognition immediately after the recognition, no waste time -->
+        <meta-data
+            android:name="SPEECH_MODE"
+            android:value="1" />
+        <meta-data
+            android:name="RECOGNIZE_MODE"
+            android:value="1" />
+
+        <!-- base navigation activity -->
+        <activity
+            android:name=".MyBaseActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" /> <!-- activity first -->
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- launcher here -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </activity>
+
+        <!-- Projector story activity -->
+        <activity
+            android:name=".MyProjectStoryActivity"
+            android:hardwareAccelerated="true" />
+
+        <!-- dialog activity -->
+        <activity
+            android:name=".MyDialogActivity"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="RECOGNIZE_MODE"
+                android:value="1" />
+        </activity>
+
+        <!-- shake hand activity -->
+        <activity
+            android:name=".MyShakeActivity"
+            android:hardwareAccelerated="true" />
+
+        <!-- suggestion activity -->
+        <activity android:name=".MyXMLSuggestionActivity">
+            <meta-data
+                android:name="RECOGNIZE_MODE"
+                android:value="1" />
+        </activity>
+
+        <provider
+            android:name="com.sanbot.opensdk.utils.GrammarProvider"
+            android:authorities="com.qihancloud.capaBot.grammar"
+            android:exported="true" />
+
+        <activity android:name=".MyWeatherActivity"></activity>
+    </application>
+
+</manifest>

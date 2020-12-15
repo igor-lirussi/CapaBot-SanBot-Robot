@@ -1,0 +1,136 @@
+package com.sanbot.capaBot;
+
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.util.Log;
+import android.view.WindowManager;
+import android.widget.MediaController;
+import android.widget.VideoView;
+
+import com.sanbot.opensdk.base.TopBaseActivity;
+import com.sanbot.opensdk.beans.FuncConstant;
+import com.sanbot.opensdk.function.unit.ProjectorManager;
+import com.sanbot.opensdk.function.unit.SpeechManager;
+
+import butterknife.ButterKnife;
+
+import static com.sanbot.capaBot.MyUtils.sleepy;
+
+/**
+ * function: projection the story of vislab
+ */
+
+public class MyProjectStoryActivity extends TopBaseActivity {
+
+    //managers
+    private ProjectorManager projectorManager;
+    private SpeechManager speechManager; //voice, speechRec
+
+    //video view for fullscreen
+    VideoView videoView;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        register(MyProjectStoryActivity.class);
+        //screen always on
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        //view
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_projector_story);
+        ButterKnife.bind(this);
+        //init manager
+        projectorManager = (ProjectorManager) getUnitManager(FuncConstant.PROJECTOR_MANAGER);
+        speechManager = (SpeechManager) getUnitManager(FuncConstant.SPEECH_MANAGER);
+        //other settings
+        /*
+        projectorManager.setTrapezoidH(0);
+        projectorManager.setTrapezoidV(0);
+        projectorManager.setAcuity(0);
+        projectorManager.setSaturation(0);
+        projectorManager.setColor(0);
+        projectorManager.setBright(0);
+        projectorManager.setContrast(0);
+        projectorManager.setMirror(ProjectorManager.MIRROR_CLOSE);*/
+
+        //handler to open projector
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("IGOR-PROJ", "handler called to open projector");
+                //OPEN PROJECTOR
+                projectorManager.switchProjector(true);
+                //mode from settings
+                projectorManager.setMode(MySettings.getProjectorMode());
+                //voice introduction
+                speechManager.startSpeak(getString(R.string.show_video), MySettings.getSpeakDefaultOption());
+            }
+        }, 500);
+
+
+        //videoview play video
+        videoView = findViewById(R.id.myvideoview);
+        //videoView.setVideoURI(Uri.parse("https://youtu.be/0tzLFqZLbxc"));
+        videoView.setVideoURI(Uri.parse(Environment.getExternalStorageDirectory().getPath() +"/CAPABOT/isr.mp4"));
+        videoView.setMediaController(new MediaController(this));
+        videoView.requestFocus();
+        videoView.start();
+        videoView.pause();
+
+        //handler to start video when the projector is effectively started (needs 10 seconds)
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("IGOR-PROJ", "start video called");
+                //start video
+                videoView.start();
+            }
+        }, 10000);
+
+        initListeners();
+    }
+
+    public void initListeners(){
+        //close projector when video ends
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                //close projector
+                projectorManager.switchProjector(false);
+                //end sentence
+                speechManager.startSpeak(getString(R.string.good_video), MySettings.getSpeakDefaultOption());
+                sleepy(4);
+                speechManager.startSpeak(getString(R.string.cooling_projector), MySettings.getSpeakDefaultOption());
+                sleepy(8);
+                endThisActivity();
+            }
+        });
+    }
+
+
+    @Override
+    protected void onMainServiceConnected() {
+
+    }
+
+    private void endThisActivity() {
+        //starts dialog activity
+        Intent myIntent = new Intent(MyProjectStoryActivity.this, MyDialogActivity.class);
+        MyProjectStoryActivity.this.startActivity(myIntent);
+
+        //calls finish activity
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //Android documentation says this:
+        //"do not count on this method being called"
+        //so I can't use this for operation: "ending activity" in the code,
+        //better call endThisActivity()
+    }
+}

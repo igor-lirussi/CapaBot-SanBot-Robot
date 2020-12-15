@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<resources>
+    <string name="app_name">CapaBot</string>
+
+    <!--view names-->
+    <string name="example_text">example text</string>
+    <string name="recognized_result">Recognized result:</string>
+    <string name="ask_me">Ask me!</string>
+    <string name="wake_the_robot">WAKE ME</string>
+    <string name="listening_in_progress">LISTENING</string>
+    <string name="examples">Examples:</string>
+    <string name="test_in_progress">TEST IN PROGRESS</string>
+    <string name="face_name">face name</string>
+    <string name="time_of_detection">time of detection</string>
+    <string name="face_information">face information</string>
+    <string name="knowyoumeeting">knowYouMeeting</string>
+    <string name="firstmeeting">firstMeeting</string>
+    <string name="wander">Wander:</string>
+    <string name="heading">Heading:</string>
+    <string name="handshakes">Handshakes: </string>
+    <string name="unknown">unknown</string>
+    <string name="navigation">Navigation</string>
+    <string name="rotation_at_sound">Rotation at sound</string>
+    <string name="start_interaction">Start interaction</string>
+
+    <!--**** SPEAKING **** -->
+    <!--base activity-->
+    <string name="hi">Hi</string>
+    <string name="early_morning">Well, early bird gets the worm, right? ahahah</string>
+    <string name="morning">Good morning</string>
+    <string name="afternoon">Good afternoon!</string>
+    <string name="night">Good night!</string>
+    <string name="never_met">Hi, I think we never met!</string>
+    <!-- Hand Shaking -->
+    <string name="i_am_sanbot">I\'m SanBot!</string>
+    <string name="sad_no_shake">I\'m sad you didn\'t shake my hand!</string>
+    <string name="come_on">Grab firmly my hand!</string>
+    <string name="glad_meet_you">I\'m glad to meet you!</string>
+    <!--dialog activity-->
+    <string name="what_could_do">What could I do for you?</string>
+    <string name="see_you">OK, see you!</string>
+    <string name="thanks_you_kind">thanks for being kind with me.</string>
+    <string name="please_repeat">I don\'t know what to do, please can you repeat?</string>
+    <string name="something_else">Can I do something else for you?</string>
+    <string name="no_answer">Nobody answers here</string>
+    <string name="door_open">OK, door open</string>
+    <string name="meeting_room_is">the meeting room is in the room 7.21, in the north-est corner of the building</string>
+    <string name="lab_is">the lab is in the room 7.26, in the north-west corner of the building</string>
+    <string name="please_suggestion">Please leave a suggestion when you have finished!</string>
+    <!--project activity-->
+    <string name="show_video">Now I will show you a video</string>
+    <string name="good_video">Was good, am I right?</string>
+    <string name="cooling_projector">I\'m cooling down the projector, one moment, my head is very hot after this…</string>
+
+    <!--suggestion-->
+    <string name="leave_a_suggestion_or_a_comment">Leave a suggestion or a comment</string>
+    <string name="name">name</string>
+    <string name="anonymous">Anonymous</string>
+    <string name="save">Save</string>
+    <string name="saved">Saved</string>
+    <string name="suggestion_questions">What do you like? What could be improved or doesn\'t work well? What should I implement more?</string>
+    <string name="can_speak">You can speak or write!</string>
+
+    <string name="you_can_say">You can say:</string>
+    <string name="exit">exit</string>
+    <string name="presentation_locked">auto-interaction disabled for: </string>
+
+
+</resources>

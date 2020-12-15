@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@+id/choice_base"
+    android:textSize="28sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="@color/colorRedButton"
+    android:text="@string/example_text"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

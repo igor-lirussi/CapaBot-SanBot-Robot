@@ -1,0 +1,10 @@
+<Grammars>
+    <group>
+        <command>
+            <item>冰箱</item>
+            <item>洗衣机</item>
+        </command>
+        <topic>test_topic</topic>
+        <action>start</action>
+    </group>
+</Grammars>

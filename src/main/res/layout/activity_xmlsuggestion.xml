@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <!-- Dummy item to prevent EditText from receiving focus -->
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:layout_height="0px"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/imageListen"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/listening_in_progress"
+            android:textSize="40sp"
+            android:gravity="center"
+            android:background="@drawable/listening"
+            android:backgroundTint="@color/colorAlphaGreenButton"
+            android:contentDescription="@string/listening_in_progress" />
+        <Button
+            android:id="@+id/wake"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:textColor="@color/colorRedButton"
+            android:text="@string/wake_the_robot"
+            android:textSize="40sp"
+            android:backgroundTintMode="src_over"
+            android:backgroundTint="@color/colorAlphaWhite"
+            android:background="@drawable/sleeping" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/handshakes_sa"
+        android:textSize="45sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:padding="10dp"
+        android:text="@string/leave_a_suggestion_or_a_comment" />
+
+    <EditText
+        android:id="@+id/inputText"
+        android:layout_width="800dp"
+        android:layout_height="200dp"
+        android:textSize="30sp"
+        android:gravity="start"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:overScrollMode="ifContentScrolls"
+        android:hint="@string/suggestion_questions"
+        android:inputType="textMultiLine" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/name"
+            android:labelFor="@+id/inputName"/>
+        <EditText
+            android:id="@+id/inputName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="@string/anonymous"
+            android:inputType="text"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_margin="10dp"
+        android:text="@string/save"/>
+</LinearLayout>

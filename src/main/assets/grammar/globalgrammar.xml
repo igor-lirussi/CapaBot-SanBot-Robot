@@ -1,0 +1,16 @@
+<Grammars>
+    <group>
+        <command>
+            <item>开始跳舞</item>
+        </command>
+        <type>activity</type>
+        <class>com.sanbot.capaBot.VideoActivity</class>
+    </group>
+    <group>
+        <command>
+            <item>启动服务</item>
+        </command>
+        <type>service</type>
+        <class>com.sanbot.capaBot.MainService</class>
+    </group>
+</Grammars>
