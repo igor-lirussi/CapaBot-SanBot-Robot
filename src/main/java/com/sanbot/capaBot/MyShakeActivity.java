@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.sanbot.opensdk.base.TopBaseActivity;
@@ -22,11 +23,14 @@ import com.sanbot.opensdk.function.unit.HardWareManager;
 import com.sanbot.opensdk.function.unit.HeadMotionManager;
 import com.sanbot.opensdk.function.unit.SpeechManager;
 import com.sanbot.opensdk.function.unit.SystemManager;
+import com.sanbot.opensdk.function.unit.WheelMotionManager;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.TouchSensorListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.sanbot.capaBot.MyUtils.concludeSpeak;
+import static com.sanbot.capaBot.MyUtils.rotateAtRelativeAngle;
 import static com.sanbot.capaBot.MyUtils.sleepy;
 import static com.sanbot.capaBot.MyUtils.temporaryEmotion;
 
@@ -37,7 +41,10 @@ public class MyShakeActivity extends TopBaseActivity {
     TextView handshakes;
 
     @BindView(R.id.shakeLayout)
-    LinearLayout shakeLayout;
+    android.support.constraint.ConstraintLayout shakeLayout;
+
+    @BindView(R.id.exit)
+    Button exitButton;
 
 
     //robot managers
@@ -46,6 +53,7 @@ public class MyShakeActivity extends TopBaseActivity {
     private HandMotionManager handMotionManager;    //hands movements
     private SystemManager systemManager; //emotions
     private HardWareManager hardWareManager; //leds //touch sensors //voice locate //gyroscope
+    private WheelMotionManager wheelMotionManager; //leds //touch sensors //voice locate //gyroscope
 
 
     //to understand if it is in the position waiting the touch of the hand
@@ -54,18 +62,19 @@ public class MyShakeActivity extends TopBaseActivity {
     Handler incitement = new Handler();
 
     //hand motion
-    private byte handAb = AbsoluteAngleHandMotion.PART_LEFT;
-    private byte handRe = RelativeAngleHandMotion.PART_LEFT;
-    NoAngleHandMotion noAngleHandMotionUP = new NoAngleHandMotion(NoAngleHandMotion.PART_LEFT, 5, NoAngleHandMotion.ACTION_UP);
-    NoAngleHandMotion noAngleHandMotionDOWN = new NoAngleHandMotion(NoAngleHandMotion.PART_LEFT, 5, NoAngleHandMotion.ACTION_DOWN);
-    NoAngleHandMotion noAngleHandMotionSTOP = new NoAngleHandMotion(NoAngleHandMotion.PART_LEFT, 5, NoAngleHandMotion.ACTION_STOP);
+    private byte handAb = AbsoluteAngleHandMotion.PART_RIGHT;
+    private byte handRe = RelativeAngleHandMotion.PART_RIGHT;
+    NoAngleHandMotion noAngleHandMotionUP = new NoAngleHandMotion(NoAngleHandMotion.PART_RIGHT, 5, NoAngleHandMotion.ACTION_UP);
+    NoAngleHandMotion noAngleHandMotionDOWN = new NoAngleHandMotion(NoAngleHandMotion.PART_RIGHT, 5, NoAngleHandMotion.ACTION_DOWN);
+    NoAngleHandMotion noAngleHandMotionSTOP = new NoAngleHandMotion(NoAngleHandMotion.PART_RIGHT, 5, NoAngleHandMotion.ACTION_STOP);
 
     //head motion
     LocateAbsoluteAngleHeadMotion locateAbsoluteAngleHeadMotion = new LocateAbsoluteAngleHeadMotion(
             LocateAbsoluteAngleHeadMotion.ACTION_VERTICAL_LOCK,90,30
     );
     RelativeAngleHeadMotion relativeHeadMotionDOWN = new RelativeAngleHeadMotion(RelativeAngleHeadMotion.ACTION_DOWN, 30);
-
+    RelativeAngleHeadMotion relativeAngleHeadMotionLeft = new RelativeAngleHeadMotion(RelativeAngleHeadMotion.ACTION_LEFT,10);
+    RelativeAngleHeadMotion relativeAngleHeadMotionRight = new RelativeAngleHeadMotion(RelativeAngleHeadMotion.ACTION_RIGHT,10);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,6 +92,7 @@ public class MyShakeActivity extends TopBaseActivity {
         handMotionManager = (HandMotionManager) getUnitManager(FuncConstant.HANDMOTION_MANAGER);
         hardWareManager = (HardWareManager) getUnitManager(FuncConstant.HARDWARE_MANAGER);
         systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
+        wheelMotionManager = (WheelMotionManager) getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
 
         //initialize listeners
         initListener();
@@ -108,6 +118,13 @@ public class MyShakeActivity extends TopBaseActivity {
             }
         }, 1000);
 
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timeWaitingExpired();
+            }
+        });
+
     }
 
 
@@ -118,6 +135,11 @@ public class MyShakeActivity extends TopBaseActivity {
         //hardware touch
         hardWareManager.setOnHareWareListener(
                 new TouchSensorListener() {
+                    @Override
+                    public void onTouch(int i, boolean b) {
+
+                    }
+
                     @Override
                     public void onTouch(int part) {
                         switch (part) {
@@ -149,57 +171,31 @@ public class MyShakeActivity extends TopBaseActivity {
 
 
     /****** my functions *******/
-    public void firstMeeting () {
-
-        //todo align with person?
+    public void firstMeeting() {
 
         //up the head
         headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
 
+        //self presentation
+        speechManager.startSpeak(getString(R.string.i_am_sanbot), MySettings.getSpeakDefaultOption());
 
         //hand up
         AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 70);
         handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
-        //self presentation
-        speechManager.startSpeak(getString(R.string.i_am_sanbot), MySettings.getSpeakDefaultOption());
+        //rotate ody
+        rotateAtRelativeAngle(wheelMotionManager, 350);
+        //rotate head
+        headMotionManager.doRelativeAngleMotion(relativeAngleHeadMotionRight);
 
         //waiting touch
         waitingTouchPosition = true;
         Log.i("IGOR", "waitingTouchPosition = true");
 
-        //waiting touch too much event
+        //waiting touch too much start waiting
         waitingTouchHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.i("IGOR", "no touched hand in time");
-                //waiting touch false
-                waitingTouchPosition = false;
-                Log.i("IGOR", "waitingTouchPosition = false ");
-                //hand down
-                AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 180);
-                handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
-                //cry face
-                temporaryEmotion(systemManager, EmotionsType.CRY);
-                //down the head
-                headMotionManager.doRelativeAngleMotion(relativeHeadMotionDOWN);
-                //up head after 10 seconds
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
-                    }
-                }, 10000);
-
-                //sad sentence
-                speechManager.startSpeak(getString(R.string.sad_no_shake), MySettings.getSpeakDefaultOption());
-                sleepy(8);
-
-                //starts dialog activity
-                Intent myIntent = new Intent(MyShakeActivity.this, MyDialogActivity.class);
-                MyShakeActivity.this.startActivity(myIntent);
-
-                //finish
-                finish();
+                timeWaitingExpired();
             }
         }, 1000 * MySettings.getSeconds_waitingTouch());
         //incitement in middle
@@ -224,6 +220,7 @@ public class MyShakeActivity extends TopBaseActivity {
         waitingTouchPosition = false;
         Log.i("IGOR", "waitingTouchPosition = false ");
 
+        speechManager.startSpeak("Hi", MySettings.getSpeakDefaultOption());
         MySettings.incrementHandshakes();
         updateHandshakes();
 
@@ -281,23 +278,63 @@ public class MyShakeActivity extends TopBaseActivity {
         handMotionManager.doNoAngleMotion(noAngleHandMotionDOWN);
 
 
-
-
         //hands down (reset position)
         handMotionManager.doNoAngleMotion(new NoAngleHandMotion(NoAngleHandMotion.PART_BOTH, 5,NoAngleHandMotion.ACTION_RESET));
 
+        //back rotation
+        rotateAtRelativeAngle(wheelMotionManager, 10);
+        //rotate back head
+        headMotionManager.doRelativeAngleMotion(relativeAngleHeadMotionLeft);
 
         //after shaking sentence
         speechManager.startSpeak(getString(R.string.glad_meet_you), MySettings.getSpeakDefaultOption());
-        sleepy(3);
+        concludeSpeak(speechManager);
 
         //starts dialog activity
         Intent myIntent = new Intent(MyShakeActivity.this, MyDialogActivity.class);
         MyShakeActivity.this.startActivity(myIntent);
 
+        //finish
         finish();
     }
 
+    public void timeWaitingExpired() {
+        Log.i("IGOR", "no touched hand in time");
+        //waiting touch false
+        waitingTouchPosition = false;
+        Log.i("IGOR", "waitingTouchPosition = false ");
+        //remove incitement if it's still there
+        incitement.removeCallbacksAndMessages(null);
+        //hand down
+        AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 180);
+        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        //back rotation
+        rotateAtRelativeAngle(wheelMotionManager, 10);
+        //back head
+        headMotionManager.doRelativeAngleMotion(relativeAngleHeadMotionLeft);
+        //cry face
+        temporaryEmotion(systemManager, EmotionsType.CRY);
+        //down the head
+        headMotionManager.doRelativeAngleMotion(relativeHeadMotionDOWN);
+        //up head after 10 seconds
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
+            }
+        }, 10000);
+
+        //sad sentence
+        speechManager.startSpeak(getString(R.string.sad_no_shake), MySettings.getSpeakDefaultOption());
+        concludeSpeak(speechManager);
+
+        //starts dialog activity
+        Intent myIntent = new Intent(MyShakeActivity.this, MyDialogActivity.class);
+        MyShakeActivity.this.startActivity(myIntent);
+
+        //finish
+        finish();
+    }
 
 
     public void updateHandshakes() {

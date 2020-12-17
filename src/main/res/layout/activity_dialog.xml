@@ -3,9 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/exit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -24,6 +38,7 @@
             android:paddingLeft="40dp"
             android:paddingRight="40dp" />
     </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,22 +56,25 @@
             android:layout_width="400dp"
             android:layout_height="200dp"
             android:textColor="@color/colorBlack"
+            android:shadowColor="@color/colorWhite"
+            android:shadowDx="2"
+            android:shadowDy="2"
             android:text="@string/listening_in_progress"
             android:textSize="40sp"
             android:gravity="center"
-            android:background="@drawable/listening"
-            android:backgroundTint="@color/colorAlphaGreenButton"
+            android:background="@drawable/butlistening"
+            android:backgroundTint="@color/colorPrimary"
             android:contentDescription="@string/listening_in_progress" />
         <Button
             android:id="@+id/wake"
             android:layout_width="400dp"
             android:layout_height="200dp"
-            android:textColor="@color/colorRedButton"
+            android:textColor="@color/colorRed"
             android:text="@string/wake_the_robot"
             android:textSize="40sp"
             android:backgroundTintMode="src_over"
             android:backgroundTint="@color/colorAlphaWhite"
-            android:background="@drawable/sleeping" />
+            android:background="@drawable/butsleeping" />
     </LinearLayout>
 
     <LinearLayout
@@ -78,7 +96,7 @@
             android:layout_height="match_parent"
             android:numColumns="3"
             android:horizontalSpacing="10dp"
-            android:verticalSpacing="10dp"
+            android:verticalSpacing="50dp"
             android:gravity="center"
             android:stretchMode="columnWidth" >
         </GridView>

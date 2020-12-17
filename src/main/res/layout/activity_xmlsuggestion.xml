@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center_horizontal">
+
     <!-- Dummy item to prevent EditText from receiving focus -->
     <LinearLayout
         android:focusable="true"
@@ -23,19 +43,19 @@
             android:text="@string/listening_in_progress"
             android:textSize="40sp"
             android:gravity="center"
-            android:background="@drawable/listening"
-            android:backgroundTint="@color/colorAlphaGreenButton"
+            android:background="@drawable/butlistening"
+            android:backgroundTint="@color/colorAlphaGreen"
             android:contentDescription="@string/listening_in_progress" />
         <Button
             android:id="@+id/wake"
             android:layout_width="400dp"
             android:layout_height="200dp"
-            android:textColor="@color/colorRedButton"
+            android:textColor="@color/colorRed"
             android:text="@string/wake_the_robot"
             android:textSize="40sp"
             android:backgroundTintMode="src_over"
             android:backgroundTint="@color/colorAlphaWhite"
-            android:background="@drawable/sleeping" />
+            android:background="@drawable/butsleeping" />
     </LinearLayout>
     <TextView
         android:id="@+id/handshakes_sa"
@@ -90,3 +110,6 @@
         android:layout_margin="10dp"
         android:text="@string/save"/>
 </LinearLayout>
+
+
+</RelativeLayout>

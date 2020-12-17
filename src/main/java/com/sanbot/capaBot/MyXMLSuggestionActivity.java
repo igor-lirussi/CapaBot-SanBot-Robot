@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.beans.speech.Grammar;
+import com.sanbot.opensdk.function.beans.speech.RecognizeTextBean;
 import com.sanbot.opensdk.function.unit.SpeechManager;
 import com.sanbot.opensdk.function.unit.interfaces.speech.RecognizeListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.WakenListener;
@@ -27,7 +28,6 @@ import org.xmlpull.v1.XmlSerializer;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -43,10 +43,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.sanbot.capaBot.MyUtils.sleepy;
+import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 import static com.sanbot.capaBot.MyUtilsXML.createFileInXMLDirectory;
 import static com.sanbot.capaBot.MyUtilsXML.getStringInside;
-import static com.sanbot.capaBot.MyUtilsXML.getStringOfTagInside;
 import static com.sanbot.capaBot.MyUtilsXML.xmlAddSuggestion;
 
 public class MyXMLSuggestionActivity extends TopBaseActivity {
@@ -60,6 +59,9 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
     TextView imageListen;
     @BindView(R.id.wake)
     Button wakeButton;
+
+    @BindView(R.id.exit)
+    Button exitButton;
 
     String xmlFileName = "xml_suggestions.xml";
     File fileXML;
@@ -96,7 +98,16 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
             }
         });
 
-        //todo exit button
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //starts dialog activity
+                Intent myIntent = new Intent(MyXMLSuggestionActivity.this, MyDialogActivity.class);
+                MyXMLSuggestionActivity.this.startActivity(myIntent);
+                //terminates activity
+                finish();
+            }
+        });
 
         //create file in the XML directory
         fileXML = createFileInXMLDirectory(xmlFileName);
@@ -106,7 +117,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
             @Override
             public void run() {
                 speechManager.startSpeak(getString(R.string.can_speak), MySettings.getSpeakDefaultOption());
-                sleepy(2);
+                concludeSpeak(speechManager);
                 speechManager.doWakeUp();
             }
         }, 200);
@@ -126,6 +137,9 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
                     if (!inputName.getText().toString().isEmpty()) {
                         name = inputName.getText().toString();
                     }
+                    //thanks the user
+                    speechManager.startSpeak("Thank you", MySettings.getSpeakDefaultOption());
+                    concludeSpeak(speechManager);
                     //adding the suggestion to the xml
                     xmlAddSuggestion(fileXML, name, inputText.getText().toString().toLowerCase());
                     //resetting
@@ -156,6 +170,11 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
         //Set wakeup, sleep callback
         speechManager.setOnSpeechListener(new WakenListener() {
             @Override
+            public void onWakeUpStatus(boolean b) {
+
+            }
+
+            @Override
             public void onWakeUp() {
                 Log.i("IGOR-ANS", "WAKEUP callback");
             }
@@ -176,6 +195,11 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
         });
         //Speech recognition callback
         speechManager.setOnSpeechListener(new RecognizeListener() {
+            @Override
+            public void onRecognizeText(RecognizeTextBean recognizeTextBean) {
+
+            }
+
             @Override
             public boolean onRecognizeResult(Grammar grammar) {
 

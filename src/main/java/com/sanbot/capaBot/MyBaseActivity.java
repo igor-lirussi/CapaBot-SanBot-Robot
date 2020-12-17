@@ -1,6 +1,8 @@
 package com.sanbot.capaBot;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.MediaCodec;
 import android.media.MediaFormat;
@@ -9,6 +11,8 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -25,7 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.qihancloud.opensdk.function.unit.MediaManager;
 import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.beans.EmotionsType;
@@ -38,7 +41,9 @@ import com.sanbot.opensdk.function.beans.handmotion.RelativeAngleHandMotion;
 import com.sanbot.opensdk.function.beans.headmotion.LocateAbsoluteAngleHeadMotion;
 import com.sanbot.opensdk.function.beans.headmotion.RelativeAngleHeadMotion;
 import com.sanbot.opensdk.function.beans.speech.Grammar;
+import com.sanbot.opensdk.function.beans.speech.RecognizeTextBean;
 import com.sanbot.opensdk.function.beans.speech.SpeakStatus;
+import com.sanbot.opensdk.function.unit.HDCameraManager;
 import com.sanbot.opensdk.function.unit.HandMotionManager;
 import com.sanbot.opensdk.function.unit.HardWareManager;
 import com.sanbot.opensdk.function.unit.HeadMotionManager;
@@ -68,7 +73,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.sanbot.capaBot.MyUtils.*;
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.INTERNET;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static com.sanbot.capaBot.MyUtils.compensationSanbotAngle;
+import static com.sanbot.capaBot.MyUtils.concludeSpeak;
+import static com.sanbot.capaBot.MyUtils.rotateAtRelativeAngle;
+import static com.sanbot.capaBot.MyUtils.sleepy;
+import static com.sanbot.capaBot.MyUtils.temporaryEmotion;
 
 /**
  *  presents the robot to the visitor / say hello to already-known people
@@ -84,6 +97,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     TextView tvCapture;
     @BindView(R.id.iv_capture)
     ImageView ivCapture;
+    @BindView(R.id.battery_base)
+    TextView batteryTV;
     @BindView(R.id.imageCompass)
     ImageView imageComp;
     @BindView(R.id.textCompass)
@@ -108,7 +123,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     Button exitButt;
 
     //robot managers
-    private MediaManager mediaManager; //video, faceRec
+    private HDCameraManager hdCameraManager; //video, faceRec
     private SpeechManager speechManager; //voice, speechRec
     private HeadMotionManager headMotionManager;    //head movements
     private HandMotionManager handMotionManager;    //hands movements
@@ -117,6 +132,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     private ModularMotionManager modularMotionManager; //wander
     private WheelMotionManager wheelMotionManager;
 
+
+    Handler checkBatteryStatus = new Handler();
 
     //video stuff
     MediaCodec mediaCodec;
@@ -141,6 +158,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     private CountDownTimer countDownPresentationLocked;
 
     private String lastRecognizedSentence = "";
+
+    boolean paused = false;
 
     //hand motion
     private byte handAb = AbsoluteAngleHandMotion.PART_LEFT;
@@ -170,7 +189,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         setContentView(R.layout.activity_base);
         ButterKnife.bind(this);
         //initialize managers
-        mediaManager = (MediaManager) getUnitManager(FuncConstant.MEDIA_MANAGER);
+        hdCameraManager = (HDCameraManager) getUnitManager(FuncConstant.HDCAMERA_MANAGER);
         speechManager = (SpeechManager) getUnitManager(FuncConstant.SPEECH_MANAGER);
         headMotionManager = (HeadMotionManager) getUnitManager(FuncConstant.HEADMOTION_MANAGER);
         handMotionManager = (HandMotionManager) getUnitManager(FuncConstant.HANDMOTION_MANAGER);
@@ -180,10 +199,28 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         wheelMotionManager = (WheelMotionManager) getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
         //for video view on screen
         svMedia.getHolder().addCallback(this);
-        //no float button
+        //float button of the system
         systemManager.switchFloatBar(true, getClass().getName());
 
-        //LOAD settings(old context saved)
+        //permissions
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE}, 12);
+        }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE}, 12);
+        }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{CAMERA}, 12);
+        }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{INTERNET}, 12);
+        }
+        //LOAD handshakes
+        MySettings.initializeXML();
         MySettings.loadHandshakes();
 
         //initialize speak
@@ -209,6 +246,28 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             }
         }, 1000);
 
+        //cyclic check battery
+        checkBatteryStatus.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                updateView();
+                //grab battery value
+                int battery_value = systemManager.getBatteryValue();
+                Log.i("IGOR", "Battery: "+ battery_value);
+                //check if the charge is low
+                if (battery_value <= MySettings.getBatteryLOW()) {
+                    //starts charge activity
+                    Intent myIntent = new Intent(MyBaseActivity.this, MyChargeActivity.class);
+                    MyBaseActivity.this.startActivity(myIntent);
+                    //finish
+                    finish();
+                } else {
+                    //re-post the same handler in X seconds
+                    checkBatteryStatus.postDelayed(this, 1000 * MySettings.getSeconds_checkingBattery());
+                }
+            }
+        }, 1000*MySettings.getSeconds_checkingBattery());
+
         //update view
         updateView();
 
@@ -219,6 +278,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        checkBatteryStatus.removeCallbacksAndMessages(null);
+        wanderHandler.removeCallbacksAndMessages(null);
         wanderOffNow();
     }
 
@@ -227,7 +288,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
      */
     private void initHardwareListeners() {
         //face recognition
-        mediaManager.setMediaListener(new FaceRecognizeListener() {
+        hdCameraManager.setMediaListener(new FaceRecognizeListener() {
             @Override
             public void recognizeResult(List<FaceRecognizeBean> list) {
                 //taking face info
@@ -281,19 +342,32 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             }
         });
         //media
-        mediaManager.setMediaListener(new MediaStreamListener() {
+        hdCameraManager.setMediaListener(new MediaStreamListener() {
             @Override
-            public void getVideoStream(byte[] bytes) {
-                showViewData(ByteBuffer.wrap(bytes));
+            public void getVideoStream(int i, byte[] bytes, int i1, int i2) {
+                if (!paused) {
+                    try {
+                        showViewData(ByteBuffer.wrap(bytes));
+                    } catch (IllegalStateException e ) {
+                        //do nothing
+                    }
+                }
             }
 
             @Override
-            public void getAudioStream(byte[] bytes) {
+            public void getAudioStream(int i, byte[] bytes) {
+
             }
+
         });
         //voice
         //Set wakeup/sleep sleep callback
         speechManager.setOnSpeechListener(new WakenListener() {
+            @Override
+            public void onWakeUpStatus(boolean b) {
+
+            }
+
             @Override
             public void onWakeUp() {
                 Log.i("speechmanager", "wake up !");
@@ -309,6 +383,11 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //Speech recognition callback
         speechManager.setOnSpeechListener(new RecognizeListener() {
             @Override
+            public void onRecognizeText(RecognizeTextBean recognizeTextBean) {
+
+            }
+
+            @Override
             public boolean onRecognizeResult(@NonNull Grammar grammar) {
                 //IGOR: not exceed 300ms
                 //Blocked only if RECOGNIZE_MODE is set to 1 in Manifest and this function returns true
@@ -320,7 +399,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             @Override
             public void onRecognizeVolume(int i) {
                 //value range at 0~30
-                Log.i("speechmanager", "volume detected to"+ String.valueOf(i));
+                Log.i("speechmanager", "volume detected to "+ String.valueOf(i));
             }
 
             @Override
@@ -381,6 +460,11 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //Gyro callback
         hardWareManager.setOnHareWareListener(new GyroscopeListener() {
             @Override
+            public void gyroscopeCheckResult(boolean b, boolean b1) {
+
+            }
+
+            @Override
             public void gyroscopeData(float v, float v1, float v2) {
                 Log.i("gyro", "GYRO first: " + v + ", second: " + v1 + ", third: " + v2);
 
@@ -421,6 +505,11 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         hardWareManager.setOnHareWareListener(
                 new TouchSensorListener() {
                     @Override
+                    public void onTouch(int i, boolean b) {
+
+                    }
+
+                    @Override
                     public void onTouch(int part) {
                         switch (part) {
                             case 9:
@@ -439,7 +528,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                                 }
                                 break;
                             case 1 : case 2:
-                                speechManager.startSpeak("prrrrrrrrr", MySettings.getSpeakDefaultOption());
+                                speechManager.startSpeak("ehy, don't touch", MySettings.getSpeakDefaultOption());
 
                         }
                     }
@@ -497,7 +586,10 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //exit button
         exitButt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {finish();}
+            public void onClick(View view) {
+                wanderOffNow();
+                finish();
+            }
         });
     }
 
@@ -526,7 +618,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             }
 
         } catch (Exception e) {
-            Log.e(TAG, "An error occurred", e);
+            //Log.e(TAG, "An error occurred", e);
         }
     }
 
@@ -536,8 +628,15 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        paused = true;
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+        paused = false;
         updateView();
         //todo not sure
         busy = false;
@@ -582,7 +681,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         streamOption.setChannel(StreamOption.MAIN_STREAM);
         streamOption.setDecodType(StreamOption.HARDWARE_DECODE);
         streamOption.setJustIframe(false);
-        mediaManager.openStream(streamOption);
+        hdCameraManager.openStream(streamOption);
         //Configuration MediaCodec
         startDecoding(holder.getSurface());
     }
@@ -595,7 +694,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         //Turn off media streaming
-        mediaManager.closeStream();
         stopDecoding();
     }
 
@@ -639,8 +737,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_capture:
-                storeImage(mediaManager.getVideoImage());
-                ivCapture.setImageBitmap(mediaManager.getVideoImage());
+                storeImage(hdCameraManager.getVideoImage());
+                ivCapture.setImageBitmap(hdCameraManager.getVideoImage());
                 break;
 
             case R.id.knowYouMeeting:
@@ -682,7 +780,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         busy = true;
         //say hi
         speechManager.startSpeak(getString(R.string.hi) + person_name, MySettings.getSpeakDefaultOption());
-        sleepy(2);
+        concludeSpeak(speechManager);
 
 
 
@@ -700,7 +798,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             } else if (hours <= 24) {
                 speechManager.startSpeak(getString(R.string.night), MySettings.getSpeakDefaultOption());
             }
-            sleepy(2);
+            concludeSpeak(speechManager);
         }
 
         //start the speech Answer activity.
@@ -732,7 +830,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
         //hi
         speechManager.startSpeak(getString(R.string.never_met), MySettings.getSpeakDefaultOption());
-        sleepy(3);
+        concludeSpeak(speechManager);
 
         //hand up
         AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 70);
@@ -770,7 +868,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 }, 10000);
                 //sad sentence
                 speechManager.startSpeak(getString(R.string.sad_no_shake), MySettings.getSpeakDefaultOption());
-                sleepy(2);
+                concludeSpeak(speechManager);
                 //busy false
                 busy = false;
             }
@@ -826,7 +924,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
         //after shaking sentence
         //speechManager.startSpeak("I'm glad to meet you, bye bye!", MySettings.getSpeakDefaultOption());
-        //sleepy(3);
+        //concludeSpeak(speechManager);
 
         if (MySettings.isDialogAfterPresentation()){
             //start the dialog activity.
@@ -864,6 +962,10 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //update handshakesTextView
         String handshakesStr = getString(R.string.handshakes) + " " + MySettings.getHandshakes();
         handshakesTextView.setText(handshakesStr);
+        //battery
+        int battery_value = systemManager.getBatteryValue();
+        Log.i("IGOR", "Battery: "+ battery_value);
+        batteryTV.setText("Battery: " + battery_value + "%");
     }
 
     //END

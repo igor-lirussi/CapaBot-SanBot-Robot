@@ -34,7 +34,7 @@
     <!-- Hand Shaking -->
     <string name="i_am_sanbot">I\'m SanBot!</string>
     <string name="sad_no_shake">I\'m sad you didn\'t shake my hand!</string>
-    <string name="come_on">Grab firmly my hand!</string>
+    <string name="come_on">Come on, grab firmly with your right hand mine!</string>
     <string name="glad_meet_you">I\'m glad to meet you!</string>
     <!--dialog activity-->
     <string name="what_could_do">What could I do for you?</string>
@@ -49,7 +49,7 @@
     <string name="please_suggestion">Please leave a suggestion when you have finished!</string>
     <!--project activity-->
     <string name="show_video">Now I will show you a video</string>
-    <string name="good_video">Was good, am I right?</string>
+    <string name="good_video">It was good, am I right?</string>
     <string name="cooling_projector">I\'m cooling down the projector, one moment, my head is very hot after this…</string>
 
     <!--suggestion-->

@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -16,15 +18,19 @@ import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.unit.ProjectorManager;
 import com.sanbot.opensdk.function.unit.SpeechManager;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.sanbot.capaBot.MyUtils.sleepy;
+import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 
 /**
  * function: projection the story of vislab
  */
 
 public class MyProjectStoryActivity extends TopBaseActivity {
+
+    @BindView(R.id.exit)
+    Button exitButton;
 
     //managers
     private ProjectorManager projectorManager;
@@ -91,6 +97,13 @@ public class MyProjectStoryActivity extends TopBaseActivity {
         }, 10000);
 
         initListeners();
+
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishThisActivity();
+            }
+        });
     }
 
     public void initListeners(){
@@ -102,10 +115,10 @@ public class MyProjectStoryActivity extends TopBaseActivity {
                 projectorManager.switchProjector(false);
                 //end sentence
                 speechManager.startSpeak(getString(R.string.good_video), MySettings.getSpeakDefaultOption());
-                sleepy(4);
+                concludeSpeak(speechManager);
                 speechManager.startSpeak(getString(R.string.cooling_projector), MySettings.getSpeakDefaultOption());
-                sleepy(8);
-                endThisActivity();
+                concludeSpeak(speechManager);
+                finishThisActivity();
             }
         });
     }
@@ -116,7 +129,7 @@ public class MyProjectStoryActivity extends TopBaseActivity {
 
     }
 
-    private void endThisActivity() {
+    private void finishThisActivity() {
         //starts dialog activity
         Intent myIntent = new Intent(MyProjectStoryActivity.this, MyDialogActivity.class);
         MyProjectStoryActivity.this.startActivity(myIntent);
@@ -131,6 +144,6 @@ public class MyProjectStoryActivity extends TopBaseActivity {
         //Android documentation says this:
         //"do not count on this method being called"
         //so I can't use this for operation: "ending activity" in the code,
-        //better call endThisActivity()
+        //better call finishThisActivity()
     }
 }

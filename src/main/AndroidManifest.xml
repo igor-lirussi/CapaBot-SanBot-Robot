@@ -26,10 +26,7 @@
         <meta-data
             android:name="FORBID_WAKE_RESPONSE"
             android:value="true" />
-        <!-- block the speech recognition immediately after the recognition, no waste time -->
-        <meta-data
-            android:name="SPEECH_MODE"
-            android:value="1" />
+
         <meta-data
             android:name="RECOGNIZE_MODE"
             android:value="1" />
@@ -81,7 +78,18 @@
             android:authorities="com.qihancloud.capaBot.grammar"
             android:exported="true" />
 
-        <activity android:name=".MyWeatherActivity"></activity>
+        <activity android:name=".MyWeatherActivity" >
+            <meta-data
+                android:name="RECOGNIZE_MODE"
+                android:value="1" />
+        </activity>
+        <activity android:name=".MyPresentActivity"></activity>
+        <activity android:name=".MyChargeActivity" />
+        <activity android:name=".MyCalendarActivity" >
+            <meta-data
+                android:name="RECOGNIZE_MODE"
+                android:value="1" />
+        </activity>
     </application>
 
 </manifest>

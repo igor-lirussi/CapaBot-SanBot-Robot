@@ -33,10 +33,11 @@ public final class MyUtils {
      * waits until the speech is finished
      * @param speechManager the speech manager to check
      */
-    public static void concludeSpeak(SpeechManager speechManager) {
+    public static boolean concludeSpeak(SpeechManager speechManager) {
         while (speechManager.isSpeaking().getResult().equals("1")) {
             sleepy(0.2);
         }
+        return true;
     }
 
     /**

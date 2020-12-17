@@ -2,10 +2,13 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="SanBot-Screen" />
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="IGOR" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="CMakeSettings">
@@ -36,88 +39,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file leaf-file-name="MyCalendarActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyDialogActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="251" column="74" selection-start-line="251" selection-start-column="74" selection-end-line="251" selection-end-column="74" />
+            <state relative-caret-position="5140">
+              <caret line="328" column="202" selection-start-line="328" selection-start-column="202" selection-end-line="328" selection-end-column="202" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4195#4349#0" expanded="true" />
-                <element signature="e#4348#4349#0" expanded="true" />
-                <element signature="e#4943#5266#0" expanded="true" />
-                <element signature="e#5162#5193#0" expanded="true" />
-                <element signature="e#5265#5266#0" expanded="true" />
-                <element signature="e#5337#5788#0" expanded="true" />
-                <element signature="e#5586#5619#0" expanded="true" />
-                <element signature="e#5787#5788#0" expanded="true" />
-                <element signature="e#5955#6402#0" expanded="true" />
-                <element signature="e#6401#6402#0" expanded="true" />
-                <element signature="e#8144#18151#0" expanded="true" />
-                <element signature="e#12720#12755#0" expanded="true" />
-                <element signature="e#14834#14860#0" expanded="true" />
-                <element signature="e#16333#16360#0" expanded="true" />
-                <element signature="e#16904#16939#0" expanded="true" />
-                <element signature="e#17908#17941#0" expanded="true" />
-                <element signature="e#18150#18151#0" expanded="true" />
-                <element signature="e#18627#18628#0" expanded="true" />
-                <element signature="e#18659#18660#0" expanded="true" />
-                <element signature="e#20168#20344#0" expanded="true" />
-                <element signature="e#20343#20344#0" expanded="true" />
-                <element signature="e#20713#21363#0" expanded="true" />
-                <element signature="e#21001#21038#0" expanded="true" />
-                <element signature="e#21186#21220#0" expanded="true" />
-                <element signature="e#21362#21363#0" expanded="true" />
-                <element signature="e#21302#21303#0" expanded="true" />
-                <element signature="e#21329#21330#0" expanded="true" />
-                <element signature="e#22003#22508#0" expanded="true" />
-                <element signature="e#22391#22420#0" expanded="true" />
-                <element signature="e#22507#22508#0" expanded="true" />
+                <element signature="method#getFakeEvents#0;class#MyCalendarActivity#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_my_weather.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_my_weather.xml">
-          <provider editor-type-id="text-editor">
+      <file leaf-file-name="weather_element_layout.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/weather_element_layout.xml">
+          <provider editor-type-id="android-designer2">
             <state />
           </provider>
-          <provider selected="true" editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyWeatherActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+            <state relative-caret-position="100">
+              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyXMLSuggestionActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java">
+      <file leaf-file-name="MyWeatherActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
+            <state relative-caret-position="3100">
+              <caret line="182" column="35" selection-start-line="182" selection-start-column="35" selection-end-line="183" selection-end-column="95" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyPresentActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyPresentActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3140">
+              <caret line="201" column="203" selection-start-line="201" selection-start-column="203" selection-end-line="201" selection-end-column="203" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyShakeActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyShakeActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5840">
+              <caret line="328" column="9" selection-start-line="328" selection-start-column="9" selection-end-line="328" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,86 +103,103 @@
       <file leaf-file-name="MyBaseActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13">
-              <caret line="562" column="19" selection-start-line="562" selection-start-column="19" selection-end-line="562" selection-end-column="19" />
+            <state relative-caret-position="20">
+              <caret line="201" column="36" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
               <folding>
-                <element signature="e#8206#8745#0" expanded="true" />
-                <element signature="e#8744#8745#0" expanded="true" />
-                <element signature="e#9121#11425#0" expanded="true" />
-                <element signature="e#9794#9810#0" expanded="true" />
-                <element signature="e#11424#11425#0" expanded="true" />
-                <element signature="e#11585#11586#0" expanded="true" />
-                <element signature="e#11653#11654#0" expanded="true" />
-                <element signature="e#13538#13807#0" expanded="true" />
-                <element signature="e#13806#13807#0" expanded="true" />
-                <element signature="e#13892#15192#0" expanded="true" />
-                <element signature="e#14807#15079#0" expanded="true" />
-                <element signature="e#15078#15079#0" expanded="true" />
-                <element signature="e#15191#15192#0" expanded="true" />
-                <element signature="e#15265#17094#0" expanded="true" />
-                <element signature="e#17093#17094#0" expanded="true" />
-                <element signature="e#17185#18195#0" expanded="true" />
-                <element signature="e#18194#18195#0" expanded="true" />
-                <element signature="e#18340#19512#0" expanded="true" />
-                <element signature="e#19511#19512#0" expanded="true" />
-                <element signature="e#19605#19968#0" expanded="true" />
-                <element signature="e#19967#19968#0" expanded="true" />
-                <element signature="e#20050#20413#0" expanded="true" />
-                <element signature="e#20412#20413#0" expanded="true" />
-                <element signature="e#20474#20589#0" expanded="true" />
-                <element signature="e#20588#20589#0" expanded="true" />
-                <element signature="e#21863#22402#0" expanded="true" />
-                <element signature="e#22401#22402#0" expanded="true" />
-                <element signature="e#22748#22787#0" expanded="true" />
-                <element signature="e#26301#26323#0" expanded="true" />
-                <element signature="e#26715#26748#0" expanded="true" />
-                <element signature="e#26865#26892#0" expanded="true" />
-                <element signature="e#27009#27038#0" expanded="true" />
-                <element signature="e#27156#27181#0" expanded="true" />
-                <element signature="e#27691#27882#0" expanded="true" />
-                <element signature="e#27881#27882#0" expanded="true" />
-                <element signature="e#28139#28168#0" expanded="true" />
-                <element signature="e#28482#28513#0" expanded="true" />
-                <element signature="e#28748#30098#0" expanded="true" />
-                <element signature="e#29538#29836#0" expanded="true" />
-                <element signature="e#29835#29836#0" expanded="true" />
-                <element signature="e#29918#29950#0" expanded="true" />
-                <element signature="e#30097#30098#0" expanded="true" />
-                <element signature="e#30208#30409#0" expanded="true" />
-                <element signature="e#30320#30347#0" expanded="true" />
-                <element signature="e#30408#30409#0" expanded="true" />
-                <element signature="e#33442#33472#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MySettings.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
+      <file leaf-file-name="MyChargeActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyChargeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+            <state relative-caret-position="1020">
+              <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="progressbar.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/drawable/progressbar.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="700">
+              <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_charge.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_charge.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="820">
+              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyUtils.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="36" column="45" lean-forward="true" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="layoutResourceFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>task</find>
+      <find>exitButton</find>
+      <find>initListeners</find>
+      <find>startInteraction</find>
+      <find>shakeLayout</find>
+      <find>runOnU</find>
+      <find>rotation</find>
+      <find>rotateAtRelativeAngle</find>
+      <find>rotateAt</find>
+      <find>firm</find>
+      <find>isNetworkAvailable</find>
+      <find>loader</find>
+      <find>flash</find>
+      <find>getTimeString</find>
+      <find>tasklo</find>
+      <find>exit</find>
+      <find>endThisActivity</find>
+      <find>fini</find>
+      <find>waitingTouchHandler</find>
+      <find>finishThisActivity</find>
       <find>wakeUpListening</find>
+      <find>toda</find>
+      <find>exi</find>
+      <find>updatevi</find>
+      <find>remove</find>
+      <find>checkb</find>
+      <find>finishCharging</find>
       <find>wander</find>
-      <find>onDe</find>
-      <find>askOther</find>
-      <find>sleepy</find>
-      <find>askO</find>
-      <find>destr</find>
-      <find>resume</find>
-      <find>doSle</find>
-      <find>infini</find>
-      <find>finis</find>
-      <find>hands</find>
+      <find>presentationLock</find>
+      <find>Destr</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\Users\Igor\Downloads\VisLab\SanBot_Material\capaBot\capaBot\src\main\java\com\sanbot\capaBot</dir>
+    </dirStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
@@ -1447,15 +1442,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/UtilsPermissions.java" />
+        <option value="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/benign-0_1_118-10.1.21.223_5555/sdcard/CAPABOTXML/xml_suggestions.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtilsXML.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/Function.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_card.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/recycle_items.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_my_weather.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/clickable_column.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/DownloadWeather.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherDownloadAsyncTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/myPresentActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/box_red_with_bound.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/progressrotating.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/progressBar.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/progressbar.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/ScheduleView.java" />
+        <option value="$PROJECT_DIR$/src/main/assets/prova.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarDownloadAsyncTask.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_my_charge.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_my_present.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_projector_story.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_shake.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_my_dark_weather.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_xmlsuggestion.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_my_calendar.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_base.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_dialog.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_dark_weather.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/grid_element_layout.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyProjectStoryActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/weather_element_layout.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyPresentActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyShakeActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_charge.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyChargeActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtils.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -1466,8 +1503,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -1494,14 +1531,27 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="10.1.21.223:5555" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="device.picker.selection" value="302000f0c010a52740f1" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/benign-0_1_118-302000f0c010a52740f1/sdcard/DCIM/Camera" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RecentsManager">
+    <key name="android.template.packageName">
+      <recent name="com.sanbot.capaBot" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sanbot.capaBot" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Igor\Downloads\VisLab\SanBot_Material\capaBot\capaBot\src\main\res\layout" />
+      <recent name="C:\Users\Igor\Downloads\VisLab\SanBot_Material\capaBot\capaBot\src\main\res\drawable" />
+      <recent name="C:\Users\Igor\Downloads\VisLab\SanBot_Material\capaBot\capaBot\src\main\res\raw" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1667,371 +1717,388 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="Android Profiler" order="7" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32838285" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.25742576" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50075644" side_tool="true" weight="0.32838285" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32838285" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Logcat" order="7" weight="0.32838285" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.27887788" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32838285" />
+      <window_info anchor="bottom" id="Logcat" order="7" sideWeight="0.49924356" weight="0.5660066" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32838285" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.30528054" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
       <window_info anchor="right" id="Gradle" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Device File Explorer" order="7" side_tool="true" weight="0.32980332" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Device File Explorer" order="8" side_tool="true" weight="0.32980332" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Preview" order="6" weight="0.3237519" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa0.481/city.list.json" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/raw/club.mp3" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/progressrotating.xml" />
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-26/android.jar!/java/text/DateFormat.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="185">
+          <caret line="190" selection-start-line="190" selection-end-line="190" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
+    <entry file="file://$PROJECT_DIR$/../../../../feed-ksdxka67t86rufdom3-4473512 (2).ics" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/ScheduleView.java" />
+    <entry file="file://$PROJECT_DIR$/../../../../msar-public-holidays-en.ics" />
+    <entry file="file://$PROJECT_DIR$/../../../../portugal.ics" />
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-26/android.jar!/android/os/AsyncTask.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="24" />
+        <state relative-caret-position="278">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-26/android.jar!/java/lang/Thread.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="239" selection-start-line="239" selection-end-line="239" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mnode.ical4j/ical4j/2.2.4/2a6d71869a738a4f86c397b12972a787d4d76c1a/ical4j-2.2.4-sources.jar!/net/fortuna/ical4j/data/CalendarBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="197" selection-start-line="197" selection-end-line="197" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../feriados.ics" />
+    <entry file="file://$PROJECT_DIR$/../../../../ptHolidays.ics" />
+    <entry file="file://$PROJECT_DIR$/../../../../portugal (1).ics" />
+    <entry file="file://$PROJECT_DIR$/../../../../astrocal.ics" />
+    <entry file="file://$PROJECT_DIR$/../../../../astrocal (1).ics" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-451">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../feed-ksdxka67t86rufdom3-4473512.ics" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherDownloadAsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1011">
+          <caret line="124" column="33" selection-start-line="124" selection-start-column="33" selection-end-line="124" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarDownloadAsyncTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../feed-ksdxka67t86rufdom3-0 (2).ics" />
+    <entry file="file://$PROJECT_DIR$/src/main/assets/prova.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/box_red_with_bound.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtilsXML.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_present.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="52" selection-start-line="8" selection-start-column="4" selection-end-line="16" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_dialog.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_base.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="26" column="36" selection-start-line="24" selection-start-column="16" selection-end-line="26" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_projector_story.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_calendar.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="41" column="11" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_xmlsuggestion.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyProjectStoryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="120" column="16" selection-start-line="120" selection-start-column="16" selection-end-line="120" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="105" column="69" selection-start-line="105" selection-start-column="69" selection-end-line="105" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4195#4349#0" expanded="true" />
-            <element signature="e#4348#4349#0" expanded="true" />
-            <element signature="e#4943#5266#0" expanded="true" />
-            <element signature="e#5162#5193#0" expanded="true" />
-            <element signature="e#5265#5266#0" expanded="true" />
-            <element signature="e#5337#5788#0" expanded="true" />
-            <element signature="e#5586#5619#0" expanded="true" />
-            <element signature="e#5787#5788#0" expanded="true" />
-            <element signature="e#5955#6402#0" expanded="true" />
-            <element signature="e#6401#6402#0" expanded="true" />
-            <element signature="e#8144#18151#0" expanded="true" />
-            <element signature="e#12720#12755#0" expanded="true" />
-            <element signature="e#14834#14860#0" expanded="true" />
-            <element signature="e#16333#16360#0" expanded="true" />
-            <element signature="e#16904#16939#0" expanded="true" />
-            <element signature="e#17908#17941#0" expanded="true" />
-            <element signature="e#18150#18151#0" expanded="true" />
-            <element signature="e#18627#18628#0" expanded="true" />
-            <element signature="e#18659#18660#0" expanded="true" />
-            <element signature="e#20168#20344#0" expanded="true" />
-            <element signature="e#20343#20344#0" expanded="true" />
-            <element signature="e#20713#21363#0" expanded="true" />
-            <element signature="e#21001#21038#0" expanded="true" />
-            <element signature="e#21186#21220#0" expanded="true" />
-            <element signature="e#21362#21363#0" expanded="true" />
-            <element signature="e#21302#21303#0" expanded="true" />
-            <element signature="e#21329#21330#0" expanded="true" />
-            <element signature="e#22003#22508#0" expanded="true" />
-            <element signature="e#22391#22420#0" expanded="true" />
-            <element signature="e#22507#22508#0" expanded="true" />
+            <element signature="e#2923#3194#0" expanded="true" />
+            <element signature="e#3193#3194#0" expanded="true" />
+            <element signature="e#3236#3631#0" expanded="true" />
+            <element signature="e#3630#3631#0" expanded="true" />
+            <element signature="e#3796#4087#0" expanded="true" />
+            <element signature="e#3908#3937#0" expanded="true" />
+            <element signature="e#4086#4087#0" expanded="true" />
+            <element signature="e#4451#4480#0" expanded="true" />
+            <element signature="e#5099#5128#0" expanded="true" />
+            <element signature="e#5288#5302#0" expanded="true" />
+            <element signature="e#5773#5824#0" expanded="true" />
+            <element signature="e#7604#7933#0" expanded="true" />
+            <element signature="e#7932#7933#0" expanded="true" />
+            <element signature="method#xmlAllTest#0;class#MyXMLSuggestionActivity#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_dark_weather.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3460">
-          <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
+        <state relative-caret-position="160">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+        <state relative-caret-position="120">
+          <caret line="36" column="68" selection-start-line="36" selection-start-column="68" selection-end-line="36" selection-end-column="68" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_shake.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4380">
-          <caret line="219" column="23" lean-forward="true" selection-start-line="219" selection-start-column="23" selection-end-line="219" selection-end-column="23" />
+        <state relative-caret-position="192">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/grid_element_layout.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1800">
+          <caret line="90" column="17" selection-start-line="89" selection-start-column="16" selection-end-line="90" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10040">
+          <caret line="556" column="32" selection-start-line="556" selection-start-column="17" selection-end-line="556" selection-end-column="32" />
           <folding>
-            <element signature="e#8206#8745#0" expanded="true" />
-            <element signature="e#8744#8745#0" expanded="true" />
-            <element signature="e#9121#11425#0" expanded="true" />
-            <element signature="e#9794#9810#0" expanded="true" />
-            <element signature="e#11424#11425#0" expanded="true" />
-            <element signature="e#11585#11586#0" expanded="true" />
-            <element signature="e#11653#11654#0" expanded="true" />
-            <element signature="e#13538#13807#0" expanded="true" />
-            <element signature="e#13806#13807#0" expanded="true" />
-            <element signature="e#13892#15192#0" expanded="true" />
-            <element signature="e#14807#15079#0" expanded="true" />
-            <element signature="e#15078#15079#0" expanded="true" />
-            <element signature="e#15191#15192#0" expanded="true" />
-            <element signature="e#15265#17094#0" expanded="true" />
-            <element signature="e#17093#17094#0" expanded="true" />
-            <element signature="e#17185#18195#0" expanded="true" />
-            <element signature="e#18194#18195#0" expanded="true" />
-            <element signature="e#18340#19512#0" expanded="true" />
-            <element signature="e#19511#19512#0" expanded="true" />
-            <element signature="e#19605#19968#0" expanded="true" />
-            <element signature="e#19967#19968#0" expanded="true" />
-            <element signature="e#20050#20413#0" expanded="true" />
-            <element signature="e#20412#20413#0" expanded="true" />
-            <element signature="e#20474#20589#0" expanded="true" />
-            <element signature="e#20588#20589#0" expanded="true" />
-            <element signature="e#21863#22402#0" expanded="true" />
-            <element signature="e#22401#22402#0" expanded="true" />
-            <element signature="e#22748#22787#0" expanded="true" />
-            <element signature="e#26301#26323#0" expanded="true" />
-            <element signature="e#26715#26748#0" expanded="true" />
-            <element signature="e#26865#26892#0" expanded="true" />
-            <element signature="e#27009#27038#0" expanded="true" />
-            <element signature="e#27156#27181#0" expanded="true" />
-            <element signature="e#27691#27882#0" expanded="true" />
-            <element signature="e#27881#27882#0" expanded="true" />
-            <element signature="e#28139#28168#0" expanded="true" />
-            <element signature="e#28482#28513#0" expanded="true" />
-            <element signature="e#28748#30098#0" expanded="true" />
-            <element signature="e#29538#29836#0" expanded="true" />
-            <element signature="e#29835#29836#0" expanded="true" />
-            <element signature="e#29918#29950#0" expanded="true" />
-            <element signature="e#30097#30098#0" expanded="true" />
-            <element signature="e#30208#30409#0" expanded="true" />
-            <element signature="e#30320#30347#0" expanded="true" />
-            <element signature="e#30408#30409#0" expanded="true" />
-            <element signature="e#33442#33472#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/weather_element_layout.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="100">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3460">
-          <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
+        <state relative-caret-position="5140">
+          <caret line="328" column="202" selection-start-line="328" selection-start-column="202" selection-end-line="328" selection-end-column="202" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getFakeEvents#0;class#MyCalendarActivity#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13420">
-          <caret line="671" selection-start-line="671" selection-end-line="671" />
+        <state relative-caret-position="3100">
+          <caret line="182" column="35" selection-start-line="182" selection-start-column="35" selection-end-line="183" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
+    <entry file="file://$PROJECT_DIR$/src/main/res/raw/lalala.mp3">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
-        </state>
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="24" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_charge.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3520">
-          <caret line="176" column="17" selection-start-line="168" selection-start-column="16" selection-end-line="176" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3460">
-          <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13420">
-          <caret line="671" selection-start-line="671" selection-end-line="671" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="820">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/progressbar.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1420">
-          <caret line="71" column="6" selection-start-line="71" selection-start-column="6" selection-end-line="72" selection-end-column="58" />
+        <state relative-caret-position="700">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyShakeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="5840">
+          <caret line="328" column="9" selection-start-line="328" selection-start-column="9" selection-end-line="328" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyChargeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyPresentActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3140">
+          <caret line="201" column="203" selection-start-line="201" selection-start-column="203" selection-end-line="201" selection-end-column="203" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
-          <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+          <caret line="201" column="36" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+        <state relative-caret-position="280">
+          <caret line="36" column="45" lean-forward="true" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="562" column="19" selection-start-line="562" selection-start-column="19" selection-end-line="562" selection-end-column="19" />
-          <folding>
-            <element signature="e#8206#8745#0" expanded="true" />
-            <element signature="e#8744#8745#0" expanded="true" />
-            <element signature="e#9121#11425#0" expanded="true" />
-            <element signature="e#9794#9810#0" expanded="true" />
-            <element signature="e#11424#11425#0" expanded="true" />
-            <element signature="e#11585#11586#0" expanded="true" />
-            <element signature="e#11653#11654#0" expanded="true" />
-            <element signature="e#13538#13807#0" expanded="true" />
-            <element signature="e#13806#13807#0" expanded="true" />
-            <element signature="e#13892#15192#0" expanded="true" />
-            <element signature="e#14807#15079#0" expanded="true" />
-            <element signature="e#15078#15079#0" expanded="true" />
-            <element signature="e#15191#15192#0" expanded="true" />
-            <element signature="e#15265#17094#0" expanded="true" />
-            <element signature="e#17093#17094#0" expanded="true" />
-            <element signature="e#17185#18195#0" expanded="true" />
-            <element signature="e#18194#18195#0" expanded="true" />
-            <element signature="e#18340#19512#0" expanded="true" />
-            <element signature="e#19511#19512#0" expanded="true" />
-            <element signature="e#19605#19968#0" expanded="true" />
-            <element signature="e#19967#19968#0" expanded="true" />
-            <element signature="e#20050#20413#0" expanded="true" />
-            <element signature="e#20412#20413#0" expanded="true" />
-            <element signature="e#20474#20589#0" expanded="true" />
-            <element signature="e#20588#20589#0" expanded="true" />
-            <element signature="e#21863#22402#0" expanded="true" />
-            <element signature="e#22401#22402#0" expanded="true" />
-            <element signature="e#22748#22787#0" expanded="true" />
-            <element signature="e#26301#26323#0" expanded="true" />
-            <element signature="e#26715#26748#0" expanded="true" />
-            <element signature="e#26865#26892#0" expanded="true" />
-            <element signature="e#27009#27038#0" expanded="true" />
-            <element signature="e#27156#27181#0" expanded="true" />
-            <element signature="e#27691#27882#0" expanded="true" />
-            <element signature="e#27881#27882#0" expanded="true" />
-            <element signature="e#28139#28168#0" expanded="true" />
-            <element signature="e#28482#28513#0" expanded="true" />
-            <element signature="e#28748#30098#0" expanded="true" />
-            <element signature="e#29538#29836#0" expanded="true" />
-            <element signature="e#29835#29836#0" expanded="true" />
-            <element signature="e#29918#29950#0" expanded="true" />
-            <element signature="e#30097#30098#0" expanded="true" />
-            <element signature="e#30208#30409#0" expanded="true" />
-            <element signature="e#30320#30347#0" expanded="true" />
-            <element signature="e#30408#30409#0" expanded="true" />
-            <element signature="e#33442#33472#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="251" column="74" selection-start-line="251" selection-start-column="74" selection-end-line="251" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4195#4349#0" expanded="true" />
-            <element signature="e#4348#4349#0" expanded="true" />
-            <element signature="e#4943#5266#0" expanded="true" />
-            <element signature="e#5162#5193#0" expanded="true" />
-            <element signature="e#5265#5266#0" expanded="true" />
-            <element signature="e#5337#5788#0" expanded="true" />
-            <element signature="e#5586#5619#0" expanded="true" />
-            <element signature="e#5787#5788#0" expanded="true" />
-            <element signature="e#5955#6402#0" expanded="true" />
-            <element signature="e#6401#6402#0" expanded="true" />
-            <element signature="e#8144#18151#0" expanded="true" />
-            <element signature="e#12720#12755#0" expanded="true" />
-            <element signature="e#14834#14860#0" expanded="true" />
-            <element signature="e#16333#16360#0" expanded="true" />
-            <element signature="e#16904#16939#0" expanded="true" />
-            <element signature="e#17908#17941#0" expanded="true" />
-            <element signature="e#18150#18151#0" expanded="true" />
-            <element signature="e#18627#18628#0" expanded="true" />
-            <element signature="e#18659#18660#0" expanded="true" />
-            <element signature="e#20168#20344#0" expanded="true" />
-            <element signature="e#20343#20344#0" expanded="true" />
-            <element signature="e#20713#21363#0" expanded="true" />
-            <element signature="e#21001#21038#0" expanded="true" />
-            <element signature="e#21186#21220#0" expanded="true" />
-            <element signature="e#21362#21363#0" expanded="true" />
-            <element signature="e#21302#21303#0" expanded="true" />
-            <element signature="e#21329#21330#0" expanded="true" />
-            <element signature="e#22003#22508#0" expanded="true" />
-            <element signature="e#22391#22420#0" expanded="true" />
-            <element signature="e#22507#22508#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_my_weather.xml">
-      <provider editor-type-id="text-editor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
       </provider>
     </entry>
   </component>

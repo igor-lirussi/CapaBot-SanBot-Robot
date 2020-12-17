@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: SanbotOpenSdk_2.0.1.7:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/jars/libs/netty-codec-4.1.13.Final.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/jars/libs/netty-buffer-4.1.13.Final.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/jars/libs/netty-resolver-4.1.13.Final.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/jars/libs/kotlin-stdlib-1.1.2-5.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/jars/libs/kotlin-stdlib-jre7-1.1.2-5.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/jars/libs/netty-transport-4.1.13.Final.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SanbotOpenSdk_2.0.1.7.aar/f7d69c9411b6ac58d294ef3fe490420c/jars/libs/netty-common-4.1.13.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

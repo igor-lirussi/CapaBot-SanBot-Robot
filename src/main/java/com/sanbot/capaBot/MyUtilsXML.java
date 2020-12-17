@@ -87,7 +87,7 @@ public final class MyUtilsXML {
 
 
     /**
-     * creates an XML File from a file passed and initializes the xml with a container tag "userData".
+     * creates an XML File from a file passed and initializes the xml with a forecastContainerLL tag "userData".
      * @param fileXML the file to create as XML
      */
     public static void xmlCreateFile(File fileXML) {
@@ -144,7 +144,7 @@ public final class MyUtilsXML {
 
 
             //if (when creates the xml) puts inside an example block
-            boolean exampleCreatingXML = true;
+            boolean exampleCreatingXML = false;
             if (exampleCreatingXML) {
                 xmlSerializer.startTag(null, "suggestion");
 
@@ -420,9 +420,12 @@ public final class MyUtilsXML {
             //return the number of hs
             return hsList.getLength();
 
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            Log.i("IGORXML", ": "+ e.toString());
+            e.printStackTrace();}
         return -2;
     }
+
 
 
 

@@ -23,8 +23,8 @@ android {
     defaultConfig {
         applicationId "com.sanbot.capaBot"
         minSdkVersion 23
-        versionCode 94879759
-        versionName "2019.05.31"
+        versionCode 20190628
+        versionName "2.4.5"
 
         android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
@@ -76,7 +76,19 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    implementation(name: 'SanbotOpenSdk_2.0.1.0', ext: 'aar')
-    //   compile project(':mylibrary')
+    //sanbotsuff
+    implementation(name: 'SanbotOpenSdk_2.0.1.7', ext: 'aar')
     implementation files('libs/gson-2.2.4.jar')
+
+    //icalendar 4 java
+    implementation 'org.mnode.ical4j:ical4j:2.2.4'
+    // required
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.0'
+    //implementation group: 'javax.cache', name: 'cache-api', version: '1.1.0'
+
+    implementation 'com.github.alamkanak:android-week-view:1.2.6'
+
 }
+

@@ -24,7 +24,7 @@ public class MySettings {
     private static boolean wanderAllowed = false;
 
     //initial soundRotationAllowed state, defines if rotation when detecting sound is allowed
-    private static boolean soundRotationAllowed = true;
+    private static boolean soundRotationAllowed = false;
 
     //after first meeting presentation robot asks if can help
     private static boolean dialogAfterPresentation = true;
@@ -33,7 +33,7 @@ public class MySettings {
     private static int countHandshakes = -1;
 
     //seconds the robot ignores others greetings
-    private static int seconds_justGreeted = 30;
+    private static int seconds_justGreeted = 10;
 
     //seconds the robots waits the handshake
     private static int seconds_waitingTouch = 15;
@@ -41,8 +41,17 @@ public class MySettings {
     //seconds the robot waits the answer after a question
     private static int seconds_waitingResponse = 20;
 
+    //seconds every time the robot checks the battery
+    private static int seconds_checkingBattery = 10;
+
     //seconds the robot waits to start wander after rotating for a sound
     private static int seconds_waitingToWanderAfterSoundLocalization = 20;
+
+    //level of the battery the robot goes to charge
+    private static int batteryLOW = 20;
+
+    //level of the battery the robot finishes to charge
+    private static int batteryOK = 90;
 
     //projector mode : WALL/CEILING
     private static int projectorMode = ProjectorManager.MODE_WALL;
@@ -98,6 +107,12 @@ public class MySettings {
     //SAVE AND LOAD HANDSHAKES
     private static String xmlFileName = "xml_stats.xml";
     private static File fileXML = createFileInXMLDirectory(xmlFileName);
+
+
+    public static void initializeXML() {
+        xmlFileName = "xml_stats.xml";
+        fileXML = createFileInXMLDirectory(xmlFileName);
+    }
 
     public static void loadHandshakes() {
         //sets the counter to the number of hs inside the XML
@@ -170,5 +185,17 @@ public class MySettings {
 
     public static void setSeconds_waitingToWanderAfterSoundLocalization(int seconds_waiting) {
         seconds_waitingToWanderAfterSoundLocalization = seconds_waiting;
+    }
+
+    public static int getSeconds_checkingBattery() {
+        return seconds_checkingBattery;
+    }
+
+    public static int getBatteryLOW() {
+        return batteryLOW;
+    }
+
+    public static int getBatteryOK() {
+        return batteryOK;
     }
 }
