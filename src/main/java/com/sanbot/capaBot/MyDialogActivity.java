@@ -1,7 +1,9 @@
 package com.sanbot.capaBot;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -14,6 +16,13 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sanbot.capaBot.AIML.ab.AIMLProcessor;
+import com.sanbot.capaBot.AIML.ab.Bot;
+import com.sanbot.capaBot.AIML.ab.Chat;
+import com.sanbot.capaBot.AIML.ab.Graphmaster;
+import com.sanbot.capaBot.AIML.ab.MagicBooleans;
+import com.sanbot.capaBot.AIML.ab.MagicStrings;
+import com.sanbot.capaBot.AIML.ab.PCAIMLProcessorExtension;
 import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.beans.EmotionsType;
@@ -22,7 +31,6 @@ import com.sanbot.opensdk.function.beans.handmotion.AbsoluteAngleHandMotion;
 import com.sanbot.opensdk.function.beans.headmotion.LocateAbsoluteAngleHeadMotion;
 import com.sanbot.opensdk.function.beans.speech.Grammar;
 import com.sanbot.opensdk.function.beans.speech.RecognizeTextBean;
-import com.sanbot.opensdk.function.beans.speech.SpeakStatus;
 import com.sanbot.opensdk.function.unit.HandMotionManager;
 import com.sanbot.opensdk.function.unit.HardWareManager;
 import com.sanbot.opensdk.function.unit.HeadMotionManager;
@@ -32,24 +40,24 @@ import com.sanbot.opensdk.function.unit.SystemManager;
 import com.sanbot.opensdk.function.unit.WheelMotionManager;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.GyroscopeListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.RecognizeListener;
-import com.sanbot.opensdk.function.unit.interfaces.speech.SpeakListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.WakenListener;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.sanbot.capaBot.MyUtils.compensationSanbotAngle;
+import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 import static com.sanbot.capaBot.MyUtils.rotateAtCardinalAngle;
 import static com.sanbot.capaBot.MyUtils.rotateAtRelativeAngle;
 import static com.sanbot.capaBot.MyUtils.sleepy;
-import static com.sanbot.capaBot.MyUtils.concludeSpeak;
+
 
 /**
  * answers to specific speech requests
@@ -88,9 +96,12 @@ public class MyDialogActivity extends TopBaseActivity {
     private int askOtherTimes = 0;
     private int currentCardinalAngle = 0;
 
-    boolean askLoud = false;
+    int noResponse = 0;
     boolean infiniteWakeup = true;
     String youCanSay;
+
+    public Bot bot;
+    public static Chat chat;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -181,6 +192,61 @@ public class MyDialogActivity extends TopBaseActivity {
             }
         }, 200);
 
+        //CHAT BOT
+        long startTime = System.nanoTime();
+        //checking SD card availability
+        boolean availableSD = isSDCARDAvailable();
+        Log.i("IGOR-SPEECH", "SD available: " + availableSD);
+        //receiving the assets from the app directory
+        AssetManager assets = getResources().getAssets();
+        //creating a new directory in the device
+        File jayDir = new File(Environment.getExternalStorageDirectory().toString() + "/hari/bots/Hari");
+        boolean dir_check = jayDir.mkdirs();
+        if (jayDir.exists()) {
+            //Reading the file
+            try {
+                //for every subdirectory
+                for (String dir : assets.list("Hari")) {
+                    //create the subdirectory in the device
+                    File subdir = new File(jayDir.getPath() + "/" + dir);
+                    boolean subdir_check = subdir.mkdirs();
+                    //for every file in the subdirectory
+                    for (String file : assets.list("Hari/" + dir)) {
+                        //create file in subdirectory
+                        File f = new File(jayDir.getPath() + "/" + dir + "/" + file);
+                        if (f.exists()) {
+                            continue;
+                        }
+                        InputStream in = null;
+                        OutputStream out = null;
+                        in = assets.open("Hari/" + dir + "/" + file);
+                        out = new FileOutputStream(jayDir.getPath() + "/" + dir + "/" + file);
+                        //copy file from assets to the mobile's SD card or any secondary memory
+                        //function is below
+                        copyFile(in, out);
+                        in.close();
+                        in = null;
+                        out.flush();
+                        out.close();
+                        out = null;
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //get the working directory
+        MagicStrings.root_path = Environment.getExternalStorageDirectory().toString() + "/hari";
+        Log.i("IGOR-SPEECH","Working Directory = " + MagicStrings.root_path);
+        AIMLProcessor.extension =  new PCAIMLProcessorExtension();
+        //Assign the AIML files to bot for processing
+        bot = new Bot("Hari", MagicStrings.root_path, "chat");
+        chat = new Chat(bot);
+        String[] args = null;
+        mainFunction(args);
+
+        Log.i("IGOR-SPEECH", "DURATION BOT millisec: " + (System.nanoTime() - startTime)/1000000);
+
     }
 
     /**
@@ -228,7 +294,7 @@ public class MyDialogActivity extends TopBaseActivity {
                 }
             }
         });
-       //Speech recognition callback
+        //Speech recognition callback
         speechManager.setOnSpeechListener(new RecognizeListener() {
             @Override
             public void onRecognizeText(@NonNull RecognizeTextBean recognizeTextBean) {
@@ -238,6 +304,7 @@ public class MyDialogActivity extends TopBaseActivity {
             @Override
             public boolean onRecognizeResult(@NonNull Grammar grammar) {
 
+                //start timer
                 //long startTime = System.nanoTime();
                 try {
                     lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
@@ -266,6 +333,7 @@ public class MyDialogActivity extends TopBaseActivity {
                         //deletes "no response action"
                         noResponseAction.removeCallbacksAndMessages(null);
 
+                        /*
                         //---- INTERACTION PART ----
                         //basic interaction
                         if (lastRecognizedSentence.contains("hello") || lastRecognizedSentence.equals("hi")|| lastRecognizedSentence.contains("your name")) {
@@ -282,7 +350,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             concludeSpeak(speechManager);
                             askOther();
                         }
-                        if (/*(lastRecognizedSentence.contains("what") || lastRecognizedSentence.contains("tell")) &&*/ lastRecognizedSentence.contains("time")) {
+                        if (/*(lastRecognizedSentence.contains("what") || lastRecognizedSentence.contains("tell")) &&*/ /* lastRecognizedSentence.contains("time")) {
                             recognizedWhatToDo = true;
                             String time_sentence = "It's " + new SimpleDateFormat("HH:mm", Locale.ITALY).format(Calendar.getInstance().getTime());
                             speechManager.startSpeak(time_sentence, MySettings.getSpeakDefaultOption());
@@ -502,6 +570,15 @@ public class MyDialogActivity extends TopBaseActivity {
                             concludeSpeak(speechManager);
                             wakeUpListening();
                         }
+                        */
+                        //chatbot
+                        String response = chat.multisentenceRespond(lastRecognizedSentence);
+
+                        Log.i("IGOR-SPEECH","Human: "+lastRecognizedSentence);
+                        Log.i("IGOR-SPEECH","Robot: " + response);
+                        speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
+                        concludeSpeak(speechManager);
+                        wakeUpListening();
                     }
                 });
 
@@ -573,6 +650,7 @@ public class MyDialogActivity extends TopBaseActivity {
         return z;
     }
 
+    /*
     public void colorFlashButton( View view_passed, int color_passed) {
         //update ui
         view_passed.setBackgroundColor(getColor(color_passed));
@@ -581,7 +659,7 @@ public class MyDialogActivity extends TopBaseActivity {
     public void greenFlashButton( View view_passed) {
         colorFlashButton(view_passed, R.color.colorGreen);
     }
-
+*/
     /**
      * asking if something else is needed
      * @param seconds seconds after start to ask
@@ -621,11 +699,21 @@ public class MyDialogActivity extends TopBaseActivity {
         noResponseAction.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(!askLoud) {
+                if(noResponse == 0) {
                     //first time waiting too much asks for out loud
-                    askLoud = true;
                     speechManager.startSpeak("please speak out loud!", MySettings.getSpeakDefaultOption());
                     wakeUpListening();
+                    noResponse ++;
+                } if (noResponse == 1)  {
+                    //sends to the bot the "NO RESPONSE" code
+                    String response = chat.multisentenceRespond("NORESP");
+
+                    Log.i("IGOR-SPEECH","Human @not responded@");
+                    Log.i("IGOR-SPEECH","Robot: " + response);
+                    speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
+                    concludeSpeak(speechManager);
+                    wakeUpListening();
+                    noResponse ++;
                 } else {
                     //force sleep
                     infiniteWakeup = false;
@@ -673,5 +761,28 @@ public class MyDialogActivity extends TopBaseActivity {
         handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
         sleepy(2);
     }
+
+    //CHATBOT
+    //check SD card availability
+    public static boolean isSDCARDAvailable(){
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)? true :false;
+    }
+    //copying the file
+    private void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while((read = in.read(buffer)) != -1){
+            out.write(buffer, 0, read);
+        }
+    }
+
+    //Request and response of user and the bot
+    public static void mainFunction (String[] args) {
+        MagicBooleans.trace_mode = false;
+        Log.i("IGOR-SPEECH","trace mode = " + MagicBooleans.trace_mode);
+        Graphmaster.enableShortCuts = true;
+    }
+
+
     //END
 }

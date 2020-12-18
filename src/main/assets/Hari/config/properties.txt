@@ -1,0 +1,8 @@
+url:http://isr.ist.utl.pt
+name:Sanbot
+email:igor.lirussi@studio.unibo.it
+gender:female
+botmaster:Lirussi Igor
+organization:ISR
+version:3.0.1
+

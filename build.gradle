@@ -24,7 +24,7 @@ android {
         applicationId "com.sanbot.capaBot"
         minSdkVersion 23
         versionCode 20190824
-        versionName "2.6.9"
+        versionName "3.0.0"
 
         android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
@@ -63,6 +63,15 @@ repositories {
         name 'Sonatype SNAPSHOTs'
         url 'https://oss.sonatype.org/content/repositories/snapshots/'
     }
+    maven {
+        url 'http://nexus.bippo.co.id/nexus/content/groups/public/net/reduls/'
+    }
+/*
+    maven {
+        //for aiml
+        url 'http://nexus.bippo.co.id/nexus/content/groups/public/'
+    }
+     */
 }
 
 dependencies {
@@ -82,12 +91,18 @@ dependencies {
 
     //icalendar 4 java
     implementation 'org.mnode.ical4j:ical4j:2.2.4'
-    // required
+    // required icalendar
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
     implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.0'
-    //implementation group: 'javax.cache', name: 'cache-api', version: '1.1.0'
-
+    implementation group: 'javax.cache', name: 'cache-api', version: '1.1.0'
+    //for calendar
     implementation 'com.github.alamkanak:android-week-view:1.2.6'
+    //aiml
+    implementation 'joda-time:joda-time:2.10.3'
+    implementation 'io.apisense:rhino-android:1.1.1'
+    implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    implementation  files('libs/sanmoku-0.0.5.jar')
+    implementation  files('libs/sanmoku-feature-ex-0.0.1.jar')
 
 }
