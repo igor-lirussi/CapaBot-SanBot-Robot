@@ -26,7 +26,6 @@
         <meta-data
             android:name="FORBID_WAKE_RESPONSE"
             android:value="true" />
-
         <meta-data
             android:name="RECOGNIZE_MODE"
             android:value="1" />
@@ -78,14 +77,19 @@
             android:authorities="com.qihancloud.capaBot.grammar"
             android:exported="true" />
 
-        <activity android:name=".MyWeatherActivity" >
+        <activity android:name=".MyWeatherActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
-        <activity android:name=".MyPresentActivity"></activity>
+        <activity android:name=".MyPresentActivity" />
         <activity android:name=".MyChargeActivity" />
-        <activity android:name=".MyCalendarActivity" >
+        <activity android:name=".MyCalendarActivity">
+            <meta-data
+                android:name="RECOGNIZE_MODE"
+                android:value="1" />
+        </activity>
+        <activity android:name=".MyWebActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />

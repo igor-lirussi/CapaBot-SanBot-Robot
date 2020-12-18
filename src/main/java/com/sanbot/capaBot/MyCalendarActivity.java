@@ -67,9 +67,10 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
     private SpeechManager speechManager; //voice, speechRec
     private SystemManager systemManager; //emotions
 
+    //calendars to show
     String[] urlsCalendar = {
             "https://ics.teamup.com/feed/ksdxka67t86rufdom3/0.ics",
-            "https://calendar.google.com/calendar/ical/it.portuguese%23holiday%40group.v.calendar.google.com/public/basic.ics"
+           /* "https://calendar.google.com/calendar/ical/it.portuguese%23holiday%40group.v.calendar.google.com/public/basic.ics"*/
     };
 
     private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyyMMdd", Locale.ITALY);
@@ -131,7 +132,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
         MonthLoader.MonthChangeListener mMonthChangeListener = new MonthLoader.MonthChangeListener() {
             @Override
             public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-                Log.i("IGOR-PAR", "onMonthChange called "+newMonth+" "+newYear);/*
+                Log.i("IGOR-CAL", "onMonthChange called "+newMonth+" "+newYear);/*
                 ArrayList<WeekViewEvent> eventsMonth = new ArrayList<WeekViewEvent>();
                 //put in the list only the events of the month required
                 for (int i = 0; i < events.size(); i++) {
@@ -295,12 +296,12 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
 
             @Override
             public void onWakeUp() {
-                Log.i("IGOR-ANS", "WAKE UP callback");
+                //Log.i("IGOR-CAL", "WAKE UP callback");
             }
 
             @Override
             public void onSleep() {
-                Log.i("IGOR-ANS", "SLEEP callback");
+                //Log.i("IGOR-CAL", "SLEEP callback");
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -326,7 +327,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                             mWeekView.goToToday();
                         }
                         if (lastRecognizedSentence.contains("ok") ||lastRecognizedSentence.contains("yes") ||lastRecognizedSentence.contains("i am")||lastRecognizedSentence.contains("we are")
-                                ||lastRecognizedSentence.contains("sure") ||lastRecognizedSentence.contains("of course") ||lastRecognizedSentence.contains("thank")||lastRecognizedSentence.contains("exit")) {
+                                ||lastRecognizedSentence.contains("sure") ||lastRecognizedSentence.contains("of course") ||lastRecognizedSentence.contains("thank")) {
                             if (lastRecognizedSentence.contains("thank")) {
                                 //thanks
                                 speechManager.startSpeak("thank you", MySettings.getSpeakDefaultOption());
@@ -343,6 +344,13 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                             //sad
                             speechManager.startSpeak("I'm sad to hear this", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.GOODBYE);
+                            boolean res = concludeSpeak(speechManager);
+                            //finish
+                            goToDialogAndExit(res);
+                        }
+                        if (lastRecognizedSentence.contains("exit") ) {
+                            speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
+                            systemManager.showEmotion(EmotionsType.SMILE);
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
@@ -393,7 +401,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
     @Override
     public void giveCalendar(Calendar calendar) {
         //calendar passed
-        Log.e("IGOR-PAR","calendar components: " + calendar.getComponents().size());
+        Log.i("IGOR-CAL","calendar number components: " + calendar.getComponents().size());
         //for every event
         for (Object o : calendar.getComponents()) {
             Component component = (Component) o;
@@ -405,7 +413,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                 //summary event
                 summary = component.getProperties("SUMMARY").get(0).getValue();
             }
-            //Log.i("IGOR-PAR", "-component>>>" + summary);
+            //Log.i("IGOR-CAL", "-component>>>" + summary);
             try {
                 //if has a start time
                 if (component.getProperties("DTSTART").size()>0) {
@@ -414,16 +422,16 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                     for (Iterator j = component.getProperties("DTSTART").iterator(); j.hasNext();) {
                         Property property = (Property) j.next();
                         start_str = property.getValue();
-                        //Log.i("IGOR-PAR", "Property DTSTART [" + property.getName() + " <<>> " + property.getValue() + "]");
+                        //Log.i("IGOR-CAL", "Property DTSTART [" + property.getName() + " <<>> " + property.getValue() + "]");
                     }
                     try {
                         //parsing the string to date with hour
                         startDate = SDFH.parse(start_str);
-                        //Log.i("IGOR-PAR", "Property DTSTART parsed with hour: " + startDate);
+                        //Log.i("IGOR-CAL", "Property DTSTART parsed with hour: " + startDate);
                     } catch (ParseException e) {
                         //parsing the string to date
                         startDate = SDF.parse(start_str);
-                        //Log.i("IGOR-PAR", "Property DTSTART parsed only day: " + startDate);
+                        //Log.i("IGOR-CAL", "Property DTSTART parsed only day: " + startDate);
                     }
                     java.util.Calendar startCal = java.util.Calendar.getInstance();
                     startCal.setTime(startDate);
@@ -436,18 +444,18 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                         for (Iterator j = component.getProperties("DTEND").iterator(); j.hasNext();) {
                             Property property = (Property) j.next();
                             end_str = property.getValue();
-                            //Log.i("IGOR-PAR", "Property DTEND   [" + property.getName() + " <<>> " + property.getValue() + "]");
+                            //Log.i("IGOR-CAL", "Property DTEND   [" + property.getName() + " <<>> " + property.getValue() + "]");
                         }
                         try {
                             //parsing the string to date with hour
                             endDate = SDFH.parse(end_str);
-                            //Log.i("IGOR-PAR", "Property DTEND parsed with hour: " + endDate);
+                            //Log.i("IGOR-CAL", "Property DTEND parsed with hour: " + endDate);
                             endCal = java.util.Calendar.getInstance();
                             endCal.setTime(endDate);
                         } catch (ParseException e) {
                             //parsing the string to date
                             endDate = SDF.parse(end_str);
-                            //Log.i("IGOR-PAR", "Property DTSTART parsed only day: " + endDate);
+                            //Log.i("IGOR-CAL", "Property DTSTART parsed only day: " + endDate);
                             endCal = java.util.Calendar.getInstance();
                             endCal.setTime(endDate);
                             //if the end day is the same I put the end hour at 24
@@ -457,7 +465,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                         }
 
                     } else {
-                        //Log.i("IGOR-PAR", "Property DTEND NOT FOUND");
+                        //Log.i("IGOR-CAL", "Property DTEND NOT FOUND");
                         //end time at the end of the same day
                         endCal = (java.util.Calendar) startCal.clone();
                         endCal.set(java.util.Calendar.HOUR_OF_DAY, 24);
@@ -469,19 +477,19 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                     //event.setColor(getResources().getColor(R.color.colorPrimary, null));
                     //put the event in the list
                     events.add(event);
-                    //Log.i("IGOR-PAR", "added: " + startDate + ">->" + endDate + "  Summary: " + summary);
+                    //Log.i("IGOR-CAL", "added: " + startDate + ">->" + endDate + "  Summary: " + summary);
                 } else{
                     //no start-time not added
-                    Log.i("IGOR-PAR", "NOT ADDED (DTSTART not found) component details:" + component.toString());
+                    Log.e("IGOR-CAL", "NOT ADDED (DTSTART not found) component details:" + component.toString());
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
-                Log.e("IGOR-PAR", "PARSE EXCEPTION component details:" + component.toString());
+                Log.e("IGOR-CAL", "PARSE EXCEPTION component details:" + component.toString());
             }
         }
         //finished this thread
         finishedThreadsCount++;
-        Log.e("IGOR-PAR", "Finished thread " + finishedThreadsCount);
+        Log.i("IGOR-CAL", "FINISHED THREAD " + finishedThreadsCount);
 
         //notify update to UI
         runOnUiThread(new Runnable() {
@@ -491,13 +499,13 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                 if (finishedThreadsCount == urlsCalendar.length) {
                     //update ui
                     mWeekView.notifyDatasetChanged();
+                    //go to 8 am today
+                    mWeekView.goToToday();
+                    mWeekView.goToHour(8);
                     //visible
                     mWeekView.setVisibility(View.VISIBLE);
                     loader_cal.setVisibility(View.GONE);
                     text_loader_cal.setVisibility(View.GONE);
-                    //go to 8 am today
-                    mWeekView.goToHour(8);
-                    mWeekView.goToToday();
                     //new thread not to lock the UI with the sleep
                     new Thread(new Runnable() {
                         public void run() {
@@ -521,6 +529,9 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
 
     private void goToDialogAndExit(boolean result) {
         if(result) {
+            //force sleep
+            infiniteWakeup = false;
+            speechManager.doSleep();
             //starts dialog activity
             Intent myIntent = new Intent(MyCalendarActivity.this, MyDialogActivity.class);
             MyCalendarActivity.this.startActivity(myIntent);

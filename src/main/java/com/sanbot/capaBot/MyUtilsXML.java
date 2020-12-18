@@ -68,7 +68,7 @@ public final class MyUtilsXML {
     /**
      * creates a file in the directory of CAPABOTXML
      * the file is not initialized, so if you want to add stuff to the xml
-     * before you have to initialize the XML with xmlCreateFile() function.
+     * before you have to initialize the XML with initializeXMLfromFile() function.
      * @param fileName the name of the file
      * @return the file created
      */
@@ -90,7 +90,7 @@ public final class MyUtilsXML {
      * creates an XML File from a file passed and initializes the xml with a forecastContainerLL tag "userData".
      * @param fileXML the file to create as XML
      */
-    public static void xmlCreateFile(File fileXML) {
+    public static void initializeXMLfromFile(File fileXML) {
         //initialize and create the structure of the file as XML
         try {
             fileXML.createNewFile();
@@ -311,46 +311,6 @@ public final class MyUtilsXML {
         }
     }
 
-    public static void xmlAddHandshakeNow(File fileXML) {
-        try {
-            InputStream inpstr;
-            try {
-                inpstr = new FileInputStream(fileXML);
-            } catch (FileNotFoundException e) {
-                xmlStatsCreateFile(fileXML);
-                inpstr = new FileInputStream(fileXML);
-            }
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(inpstr);
-            //gets the root element
-            Element elementRoot = doc.getDocumentElement();
-            elementRoot.normalize();
-
-            //sub-node
-            Node handshakes = doc.getElementsByTagName("handshakes").item(0);
-
-            // new element
-            Element newHS = doc.createElement("hs");
-
-            String date_now = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ITALY).format(Calendar.getInstance().getTime());
-            newHS.appendChild(doc.createTextNode(date_now));
-
-            //append the new element
-            handshakes.appendChild(newHS);
-
-            //save the xml via dom
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-
-            StreamResult result = new StreamResult(fileXML);
-            transformer.transform(source, result);
-
-        } catch ( Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void xmlAddToNodeNow(File fileXML, String sub_node_name) {
         try {
@@ -421,7 +381,7 @@ public final class MyUtilsXML {
             return hsList.getLength();
 
         } catch (Exception e) {
-            Log.i("IGORXML", ": "+ e.toString());
+            Log.i("IGORXML", "READING XML WRONG: "+ e.toString());
             e.printStackTrace();}
         return -2;
     }

@@ -33,7 +33,7 @@ public class MyCalendarDownloadAsyncTask extends AsyncTask< String, Void, String
 
     protected String doInBackground(String... args) {
         urlCalendar = args[0];
-        Log.i("IGOR-CAL", "request Calendar:" + urlCalendar);
+        Log.i("IGOR-CAL-ASYNC", "request Calendar:" + urlCalendar);
         Calendar calendar;
         //open stream
         try {
@@ -44,7 +44,7 @@ public class MyCalendarDownloadAsyncTask extends AsyncTask< String, Void, String
         //build
         try {
             calendar = new CalendarBuilder().build(is);
-            //Log.i("IGOR-CAL", "calendar RECEIVED:" +  calendar.toString());
+            //Log.i("IGOR-CAL-ASYNC", "calendar RECEIVED:" +  calendar.toString());
             listener.giveCalendar(calendar);
         } catch (IOException e) {
             e.printStackTrace();

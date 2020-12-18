@@ -93,12 +93,18 @@ public class MyChargeActivity extends TopBaseActivity {
             public void run() {
                 //show emotion
                 systemManager.showEmotion(EmotionsType.SLEEP);
-                //todo if not charging switch charge off and then on
                 //to avoid bounce let's check every time
                 modularMotionManager.switchCharge(true);
+                //if still not charging (glitch) switch charge off and then on
+                //todo check if it is ok
+                if (!modularMotionManager.getAutoChargeStatus().getResult().equals("1")) {
+                    Log.i("IGOR-CHARGE", "battery still not charging");
+                    modularMotionManager.switchCharge(false);
+                    modularMotionManager.switchCharge(true);
+                }
                 //grab battery value
                 int battery_value = systemManager.getBatteryValue();
-                Log.i("IGOR", "battery: "+ battery_value);
+                Log.i("IGOR-CHARGE", "battery: "+ battery_value);
                 //update UI
                 progressBar.setProgress(battery_value);
                 batteryPercent.setText(battery_value+" %");
@@ -126,9 +132,9 @@ public class MyChargeActivity extends TopBaseActivity {
         concludeSpeak(speechManager);
         //deactivate auto charge
         modularMotionManager.switchCharge(false);
-        //go ahead 50 cm
+        //go ahead 20 cm
         DistanceWheelMotion distanceWheelMotion = new DistanceWheelMotion(
-                DistanceWheelMotion.ACTION_FORWARD_RUN,  10,50
+                DistanceWheelMotion.ACTION_FORWARD_RUN,  5,20
         );
         wheelMotionManager.doDistanceMotion(distanceWheelMotion);
         sleepy(5);

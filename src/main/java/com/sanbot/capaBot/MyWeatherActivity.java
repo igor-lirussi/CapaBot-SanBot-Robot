@@ -36,6 +36,8 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
     String city = "Lisbon,PT";
     String summartToSay = "";
 
+    boolean infiniteWakeup = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         register(MyWeatherActivity.class);
@@ -111,7 +113,6 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
             @Override
             public void onSleep() {
                 Log.i("IGOR-ANS", "SLEEP callback");
-                boolean infiniteWakeup = true;
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -192,6 +193,9 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
     }
 
     private void finishThisActivity() {
+        //force sleep
+        infiniteWakeup = false;
+        speechManager.doSleep();
         //starts dialog activity
         Intent myIntent = new Intent(MyWeatherActivity.this, MyDialogActivity.class);
         MyWeatherActivity.this.startActivity(myIntent);

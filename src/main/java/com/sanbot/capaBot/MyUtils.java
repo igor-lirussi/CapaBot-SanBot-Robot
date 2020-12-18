@@ -9,6 +9,8 @@ import com.sanbot.opensdk.function.unit.SpeechManager;
 import com.sanbot.opensdk.function.unit.SystemManager;
 import com.sanbot.opensdk.function.unit.WheelMotionManager;
 
+import java.util.Objects;
+
 /**
  * a class for utils of SanBot
  */
@@ -34,8 +36,13 @@ public final class MyUtils {
      * @param speechManager the speech manager to check
      */
     public static boolean concludeSpeak(SpeechManager speechManager) {
+        try {
         while (speechManager.isSpeaking().getResult().equals("1")) {
             sleepy(0.2);
+        }
+        } catch (NullPointerException e) {
+            //no speech manager
+            return false;
         }
         return true;
     }

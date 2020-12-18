@@ -146,7 +146,7 @@ public class MyShakeActivity extends TopBaseActivity {
                             case 9:
                                 Log.i("hwmanager", "touching hand left");
                                 if (waitingTouchPosition) {
-                                    Log.i("IGOR", "shake hand called");
+                                    Log.i("IGOR-SHK", "shake hand called");
                                     shakeHand();
                                 }
                                 break;
@@ -154,7 +154,7 @@ public class MyShakeActivity extends TopBaseActivity {
                                 Log.i("hwmanager", "touching hand right" );
                                 //if is waiting in the position
                                 if (waitingTouchPosition) {
-                                    Log.i("IGOR", "shake hand called");
+                                    Log.i("IGOR-SHK", "shake hand called");
                                     shakeHand();
                                 }
                                 break;
@@ -189,7 +189,7 @@ public class MyShakeActivity extends TopBaseActivity {
 
         //waiting touch
         waitingTouchPosition = true;
-        Log.i("IGOR", "waitingTouchPosition = true");
+        Log.i("IGOR-SHK", "waitingTouchPosition = true");
 
         //waiting touch too much start waiting
         waitingTouchHandler.postDelayed(new Runnable() {
@@ -198,6 +198,7 @@ public class MyShakeActivity extends TopBaseActivity {
                 timeWaitingExpired();
             }
         }, 1000 * MySettings.getSeconds_waitingTouch());
+
         //incitement in middle
         incitement.postDelayed(new Runnable() {
             @Override
@@ -214,11 +215,11 @@ public class MyShakeActivity extends TopBaseActivity {
         //cancel "waiting touch too much" response
         waitingTouchHandler.removeCallbacksAndMessages(null);
         incitement.removeCallbacksAndMessages(null);
-        Log.i("IGOR", "handler waitingTouchHandler deleted!");
+        Log.i("IGOR-SHK", "handler waitingTouchHandler deleted!");
 
         //waiting touch false, no more waiting
         waitingTouchPosition = false;
-        Log.i("IGOR", "waitingTouchPosition = false ");
+        Log.i("IGOR-SHK", "waitingTouchPosition = false ");
 
         speechManager.startSpeak("Hi", MySettings.getSpeakDefaultOption());
         MySettings.incrementHandshakes();
@@ -299,10 +300,10 @@ public class MyShakeActivity extends TopBaseActivity {
     }
 
     public void timeWaitingExpired() {
-        Log.i("IGOR", "no touched hand in time");
+        Log.i("IGOR-SHK", "no touched hand in time");
         //waiting touch false
         waitingTouchPosition = false;
-        Log.i("IGOR", "waitingTouchPosition = false ");
+        Log.i("IGOR-SHK", "waitingTouchPosition = false ");
         //remove incitement if it's still there
         incitement.removeCallbacksAndMessages(null);
         //hand down

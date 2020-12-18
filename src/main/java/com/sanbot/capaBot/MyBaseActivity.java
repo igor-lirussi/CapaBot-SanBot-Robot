@@ -31,7 +31,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
-import com.sanbot.opensdk.function.beans.EmotionsType;
 import com.sanbot.opensdk.function.beans.FaceRecognizeBean;
 import com.sanbot.opensdk.function.beans.LED;
 import com.sanbot.opensdk.function.beans.StreamOption;
@@ -80,7 +79,6 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static com.sanbot.capaBot.MyUtils.compensationSanbotAngle;
 import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 import static com.sanbot.capaBot.MyUtils.rotateAtRelativeAngle;
-import static com.sanbot.capaBot.MyUtils.sleepy;
 import static com.sanbot.capaBot.MyUtils.temporaryEmotion;
 
 /**
@@ -88,7 +86,7 @@ import static com.sanbot.capaBot.MyUtils.temporaryEmotion;
  */
 public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Callback {
 
-    private final static String TAG = MyBaseActivity.class.getSimpleName();
+    private final static String TAG = "IGOR-BAS";
 
     //view objects
     @BindView(R.id.sv_media)
@@ -133,7 +131,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     private WheelMotionManager wheelMotionManager;
 
 
-    Handler checkBatteryStatus = new Handler();
+    Handler checkBatteryStatusHandler = new Handler();
 
     //video stuff
     MediaCodec mediaCodec;
@@ -149,9 +147,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     //if it's just greeted with someone it doesn't greet for X seconds (timer starts from beginning of presentation)
     private boolean justGreeted = false;
 
-    //to understand if it is in the position waiting the touch of the hand
-    private boolean waitingTouchPosition = false;
-    Handler waitingTouchHandler = new Handler();
     Handler wanderHandler = new Handler();
     Handler incitement = new Handler();
 
@@ -247,13 +242,13 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         }, 1000);
 
         //cyclic check battery
-        checkBatteryStatus.postDelayed(new Runnable() {
+        checkBatteryStatusHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 updateView();
                 //grab battery value
                 int battery_value = systemManager.getBatteryValue();
-                Log.i("IGOR", "Battery: "+ battery_value);
+                Log.i("IGOR-BAS-BAT", "Battery: "+ battery_value);
                 //check if the charge is low
                 if (battery_value <= MySettings.getBatteryLOW()) {
                     //starts charge activity
@@ -263,7 +258,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                     finish();
                 } else {
                     //re-post the same handler in X seconds
-                    checkBatteryStatus.postDelayed(this, 1000 * MySettings.getSeconds_checkingBattery());
+                    checkBatteryStatusHandler.postDelayed(this, 1000 * MySettings.getSeconds_checkingBattery());
                 }
             }
         }, 1000*MySettings.getSeconds_checkingBattery());
@@ -278,7 +273,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        checkBatteryStatus.removeCallbacksAndMessages(null);
+        checkBatteryStatusHandler.removeCallbacksAndMessages(null);
         wanderHandler.removeCallbacksAndMessages(null);
         wanderOffNow();
     }
@@ -308,7 +303,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 //time of detection
                 time_face.setText(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ITALY).format(Calendar.getInstance().getTime()));
 
-                Log.i("IGOR",">>>>FACE DETECTED: " + user_name );
+                Log.i(TAG,">>>>FACE DETECTED: " + user_name );
 
                 //selects function
                 if (!busy) {
@@ -330,13 +325,13 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                                 knowYouMeeting(" ");
                             }
                         } else {
-                            Log.i("IGOR", "justGreeted = true, detection aborted");
+                            Log.i(TAG, "justGreeted = true, detection aborted");
                         }
                     } else {
-                        Log.i("IGOR", "is speaking, detection aborted");
+                        Log.i(TAG, "is speaking, detection aborted");
                     }
                 } else {
-                    Log.i("IGOR", "is busy, detection aborted");
+                    Log.i(TAG, "is busy, detection aborted");
                 }
 
             }
@@ -370,13 +365,11 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
             @Override
             public void onWakeUp() {
-                Log.i("speechmanager", "wake up !");
-                Log.i("IGOR", "wake up !");
+                Log.i(TAG, "wake up !");
             }
             @Override
             public void onSleep() {
-                Log.i("speechmanager", "sleep!");
-                Log.i("IGOR", "sleep !");
+                Log.i(TAG, "sleep !");
             }
         });
 
@@ -392,7 +385,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 //IGOR: not exceed 300ms
                 //Blocked only if RECOGNIZE_MODE is set to 1 in Manifest and this function returns true
                 lastRecognizedSentence = grammar.getText().toLowerCase();
-                Log.i("IGOR", ">>>>Recognized voice: "+ lastRecognizedSentence + "/"+ grammar.getTopic());
+                Log.i(TAG, ">>>>Recognized voice: "+ lastRecognizedSentence + "/"+ grammar.getTopic());
                 return true;
             }
 
@@ -431,7 +424,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         hardWareManager.setOnHareWareListener(new VoiceLocateListener() {
             @Override
             public void voiceLocateResult(int angle) {
-                Log.i("IGOR-voice","voice located at : " + angle);
+                Log.i(TAG,"voice located at : " + angle);
                 //if it is idle
                 if (!busy && MySettings.isSoundRotationAllowed()) {
                     //stop wander
@@ -443,7 +436,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                     //rotate at angle
                     rotateAtRelativeAngle(wheelMotionManager, angle);
 
-                    //wander on after a while
+                    //wanderOn after a while
                     //handler to avoid motor overlapping
                     wanderHandler.removeCallbacksAndMessages(null);
                     wanderHandler.postDelayed(new Runnable() {
@@ -470,7 +463,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
                 // get the angle corrected
                 float degreeCorrected = compensationSanbotAngle(v);
-                Log.i("compass", "compass corrected: " + degreeCorrected);
+                Log.i("gyro", "compass corrected: " + degreeCorrected);
                 //get the facing direction
                 String facing;
                 if (degreeCorrected > 45 && degreeCorrected <= 135) {
@@ -514,18 +507,9 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                         switch (part) {
                             case 9:
                                 Log.i("hwmanager", "touching hand left");
-                                if (waitingTouchPosition) {
-                                    Log.i("IGOR", "shake hand called");
-                                    shakeHand();
-                                }
                                 break;
                             case 10:
                                 Log.i("hwmanager", "touching hand right" );
-                                //if is waiting in the position
-                                if (waitingTouchPosition) {
-                                    Log.i("IGOR", "shake hand called");
-                                    shakeHand();
-                                }
                                 break;
                             case 1 : case 2:
                                 speechManager.startSpeak("ehy, don't touch", MySettings.getSpeakDefaultOption());
@@ -552,7 +536,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                     } else {
                         Toast.makeText(MyBaseActivity.this, "no wander, i'm busy", Toast.LENGTH_SHORT).show();
                         switchButtonWander.setChecked(false);
-                        MySettings.setWanderAllowed(false);
                     }
                 } else {
                     //toggle disabled
@@ -614,11 +597,11 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             if (outputBufferId >= 0) {
                 mediaCodec.releaseOutputBuffer(outputBufferId, true);
             } else {
-                Log.e(TAG, "dequeueOutputBuffer() error");
+                Log.e("showviewdata", "dequeueOutputBuffer() error");
             }
 
         } catch (Exception e) {
-            //Log.e(TAG, "An error occurred", e);
+            //Log.e("showviewdata", "An error occurred", e);
         }
     }
 
@@ -638,7 +621,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         super.onResume();
         paused = false;
         updateView();
-        //todo not sure
         busy = false;
         //new Handler to start walking again
         new Handler().postDelayed(new Runnable() {
@@ -650,6 +632,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 //head up
                 headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
                 //initially sets the wander to on
+                wanderOnNow();
+                wanderOffNow();
                 wanderOnNow();
             }
         }, 1000);
@@ -727,7 +711,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             mediaCodec.stop();
             mediaCodec.release();
             mediaCodec = null;
-            Log.i(TAG, "stopDecoding");
+            Log.i("showviewdata", "stopDecoding");
         }
         videoInputBuffers = null;
     }
@@ -748,8 +732,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
             case R.id.firstMeeting:
                 wanderOffNow();
-                firstMeeting();
-                break;
         }
     }
 
@@ -786,7 +768,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
         // 50% say Good morning/afternoon/ecc...
         double random_num = Math.random();
-        Log.i("IGOR", "Random = " + random_num);
+        Log.i(TAG, "Random = " + random_num);
         if (random_num < 0.5) {
             int hours = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
             if (hours < 6) {
@@ -804,154 +786,25 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //start the speech Answer activity.
         Intent myIntent = new Intent(MyBaseActivity.this, MyDialogActivity.class);
         MyBaseActivity.this.startActivity(myIntent);
+
+        //finish
+        finish();
     }
 
-
-    public void firstMeeting() {
-        //busy from now
-        busy = true;
-        //starts greeting with this person passing
-        justGreeted = true;
-        //after tot seconds can greet again
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                justGreeted = false;
-                Log.i("IGOR", "justGreeted = false now!");
-
-            }
-        }, 1000 * MySettings.getSeconds_justGreeted());
-
-        //align with person?
-        //go in front of it?
-
-        //up the head
-        headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
-
-        //hi
-        speechManager.startSpeak(getString(R.string.never_met), MySettings.getSpeakDefaultOption());
-        concludeSpeak(speechManager);
-
-        //hand up
-        AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 70);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
-        //self presentation
-        speechManager.startSpeak(getString(R.string.i_am_sanbot), MySettings.getSpeakDefaultOption());
-
-        //waiting touch
-        waitingTouchPosition = true;
-        Log.i("IGOR", "waitingTouchPosition = true");
-
-        //waiting touch too much event
-        waitingTouchHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("IGOR", "no touched hand in time");
-                //waiting touch false
-                waitingTouchPosition = false;
-                Log.i("IGOR", "waitingTouchPosition = false ");
-                //hand down
-                AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 180);
-                handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
-                //cry face
-                temporaryEmotion(systemManager, EmotionsType.CRY);
-                //down the head
-                headMotionManager.doRelativeAngleMotion(relativeHeadMotionDOWN);
-                //up head after 10 seconds
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
-                        //wander on
-                        wanderOnNow();
-                    }
-                }, 10000);
-                //sad sentence
-                speechManager.startSpeak(getString(R.string.sad_no_shake), MySettings.getSpeakDefaultOption());
-                concludeSpeak(speechManager);
-                //busy false
-                busy = false;
-            }
-        }, 1000 * MySettings.getSeconds_waitingTouch());
-        //incitement in middle
-        incitement.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                speechManager.startSpeak(getString(R.string.come_on), MySettings.getSpeakDefaultOption());
-            }
-        }, 500 * MySettings.getSeconds_waitingTouch());
-    }
-
-    public void shakeHand() {
-        //SHAKING HAND MOMENT
-        //cancel "waiting touch too much" response
-        waitingTouchHandler.removeCallbacksAndMessages(null);
-        incitement.removeCallbacksAndMessages(null);
-        Log.i("IGOR", "handler waitingTouchHandler deleted!");
-
-        //waiting touch false, no more waiting
-        waitingTouchPosition = false;
-        Log.i("IGOR", "waitingTouchPosition = false ");
-
-        MySettings.incrementHandshakes();
-        updateView();
-
-        //happy face
-        temporaryEmotion(systemManager, EmotionsType.SMILE, 5);
-
-        //flicker leds
-        hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_FLICKER_WHITE));
-        //led off
-        //hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_CLOSE, (byte) 1, (byte) 1));
-
-        //motion without angle
-        handMotionManager.doNoAngleMotion(noAngleHandMotionUP);
-        sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionDOWN);
-        sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionUP);
-        sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionDOWN);
-        sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionUP);
-        sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionDOWN);
-
-
-        //hands down (reset position)
-        handMotionManager.doNoAngleMotion(new NoAngleHandMotion(NoAngleHandMotion.PART_BOTH, 5,NoAngleHandMotion.ACTION_RESET));
-
-
-        //after shaking sentence
-        //speechManager.startSpeak("I'm glad to meet you, bye bye!", MySettings.getSpeakDefaultOption());
-        //concludeSpeak(speechManager);
-
-        if (MySettings.isDialogAfterPresentation()){
-            //start the dialog activity.
-            Intent myIntent = new Intent(MyBaseActivity.this, MyDialogActivity.class);
-            MyBaseActivity.this.startActivity(myIntent);
-        } else {
-            //here terminates the interaction
-            //not busy
-            busy = false;
-            //wander on
-            wanderOnNow();
-        }
-    }
 
 
     public void wanderOnNow() {
         if (!busy) {
             //Toast.makeText(MyBaseActivity.this, "Wander " + MySettings.isWanderAllowed()+" now", Toast.LENGTH_SHORT).show();
             modularMotionManager.switchWander(MySettings.isWanderAllowed());
-            Log.i("IGOR", "Wander " + MySettings.isWanderAllowed() + " now");
+            Log.i(TAG, "Wander " + MySettings.isWanderAllowed() + " now");
         }
     }
 
     public void wanderOffNow() {
         //Toast.makeText(MyBaseActivity.this, "Wander off now", Toast.LENGTH_SHORT).show();
         modularMotionManager.switchWander(false);
-        Log.i("IGOR", "Wander off now");
+        Log.i(TAG, "Wander forced off now");
     }
 
     public void updateView() {
@@ -964,7 +817,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         handshakesTextView.setText(handshakesStr);
         //battery
         int battery_value = systemManager.getBatteryValue();
-        Log.i("IGOR", "Battery: "+ battery_value);
         batteryTV.setText("Battery: " + battery_value + "%");
     }
 

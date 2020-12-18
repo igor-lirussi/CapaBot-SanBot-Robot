@@ -20,7 +20,7 @@
         android:id="@+id/imagePresentation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/presentsanbot"
+        android:src="@drawable/sanbot_isr"
         android:scaleType="centerCrop"
         />
 

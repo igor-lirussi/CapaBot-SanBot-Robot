@@ -71,6 +71,8 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
     String lastRecognizedSentence = "";
 
 
+    boolean infiniteWakeup = true;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         register(MyShakeActivity.class);
@@ -101,6 +103,9 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //force sleep
+                infiniteWakeup = false;
+                speechManager.doSleep();
                 //starts dialog activity
                 Intent myIntent = new Intent(MyXMLSuggestionActivity.this, MyDialogActivity.class);
                 MyXMLSuggestionActivity.this.startActivity(myIntent);
@@ -149,6 +154,10 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
                     //toast to tell saved
                     Toast.makeText(MyXMLSuggestionActivity.this, R.string.saved, Toast.LENGTH_SHORT).show();
 
+                    //force sleep
+                    infiniteWakeup = false;
+                    speechManager.doSleep();
+
                     //starts dialog activity
                     Intent myIntent = new Intent(MyXMLSuggestionActivity.this, MyDialogActivity.class);
                     MyXMLSuggestionActivity.this.startActivity(myIntent);
@@ -176,13 +185,12 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
 
             @Override
             public void onWakeUp() {
-                Log.i("IGOR-ANS", "WAKEUP callback");
+                Log.i("IGOR-XML", "WAKEUP callback");
             }
 
             @Override
             public void onSleep() {
-                Log.i("IGOR-ANS", "SLEEP callback");
-                boolean infiniteWakeup = true;
+                Log.i("IGOR-XML", "SLEEP callback");
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -213,12 +221,12 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
                     public void run() {
                         //recognized
                         inputText.append(lastRecognizedSentence + " ");
-                        Log.i("IGOR-ANS", ">>>>Recognized voice: "+ lastRecognizedSentence);
+                        Log.i("IGOR-XML", ">>>>Recognized voice: "+ lastRecognizedSentence);
 
                     }
                 });
 
-                //Log.i("IGOR-ANS", "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
+                //Log.i("IGOR-XML", "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
                 return true;
             }
 

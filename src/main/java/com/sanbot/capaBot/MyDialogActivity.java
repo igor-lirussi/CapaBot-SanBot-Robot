@@ -22,15 +22,20 @@ import com.sanbot.opensdk.function.beans.handmotion.AbsoluteAngleHandMotion;
 import com.sanbot.opensdk.function.beans.headmotion.LocateAbsoluteAngleHeadMotion;
 import com.sanbot.opensdk.function.beans.speech.Grammar;
 import com.sanbot.opensdk.function.beans.speech.RecognizeTextBean;
+import com.sanbot.opensdk.function.beans.speech.SpeakStatus;
 import com.sanbot.opensdk.function.unit.HandMotionManager;
 import com.sanbot.opensdk.function.unit.HardWareManager;
 import com.sanbot.opensdk.function.unit.HeadMotionManager;
+import com.sanbot.opensdk.function.unit.ModularMotionManager;
 import com.sanbot.opensdk.function.unit.SpeechManager;
 import com.sanbot.opensdk.function.unit.SystemManager;
 import com.sanbot.opensdk.function.unit.WheelMotionManager;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.GyroscopeListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.RecognizeListener;
+import com.sanbot.opensdk.function.unit.interfaces.speech.SpeakListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.WakenListener;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -70,6 +75,7 @@ public class MyDialogActivity extends TopBaseActivity {
     private HeadMotionManager headMotionManager;    //head movements
     private WheelMotionManager wheelMotionManager;    //head movements
     private HandMotionManager handMotionManager;    //head movements
+    private ModularMotionManager modularMotionManager; //follow
 
     LocateAbsoluteAngleHeadMotion locateAbsoluteAngleHeadMotion = new LocateAbsoluteAngleHeadMotion(
             LocateAbsoluteAngleHeadMotion.ACTION_VERTICAL_LOCK,90,30
@@ -82,6 +88,7 @@ public class MyDialogActivity extends TopBaseActivity {
     private int askOtherTimes = 0;
     private int currentCardinalAngle = 0;
 
+    boolean askLoud = false;
     boolean infiniteWakeup = true;
     String youCanSay;
 
@@ -102,6 +109,7 @@ public class MyDialogActivity extends TopBaseActivity {
         headMotionManager = (HeadMotionManager) getUnitManager(FuncConstant.HEADMOTION_MANAGER);
         wheelMotionManager = (WheelMotionManager)getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
         handMotionManager = (HandMotionManager)getUnitManager(FuncConstant.HANDMOTION_MANAGER);
+        modularMotionManager = (ModularMotionManager) getUnitManager(FuncConstant.MODULARMOTION_MANAGER);
 
         //listeners
         initListener();
@@ -118,20 +126,30 @@ public class MyDialogActivity extends TopBaseActivity {
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //force sleep
+                infiniteWakeup = false;
+                speechManager.doSleep();
+                //starts base activity
+                Intent myIntent = new Intent(MyDialogActivity.this, MyBaseActivity.class);
+                MyDialogActivity.this.startActivity(myIntent);
+                //terminates
                 finish();
             }
         });
 
         //GridView examples, to light it remember to pass the array position at the greenFlashButton function
         final String[] examples = new String[]{
-                "shake hand",
-                "where is the meeting-room/laboratory/bathroom?",
-                "project ISR video",
+                "shake my hand",
+                "where is the meeting-room?",
+                "where is the laboratory?",
+                "where is the bathroom?",
+                "show me a video",
                 "save my suggestion",
                 "no / nothing / go away",
                 "weather",
                 "present yourself",
                 "time",
+                "map",
                 "calendar"
                 };
         adapter = new ArrayAdapter<String>(this, R.layout.grid_element_layout , examples);
@@ -143,7 +161,7 @@ public class MyDialogActivity extends TopBaseActivity {
             {
                 youCanSay = getString(R.string.you_can_say)+" " + examples[pos];
                 Toast.makeText(getApplicationContext(), youCanSay, Toast.LENGTH_SHORT).show();
-                speechManager.startSpeak("you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
+                speechManager.startSpeak("Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
                 wakeUpListening();
             }
         });
@@ -157,8 +175,7 @@ public class MyDialogActivity extends TopBaseActivity {
                 headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
                 //ask
                 speechManager.startSpeak(getString(R.string.what_could_do), MySettings.getSpeakDefaultOption());
-                //todo test
-                //concludeSpeak(speechManager);
+                concludeSpeak(speechManager);
                 //wake up
                 wakeUpListening();
             }
@@ -195,12 +212,12 @@ public class MyDialogActivity extends TopBaseActivity {
 
             @Override
             public void onWakeUp() {
-                Log.i("IGOR-ANS", "WAKE UP callback");
+                Log.i("IGOR-DIAL", "WAKE UP callback");
             }
 
             @Override
             public void onSleep() {
-                Log.i("IGOR-ANS", "SLEEP callback");
+                Log.i("IGOR-DIAL", "SLEEP callback");
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -243,12 +260,11 @@ public class MyDialogActivity extends TopBaseActivity {
                     @Override
                     public void run() {
 
-                        Log.i("IGOR-ANS", ">>>>Recognized voice: "+ lastRecognizedSentence);
+                        Log.i("IGOR-DIAL", ">>>>Recognized voice: "+ lastRecognizedSentence);
                         boolean recognizedWhatToDo = false;
 
                         //deletes "no response action"
                         noResponseAction.removeCallbacksAndMessages(null);
-                        Log.i("IGOR-ANS", "recognized answer-activ, noResponseHandler deleted");
 
                         //---- INTERACTION PART ----
                         //basic interaction
@@ -266,7 +282,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             concludeSpeak(speechManager);
                             askOther();
                         }
-                        if ((lastRecognizedSentence.contains("what") || lastRecognizedSentence.contains("tell")) && lastRecognizedSentence.contains("time")) {
+                        if (/*(lastRecognizedSentence.contains("what") || lastRecognizedSentence.contains("tell")) &&*/ lastRecognizedSentence.contains("time")) {
                             recognizedWhatToDo = true;
                             String time_sentence = "It's " + new SimpleDateFormat("HH:mm", Locale.ITALY).format(Calendar.getInstance().getTime());
                             speechManager.startSpeak(time_sentence, MySettings.getSpeakDefaultOption());
@@ -276,6 +292,12 @@ public class MyDialogActivity extends TopBaseActivity {
                         if (lastRecognizedSentence.contains("hear")) {
                             recognizedWhatToDo = true;
                             speechManager.startSpeak("I can hear you.", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            askOther();
+                        }
+                        if (lastRecognizedSentence.contains("polish")) {
+                            recognizedWhatToDo = true;
+                            speechManager.startSpeak("Polish people are in my heart but I cannot understand them.", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             askOther();
                         }
@@ -291,7 +313,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             AbsoluteAngleHandMotion absoluteAngleHandMotion1 = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH, 8, 0);
                             handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion1);
                             systemManager.showEmotion(EmotionsType.SNICKER);
-                            speechManager.startSpeak("put your hands up!", MySettings.getSpeakDefaultOption());
+                            speechManager.startSpeak("put your hands up in the air!", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             sleepy(2);
                             //hands down
@@ -319,12 +341,35 @@ public class MyDialogActivity extends TopBaseActivity {
                             //terminates
                             finish();
                         }
+                        if (lastRecognizedSentence.contains("map")) {
+                            recognizedWhatToDo = true;
+                            //greenFlashButton(gridExamples.getChildAt(5));
+                            speechManager.startSpeak("OK let's see the map", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            //compute the url to pass (default is lisbon)
+                            String url = "https://www.google.com/maps/place/Lisbon";
+                            //if any separator is said the place after is passed in the url
+                            String[] separators = {" of ", " in ", " on "};
+                            for (String separator : separators) {
+                                if (lastRecognizedSentence.contains(separator)) {
+                                    String place = StringUtils.substringAfter(lastRecognizedSentence, separator);
+                                    url = "https://www.google.com/maps/place/" + place;
+                                    Log.e("IGOR", url);
+                                }
+                            }
+                            //starts weather activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyWebActivity.class);
+                            myIntent.putExtra("url", url);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                        }
                         if (lastRecognizedSentence.contains("weather")) {
                             recognizedWhatToDo = true;
                             //greenFlashButton(gridExamples.getChildAt(5));
                             speechManager.startSpeak("OK let's see the weather", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
-                            //starts shake hand activity
+                            //starts weather activity
                             Intent myIntent = new Intent(MyDialogActivity.this, MyWeatherActivity.class);
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
@@ -334,7 +379,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             recognizedWhatToDo = true;
                             speechManager.startSpeak("OK let's see the calendar", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
-                            //starts shake hand activity
+                            //starts calendar activity
                             Intent myIntent = new Intent(MyDialogActivity.this, MyCalendarActivity.class);
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
@@ -344,17 +389,17 @@ public class MyDialogActivity extends TopBaseActivity {
                             recognizedWhatToDo = true;
                             speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
-                            //starts shake hand activity
+                            //starts present ys activity
                             Intent myIntent = new Intent(MyDialogActivity.this, MyPresentActivity.class);
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
                         }
-                        if (lastRecognizedSentence.contains("charge")) {
+                        if (lastRecognizedSentence.contains("charge") || lastRecognizedSentence.contains("battery")) {
                             recognizedWhatToDo = true;
                             speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
-                            //starts shake hand activity
+                            //starts charge activity
                             Intent myIntent = new Intent(MyDialogActivity.this, MyChargeActivity.class);
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
@@ -372,7 +417,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             askOther();
                         }
 
-                        if (lastRecognizedSentence.contains("bathroom") || lastRecognizedSentence.contains("toilet")|| lastRecognizedSentence.contains("direction")) {
+                        if (lastRecognizedSentence.contains("bathroom") || lastRecognizedSentence.contains("toilet")) {
                             recognizedWhatToDo = true;
                             //greenFlashButton(gridExamples.getChildAt(1));
                             //increments stats request location
@@ -420,12 +465,14 @@ public class MyDialogActivity extends TopBaseActivity {
                         //exits if answer is "no time" or "nothing"
                         if (lastRecognizedSentence.equals("no") || lastRecognizedSentence.contains("nothing") ||
                                 lastRecognizedSentence.contains("no thank you") || lastRecognizedSentence.contains("no time")||
-                                lastRecognizedSentence.contains("go away")) {
+                                lastRecognizedSentence.contains("go away") || lastRecognizedSentence.contains("exit")) {
                             recognizedWhatToDo = true;
                             //greenFlashButton( gridExamples.getChildAt(4) );
                             speechManager.startSpeak(getString(R.string.see_you), MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             if (lastRecognizedSentence.contains("go away")) {
+                                speechManager.startSpeak("I will go away", MySettings.getSpeakDefaultOption());
+                                concludeSpeak(speechManager);
                                 systemManager.showEmotion(EmotionsType.CRY);
                                 //rotates of 180
                                 rotateAtRelativeAngle(wheelMotionManager, 180);
@@ -435,8 +482,14 @@ public class MyDialogActivity extends TopBaseActivity {
                                 speechManager.startSpeak(getString(R.string.thanks_you_kind), MySettings.getSpeakDefaultOption());
                                 concludeSpeak(speechManager);
                             }
+                            //force sleep
                             infiniteWakeup = false;
                             speechManager.doSleep();
+
+                            //starts base activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyBaseActivity.class);
+                            MyDialogActivity.this.startActivity(myIntent);
+
                             finish();
                         }
 
@@ -452,7 +505,7 @@ public class MyDialogActivity extends TopBaseActivity {
                     }
                 });
 
-                //Log.i("IGOR-ANS", "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
+                //Log.i("IGOR-DIAL", "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
                 return true;
             }
 
@@ -497,7 +550,7 @@ public class MyDialogActivity extends TopBaseActivity {
         MyBaseActivity.busy = false;
         //deletes "no response action" and all the handlers
         noResponseAction.removeCallbacksAndMessages(null);
-        Log.i("IGOR-ANS", "destroy, noResponseHandler deleted");
+        Log.i("IGOR-DIAL", "destroy, noResponseHandler deleted");
     }
 
     /* *****MY FUNCTIONS ***** */
@@ -563,20 +616,32 @@ public class MyDialogActivity extends TopBaseActivity {
         //normal face
         //systemManager.showEmotion(EmotionsType.NORMAL);
         //activate no response handler
-        Log.i("IGOR-ANS", "wakeup answer-active, noResponseHandler activated");
+        Log.i("IGOR-DIAL", "wakeup answer-active, noResponseHandler activated");
         noResponseAction.removeCallbacksAndMessages(null);
         noResponseAction.postDelayed(new Runnable() {
             @Override
             public void run() {
-                infiniteWakeup = false;
-                speechManager.doSleep();
-                //angry emotion
-                systemManager.showEmotion(EmotionsType.ANGRY);
-                //flicker leds
-                hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_FLICKER_RED));
-                //speak
-                speechManager.startSpeak(getString(R.string.no_answer), MySettings.getSpeakDefaultOption());
-                finish();
+                if(!askLoud) {
+                    //first time waiting too much asks for out loud
+                    askLoud = true;
+                    speechManager.startSpeak("please speak out loud!", MySettings.getSpeakDefaultOption());
+                    wakeUpListening();
+                } else {
+                    //force sleep
+                    infiniteWakeup = false;
+                    speechManager.doSleep();
+                    //angry emotion
+                    systemManager.showEmotion(EmotionsType.ANGRY);
+                    //flicker leds
+                    hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_FLICKER_RED));
+                    //speak
+                    speechManager.startSpeak(getString(R.string.no_answer), MySettings.getSpeakDefaultOption());
+                    //starts base activity
+                    Intent myIntent = new Intent(MyDialogActivity.this, MyBaseActivity.class);
+                    MyDialogActivity.this.startActivity(myIntent);
+                    //terminates
+                    finish();
+                }
             }
         }, 1000 * MySettings.getSeconds_waitingResponse());
     }

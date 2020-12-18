@@ -23,8 +23,8 @@ android {
     defaultConfig {
         applicationId "com.sanbot.capaBot"
         minSdkVersion 23
-        versionCode 20190628
-        versionName "2.4.5"
+        versionCode 20190824
+        versionName "2.6.9"
 
         android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
@@ -91,4 +91,3 @@ dependencies {
     implementation 'com.github.alamkanak:android-week-view:1.2.6'
 
 }
-

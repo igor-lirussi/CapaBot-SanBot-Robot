@@ -1,23 +1,18 @@
 package com.sanbot.capaBot;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
-
 import com.sanbot.opensdk.function.beans.SpeakOption;
 import com.sanbot.opensdk.function.unit.ProjectorManager;
 
 import java.io.File;
 
 import static com.sanbot.capaBot.MyUtilsXML.createFileInXMLDirectory;
-import static com.sanbot.capaBot.MyUtilsXML.xmlAddHandshakeNow;
 import static com.sanbot.capaBot.MyUtilsXML.xmlAddToNodeNow;
 import static com.sanbot.capaBot.MyUtilsXML.xmlReadStatsHandshakesNumber;
 
 /**
  * MySettings class
+ * used to save all the settings about the robot
  */
-
 public class MySettings {
 
     //initial wanderAllowed state, defines if the robot is can sometimes wander or it is stationary
@@ -54,15 +49,15 @@ public class MySettings {
     private static int batteryOK = 90;
 
     //projector mode : WALL/CEILING
-    private static int projectorMode = ProjectorManager.MODE_WALL;
+    private static int projectorMode = ProjectorManager.MODE_CEILING;
 
-    //speak seetings  language/speed/intonation
+    //speak settings  language/speed/intonation
     private static SpeakOption speakDefaultOption = new SpeakOption();
 
     public static boolean initializeSpeak() {
         speakDefaultOption.setLanguageType(SpeakOption.LAG_ENGLISH_US);
-        speakDefaultOption.setSpeed(30); //from 0 to 100 default: 30
-        speakDefaultOption.setIntonation(40); //from 0 to 100 default: 30
+        //speakDefaultOption.setSpeed(50); //from 0 to 100 default: 40
+        //speakDefaultOption.setIntonation(40); //from 0 to 100 default: 30
         return true;
     }
 
@@ -70,6 +65,7 @@ public class MySettings {
         return speakDefaultOption;
     }
 
+    // GETTERS-SETTERS
 
     public static boolean isWanderAllowed(){
         return wanderAllowed;
@@ -79,28 +75,14 @@ public class MySettings {
         wanderAllowed = set;
     }
 
+    public static boolean isSoundRotationAllowed() {
+        return soundRotationAllowed;
+    }
+
+    public static void setSoundRotationAllowed(boolean set) { soundRotationAllowed = set; }
 
     public static boolean isDialogAfterPresentation() {
         return dialogAfterPresentation;
-    }
-
-
-    @Deprecated
-    public static boolean save(Context context) {
-        SharedPreferences settings = context.getSharedPreferences("UserInfo", 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("Handshakes", countHandshakes) ;
-        editor.commit();
-        Log.i("IGOR", "Saved Settings");
-        return true;
-    }
-
-    @Deprecated
-    public static boolean loadSaved(Context context) {
-        SharedPreferences settings = context.getSharedPreferences("UserInfo", 0);
-        settings.getInt("Handshakes", countHandshakes);
-        Log.i("IGOR", "Loaded Settings");
-        return true;
     }
 
 
@@ -120,10 +102,9 @@ public class MySettings {
     }
 
 
-
     public static void incrementHandshakes() {
         countHandshakes++;
-        xmlAddHandshakeNow(fileXML);
+        xmlAddToNodeNow(fileXML, "handshakes");
     }
 
     public static int getHandshakes(){
@@ -142,15 +123,11 @@ public class MySettings {
         xmlAddToNodeNow(fileXML, "request_video");
     }
 
-    public static void incrementInteractionButton() {
-        xmlAddToNodeNow(fileXML, "interaction_button");
-    }
+    public static void incrementInteractionButton() { xmlAddToNodeNow(fileXML, "interaction_button"); }
 
     public static void incrementInteractionFace() {
         xmlAddToNodeNow(fileXML, "interaction_face");
     }
-
-
 
 
     public static int getSeconds_waitingTouch() {
@@ -167,24 +144,9 @@ public class MySettings {
         return seconds_waitingResponse;
     }
 
-    public static boolean isSoundRotationAllowed() {
-        return soundRotationAllowed;
-    }
-
-    public static void setSoundRotationAllowed(boolean rotationAllowed) {
-        soundRotationAllowed = rotationAllowed;
-    }
-
-    public static int getProjectorMode() {
-        return projectorMode;
-    }
 
     public static int getSeconds_waitingToWanderAfterSoundLocalization() {
         return seconds_waitingToWanderAfterSoundLocalization;
-    }
-
-    public static void setSeconds_waitingToWanderAfterSoundLocalization(int seconds_waiting) {
-        seconds_waitingToWanderAfterSoundLocalization = seconds_waiting;
     }
 
     public static int getSeconds_checkingBattery() {
@@ -197,5 +159,9 @@ public class MySettings {
 
     public static int getBatteryOK() {
         return batteryOK;
+    }
+
+    public static int getProjectorMode() {
+        return projectorMode;
     }
 }

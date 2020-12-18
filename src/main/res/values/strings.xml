@@ -26,7 +26,7 @@
     <!--**** SPEAKING **** -->
     <!--base activity-->
     <string name="hi">Hi</string>
-    <string name="early_morning">Well, early bird gets the worm, right? ahahah</string>
+    <string name="early_morning">it is so early</string>
     <string name="morning">Good morning</string>
     <string name="afternoon">Good afternoon!</string>
     <string name="night">Good night!</string>
