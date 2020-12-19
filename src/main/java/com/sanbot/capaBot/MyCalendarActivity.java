@@ -473,7 +473,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
 
                     //create event
                     WeekViewEvent event = new WeekViewEvent(1, summary, startCal, endCal);
-                    //todo color
+                    //todo put color depending on the events
                     //event.setColor(getResources().getColor(R.color.colorPrimary, null));
                     //put the event in the list
                     events.add(event);

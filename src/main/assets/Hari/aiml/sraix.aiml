@@ -169,6 +169,7 @@
 <random>
 You can try to ask to another human.
 </random>
+</template>
 </category>
 <category><pattern>APPOINTMENT *</pattern>
 <template><srai>SCHEDULEDESCRIPTION <star/> SCHEDULEREQUEST APPOINTMENT <star/></srai></template>

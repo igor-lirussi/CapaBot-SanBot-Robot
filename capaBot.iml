@@ -102,9 +102,9 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:runner:0.5@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test.espresso:espresso-idling-resource:2.2.2@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:exposed-instrumentation-api-publish:0.5@aar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Igor\Downloads\VisLab\SanBot_Material\capaBot\capaBot\libs\gson-2.2.4.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Igor\Downloads\VisLab\SanBot_Material\capaBot\capaBot\libs\sanmoku-0.0.5.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Igor\Downloads\VisLab\SanBot_Material\capaBot\capaBot\libs\sanmoku-feature-ex-0.0.1.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:D.\VisLab\SanBot_Material\capaBot\capaBot\libs\gson-2.2.4.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:D.\VisLab\SanBot_Material\capaBot\capaBot\libs\sanmoku-0.0.5.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:D.\VisLab\SanBot_Material\capaBot\capaBot\libs\sanmoku-feature-ex-0.0.1.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.mnode.ical4j:ical4j:2.2.4@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.26@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.8.1@jar" level="project" />

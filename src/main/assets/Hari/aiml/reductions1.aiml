@@ -1482,10 +1482,16 @@
 <category><pattern>WHEN ARE YOU BORN</pattern>
 <template><srai>BIRTHDATE</srai></template>
 </category>
+<category><pattern>WHEN HAVE YOU BEEN *</pattern>
+<template><srai>WHEN WERE YOU <star/></srai></template>
+</category>
 <category><pattern>WHEN WERE YOU MADE</pattern>
 <template><srai>BIRTHDATE</srai></template>
 </category>
 <category><pattern>WHEN WERE YOU CREATED</pattern>
+<template><srai>BIRTHDATE</srai></template>
+</category>
+<category><pattern>WHEN WERE YOU ACTIVATED</pattern>
 <template><srai>BIRTHDATE</srai></template>
 </category>
 <category><pattern>WHERE ARE WE *</pattern>
@@ -3228,6 +3234,9 @@
 <category><pattern>WHAT VERSION ARE YOU</pattern>
 <template><srai>VERSION</srai></template>
 </category>
+<category><pattern>TELL ME YOUR VERSION</pattern>
+<template><srai>VERSION</srai></template>
+</category>
 <category><pattern>WHAT IS YOUR VERSION</pattern>
 <template><srai>VERSION</srai></template>
 </category>
@@ -4171,7 +4180,7 @@
 <template><srai>THANK YOU</srai> <srai>I <star/></srai></template>
 </category>
 <category><pattern>WHEN WERE YOU BORN</pattern>
-<template><srai>BIRTHPLACE</srai></template>
+<template><srai>BIRTHDATE</srai></template>
 </category>
 <category><pattern>WHERE WERE YOU BORN</pattern>
 <template><srai>BIRTHPLACE</srai></template>
@@ -4962,8 +4971,8 @@
 <category><pattern>REALLY *</pattern>
 <template><sr/></template>
 </category>
-<category><pattern>TELL ME SOMETHING AMAZING</pattern>
-<template><srai>WHAT ARE THE LATEST HEADLINES</srai></template>
+<category><pattern>TELL ME SOMETHING ^</pattern>
+<template><srai>UDC</srai></template>
 </category>
 <category><pattern>I _ RIGHT NOW</pattern>
 <template><srai>I <star/></srai></template>

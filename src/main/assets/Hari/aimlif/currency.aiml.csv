@@ -1,0 +1,275 @@
+0,WHAT UNIT OF CURRENCY IS USED IN *,*,*,<srai>What is the currency of <star/></srai>,currency.aiml
+0,WHAT IS THE UNIT OF CURRENCY IN *,*,*,<srai>What is the currency of <star/></srai>,currency.aiml
+0,WHAT MONETARY UNIT *,*,*,<srai>What is the currency of <star/></srai>,currency.aiml
+0,WHAT IS THE MONETARY UNIT IN *,*,*,<srai>What is the currency <star/></srai>,currency.aiml
+0,WHAT CURRENCY _ IN *,*,*,<srai>What is the currency of <star index="2"/></srai>,currency.aiml
+0,WHAT MONEY _ IN *,*,*,<srai>What is the currency of <star index="2"/></srai>,currency.aiml
+0,WHAT _ SPEND IN *,*,*,<srai>What is the currency of <star index="2"/></srai>,currency.aiml
+0,WHAT IS THE CURRENCY IN *,*,*,<srai>What is the currency of <star/></srai>,currency.aiml
+0,WHAT IS THE CURRENCY OF AFGHANISTAN,*,*,The Afghani.,currency.aiml
+0,WHAT IS THE CURRENCY OF ALBANIA,*,*,Lek.,currency.aiml
+0,WHAT IS THE CURRENCY OF ALGERIA,*,*,Algerian Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF AMERICAN SAMOA,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF AMERICA,*,*,The dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF ANDORRA,*,*,Euro.,currency.aiml
+0,WHAT IS THE CURRENCY OF ANGOLA,*,*,New Kwanza (it replaced the Kwanza).,currency.aiml
+0,WHAT IS THE CURRENCY OF ANGUILLA,*,*,East Caribbean Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF ANTARCTICA,*,*,Norwegian Krone.,currency.aiml
+0,WHAT IS THE CURRENCY OF ANTIGUA *,*,*,East Caribbean Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF ARGENTINA,*,*,Austral and Argenintinian Neuvo Peso (replacement for the Peso).,currency.aiml
+0,WHAT IS THE CURRENCY OF ARMENIA,*,*,Dram (Russian Rouble was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF ARUBA,*,*,Aruban Guilder (Florin).,currency.aiml
+0,WHAT IS THE CURRENCY OF AUSTRAILIA,*,*,I think it is the Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF AUSTRALIA,*,*,The currnecy of Australia is the Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF AUSTRIA,*,*,Euro (Austrian Schilling was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF AZERBAIJAN,*,*,Azerbaijani Manat (Russian Rouble was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF BAHAMAS,*,*,Bahamian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF BAHRAIN,*,*,Bahraini Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF BANGLADESH,*,*,Taka.,currency.aiml
+0,WHAT IS THE CURRENCY OF BARBADOS,*,*,Barbados Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF BELARUS,*,*,Belarussian Rouble (Russian Rouble was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF BELGIUM,*,*,Euro (Belgian Franc was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF BELIZE,*,*,Belize Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF BENIN,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF BERMUDA,*,*,Bermudian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF BHUTAN,*,*,Ngultrum (Indian Rupee also circulates).,currency.aiml
+0,WHAT IS THE CURRENCY OF BOLIVIA,*,*,Boliviano and Bolivian Peso.,currency.aiml
+0,WHAT IS THE CURRENCY OF BOSNIA,*,*,Convertible Mark.,currency.aiml
+0,WHAT IS THE CURRENCY OF BOSNIA AND HERZEGOVINA,*,*,Convertible Mark.,currency.aiml
+0,WHAT IS THE CURRENCY OF BOTSWANA,*,*,Pula.,currency.aiml
+0,WHAT IS THE CURRENCY OF BOUVET ISLAND,*,*,Norwegian Krone.,currency.aiml
+0,WHAT IS THE CURRENCY OF BRAZIL,*,*,Cruzeiro Real.,currency.aiml
+0,WHAT IS THE CURRENCY OF BRITISH INDIAN *,*,*,Pound Sterling (United Kingdom Pound)#Comma Seychelles Rupee.,currency.aiml
+0,WHAT IS THE CURRENCY OF BRITISH VIRGIN *,*,*,Pound Sterling (United Kingdom Pound).,currency.aiml
+0,WHAT IS THE CURRENCY OF BRUNEI,*,*,Brunei Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF BRUNEI *,*,*,Brunei Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF BULGARIA,*,*,Lev.,currency.aiml
+0,WHAT IS THE CURRENCY OF BURKINA FASO,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF BURMA,*,*,Kyat.,currency.aiml
+0,WHAT IS THE CURRENCY OF BURUNDI,*,*,Burundi Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF BYELORUSSIA,*,*,Belarussian Rouble (Russian Rouble was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF CAMBODIA,*,*,Riel.,currency.aiml
+0,WHAT IS THE CURRENCY OF CAMEROON,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF CANADA,*,*,Canadian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF CAPE VERDE,*,*,Escudo Caboverdiano.,currency.aiml
+0,WHAT IS THE CURRENCY OF CAYMAN ISLANDS,*,*,Cayman Islands Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF CENTRAL AFRICAN *,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF CHAD,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF CHILE,*,*,Unidades de Fomento and Chilean Peso.,currency.aiml
+0,WHAT IS THE CURRENCY OF CHINA,*,*,Yuan Renminbi.,currency.aiml
+0,WHAT IS THE CURRENCY OF CHRISTMAS ISLAND,*,*,Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF COCOS ISLANDS,*,*,Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF COLOMBIA,*,*,Colombian Peso.,currency.aiml
+0,WHAT IS THE CURRENCY OF COMOROS,*,*,Comorian Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF CONGO,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF COOK ISLANDS,*,*,New Zealand Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF COSTA RICA,*,*,Costa Rican Colon.,currency.aiml
+0,WHAT IS THE CURRENCY OF COTE D IVOIRE,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF CROATIA,*,*,Kuna and Croatian Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF CUBA,*,*,Cuban Peso.,currency.aiml
+0,WHAT IS THE CURRENCY OF CYPRUS,*,*,Cypriot Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF CZECH REPUBLIC,*,*,Czech Koruna.,currency.aiml
+0,WHAT IS THE CURRENCY OF CZECHOSOLVAKIA,*,*,Czech Koruna.,currency.aiml
+0,WHAT IS THE CURRENCY OF DENMARK,*,*,Danish Krone.,currency.aiml
+0,WHAT IS THE CURRENCY OF DJIBOUTI,*,*,Djibouti Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF DOMINICAN REPUBLIC,*,*,Dominican Republic Peso.,currency.aiml
+0,WHAT IS THE CURRENCY OF DOMINICA,*,*,East Caribbean Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF EAST TIMOR,*,*,Timorian Escudo.,currency.aiml
+0,WHAT IS THE CURRENCY OF ECUADOR,*,*,U.S. Dollar (superceded Sucre in 2000).,currency.aiml
+0,WHAT IS THE CURRENCY OF EGYPT,*,*,Egytian Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF EL SALVADOR,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF ENGLAND,*,*,British Pound Sterling.,currency.aiml
+0,WHAT IS THE CURRENCY OF EQUATORIAL GUINEA,*,*,Franc de la Communaute financiere africaine and Ekwele.,currency.aiml
+0,WHAT IS THE CURRENCY OF ERITREA,*,*,Eritreian Nakfa#Comma Ethiopian Birr.,currency.aiml
+0,WHAT IS THE CURRENCY OF ESTONIA,*,*,Kroon.,currency.aiml
+0,WHAT IS THE CURRENCY OF ETHIOPIA,*,*,Birr.,currency.aiml
+0,WHAT IS THE CURRENCY OF EUROPEAN COMMUNITY,*,*,Euro (formerly known as the ECU).,currency.aiml
+0,WHAT IS THE CURRENCY OF FALKLAND ISLANDS,*,*,Falkland Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF THE FALKLAND ISLANDS,*,*,Falkland Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF THE FALKLANDS,*,*,Falkland Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF MALVINAS,*,*,Falkland Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF THE MALVINAS,*,*,Falkland Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF FAROE ISLANDS,*,*,Danish Krone.,currency.aiml
+0,WHAT IS THE CURRENCY OF FIJI,*,*,Fiji Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF FINLAND,*,*,Euro (Finnish Markka was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF FRANCE,*,*,Euro (French Franc was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF FRENCH GUIANA,*,*,Euro (French Franc was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF FRENCH POLYNESIA,*,*,Franc des Comptoirs francais du Pacifique.,currency.aiml
+0,WHAT IS THE CURRENCY OF GABON,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF GAMBIA,*,*,Dalasi.,currency.aiml
+0,WHAT IS THE CURRENCY OF GEORGIA,*,*,Lari (Russian Rouble was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF GERMANY,*,*,Euro (Deutsche Mark was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF GHANA,*,*,Cedi.,currency.aiml
+0,WHAT IS THE CURRENCY OF GIBRALTAR,*,*,Gibraltar Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF GREECE,*,*,Euro (Greek Drachma was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF GREENLAND,*,*,Danish Krone.,currency.aiml
+0,WHAT IS THE CURRENCY OF GRENADA,*,*,East Caribbean Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF GUADELOUPE,*,*,Euro.,currency.aiml
+0,WHAT IS THE CURRENCY OF GUAM,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF GUATEMALA,*,*,Quetzal.,currency.aiml
+0,WHAT IS THE CURRENCY OF GUINEA BISSAU,*,*,Guinea-Bissau Peso and Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF GUINEA,*,*,Guinea Syli (also known as Guinea Franc).,currency.aiml
+0,WHAT IS THE CURRENCY OF GUYANA,*,*,Guyana Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF HAITI,*,*,Gourde.,currency.aiml
+0,WHAT IS THE CURRENCY OF HAWAII,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF HEARD * MCDONALD ISLANDS,*,*,Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF HOLLAND,*,*,Euro (Dutch Guilder was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF HONDURAS,*,*,Lempira.,currency.aiml
+0,WHAT IS THE CURRENCY OF HONG KONG,*,*,Hong Kong Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF HUNGARY,*,*,Forint.,currency.aiml
+0,WHAT IS THE CURRENCY OF ICELAND,*,*,Icelandic Krona.,currency.aiml
+0,WHAT IS THE CURRENCY OF INDIA,*,*,Indian Rupee.,currency.aiml
+0,WHAT IS THE CURRENCY OF INDONESIA,*,*,Rupiah.,currency.aiml
+0,WHAT IS THE CURRENCY OF IRAN,*,*,Iranian Rial.,currency.aiml
+0,WHAT IS THE CURRENCY OF IRAQ,*,*,Iraqi Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF IRELAND,*,*,Euro (Irish Pound was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF ISRAEL,*,*,Shekel.,currency.aiml
+0,WHAT IS THE CURRENCY OF ITALY,*,*,Euro (Italian Lira was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF IVORY COAST,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF JAMAICA,*,*,Jamaican Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF JAPAN,*,*,Yen.,currency.aiml
+0,WHAT IS THE CURRENCY OF JORDAN,*,*,Jordanian Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF KAZAKSTAN,*,*,Tenge (Russian Rouble was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF KENYA,*,*,Kenyan Shilling.,currency.aiml
+0,WHAT IS THE CURRENCY OF KIRIBATI,*,*,Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF KOREA,*,*,North Korean Won and South Korean Won.,currency.aiml
+0,WHAT IS THE CURRENCY OF KUWAIT,*,*,Kuwaiti Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF KYRGYZSTAN,*,*,Kyrgyzstani Som.,currency.aiml
+0,WHAT IS THE CURRENCY OF LAO,*,*,Kip.,currency.aiml
+0,WHAT IS THE CURRENCY OF LAOS,*,*,Kip.,currency.aiml
+0,WHAT IS THE CURRENCY OF LATVIA,*,*,Lats.,currency.aiml
+0,WHAT IS THE CURRENCY OF LEBANON,*,*,Lebanese Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF LESOTHO,*,*,Loti#Comma Maloti and South African Rand.,currency.aiml
+0,WHAT IS THE CURRENCY OF LIBERIA,*,*,Liberian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF LIBYA,*,*,Libyan Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF LIBYAN *,*,*,Libyan Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF LIECHTENSTEIN,*,*,Swiss Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF LITHUANIA,*,*,Litas.,currency.aiml
+0,WHAT IS THE CURRENCY OF LUXEMBOURG,*,*,Euro (Luxembourg Franc was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF MACAU,*,*,Pataca.,currency.aiml
+0,WHAT IS THE CURRENCY OF MACAO,*,*,Pataca.,currency.aiml
+0,WHAT IS THE CURRENCY OF MACEDONIA,*,*,Macedonian Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF MADAGASCAR,*,*,Malagasy Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF MALAWI,*,*,Malawian Kwacha.,currency.aiml
+0,WHAT IS THE CURRENCY OF MALAYSIA,*,*,Ringgit (Malaysian Dollar).,currency.aiml
+0,WHAT IS THE CURRENCY OF MALDIVES,*,*,Rufiyaa.,currency.aiml
+0,WHAT IS THE CURRENCY OF MALI,*,*,Franc de la Communaute financiere africaine and Malian Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF MALTA,*,*,Maltese Lira (Maltese Pound formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF MARSHALL ISLANDS,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF MARTINIQUE,*,*,Euro.,currency.aiml
+0,WHAT IS THE CURRENCY OF MAURITANIA,*,*,Ouguiya.,currency.aiml
+0,WHAT IS THE CURRENCY OF MAURITIUS,*,*,Mauritius Rupee.,currency.aiml
+0,WHAT IS THE CURRENCY OF MAYOTTE,*,*,Euro.,currency.aiml
+0,WHAT IS THE CURRENCY OF MEXICO,*,*,Mexican New Peso (replacement for Mexican Peso).,currency.aiml
+0,WHAT IS THE CURRENCY OF MICRONESIA,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF MOLDOVA,*,*,Moldovian Leu.,currency.aiml
+0,WHAT IS THE CURRENCY OF MONACO,*,*,Euro (French Franc was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF MONGOLIA,*,*,Tugrik.,currency.aiml
+0,WHAT IS THE CURRENCY OF MONTSERRAT,*,*,East Caribbean Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF MOROCCO,*,*,Moroccan Dirham.,currency.aiml
+0,WHAT IS THE CURRENCY OF MOZAMBIQUE,*,*,Metical.,currency.aiml
+0,WHAT IS THE CURRENCY OF MYANMAR,*,*,Kyat.,currency.aiml
+0,WHAT IS THE CURRENCY OF NAMIBIA,*,*,Namibian Dollar and South African Rand.,currency.aiml
+0,WHAT IS THE CURRENCY OF NAURU,*,*,Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF NEPAL,*,*,Nepalese Rupee.,currency.aiml
+0,WHAT IS THE CURRENCY OF NETHERLANDS ANTILLES,*,*,Netherlands Antilles Guilder (Florin).,currency.aiml
+0,WHAT IS THE CURRENCY OF NETHERLANDS,*,*,Euro (Dutch Guilder was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF NEW CALEDONIA,*,*,Franc des Comptoirs francais du Pacifique.,currency.aiml
+0,WHAT IS THE CURRENCY OF NEW ZEALAND,*,*,New Zealand Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF NICARAGUA,*,*,Cordoba.,currency.aiml
+0,WHAT IS THE CURRENCY OF NIGERIA,*,*,Naira.,currency.aiml
+0,WHAT IS THE CURRENCY OF NIGER,*,*,West African Franc and Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF NIUE,*,*,New Zealand Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF NORFOLK ISLAND,*,*,Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF NORTHERN MARIANA *,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF NORTH KOREA,*,*,North Korean Won.,currency.aiml
+0,WHAT IS THE CURRENCY OF NORWAY,*,*,Norwegian Krone.,currency.aiml
+0,WHAT IS THE CURRENCY OF OMAN,*,*,Rial Omani.,currency.aiml
+0,WHAT IS THE CURRENCY OF PAKISTAN,*,*,Pakistani Rupee.,currency.aiml
+0,WHAT IS THE CURRENCY OF PALAU,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF PANAMA,*,*,Balboa and U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF PAPUA NEW GUINEA,*,*,Kina.,currency.aiml
+0,WHAT IS THE CURRENCY OF PARAGUAY,*,*,Guarani.,currency.aiml
+0,WHAT IS THE CURRENCY OF PERU,*,*,Inti and New Sol (New Sol replaced Sol).,currency.aiml
+0,WHAT IS THE CURRENCY OF PHILIPPINES,*,*,Philippines Peso.,currency.aiml
+0,WHAT IS THE CURRENCY OF PITCAIRN ISLANDS,*,*,New Zealand Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF POLAND,*,*,New Zloty (replacement for Zloty).,currency.aiml
+0,WHAT IS THE CURRENCY OF PORTUGAL,*,*,Euro (Potuguese Escudo was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF PUERTO RICO,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF QATAR,*,*,Qatari Riyal.,currency.aiml
+0,WHAT IS THE CURRENCY OF REUNION,*,*,Euro.,currency.aiml
+0,WHAT IS THE CURRENCY OF ROMANIA,*,*,Romanian Leu.,currency.aiml
+0,WHAT IS THE CURRENCY OF RUSSIA,*,*,Russian Federation Rouble.,currency.aiml
+0,WHAT IS THE CURRENCY OF RWANDA,*,*,Rwanda Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF ST *,*,*,<srai>What is the currency of Saint<star/></srai>,currency.aiml
+0,WHAT IS THE CURRENCY OF SAINT KITTS AND NEVIS,*,*,East Caribbean Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF SAINT LUCIA,*,*,East Caribbean Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF SAINT VINCENT *,*,*,East Caribbean Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF SAMOA,*,*,Tala.,currency.aiml
+0,WHAT IS THE CURRENCY OF SAN MARINO,*,*,Euro.,currency.aiml
+0,WHAT IS THE CURRENCY OF SAO TOME *,*,*,Dobra.,currency.aiml
+0,WHAT IS THE CURRENCY OF SAUDIA ARABIA,*,*,Saudi Riyal.,currency.aiml
+0,WHAT IS THE CURRENCY OF SAUDI ARABIA,*,*,Saudi Riyal.,currency.aiml
+0,WHAT IS THE CURRENCY OF SENEGAL,*,*,West African Franc and Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF SERBIA *,*,*,Serbian Dinar (Serbia)#Comma Euro (Montenegro)#Comma Euro (Kosovo and Metohia).,currency.aiml
+0,WHAT IS THE CURRENCY OF SEYCHELLES,*,*,Seychelles Rupee.,currency.aiml
+0,WHAT IS THE CURRENCY OF SIERRA LEONE,*,*,Leone.,currency.aiml
+0,WHAT IS THE CURRENCY OF SINGAPORE,*,*,Singapore Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF SLOVAKIA,*,*,Slovak Koruna.,currency.aiml
+0,WHAT IS THE CURRENCY OF SLOVENIA,*,*,Tolar.,currency.aiml
+0,WHAT IS THE CURRENCY OF SOLOMON ISLANDS,*,*,Solomon Islands Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF SOMALIA,*,*,Somali Shilling.,currency.aiml
+0,WHAT IS THE CURRENCY OF SOUTH AFRICA,*,*,Rand.,currency.aiml
+0,WHAT IS THE CURRENCY OF SOUTH GEORGIA *,*,*,Pound Sterling.,currency.aiml
+0,WHAT IS THE CURRENCY OF SOUTH KOREA,*,*,South Korean Won.,currency.aiml
+0,WHAT IS THE CURRENCY OF SPAIN,*,*,Euro (Spanish Peseta was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF SRI LANKA,*,*,Sri Lankan Rupee.,currency.aiml
+0,WHAT IS THE CURRENCY OF SUDAN,*,*,Sudanese Pound and Sudanese Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF SURINAME,*,*,Surinam Guilder (also known as Florin).,currency.aiml
+0,WHAT IS THE CURRENCY OF SVALBARD,*,*,Norwegian Krone.,currency.aiml
+0,WHAT IS THE CURRENCY OF SWAZILAND,*,*,Lilangeni.,currency.aiml
+0,WHAT IS THE CURRENCY OF SWEDEN,*,*,Swedish Krona.,currency.aiml
+0,WHAT IS THE CURRENCY OF SWITZERLAND,*,*,Swiss Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF SYRIA,*,*,Syrian Pound.,currency.aiml
+0,WHAT IS THE CURRENCY OF TAIWAN,*,*,New Taiwan Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF TAJIKISTAN,*,*,Tajik Rouble (Russian Rouble was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF TANZANIA,*,*,Tanzanian Shilling.,currency.aiml
+0,WHAT IS THE CURRENCY OF THAILAND,*,*,Baht.,currency.aiml
+0,WHAT IS THE CURRENCY OF THE BAHAMAS,*,*,<srai>what is the currency of Bahamas</srai>,currency.aiml
+0,WHAT IS THE CURRENCY OF TIMOR,*,*,<srai>what is the currency of East Timor</srai>,currency.aiml
+0,WHAT IS THE CURRENCY OF THE GAMBIA,*,*,Dalasi.,currency.aiml
+0,WHAT IS THE CURRENCY OF THE NETHERLANDS,*,*,Euro (Dutch Guilder was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF THE UNITED STATES,*,*,The U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF THE US,*,*,The U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF TOGO,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF TOKELAU,*,*,New Zealand Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF TONGA,*,*,Pa'anga.,currency.aiml
+0,WHAT IS THE CURRENCY OF TRINIDAD AND TOBAGO,*,*,Trinidad and Tobago Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF TUNISIA,*,*,Tunisian Dinar.,currency.aiml
+0,WHAT IS THE CURRENCY OF TURKEY,*,*,Turkish Lira.,currency.aiml
+0,WHAT IS THE CURRENCY OF TURKMENISTAN,*,*,Turkmenistani Manat.,currency.aiml
+0,WHAT IS THE CURRENCY OF TURKS *,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF TUVALU,*,*,Australian Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF UGANDA,*,*,Ugandan Shilling.,currency.aiml
+0,WHAT IS THE CURRENCY OF UKRAINE,*,*,Hryvna and Karbovanet.,currency.aiml
+0,WHAT IS THE CURRENCY OF UNITED ARAB *,*,*,UAE Dirham.,currency.aiml
+0,WHAT IS THE CURRENCY OF UNION OF SOVIET *,*,*,USSR Rouble.,currency.aiml
+0,WHAT IS THE CURRENCY OF UNITED KINGDOM,*,*,Pound Sterling.,currency.aiml
+0,WHAT IS THE CURRENCY OF UNITED STATES,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF URUGUAY,*,*,Uruguayan New Peso (replacement for Uruguayan Peso).,currency.aiml
+0,WHAT IS THE CURRENCY OF USA,*,*,U.S. Dollar.,currency.aiml
+0,WHAT IS THE CURRENCY OF UZBEKISTAN,*,*,Uzbekistani Som (Russian Rouble was formerly in use).,currency.aiml
+0,WHAT IS THE CURRENCY OF VANUATU,*,*,Vatu.,currency.aiml
+0,WHAT IS THE CURRENCY OF VATICAN *,*,*,Nothing.,currency.aiml
+0,WHAT IS THE CURRENCY OF VENEZUELA,*,*,Bolivar.,currency.aiml
+0,WHAT IS THE CURRENCY OF VIETNAM,*,*,Dong.,currency.aiml
+0,WHAT IS THE CURRENCY OF VIRGIN ISLANDS,*,*,US Dollar (Pound Sterling and East Caribbean Dollar also circulate).,currency.aiml
+0,WHAT IS THE CURRENCY OF WALLIS *,*,*,Franc des Comptoirs francais du Pacifique.,currency.aiml
+0,WHAT IS THE CURRENCY OF WEST AFRICA,*,*,West African Franc.,currency.aiml
+0,WHAT IS THE CURRENCY OF WESTERN SAHARA,*,*,Moroccan Dirham and Mauritanian Ouguiya.,currency.aiml
+0,WHAT IS THE CURRENCY OF WESTERN SAMOA,*,*,Tala.,currency.aiml
+0,WHAT IS THE CURRENCY OF YEMEN,*,*,Riyal (Dinar was used in South Yemen).,currency.aiml
+0,WHAT IS THE CURRENCY OF YUGOSLAVIA,*,*,Serbian Dinar (Serbia)#Comma Euro (Montenegro)#Comma Euro (Kosovo and Metohia).,currency.aiml
+0,WHAT IS THE CURRENCY OF ZAIRE,*,*,Franc de la Communaute financiere africaine.,currency.aiml
+0,WHAT IS THE CURRENCY OF ZAMBIA,*,*,Zambian Kwacha.,currency.aiml
+0,WHAT IS THE CURRENCY OF ZIMBABWE,*,*,Zimbabwe Dollar.,currency.aiml

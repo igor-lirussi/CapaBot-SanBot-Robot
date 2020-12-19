@@ -48,6 +48,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -170,6 +171,13 @@ public class MyDialogActivity extends TopBaseActivity {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int pos,long id)
             {
+                //todo remove
+
+                //starts weather activity
+                Intent myIntent = new Intent(MyDialogActivity.this, MyWeatherActivity.class);
+                MyDialogActivity.this.startActivity(myIntent);
+                //terminates
+                finish();
                 youCanSay = getString(R.string.you_can_say)+" " + examples[pos];
                 Toast.makeText(getApplicationContext(), youCanSay, Toast.LENGTH_SHORT).show();
                 speechManager.startSpeak("Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
@@ -247,6 +255,28 @@ public class MyDialogActivity extends TopBaseActivity {
 
         Log.i("IGOR-SPEECH", "DURATION BOT millisec: " + (System.nanoTime() - startTime)/1000000);
 
+
+        Log.i("IGOR-SPEECH","-START SILENT PRESENTATION");
+        //grabbing the name from the previous activity
+        Intent intent = getIntent();
+        String name_received = "";
+        try {
+            name_received = intent.getExtras().getString("name");
+        } catch (NullPointerException e) { Log.e("IGOR-SPEECH","no name received in the intent");}
+
+        //if the name is passed/exists
+        if(name_received!= null && !name_received.equals("")) {
+            //creating a silent presentation with the name received
+            String silent_presentation = "my name is " + name_received;
+            //the silent presentation is given to the conversational engine that memorizes the name
+            String response = chat.multisentenceRespond(silent_presentation);
+            Log.i("IGOR-SPEECH", "Human: " + silent_presentation);
+            Log.i("IGOR-SPEECH", "Robot: " + response);
+        } else {
+            Log.i("IGOR-SPEECH","-NAME NOT PASSED");
+        }
+        Log.i("IGOR-SPEECH","-FINISH SILENT PRESENTATION");
+
     }
 
     /**
@@ -284,11 +314,12 @@ public class MyDialogActivity extends TopBaseActivity {
             @Override
             public void onSleep() {
                 Log.i("IGOR-DIAL", "SLEEP callback");
+                //infiniteWakeup is a custom variable to control the duration
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
                 } else {
-                    //change button
+                    //change button in the view to notify the sleep status
                     imageListen.setVisibility(View.GONE);
                     wakeButton.setVisibility(View.VISIBLE);
                 }
@@ -306,20 +337,23 @@ public class MyDialogActivity extends TopBaseActivity {
 
                 //start timer
                 //long startTime = System.nanoTime();
+                //cast object received to text string lastRecognizedSentence
                 try {
                     lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
                 } catch (NullPointerException e) {
                     lastRecognizedSentence = "null";
                 }
-                //recognized
-                //notify update to UI
+                //recognized part
+                //notify update to UI with a separate thread not to freeze the interface
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //update ui
+                        //update ui with text recognized
                         tvSpeechRecognizeResult.setText(lastRecognizedSentence);
                     }
                 });
+
+                //here can start the computation on the text recognized
 
                 //IGOR: must not exceed 200ms (or less?) don't trust the documentation(500ms), I had to create an handler
                 //handler so the function could return quickly true, otherwise the robot answers random things over your answers.
@@ -571,11 +605,15 @@ public class MyDialogActivity extends TopBaseActivity {
                             wakeUpListening();
                         }
                         */
+                        showRandomFace();
                         //chatbot
+                        long startTime = System.nanoTime();
                         String response = chat.multisentenceRespond(lastRecognizedSentence);
 
                         Log.i("IGOR-SPEECH","Human: "+lastRecognizedSentence);
                         Log.i("IGOR-SPEECH","Robot: " + response);
+
+                        Log.i("IGOR-SPEECH", "DURATION COMPUTED RESPONSE millisec: " + (System.nanoTime() - startTime)/1000000);
                         speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
                         concludeSpeak(speechManager);
                         wakeUpListening();
@@ -699,36 +737,39 @@ public class MyDialogActivity extends TopBaseActivity {
         noResponseAction.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(noResponse == 0) {
-                    //first time waiting too much asks for out loud
-                    speechManager.startSpeak("please speak out loud!", MySettings.getSpeakDefaultOption());
-                    wakeUpListening();
-                    noResponse ++;
-                } if (noResponse == 1)  {
-                    //sends to the bot the "NO RESPONSE" code
-                    String response = chat.multisentenceRespond("NORESP");
+                switch (noResponse) {
+                    case 1:
+                        //first time waiting too much asks for out loud
+                        speechManager.startSpeak("please speak out loud!", MySettings.getSpeakDefaultOption());
+                        wakeUpListening();
+                        noResponse++;
+                        break;
+                    case 2:
+                        //sends to the bot the "NO RESPONSE" code
+                        String response = chat.multisentenceRespond("NORESP");
 
-                    Log.i("IGOR-SPEECH","Human @not responded@");
-                    Log.i("IGOR-SPEECH","Robot: " + response);
-                    speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
-                    concludeSpeak(speechManager);
-                    wakeUpListening();
-                    noResponse ++;
-                } else {
-                    //force sleep
-                    infiniteWakeup = false;
-                    speechManager.doSleep();
-                    //angry emotion
-                    systemManager.showEmotion(EmotionsType.ANGRY);
-                    //flicker leds
-                    hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_FLICKER_RED));
-                    //speak
-                    speechManager.startSpeak(getString(R.string.no_answer), MySettings.getSpeakDefaultOption());
-                    //starts base activity
-                    Intent myIntent = new Intent(MyDialogActivity.this, MyBaseActivity.class);
-                    MyDialogActivity.this.startActivity(myIntent);
-                    //terminates
-                    finish();
+                        Log.i("IGOR-SPEECH","Human @not responded@");
+                        Log.i("IGOR-SPEECH","Robot: " + response);
+                        speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
+                        concludeSpeak(speechManager);
+                        wakeUpListening();
+                        noResponse++;
+                        break;
+                    default:
+                        //force sleep
+                        infiniteWakeup = false;
+                        speechManager.doSleep();
+                        //angry emotion
+                        systemManager.showEmotion(EmotionsType.ANGRY);
+                        //flicker leds
+                        hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_FLICKER_RED));
+                        //speak
+                        speechManager.startSpeak(getString(R.string.no_answer), MySettings.getSpeakDefaultOption());
+                        //starts base activity
+                        Intent myIntent = new Intent(MyDialogActivity.this, MyBaseActivity.class);
+                        MyDialogActivity.this.startActivity(myIntent);
+                        //terminates
+                        finish();
                 }
             }
         }, 1000 * MySettings.getSeconds_waitingResponse());
@@ -736,7 +777,7 @@ public class MyDialogActivity extends TopBaseActivity {
 
     private void indicate(int desiredCardinalAngle) {
         //INDICATION
-        //if not initiated the gyro
+        //if not initiated the gyroscope
         if (currentCardinalAngle == 0) {
             //looking around to initiate the gyro
             int lookingAroundAngle = 50;
@@ -760,6 +801,78 @@ public class MyDialogActivity extends TopBaseActivity {
         absoluteAngleHandMotion = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_LEFT, 5, 180);
         handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
         sleepy(2);
+    }
+
+    public void showRandomFace() {
+        double random_num = Math.random();
+        Log.i("IGOR-DIAL", "Random for face = " + random_num);
+        //probability not to show any face
+        if (random_num > 0.5) {
+            //showing random face
+            int min = 0, max = 20;
+            int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
+            switch (randomNum) {
+                case 1:
+                    systemManager.showEmotion(EmotionsType.ABUSE);
+                    break;
+                case 2:
+                    systemManager.showEmotion(EmotionsType.ANGRY);
+                    break;
+                case 3:
+                    systemManager.showEmotion(EmotionsType.ARROGANCE);
+                    break;
+                case 4:
+                    systemManager.showEmotion(EmotionsType.CRY);
+                    break;
+                case 5:
+                    systemManager.showEmotion(EmotionsType.FAINT);
+                    break;
+                case 6:
+                    systemManager.showEmotion(EmotionsType.GOODBYE);
+                    break;
+                case 7:
+                    systemManager.showEmotion(EmotionsType.GRIEVANCE);
+                    break;
+                case 8:
+                    systemManager.showEmotion(EmotionsType.KISS);
+                    break;
+                case 9:
+                    systemManager.showEmotion(EmotionsType.LAUGHTER);
+                    break;
+                case 10:
+                    systemManager.showEmotion(EmotionsType.PICKNOSE);
+                    break;
+                case 11:
+                    systemManager.showEmotion(EmotionsType.PRISE);
+                    break;
+                case 12:
+                    systemManager.showEmotion(EmotionsType.QUESTION);
+                    break;
+                case 13:
+                    systemManager.showEmotion(EmotionsType.SHY);
+                    break;
+                case 14:
+                    systemManager.showEmotion(EmotionsType.SLEEP);
+                    break;
+                case 15:
+                    systemManager.showEmotion(EmotionsType.SMILE);
+                    break;
+                case 16:
+                    systemManager.showEmotion(EmotionsType.SNICKER);
+                    break;
+                case 17:
+                    systemManager.showEmotion(EmotionsType.SURPRISE);
+                    break;
+                case 18:
+                    systemManager.showEmotion(EmotionsType.SWEAT);
+                    break;
+                case 19:
+                    systemManager.showEmotion(EmotionsType.WHISTLE);
+                    break;
+                default:
+                    systemManager.showEmotion(EmotionsType.NORMAL);
+            }
+        }
     }
 
     //CHATBOT

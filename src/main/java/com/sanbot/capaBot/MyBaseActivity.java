@@ -51,6 +51,7 @@ import com.sanbot.opensdk.function.unit.SpeechManager;
 import com.sanbot.opensdk.function.unit.SystemManager;
 import com.sanbot.opensdk.function.unit.WheelMotionManager;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.GyroscopeListener;
+import com.sanbot.opensdk.function.unit.interfaces.hardware.PIRListener;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.TouchSensorListener;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.VoiceLocateListener;
 import com.sanbot.opensdk.function.unit.interfaces.media.FaceRecognizeListener;
@@ -198,20 +199,16 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         systemManager.switchFloatBar(true, getClass().getName());
 
         //permissions
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE}, 12);
         }
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE}, 12);
         }
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{CAMERA}, 12);
         }
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{INTERNET}, 12);
         }
         //LOAD handshakes
@@ -262,6 +259,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 }
             }
         }, 1000*MySettings.getSeconds_checkingBattery());
+
 
         //update view
         updateView();
@@ -320,9 +318,9 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                                 knowYouMeeting(user_name);
                             } else {
                                 //PERSON UNKNOWN
-                                //todo deactivated and used knowYou
-                                //firstMeeting();
-                                knowYouMeeting(" ");
+                                //deactivated unknown presentation and used knowYou
+                                //riseHand();
+                                knowYouMeeting("");
                             }
                         } else {
                             Log.i(TAG, "justGreeted = true, detection aborted");
@@ -419,7 +417,23 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 }
             }
         });
-
+        //pir localization
+        hardWareManager.setOnHareWareListener(new PIRListener() {
+            @Override
+            public void onPIRCheckResult(boolean isCheck, int part) {
+                if(part != 1) {
+                    Log.i(TAG, "PIR back triggered -> rotating");
+                    if (!busy && MySettings.isSoundRotationAllowed()) {
+                        //flicker led
+                        hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_FLICKER_PINK));
+                        //rotate at angle
+                        rotateAtRelativeAngle(wheelMotionManager, 180);
+                    }
+                } else {
+                    Log.i(TAG, "PIR frontal triggered");
+                }
+            }
+        });
         //voice angle localization
         hardWareManager.setOnHareWareListener(new VoiceLocateListener() {
             @Override
@@ -562,7 +576,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                     wanderOffNow();
                     //increment stats of button interaction
                     MySettings.incrementInteractionButton();
-                    knowYouMeeting(" ");
+                    knowYouMeeting("");
                 }
             }
         });
@@ -764,8 +778,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         speechManager.startSpeak(getString(R.string.hi) + person_name, MySettings.getSpeakDefaultOption());
         concludeSpeak(speechManager);
 
-
-
         // 50% say Good morning/afternoon/ecc...
         double random_num = Math.random();
         Log.i(TAG, "Random = " + random_num);
@@ -783,11 +795,12 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             concludeSpeak(speechManager);
         }
 
-        //start the speech Answer activity.
+        //start the dialog activity.
         Intent myIntent = new Intent(MyBaseActivity.this, MyDialogActivity.class);
+        //insert the name of the person in the annex
+        myIntent.putExtra("name", person_name);
         MyBaseActivity.this.startActivity(myIntent);
-
-        //finish
+        //terminate this activity
         finish();
     }
 

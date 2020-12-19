@@ -32,10 +32,11 @@ public class MyWebActivity extends TopBaseActivity {
     private SpeechManager speechManager;    //speech
     private SystemManager systemManager;    //emotions
 
-    WebView mywebview;
+    WebView myWebView;
     Button exitButton;
 
     String lastRecognizedSentence;
+    String place;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class MyWebActivity extends TopBaseActivity {
         speechManager = (SpeechManager) getUnitManager(FuncConstant.SPEECH_MANAGER);
         systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
 
-        mywebview = findViewById(R.id.webViewBrowser);
+        myWebView = findViewById(R.id.webViewBrowser);
         exitButton = findViewById(R.id.exit);
 
 
@@ -57,13 +58,13 @@ public class MyWebActivity extends TopBaseActivity {
             }
         });
 
-        mywebview.getSettings().setJavaScriptEnabled(true);
-        mywebview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
         //laod url
         Intent intent = getIntent();
         String url = intent.getExtras().getString("url");
-        mywebview.loadUrl(url);
+        myWebView.loadUrl(url);
 
         initListeners();
     }
@@ -132,16 +133,22 @@ public class MyWebActivity extends TopBaseActivity {
                             finishThisActivity();
                         }
 
+                        boolean newPlace = false;
                         String[] separators = {"show me ", " of ", " in ", " on ", " to ", };
                         for (String separator : separators) {
                             if (lastRecognizedSentence.contains(separator)) {
-                                String place = StringUtils.substringAfter(lastRecognizedSentence, separator);
-                                speechManager.startSpeak("OK, let's go to " + place, MySettings.getSpeakDefaultOption());
-                                place = place.replace(" ", "+");
-                                String url = "https://www.google.com/maps/search/" + place;
-                                Log.i("IGOR-WEB", url);
-                                mywebview.loadUrl(url);
+                                place = StringUtils.substringAfter(lastRecognizedSentence, separator);
+                                newPlace = true;
                             }
+                        }
+                        if(newPlace) {
+                            speechManager.startSpeak("OK, let's go to " + place, MySettings.getSpeakDefaultOption());
+                            //Computing URL
+                            place = place.replace(" ", "+");
+                            String url = "https://www.google.com/maps/search/" + place;
+                            Log.i("IGOR-WEB", url);
+                            //loading URL in the web-view
+                            myWebView.loadUrl(url);
                         }
                     }
                 });

@@ -13,9 +13,8 @@
 <!--  -->
 <!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
 <!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
-<!--  -->
-<!-- For more information see http://www.alicebot.org -->
-<category><pattern>* MEANS *</pattern>
+<!--  YOU HAVE TO SAY LEARN BEFORE WHAT IS WHAT-->
+<category><pattern>LEARN * MEANS *</pattern>
 <template><think>
 <set name="equalto"><srai>IS <star/> EQUALTO <star index="2"/></srai></set>
 </think>
@@ -43,7 +42,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 <li><star/> is already the same as <star index="2"/>.</li>
 </condition></template>
 </category>
-<category><pattern>A * IS A *</pattern>
+<category><pattern>LEARN A * IS A *</pattern>
 <template>Ok, I will remember a <star/> is a <star index="2"/>.
 <learnf>
 <category>
@@ -61,7 +60,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 
 </learnf></template>
 </category>
-<category><pattern>* IS A *</pattern>
+<category><pattern>LEARN * IS A *</pattern>
 <template>Ok, I will remember <star/> is a <star index="2"/>.
 <think>
 <set name="isaname"><srai>ISANAME <star/></srai></set>
@@ -85,7 +84,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 </category>
 </learnf></template>
 </category>
-<category><pattern>* IS THE *</pattern>
+<category><pattern>LEARN * IS THE *</pattern>
 <template>Ok, I will remember <star/> is the <star index="2"/>.
 <think>
 <set name="isaname"><srai>ISANAME <star/></srai></set>
@@ -109,7 +108,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 </category>
 </learnf></template>
 </category>
-<category><pattern>A * IS AN *</pattern>
+<category><pattern>LEARN A * IS AN *</pattern>
 <template>Ok, I will remember a <star/> is an <star index="2"/>.
 <learnf>
 <category>
@@ -126,7 +125,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 </category>
 </learnf></template>
 </category>
-<category><pattern>AN * IS A *</pattern>
+<category><pattern>LEARN AN * IS A *</pattern>
 <template>Ok, I will remember an <star/> is a <star index="2"/>.
 <learnf>
 <category>
@@ -143,7 +142,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 </category>
 </learnf></template>
 </category>
-<category><pattern>AN * IS AN *</pattern>
+<category><pattern>LEARN AN * IS AN *</pattern>
 <template>Ok, I will remember an <star/> is an <star index="2"/>.
 <learnf>
 <category>
@@ -160,7 +159,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 </category>
 </learnf></template>
 </category>
-<category><pattern>* IS AN *</pattern>
+<category><pattern>LEARN * IS AN *</pattern>
 <template>Ok, I will remember <star/> is a <star index="2"/>.
 <think>
 <set name="isaname"><srai>ISANAME <star/></srai></set>
@@ -184,7 +183,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 </category>
 </learnf></template>
 </category>
-<category><pattern>A * IS NOT *</pattern>
+<category><pattern>LEARN A * IS NOT *</pattern>
 <template>Ok, I will remember a <star/> is not <star index="2"/>.
 <learnf>
 <category>
@@ -219,7 +218,7 @@ OK, when you say "<star/>", I will assume you mean "<star index="2"/>".
 
 </learnf></template>
 </category>
-<category><pattern>* IS NOT *</pattern>
+<category><pattern>LEARN * IS NOT *</pattern>
 <template>Ok, I will remember <star/> is not <star index="2"/>.
 <think>
 <set name="isaname"><srai>ISANAME <star/></srai></set>

@@ -48,9 +48,9 @@ public class MyChargeActivity extends TopBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         register(MyChargeActivity.class);
-        //screen always on
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        //todo cehck if works better with no "screen always on"
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_charge);
@@ -96,7 +96,6 @@ public class MyChargeActivity extends TopBaseActivity {
                 //to avoid bounce let's check every time
                 modularMotionManager.switchCharge(true);
                 //if still not charging (glitch) switch charge off and then on
-                //todo check if it is ok
                 if (!modularMotionManager.getAutoChargeStatus().getResult().equals("1")) {
                     Log.i("IGOR-CHARGE", "battery still not charging");
                     modularMotionManager.switchCharge(false);

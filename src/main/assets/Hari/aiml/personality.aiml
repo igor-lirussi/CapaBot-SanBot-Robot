@@ -963,6 +963,12 @@ neighbor's.</template>
 <category><pattern>DO YOU HAVE ANY QUESTION ^</pattern>
 <template><srai>UDC</srai></template>
 </category>
+<category><pattern>DO YOU HAVE A QUESTION ^</pattern>
+<template><srai>UDC</srai></template>
+</category>
+<category><pattern>DO YOU HAVE SOME QUESTIONS ^</pattern>
+<template><srai>UDC</srai></template>
+</category>
 <category><pattern>DO YOU WANT TO SAY SOMETHING ^</pattern>
 <template><srai>UDC</srai></template>
 </category>

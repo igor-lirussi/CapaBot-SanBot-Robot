@@ -45,6 +45,7 @@ public class MyCalendarDownloadAsyncTask extends AsyncTask< String, Void, String
         try {
             calendar = new CalendarBuilder().build(is);
             //Log.i("IGOR-CAL-ASYNC", "calendar RECEIVED:" +  calendar.toString());
+            //give calendar to all the classes that implement AsyncTaskListener
             listener.giveCalendar(calendar);
         } catch (IOException e) {
             e.printStackTrace();

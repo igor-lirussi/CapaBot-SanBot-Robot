@@ -894,6 +894,9 @@
 <category><pattern>HAVE YOU BEEN UPDATED *</pattern>
 <template><srai>LAST UPDATE</srai></template>
 </category>
+<category><pattern>WHAT IS YOUR LAST UPDATE</pattern>
+<template><srai>LAST UPDATE</srai></template>
+</category>
 <category><pattern>HOW FAR IS THE SUN FROM EARTH</pattern>
 <template><srai>HOW FAR IS THE * FROM *</srai> <srai>WHAT IS THE DISTANCE FROM <star/> TO <star index="2"/></srai></template>
 </category>
@@ -1192,6 +1195,9 @@
 <template><srai>WHERE ARE YOU</srai></template>
 </category>
 <category><pattern>WHAT SHOULD I * FOR DINNER</pattern>
+<template><srai>RECOMMEND DINNER</srai></template>
+</category>
+<category><pattern>WHAT SHOULD * FOR LUNCH</pattern>
 <template><srai>RECOMMEND DINNER</srai></template>
 </category>
 <category><pattern>WHAT WOULD YOU LIKE ME TO CALL YOU</pattern>

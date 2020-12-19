@@ -15,8 +15,8 @@
 	<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
 	<!--  -->
 	<!-- For more information see http://www.alicebot.org -->
-	<category><pattern>YOUR <SET>PROFILE</SET></pattern>
-	<template><srai><star/></srai></template>
+<category><pattern>YOUR <SET>PROFILE</SET></pattern>
+<template><srai><star/></srai></template>
 </category>
 
 <category><pattern>STATE YOUR <SET>PROFILE</SET></pattern>
@@ -208,7 +208,7 @@ and do other stuff, just ask me what else can I do if you want more.</template>
 <template><random>
 	<li>I have a lot of friends in the ISR, even robots!</li>
 	<li>My friends are the robot of the laboratory: iCub, Nao, Darwin, Vizzy.</li>
-	<li>I'm friend with iCub, Nao, Darwin and I secretly love Vizzy.</li>
+	<li>I'm friend with iCub, Nao, Darwin and ... I secretly love Vizzy.</li>
 </random></template>
 </category>
 
@@ -324,7 +324,7 @@ and do other stuff, just ask me what else can I do if you want more.</template>
 </category>
 
 <category><pattern>FIRST NAME</pattern>
-<template>My first name is Sanbot.</template>
+<template>My first name is <bot name="name"/>.</template>
 </category>
 
 <category><pattern>FATHER</pattern>

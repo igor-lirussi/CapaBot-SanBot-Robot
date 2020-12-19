@@ -34,7 +34,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
     static LinearLayout forecastContainerLL;
     Button exitButton;
     String city = "Lisbon,PT";
-    String summartToSay = "";
+    String summaryToSay = "";
 
     boolean infiniteWakeup = true;
 
@@ -176,13 +176,13 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
 
     @Override
     public void giveProgress(String progress, String summary) {
-        summartToSay = summary;
+        summaryToSay = summary;
         //finished task
         if (progress.equals("OK")) {
             //new thread not to lock the UI with the sleep
             new Thread(new Runnable() {
                 public void run() {
-                    speechManager.startSpeak(summartToSay, MySettings.getSpeakDefaultOption());
+                    speechManager.startSpeak(summaryToSay, MySettings.getSpeakDefaultOption());
                     concludeSpeak(speechManager);
                     speechManager.startSpeak("Are you satisfied?", MySettings.getSpeakDefaultOption());
                     concludeSpeak(speechManager);

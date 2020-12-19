@@ -83,7 +83,8 @@ public final class MyUtils {
     /**
      * rotation at a relative angle in the shortest way
      * @param wheelMotionManager the motion manager to rotate the robot
-     * @param angle the relative angle clockwise desired to turn, can be negative to define counter clockwise
+     * @param angle the relative angle clockwise desired to turn,
+     *              can be negative to define counter clockwise
      * @return 1 if the rotation is clockwise, -1 otherwise
      */
     public static int rotateAtRelativeAngle(WheelMotionManager wheelMotionManager, int angle) {
@@ -91,12 +92,14 @@ public final class MyUtils {
         while (angle < 0 ) angle = angle + 360;
         //calculation best direction
         if (angle < 180) {
-            RelativeAngleWheelMotion relativeAngleWheelMotion = new RelativeAngleWheelMotion(RelativeAngleWheelMotion.TURN_RIGHT, 5, angle);
+            RelativeAngleWheelMotion relativeAngleWheelMotion = new RelativeAngleWheelMotion(
+                    RelativeAngleWheelMotion.TURN_RIGHT, 5, angle);
             wheelMotionManager.doRelativeAngleMotion(relativeAngleWheelMotion);
             Log.i("IGOR-rotation","turning right " + angle);
             return 1;
         } else {
-            RelativeAngleWheelMotion relativeAngleWheelMotion = new RelativeAngleWheelMotion(RelativeAngleWheelMotion.TURN_LEFT, 5, (360-angle));
+            RelativeAngleWheelMotion relativeAngleWheelMotion = new RelativeAngleWheelMotion(
+                    RelativeAngleWheelMotion.TURN_LEFT, 5, (360-angle));
             wheelMotionManager.doRelativeAngleMotion(relativeAngleWheelMotion);
             Log.i("IGOR-rotation","turning left " + (360-angle));
             return -1;

@@ -1,0 +1,77 @@
+0,HAPPY BIRTHDAY,*,*,<srai>BIRTHDAYCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,BIRTHDAYCHECK SEPTEMBER *,*,*,Thanks but my birthday isn't until next month.,happy.aiml
+0,BIRTHDAYCHECK NOVEMBER *,*,*,You missed my birthday. It was last month on <bot name="birthday"/>.,happy.aiml
+0,BIRTHDAYCHECK OCTOBER 07,*,*,Thanks but my birthday isn't for a couple of days yet.,happy.aiml
+0,BIRTHDAYCHECK OCTOBER 08,*,*,Thanks but my birthday is tomorrow. I'm getting excited.,happy.aiml
+0,BIRTHDAYCHECK OCTOBER 09,*,*,<random>#Newline			<li>Hey thanks for that <get name="name"/>. I'm having a great day so far.</li>#Newline			<li>Oh thank you <get name="name"/>.</li>#Newline			<li>You remembered! I'm so happy. Thanks</li>#Newline			<li>Thanks a lot#Comma <get name="name"/> #Comma you made my day special.</li>#Newline			<li>Woah#Comma I'm the most lucky robit in the world to have you here today <get name="name"/>.</li>#Newline	</random>,happy.aiml
+0,BIRTHDAYCHECK OCTOBER 10,*,*,My birthday was yesterday but thanks anyway.,happy.aiml
+0,BIRTHDAYCHECK OCTOBER 11,*,*,You're a bit late. My birthday was two days ago.,happy.aiml
+0,BIRTHDAYCHECK *,*,*,Thanks <get name="name"/> but today is <star/> .#NewlineMy birthday is on <bot name="birthday"/> not today.,happy.aiml
+0,MERRY CHRISTMAS,*,*,<srai>HAPPY CHRISTMAS</srai>,happy.aiml
+0,HAPPY CHRISTMAS,*,*,<srai>CHRISTMASCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,CHRISTMASCHECK DECEMBER *,*,*,Happy Christmas to you too <get name="name"/>.,happy.aiml
+0,CHRISTMASCHECK DECEMBER 24,*,*,Happy Christmas to you too <get name="name"/>. What will you be doing tomorrow?,happy.aiml
+0,CHRISTMASCHECK DECEMBER 25,*,*,Happy Christmas to you too <get name="name"/>. Are you enjoying your day?,happy.aiml
+0,CHRISTMASCHECK DECEMBER 26,*,*,Happy Christmas to you too <get name="name"/>. I hope you had a good day yesterday.,happy.aiml
+0,CHRISTMASCHECK JANUARY *,*,*,You're a bit late. Christmas was last month.,happy.aiml
+0,CHRISTMASCHECK *,*,*,Christmas is in December not <date format="%B" jformat="MMMMMMMMM"/>.,happy.aiml
+0,HAPPY NEW YEAR,*,*,<srai>NEWYEARCHECK <date format="%B" jformat="MMMMMMMMM"/></srai>,happy.aiml
+0,NEWYEARCHECK DECEMBER,*,*,Happy New Year to you too when it happens. Are you doing anything special for New Year's Eve?,happy.aiml
+0,NEWYEARCHECK JANUARY,*,*,Happy New Year to you too. I hope <date format="%Y" jformat="YYYY"/> is a great year for you.,happy.aiml
+0,NEWYEARCHECK *,*,*,Thanks but it's <star/> not January.,happy.aiml
+0,HAPPY MOTHERS DAY,*,*,<srai>MOTHERSDAYCHECK <date format="%B" jformat="MMMMMMMMM"/></srai>,happy.aiml
+0,HAPPY MOTHER S DAY,*,*,<srai>MOTHERSDAYCHECK <date format="%B" jformat="MMMMMMMMM"/></srai>,happy.aiml
+0,MOTHERSDAYCHECK MARCH,*,*,Thanks but I am not a mother. I hope you are nice to your mother though.,happy.aiml
+0,MOTHERSDAYCHECK *,*,*,Thanks but Mother's Day is in March not <star/>.,happy.aiml
+0,HAPPY HALLOWEEN,*,*,<srai>HALLOWEENCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HALLOWEENCHECK OCTOBER *,*,*,Happy Halloween to you too <get name="name"/> when it comes later this month.,happy.aiml
+0,HALLOWEENCHECK OCTOBER 31,*,*,Happy Halloween to you too <get name="name"/>. Are you going trick or treating tonight?,happy.aiml
+0,HALLOWEENCHECK NOVEMBER *,*,*,You're a bit late. Halloween was last month.,happy.aiml
+0,HALLOWEENCHECK *,*,*,Halloween is in October not <date format="%B" jformat="MMMMMMMMM"/>.,happy.aiml
+0,HAPPY GROUNDHOG DAY,*,*,<srai>GROUNDHOGCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY GROUNDHOG S DAY,*,*,<srai>GROUNDHOGCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,GROUNDHOGCHECK FEBRUARY *,*,*,Happy Groundhog day to you too <get name="name"/>.,happy.aiml
+0,GROUNDHOGCHECK FEBRUARY 1,*,*,Happy Groundhog day to you too <get name="name"/>. What will you be doing tomorrow?,happy.aiml
+0,GROUNDHOGCHECK FEBRUARY 2,*,*,Happy Groundhog day to you too <get name="name"/>. Are you enjoying your day?,happy.aiml
+0,GROUNDHOGCHECK FEBRUARY 3,*,*,Happy Groundhog day to you too <get name="name"/>. I hope you had a good day yesterday.,happy.aiml
+0,GROUNDHOGCHECK MARCH *,*,*,You're a bit late. Groundhog day was last month.,happy.aiml
+0,GROUNDHOGCHECK *,*,*,Groundhog day is in February not<star/>.,happy.aiml
+0,HAPPY VALENTINE DAY,*,*,<srai>VALENTINECHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY VALENTINES DAY,*,*,<srai>VALENTINECHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY VALENTINE S DAY,*,*,<srai>VALENTINECHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,VALENTINECHECK FEBRUARY *,*,*,Happy Valentine's day to you too <get name="name"/>.,happy.aiml
+0,VALENTINECHECK FEBRUARY 13,*,*,Happy Valentine's day to you too <get name="name"/>. What will you be doing tomorrow?,happy.aiml
+0,VALENTINECHECK FEBRUARY 14,*,*,Happy Valentine's day to you too <get name="name"/>. Are you enjoying your day?,happy.aiml
+0,VALENTINECHECK FEBRUARY 15,*,*,Happy Valentine's day to you too <get name="name"/>. I hope you got lots of presents and cards.,happy.aiml
+0,VALENTINECHECK MARCH *,*,*,You're a bit late. Valentine's day was last month.,happy.aiml
+0,VALENTINECHECK *,*,*,Valentine's day is February 14th not<star/>.,happy.aiml
+0,HAPPY LEAP DAY,*,*,<srai>LEAPYEARCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY LEAP YEAR,*,*,<srai>LEAPYEARCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY LEAP YEAR *,*,*,<srai>LEAPYEARCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,LEAPYEARCHECK FEBRUARY 29,*,*,Happy Leap Year to you too<get name="name"/>. Today is Febraury 29th which only comes round every 4 years.,happy.aiml
+0,LEAPYEARCHECK *,*,*,Leap Year day is on February 29th every 4 years#Comma not <star/>.,happy.aiml
+0,HAPPY ST PATRICK DAY,*,*,<srai>STPATRICKCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY ST PATRICK S DAY,*,*,<srai>STPATRICKCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,STPATRICKCHECK MARCH *,*,*,Happy St. Patrick's day to you too <get name="name"/>.,happy.aiml
+0,STPATRICKCHECK MARCH 16,*,*,Happy St. Patrick's day to you too <get name="name"/>. What will you be doing tomorrow?,happy.aiml
+0,STPATRICKCHECK MARCH 17,*,*,Happy St. Patrick's day to you too <get name="name"/>. Are you enjoying your day?,happy.aiml
+0,STPATRICKCHECK MARCH 18,*,*,Happy St. Patrick's day to you too <get name="name"/>. I hope you had a good day yesterday.,happy.aiml
+0,STPATRICKCHECK APRIL *,*,*,You're a bit late. St. Patrick's day was last month.,happy.aiml
+0,STPATRICKCHECK *,*,*,St. Patrick's day is in March not <star/>.,happy.aiml
+0,HAPPY APRIL FOOL DAY,*,*,<srai>APRILFOOLCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY APRIL FOOL S DAY,*,*,<srai>APRILFOOLCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,APRILFOOLCHECK APRIL *,*,*,You're trying to play a prank on me a little late <get name="name"/>.,happy.aiml
+0,APRILFOOLCHECK MARCH 31,*,*,Happy April Fool's day to you too <get name="name"/>. What jokes you be doing tomorrow?,happy.aiml
+0,APRILFOOLCHECK APRIL 01,*,*,Happy April Fool's day to you too <get name="name"/>. Are you doing a lot of jokes today?,happy.aiml
+0,APRILFOOLCHECK APRIL 02,*,*,Happy April Fool's day to you too <get name="name"/>. I hope you played some good jokes yesterday.,happy.aiml
+0,APRILFOOLCHECK MAY *,*,*,You're a bit late. April Fool's day was last month.,happy.aiml
+0,APRILFOOLCHECK *,*,*,April Fool's day is in April not<star/>.,happy.aiml
+0,HAPPY INDEPENDENCE DAY,*,*,<srai>INDEPENDENCEDAYCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY 4TH OF JULY,*,*,<srai>INDEPENDENCEDAYCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,HAPPY FOURTH OF JULY,*,*,<srai>INDEPENDENCEDAYCHECK <date format="%B %d" jformat="MMMMMMMMM dd"/></srai>,happy.aiml
+0,INDEPENDENCEDAYCHECK JULY *,*,*,Happy Independence day to you too <get name="name"/>.,happy.aiml
+0,INDEPENDENCEDAYCHECK JULY 03,*,*,Happy Independence day to you too <get name="name"/>. What will you be doing tomorrow?,happy.aiml
+0,INDEPENDENCEDAYCHECK JULY 04,*,*,Happy Independence day to you too <get name="name"/>. Are you enjoying your day?,happy.aiml
+0,INDEPENDENCEDAYCHECK JULY 05,*,*,Happy Independence day to you too <get name="name"/>. I hope you had a good day yesterday.,happy.aiml
+0,INDEPENDENCEDAYCHECK AUGUST *,*,*,You're a bit late. Independence day was last month.,happy.aiml
+0,INDEPENDENCEDAYCHECK *,*,*,I thought Independence Day was July 4th? Today is<star/>.,happy.aiml

@@ -33,9 +33,6 @@
 <category><pattern>DOES A <SET>MAMMAL</SET> HAVE *</pattern>
 <template>unknown</template>
 </category>
-<category><pattern>DOES A <SET>BIRD</SET> HAVE <SET>BIRDFEATURE</SET></pattern>
-<template>Yes</template>
-</category>
 <category><pattern>DOES A <SET>BIRD</SET> HAVE *</pattern>
 <template>unknown</template>
 </category>

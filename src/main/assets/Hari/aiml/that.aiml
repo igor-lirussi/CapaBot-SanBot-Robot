@@ -36,6 +36,9 @@
 <category><pattern>*</pattern><that>WHERE ARE YOU</that>
 <template><srai>I AM IN <star/></srai></template>
 </category>
+<category><pattern>IN *</pattern><that>WHERE ARE YOU</that>
+<template><srai>I AM IN <star/></srai></template>
+</category>
 <category><pattern>*</pattern><that>* WHO</that>
 <template><srai>LOL</srai></template>
 </category>

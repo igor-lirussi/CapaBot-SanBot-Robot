@@ -56,8 +56,8 @@ public class MySettings {
 
     public static boolean initializeSpeak() {
         speakDefaultOption.setLanguageType(SpeakOption.LAG_ENGLISH_US);
-        //speakDefaultOption.setSpeed(50); //from 0 to 100 default: 40
-        //speakDefaultOption.setIntonation(40); //from 0 to 100 default: 30
+        speakDefaultOption.setSpeed(50); //from 0 to 100 default: 40
+        speakDefaultOption.setIntonation(40); //from 0 to 100 default: 30
         return true;
     }
 

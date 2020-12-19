@@ -16,12 +16,10 @@
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
 <category><pattern>VERSION</pattern>
-<template>version 3.0.3</template>
+<template>version 3.1.0</template>
 </category>
 <category><pattern>BUILD</pattern>
 <template>august 2019</template>
 </category>
-<category><pattern>DELEVLOPMENT ENVIRONMENT</pattern>
-<template>work enviroment</template>
-</category>
+
 </aiml>

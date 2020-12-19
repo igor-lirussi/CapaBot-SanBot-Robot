@@ -53,10 +53,10 @@ public class MyShakeActivity extends TopBaseActivity {
     private HandMotionManager handMotionManager;    //hands movements
     private SystemManager systemManager; //emotions
     private HardWareManager hardWareManager; //leds //touch sensors //voice locate //gyroscope
-    private WheelMotionManager wheelMotionManager; //leds //touch sensors //voice locate //gyroscope
+    private WheelMotionManager wheelMotionManager; //wheels
 
 
-    //to understand if it is in the position waiting the touch of the hand
+    //boolean to understand if it is in the position waiting the touch of the hand
     private boolean waitingTouchPosition = false;
     Handler waitingTouchHandler = new Handler();
     Handler incitement = new Handler();
@@ -182,7 +182,7 @@ public class MyShakeActivity extends TopBaseActivity {
         //hand up
         AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 70);
         handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
-        //rotate ody
+        //rotate body
         rotateAtRelativeAngle(wheelMotionManager, 350);
         //rotate head
         headMotionManager.doRelativeAngleMotion(relativeAngleHeadMotionRight);

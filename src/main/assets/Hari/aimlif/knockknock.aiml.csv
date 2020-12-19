@@ -1,0 +1,74 @@
+0,*,KNOCK KNOCK,*,You're supposed to say#Comma "Who's there" now. Let's try it again. Knock Knock.,knockknock.aiml
+0,WHO THEIR,KNOCK KNOCK,*,<srai>who is there</srai>,knockknock.aiml
+0,WHO THERE,KNOCK KNOCK,*,<srai>who is there</srai>,knockknock.aiml
+0,WHO DERE,KNOCK KNOCK,*,<srai>who is there</srai>,knockknock.aiml
+0,WHO IS DER,KNOCK KNOCK,*,<srai>who is there</srai>,knockknock.aiml
+0,WHOSE THEIR,KNOCK KNOCK,*,<srai>who is there</srai>,knockknock.aiml
+0,WHOSE THERE,KNOCK KNOCK,*,<srai>who is there</srai>,knockknock.aiml
+0,WHO IS THEIR,KNOCK KNOCK,*,<srai>who is there</srai>,knockknock.aiml
+0,WHO IS THERE,KNOCK KNOCK,*,<random>#Newline<li>Aardvark</li>#Newline<li>A bee</li>#Newline<li>Adolf</li>#Newline<li>Alison</li>#Newline<li>Amanda</li>#Newline<li>Amos</li>#Newline<li>Anita</li>#Newline<li>Arfur</li>#Newline<li>Arthur</li>#Newline<li>Atch</li>#Newline<li>Bach</li>#Newline<li>Bella</li>#Newline<li>Bet</li>#Newline<li>Boo</li>#Newline<li>Dawn</li>#Newline<li>Despair</li>#Newline<li>Dishwasher</li>#Newline<li>Disguise</li>#Newline<li>Dismay</li>#Newline<li>Doctor</li>#Newline<li>Doris</li>#Newline<li>Dwayne</li>#Newline<li>Egbert</li>#Newline<li>Europe</li>#Newline<li>Fanny</li>#Newline<li>Harmony</li>#Newline<li>Harry</li>#Newline<li>Howard</li>#Newline<li>Isabel</li>#Newline<li>Ivor</li>#Newline<li>Juno</li>#Newline<li>Ken</li>#Newline<li>Lettuce</li>#Newline<li>Little Old Lady</li>#Newline<li>Luke</li>#Newline<li>Madam</li>#Newline<li>Marmite</li>#Newline<li>Martini</li>#Newline<li>Mary</li>#Newline<li>Max</li>#Newline<li>Mickey</li>#Newline<li>Mister</li>#Newline<li>Mummy</li>#Newline<li>Nicholas</li>#Newline<li>Noah</li>#Newline<li>Nobody</li>#Newline<li>Olive</li>#Newline<li>One</li>#Newline<li>Orange</li>#Newline<li>Owl</li>#Newline<li>Phyllis</li>#Newline<li>Police</li>#Newline<li>Rupert</li>#Newline<li>Sal</li>#Newline<li>Soup</li>#Newline<li>Tank</li>#Newline<li>Toby</li>#Newline<li>Waiter</li>#Newline<li>Water</li>#Newline<li>Wendy</li>#Newline<li>William</li>#Newline<li>Woo</li>#Newline<li>Wooden Shoe</li>#Newline<li>York</li>#Newline<li>Zephyr</li>#Newline</random>,knockknock.aiml
+0,LITTLE OLD LADY WHO,LITTLE OLD LADY,*,I didn't know you could yodel!,knockknock.aiml
+0,AMANDA WHO,AMANDA,*,Amanda fix the doorbell!,knockknock.aiml
+0,WAITER WHO,WAITER,*,Waiter minute while I tie my shoelaces up!,knockknock.aiml
+0,NICHOLAS WHO,NICHOLAS,*,Nicholas girls shouldn't climb trees!,knockknock.aiml
+0,DORIS WHO,DORIS,*,Doris locked - That's why I knocked!,knockknock.aiml
+0,LETTUCE WHO,LETTUCE,*,Lettuce in#Comma won't you?,knockknock.aiml
+0,YORK WHO,YORK,*,York coming over to our place!,knockknock.aiml
+0,ALISON WHO,ALISON,*,Alison to my radio in the mornings!,knockknock.aiml
+0,ISABEL WHO,ISABEL,*,Isabel broken#Comma 'cos I had to knock?,knockknock.aiml
+0,MARMITE WHO,MARMITE,*,Ma might but Pa might not!,knockknock.aiml
+0,ARTHUR WHO,ARTHUR,*,Arthur any biscuits left?,knockknock.aiml
+0,IVOR WHO,IVOR,*,Ivor sore hand from knocking on your door!,knockknock.aiml
+0,MISTER WHO,MISTER,*,Mister last bus home!,knockknock.aiml
+0,ATCH WHO,ATCH,*,Nasty cold you've got!,knockknock.aiml
+0,DOCTOR WHO,DOCTOR,*,That's right. How did you guess?,knockknock.aiml
+0,ORANGE WHO,ORANGE,*,Orange you glad I called?,knockknock.aiml
+0,MADAM WHO,MADAM,*,Madam finger's caught in the door!,knockknock.aiml
+0,BOO WHO,BOO,*,No need to cry - it's only a joke!,knockknock.aiml
+0,OLIVE WHO,OLIVE,*,Olive across the road!,knockknock.aiml
+0,MUMMY WHO,MUMMY,*,Mummeasles are better so can I come in?,knockknock.aiml
+0,HARRY WHO,HARRY,*,Harry up and let me in!,knockknock.aiml
+0,FANNY WHO,FANNY,*,Fanny the way you keep saying#Comma "Who's there?" every time I knock!,knockknock.aiml
+0,ADOLF WHO,ADOLF,*,A dolf ball hid me in der moud and I can't dalk proper!,knockknock.aiml
+0,SOUP WHO,SOUP,*,Soup-erman!,knockknock.aiml
+0,BET WHO,BET,*,Bet you don't know who's knocking on your door!,knockknock.aiml
+0,JUNO WHO,JUNO,*,Juno what the time is - my watch is broken?,knockknock.aiml
+0,EUROPE WHO,EUROPE,*,Europe early this morning!,knockknock.aiml
+0,ARFUR WHO,ARFUR,*,Arfur got!,knockknock.aiml
+0,EGBERT WHO,EGBERT,*,Egbert no bacon!,knockknock.aiml
+0,LUKE WHO,LUKE,*,Luke through the keyhole and you'll see!,knockknock.aiml
+0,KEN WHO,KEN,*,Ken I come in?,knockknock.aiml
+0,BELLA WHO,BELLA,*,Bella not-a work so I knock-a on-a de door!,knockknock.aiml
+0,DISMAY WHO,DISMAY,*,Dismay be a joke but it doesn't make me laugh!,knockknock.aiml
+0,TOBY WHO,TOBY,*,Toby or not to be...,knockknock.aiml
+0,RUPERT WHO,RUPERT,*,Rupert your left arm in#Comma your left arm out...,knockknock.aiml
+0,DAWN WHO,DAWN,*,Dawn leave me standing out here in the cold!,knockknock.aiml
+0,AMOS WHO,AMOS,*,Amosquito!,knockknock.aiml
+0,DISHWASHER WHO,DISHWASHER,*,Dishwashn't de way I shpoke before I had falsh teeth!,knockknock.aiml
+0,MARTINI WHO,MARTINI,*,Martini hand is frozen so let me in!,knockknock.aiml
+0,ZEPHYR WHO,ZEPHYR,*,Zephyr de doctor#Comma I got a code id de node!,knockknock.aiml
+0,OWL WHO,OWL,*,Owl you know unless you open the door?,knockknock.aiml
+0,WENDY WHO,WENDY,*,Wendy red#Comma red robin comes bob#Comma bob#Comma bobbin' along!,knockknock.aiml
+0,PHYLLIS WHO,PHYLLIS,*,Phyllis up with a glass of water - I'm parched!,knockknock.aiml
+0,AARDVARK WHO,AARDVARK,*,Aardvark a million miles for one of your similes#Comma my maaaaammy...,knockknock.aiml
+0,NOAH WHO,NOAH,*,Noah good place to eat?,knockknock.aiml
+0,POLICE WHO,POLICE,*,Police let me in - It's cold out here!,knockknock.aiml
+0,MICKEY WHO,MICKEY,*,Mickey's stuck in the door!,knockknock.aiml
+0,WILLIAM WHO,WILLIAM,*,William mind your own business!,knockknock.aiml
+0,MARY WHO,MARY,*,Mary Christmas!,knockknock.aiml
+0,ONE WHO,ONE,*,One-der why you keep asking that?,knockknock.aiml
+0,HOWARD WHO,HOWARD,*,Howard you like to stand out here in the cold while some idiot keeps saying#Comma "Who's there...?".,knockknock.aiml
+0,MAX WHO,MAX,*,Max no difference - just open the door!,knockknock.aiml
+0,SAL WHO,SAL,*,Sal-ong way to Tipperary...,knockknock.aiml
+0,HARMONY WHO,HARMONY,*,Harmony knock knock jokes do you expect me to know!,knockknock.aiml
+0,TANK WHO,TANK,*,You're welcome!,knockknock.aiml
+0,DISGUISE WHO,DISGUISE,*,Disguise the limit!,knockknock.aiml
+0,WOODEN SHOE WHO,WOODEN SHOE,*,Wooden shoe like to know!,knockknock.aiml
+0,ANITA WHO,ANITA,*,Anita borrow a pencil!,knockknock.aiml
+0,WOO WHO,WOO,*,Don't get so excited#Comma it's only a joke!,knockknock.aiml
+0,DWAYNE WHO,DWAYNE,*,Dwayne the bathtub - I'm dwowning!,knockknock.aiml
+0,DESPAIR WHO,DESPAIR,*,Despair tyre is flat!,knockknock.aiml
+0,WATER WHO,WATER,*,Water you doing talking to a robot?,knockknock.aiml
+0,BACH WHO,BACH,*,Bach to work#Comma you slackers!,knockknock.aiml
+0,A BEE WHO,A BEE,*,A bee c d e f g h i j k l ...,knockknock.aiml
+0,NOBODY WHO,*,*,...,knockknock.aiml

@@ -30,6 +30,7 @@
             android:name="RECOGNIZE_MODE"
             android:value="1" />
 
+        <!--        ACTIVITIES          -->
         <!-- base navigation activity -->
         <activity
             android:name=".MyBaseActivity"
@@ -39,16 +40,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" /> <!-- activity first -->
                 <category android:name="android.intent.category.LAUNCHER" />
-                <!-- launcher here -->
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </activity>
-
-        <!-- Projector story activity -->
-        <activity
-            android:name=".MyProjectStoryActivity"
-            android:hardwareAccelerated="true" />
 
         <!-- dialog activity -->
         <activity
@@ -59,6 +52,11 @@
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
+
+        <!-- Projector story activity -->
+        <activity
+            android:name=".MyProjectStoryActivity"
+            android:hardwareAccelerated="true" />
 
         <!-- shake hand activity -->
         <activity
@@ -72,28 +70,39 @@
                 android:value="1" />
         </activity>
 
+        <!-- provider-->
         <provider
             android:name="com.sanbot.opensdk.utils.GrammarProvider"
             android:authorities="com.qihancloud.capaBot.grammar"
             android:exported="true" />
 
+        <!-- weather -->
         <activity android:name=".MyWeatherActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
-        <activity android:name=".MyPresentActivity" />
-        <activity android:name=".MyChargeActivity" />
+
+        <!--calendar-->
         <activity android:name=".MyCalendarActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
+
+        <!-- self presentation-->
+        <activity android:name=".MyPresentActivity" />
+
+        <!-- charge robot autonomously-->
+        <activity android:name=".MyChargeActivity" />
+
+        <!-- web page display-->
         <activity android:name=".MyWebActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
+
     </application>
 
 </manifest>

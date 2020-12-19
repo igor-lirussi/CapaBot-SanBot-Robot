@@ -1,0 +1,371 @@
+0,WHAT HAPPENED TODAY,*,*,<srai>WHAT HAPPENED TODAY ON THIS DAY</srai>,onthisday.aiml
+0,ON THIS DAY _,*,*,<srai>ON THIS DAY</srai>,onthisday.aiml
+0,_ ON THIS DAY,*,*,<srai>ON THIS DAY</srai>,onthisday.aiml
+0,_ ON THIS DAY *,*,*,<srai>ON THIS DAY</srai>,onthisday.aiml
+0,ON THIS DAY,*,*,On this day in history <date format="%B %d" jformat="MMMMMMMMM dd"/>: <srai><date format="%B %d"/></srai>,onthisday.aiml
+0,JANUARY 01,*,*,1785 - The Daily Universal Register was first published (later to become The Times newspaper) . #Newline1958 - The EEC came into being . #Newline1959 - Fidel Castro came to power in Cuba . #Newline1973 - Britain and Ireland joined the EEC,onthisday.aiml
+0,JANUARY 02,*,*,1769 - The opening of the Royal Academy . #Newline1971 - The Ibrox disatser at the Rangers v Celtic match,onthisday.aiml
+0,JANUARY 03,*,*,1924 - Howard Carter discovered the sarcophagus of Tutankhamun . #Newline1959 - Alaska became the forty-ninth US State,onthisday.aiml
+0,JANUARY 04,*,*,1932 - The Congress Party of India was declared illegal and its leader Mahatma Gandhi arrested,onthisday.aiml
+0,JANUARY 05,*,*,1066 - Edward the Confessor died thus setting in motion a train of events which led to the Norman Conquest . #Newline1981 - Peter Sutcliffe (the Yorkshire Ripper) was arrested and charged with murder,onthisday.aiml
+0,JANUARY 06,*,*,1838 - Samuel Morse demonstrated his electric telegraph system for the first time,onthisday.aiml
+0,JANUARY 07,*,*,1558 - England lost her last possession on the mainland of France when the French recaptured Calais . #Newline1785 - The first airborne crossing of the English Channel by Jean Pierre Blanchard,onthisday.aiml
+0,JANUARY 08,*,*,1815 - The Battle of New Orleans . #Newline1959 - Charles de Gaulle became President of France,onthisday.aiml
+0,JANUARY 09,*,*,1799 - Income Tax was introduced in Britain . #Newline1957 - Anthony Eden resigned as Prime Minister . #Newline1972 - The liner Queen Elizabeth caught fire and sank in Hong Kong Harbour,onthisday.aiml
+0,JANUARY 10,*,*,1645 - The Archbishop of Canterbury#Comma William Laud#Comma was beheaded for treason . #Newline1840 - The Penny Post introduced . #Newline1863 - The London Underground railway system was opened . #Newline1946 - The first meeting of the United Nations' General Assembly (in London),onthisday.aiml
+0,JANUARY 11,*,*,1946 - King Zog of Albania deposed,onthisday.aiml
+0,JANUARY 12,*,*,1970 - First trans-Atlantic flight of a jumbo jet,onthisday.aiml
+0,JANUARY 13,*,*,1893 - The Independent British Labour Party formed,onthisday.aiml
+0,JANUARY 14,*,*,1878 - First demonstration of Bell's telephone,onthisday.aiml
+0,JANUARY 15,*,*,1759 - British Museum opened,onthisday.aiml
+0,JANUARY 16,*,*,1780 - Battle of Cape St Vincent . #Newline1920 - Prohibition introduced in the United States . #Newline1970 - Colonel Gadaffi appointed Prime Minister of Libya,onthisday.aiml
+0,JANUARY 17,*,*,1912 - Captain Scott reached the South Pole,onthisday.aiml
+0,JANUARY 18,*,*,1778 - Captain Cook discovered Hawaii and named them the Sandwich Islands . #Newline1919 - The Versailles peace conference opened . #Newline1943 - The siege of Leningrad lifted . #Newline1963 - The death of Hugh Gaitskell,onthisday.aiml
+0,JANUARY 19,*,*,1966 - Indira Gandhi became Prime Minister of India . #Newline1981 - American hostages released by Islamic Fundementalists in Tehran,onthisday.aiml
+0,JANUARY 20,*,*,1987 - Terry Waite kidnapped in Beirut,onthisday.aiml
+0,JANUARY 21,*,*,1793 - Louis XVI of France executed . #Newline1924 - Death of Lenin . #Newline1976 - Inaugural flights of Concorde (from London to Bahrain and from Paris to Rio de Janeiro),onthisday.aiml
+0,JANUARY 22,*,*,1901 - Death of Queen Victoria . #Newline1902 - First radio transmission by Marconi . #Newline1924 - Britain's first Labour government came to power,onthisday.aiml
+0,JANUARY 23,*,*,1968 - The boarding of the US spy ship Pueblo by North Korea,onthisday.aiml
+0,JANUARY 24,*,*,AD 41 - Roman Emperor Caligula murdered in Rome . #Newline1916 - Conscription introduced in Britain . #Newline1965 - Death of Sir Winston Churchill,onthisday.aiml
+0,JANUARY 25,*,*,1919 - The League of Nations founded . #Newline1981 - Social Democrats formed by Williams#Comma Rodgers#Comma Jenkins and Owen,onthisday.aiml
+0,JANUARY 26,*,*,1841 - Hong Kong became British sovereign territory . #Newline1885 - The murder of General Gordon at Khartoum . #Newline1886 - First public demonstration of Carl Benz's motor car,onthisday.aiml
+0,JANUARY 27,*,*,1926 - John Logie Baird demonstrated television at the Royal Institution . #Newline1973 - American military action in Vietnam ended,onthisday.aiml
+0,JANUARY 28,*,*,1547 - Death of Henry VIII . #Newline1814 - Death of Charlemagne,onthisday.aiml
+0,JANUARY 29,*,*,1856 - The Victoria Cross instituted,onthisday.aiml
+0,JANUARY 30,*,*,1933 - Adolf Hitler appointed Chancellor of Germany . #Newline1649 - Execution of King Charles I . #Newline1948 - Execution of Mahatma Gandhi . #Newline1972 - Thirteen people killed in Londonderry (Bloody Sunday),onthisday.aiml
+0,JANUARY 31,*,*,1606 - Execution of Guy Fawkes . #Newline1958 - First US earth satellite launched,onthisday.aiml
+0,FEBRUARY 01,*,*,1979 - Ayatollah Khomieni returned to Iran after 14 years of exile in France,onthisday.aiml
+0,FEBRUARY 02,*,*,1945 - Surrender of the German army at Stalingrad,onthisday.aiml
+0,FEBRUARY 03,*,*,1919 - The first meeting of the League of Nations (in Paris),onthisday.aiml
+0,FEBRUARY 04,*,*,1861 - Formation of the Confederacy of Southern States . #Newline1904 - Russo-Japanese War began,onthisday.aiml
+0,FEBRUARY 05,*,*,1974 - US heiress Patty Hearst kidnapped,onthisday.aiml
+0,FEBRUARY 06,*,*,1918 - The Representation of the People's Act gave votes to married women over the age of 30 . #Newline1952 - Death of King George VI . #Newline1958 - Munich air disaster,onthisday.aiml
+0,FEBRUARY 07,*,*,1301 - Edward II became the first English Prince of Wales,onthisday.aiml
+0,FEBRUARY 08,*,*,1587 - Mary Queen of Scots executed at Fotheringay Castle . #Newline1965 - Cigarette advertising was banned on British television . #Newline1983 - Derby winner Shergar was kidnapped,onthisday.aiml
+0,FEBRUARY 09,*,*,1540 - England's first recorded race meeting (at Chester),onthisday.aiml
+0,FEBRUARY 10,*,*,1567 - Murder of Lord Darnley#Comma husband of Mary Queen of Scots . #Newline1840 - Marriage of Queen Victoria and Prince Albert . #Newline1942 - The first official gold disc presented (to Glen Miller for Chattanooga Choo Choo),onthisday.aiml
+0,FEBRUARY 11,*,*,1585 - St Bernadette's vision of the Virgin at Lourdes . #Newline1990 - Release of Nelson Mandella from imprisonment,onthisday.aiml
+0,FEBRUARY 12,*,*,1553 - Execution of Lady Jane Grey . #Newline1688 - Flight of James II to France. William III and Mary declared King and Queen of England . #Newline1924 - The lid of the sarchophagus of Tutankhamun removed by Howard Carter,onthisday.aiml
+0,FEBRUARY 13,*,*,1542 - Catherine Howard#Comma fifth wife of Henry VIII executed . #Newline1692 - The Glencoe massacre . #Newline1945 - Fourteen hour blanket bombing of Dresden . #Newline1974 - Alexandre Solzhentsyn expelled from the Soviet Union,onthisday.aiml
+0,FEBRUARY 14,*,*,1779 - Murder of Captain James Cook in Hawaii . #Newline1797 - Battle of Cape St Vincent . #Newline1929 - The St Valentine's Day massacre in Chicago . #Newline1946 - Bank of England nationalised . #Newline1989 - Fatwa against Salman Rushdie issued by the Ayatollah Khomeni,onthisday.aiml
+0,FEBRUARY 15,*,*,1942 - Fall of Singapore to Japanese forces . #Newline1971 - Decimalisation of British currency,onthisday.aiml
+0,FEBRUARY 16,*,*,1801 - Resignation of Pitt the Younger as prime minister,onthisday.aiml
+0,FEBRUARY 17,*,*,1863 - International Red Cross founded in Geneva . #Newline1958 - Founding of the Campaign for Nuclear Disarmament,onthisday.aiml
+0,FEBRUARY 18,*,*,1478 - George#Comma Duke of Clarence murdered in the Tower of London . #Newline1678 - Publication of Pilgrim's Progress . #Newline1911 - The first airmail service came into operation (in India) . #Newline1930 - Discovery of the planet Pluto by Clyde Tombaugh,onthisday.aiml
+0,FEBRUARY 19,*,*,1800 - Napoleon Bonaparte appointed First Consul (in Paris) . #Newline1960 - Birth of Prince Andrew (the Duke of York),onthisday.aiml
+0,FEBRUARY 20,*,*,1437 - Assassination of James I of Scotland . #Newline1947 - Lord Louis Mountbatten appointed Last Viceroy of India . #Newline1962 - Colonel John Glenn first American to orbit the earth (in Friendship 7),onthisday.aiml
+0,FEBRUARY 21,*,*,1616 - Beginning of the Battle of Verdun . #Newline1965 - Murder of black muslim leader Malcolm X,onthisday.aiml
+0,FEBRUARY 22,*,*,1879 - First ever Woolworth store opened (in New York State),onthisday.aiml
+0,FEBRUARY 23,*,*,1821 - Death of Johen Keats in Rome . #Newline1836 - The siege of the Alamo begins,onthisday.aiml
+0,FEBRUARY 24,*,*,1920 - National Socialist German Workers published its first manifesto . #Newline1920 - First speech by a woman MP in Britain (Lady Astor),onthisday.aiml
+0,FEBRUARY 25,*,*,1601 - Execution of the Earl of Essex for treason . #Newline1922 - Execution of the French mass murderer Henry Landru (Bluebeard),onthisday.aiml
+0,FEBRUARY 26,*,*,1797 - First £1 notes issused by the Bank of England . #Newline1815 - Escape of Napoleon Bonaparte from Elba,onthisday.aiml
+0,FEBRUARY 27,*,*,1900 - Founding of the Parliamentary Labour Party . #Newline1933 - Burning of the Reichstag building in Berlin,onthisday.aiml
+0,FEBRUARY 28,*,*,1900 - Relief of Ladysmith by General Buller . #Newline1975 - Moorgate train disaster#Newline1986 - Assassination of Swedish Prime Minister Olaf Palme,onthisday.aiml
+0,FEBRUARY 29,*,*,1528 - Patrick Hamilton#Comma Scottish protestant martyr#Comma burned at the stake . #Newline1880 - The St Gotthard tunnel between Switzerland and Italy completed,onthisday.aiml
+0,MARCH 01,*,*,1932 - Kidnapping of the infant son of aviator Charles Lindbergh . #Newline1959 - Archbishop Makarios returned to Cyprus from exile,onthisday.aiml
+0,MARCH 02,*,*,1958 - First overland crossing of Antarctica completed by British team lead by Dr Vivien Fuchs . #Newline1970 - Rhodesia became a republic under Ian Smith . #Newline1974 - US Grand Jury ruled that President Richard Nixon was involved in the Watergate scandal . #Newline1988 - Merger of Liberal and Social Democratic parties in Britain,onthisday.aiml
+0,MARCH 03,*,*,1974 - Turkish Airliner crashed near Paris#Comma 344 killed,onthisday.aiml
+0,MARCH 04,*,*,1789 - First congress of the United States convened in New York,onthisday.aiml
+0,MARCH 05,*,*,1946 - Churchill made his famous Iron Curtain speech at Fulford#Comma Missouri . #Newline1953 - Death of Joseph Stalin,onthisday.aiml
+0,MARCH 06,*,*,1836 - The Alamo fell to Mexican forces . #Newline1987 - Zeebrugge disaster involving the ferry Herald of Free Enterprise . #Newline1988 - Three IRA terrorists shot dead in Gibraltar by members of the SAS,onthisday.aiml
+0,MARCH 07,*,*,1876 - Alexander Graham Bell patented his telephone . #Newline1912 - Frenchman Henri Seimet became the first man to fly nonstop from Paris to London,onthisday.aiml
+0,MARCH 08,*,*,1910 - Baroness de Laroche first woman to receive a pilot's licence . #Newline1966 - IRA bomb destroyed Nelson's Column in O'Connell Street#Comma Dublin,onthisday.aiml
+0,MARCH 09,*,*,1931 - Formation of the French Foreign Legion in Algeria,onthisday.aiml
+0,MARCH 10,*,*,1876 - Alexander Graham Bell made the first telephone call . #Newline1948 - Death of Czech Foreign Minister Jan Masaryk . #Newline1964 - Birth of Prince Edward,onthisday.aiml
+0,MARCH 11,*,*,1682 - Royal Chelsea Hospital founded . #Newline1985 - Mikhail Gorbachev appointed General Secretary of the Communist Party of the Soviet Union . #Newline1988 - The Bank of England £1 note ceased to be legal tender,onthisday.aiml
+0,MARCH 12,*,*,1945 - Death of Anne Frank . #Newline1969 - Marriage of Paul McCartney to Linda Eastman,onthisday.aiml
+0,MARCH 13,*,*,1781 - Discovery of the planet Uranus by Herschel . #Newline1881 - Assassination of Tsar Alexander II of Russia . #Newline1935 - Introduction of driving test in Britain . #Newline1938 - Invasion of Austria by Germany,onthisday.aiml
+0,MARCH 14,*,*,1757 - Execution of Admiral Byng . #Newline1925 - First trans-Atlantic broadcast . #Newline1953 - Nikita Khrushchev appointed first Secretary of the Soviet Communist Party,onthisday.aiml
+0,MARCH 15,*,*,44 BC - Assassination of Julius Caeser . #Newline1877 - First ever Cricket Test Match between England and Australia started in Melbourne . #Newline1917 - Abdication of Tsar Nicholas II of Russia . #Newline1949 - Ending of clothes rationing in Britain,onthisday.aiml
+0,MARCH 16,*,*,1872 - First FA Cup Final played (at Kennington Oval) . #Newline1968 - Mai Lai massacre in Vietnam,onthisday.aiml
+0,MARCH 17,*,*,1921 - Dr Marie Stopes opened Britain's first birth control clinic . #Newline1969 - Golda Meir appointed Prime Minister of Israel . #Newline1978 - Grounding of the oil tanker Amoco Cadiz on the Brittany Coast,onthisday.aiml
+0,MARCH 18,*,*,978 - Assassination of King Edward the Martyr at Corfe Castle . #Newline1584 - Death of Ivan the Terrible of Russia . #Newline1834 - The Tolpuddle Martyrs sentenced to transportation . #Newline1871 - Communard uprising in Paris . #Newline1922 - Mahatma Gandhi sentenced to six years' imprisonment . #Newline1935 - 30-mph speed limit introduced in Britain in built-up areas . #Newline1949 - Establishment of NATO . #Newline1965 - First space walk (by cosmonaut Colonel Alexei Leonov) . #Newline1967 - Grounding of the oil tanker Torrey Canyon off Land's End . #Newline1978 - Former Italian prime minister Aldo Morro kidnapped,onthisday.aiml
+0,MARCH 19,*,*,1976 - Separation of Princess Margaret and Lord Snowdon,onthisday.aiml
+0,MARCH 20,*,*,1549 - Thomas Seymour executed for treason . #Newline1974 - Attempted kidnap of Princess Anne in The Mall . #Newline1976 - Patty Hearst#Comma newspaper heiress#Comma found guilty of armed robbery,onthisday.aiml
+0,MARCH 21,*,*,1556 - Execution at the stake of Thomas Cranmer for heresy . #Newline1960 - Sharpeville massacre in South Africa,onthisday.aiml
+0,MARCH 22,*,*,1895 - First public performance of moving film . #Newline1945 - Formation of the Arab League,onthisday.aiml
+0,MARCH 23,*,*,1933 - Hitler gained absolute power in Germany,onthisday.aiml
+0,MARCH 24,*,*,1603 - Death of Elizabeth I#Newline1603 - Union of English and Scottish crowns when James VI of Scotland acceded to the English throne . #Newline1801 - Assassination of Paul I#Comma Tsar of Russia . #Newline1976 - Isabel Peron deposed as President of Argentina . #Newline1980 - Murder of Archbishop Oscar Romero in San Salvador,onthisday.aiml
+0,MARCH 25,*,*,1807 - Abolition of the slave trade in Britain . #Newline1957 - Signing of the Treaty of Rome by the six founder members of the EEC,onthisday.aiml
+0,MARCH 26,*,*,1827 - Death of Beethoven . #Newline1945 - Death of David Lloyd George,onthisday.aiml
+0,MARCH 27,*,*,1942 - Commando raid at St Nazaire . #Newline1968 - Death of Yuri Gagarin in plane crash . #Newline1989 - First democratic election for the Soviet parliament,onthisday.aiml
+0,MARCH 28,*,*,1854 - Britain entered the Crimean War . #Newline1939 - Franco's forces took Madrid. End of Spanish Civil War . #Newline1941 - Battle of Cape Matapan,onthisday.aiml
+0,MARCH 29,*,*,1461 - Battle of Towton . #Newline1871 - Royal Albert Hall opened,onthisday.aiml
+0,MARCH 30,*,*,1981 - President Reagan shot in assassination attempt in Washington,onthisday.aiml
+0,MARCH 31,*,*,1889 - Eiffel Tower opened . #Newline1959 - Dalia Lama fled Tibet . #Newline1986 - Hampton Court Palace severly damaged by fire,onthisday.aiml
+0,APRIL 01,*,*,1908 - Formation of the Territorial Army . #Newline1918 - Formation of the Royal Air Force . #Newline1947 - School leaving age raised to 15 . #Newline1948 - Blockade of Berlin by Soviet troops began . #Newline1973 - VAT introduced in the UK,onthisday.aiml
+0,APRIL 02,*,*,1801 - Battle of Copenhagen . #Newline1905 - The Simplon Tunnel officially opened . #Newline1982 - Invasion of the Falkland Islands by Argentina,onthisday.aiml
+0,APRIL 03,*,*,1860 - Founding of the Pony Express . #Newline1882 - Jesse James shot dead . #Newline1913 - Emmeline Pankhurst found guilty of inciting arson and sentenced to 3 years' imprisonment,onthisday.aiml
+0,APRIL 04,*,*,1968 - Assassination of Dr Martin Luther King . #Newline1979 - Execution of ex-President of Pakistan#Comma Zulfikar Ali Bhutto,onthisday.aiml
+0,APRIL 05,*,*,1794 - Execution of French revolutionary leader Danton . #Newline1895 - Arrest of Oscar Wilde at the Cadogen Hotel . #Newline1955 - Sir Winston Churchill resigned as Prime Minister,onthisday.aiml
+0,APRIL 06,*,*,1199 - Death of King Richard I . #Newline1830 - Founding of the Mormon Church . #Newline1896 - First modern Olympic Games opened (in Athens) . #Newline1909 - Commander Robert Peary became the first man to reach the North Pole . #Newline1917 - United States of America entered World War I . #Newline1944 - Introduction of PAYE (Pay As You Earn) in Britain,onthisday.aiml
+0,APRIL 07,*,*,1739 - Hanging of Dick Turpin at York . #Newline1958 - First "Ban The Bomb" march (to Aldermaston),onthisday.aiml
+0,APRIL 08,*,*,1838 - Maiden voyage of the Great Western . #Newline1904 - Ratification of the Entente Cordiale,onthisday.aiml
+0,APRIL 09,*,*,1865 - End of the American Civil War,onthisday.aiml
+0,APRIL 10,*,*,1974 - Resignation of Golda Meir as Israeli Prime Minister,onthisday.aiml
+0,APRIL 11,*,*,1713 - Treaty of Utrecht signed . #Newline1814 - Abdication of Napoleon Bonaparte . #Newline1961 - Trial of Adolf Eichmann began in Jerusalem . #Newline1981 - By-election at Fermanagh and South Tyrone won by IRA hunger striker Bobby Sands,onthisday.aiml
+0,APRIL 12,*,*,1606 - The Union Flag became the official flag of Britain . #Newline1861 - Start of the American Civil War . #Newline1945 - Death of Franklin D Roosevelt . #Newline1961 - First manned space flight (by Yuri Gagarin),onthisday.aiml
+0,APRIL 13,*,*,1605 - Death of Boris Godunov (Tsar of Russia) . #Newline1668 - First Poet Laureate appointed (John Dryden),onthisday.aiml
+0,APRIL 14,*,*,1865 - Assassination of President Abraham Lincoln,onthisday.aiml
+0,APRIL 15,*,*,1912 - SS Titanic sunk on maiden voyage,onthisday.aiml
+0,APRIL 16,*,*,1746 - Battle of Culloden,onthisday.aiml
+0,APRIL 17,*,*,1521 - Martin Luther excommunicated . #Newline1963 - Greville Wynne charged with espionage in Moscow . #Newline1984 - WPC Yvonne Fletcher shot dead outside the Libyan People's Bureau in London,onthisday.aiml
+0,APRIL 18,*,*,1906 - San Francisco earthquake . #Newline1946 - League of Nations dissolved in Geneva . #Newline1949 - The Republic of Ireland established . #Newline1954 - Colonel Nasser seized power in Egypt,onthisday.aiml
+0,APRIL 19,*,*,1775 - Start of the American War of Independence . #Newline1881 - Death of Disraeli . #Newline1961 - Bay of Pigs invasion in Cuba,onthisday.aiml
+0,APRIL 20,*,*,1653 - Dissolution of the Long Parliament . #Newline1657 - Spanish fleet destroyed at Santa Cruz by Admiral Blake,onthisday.aiml
+0,APRIL 21,*,*,1509 - Death of King Henry VII . #Newline1918 - Baron Manfred von Richthofen shot down in action . #Newline1926 - Birth of Her Majesty the Queen . #Newline1960 - Brasilia inaugurated as new capital of Brazil . #Newline1989 - Start of Tiananmen Square protests by Chinese students,onthisday.aiml
+0,APRIL 22,*,*,1915 - First use of poison gas (by Germans at Ypres) . #Newline1983 - Introduction of £1 coins in Britain,onthisday.aiml
+0,APRIL 23,*,*,1616 - Death of William Shakespeare (he was also born on this day in 1564) . #Newline1968 - First decimal coins circulated (5p and 10p) . #Newline1984 - Announcement of the discovery of the AIDS virus,onthisday.aiml
+0,APRIL 24,*,*,1895 - Joshua Slocum began his single-handed circumnavigation . #Newline1949 - Sweet and chocolate rationing ended in Britain,onthisday.aiml
+0,APRIL 25,*,*,1859 - Work began on construction of the Suez Canal . #Newline1916 - Easter uprising in Dublin,onthisday.aiml
+0,APRIL 26,*,*,1937 - Bombing of Guernica in Spanish Civil War . #Newline1986 - Chernobyl disaster,onthisday.aiml
+0,APRIL 27,*,*,1968 - Abortion legalised in Britain by the Abortion Act,onthisday.aiml
+0,APRIL 28,*,*,1770 - Captain James Cook landed at Botany Bay . #Newline1789 - The Mutiny on the Bounty . #Newline1945 - Assassination of Mussolini in Milan . #Newline1969 - Resignation of Charles de Gaulle as President of France,onthisday.aiml
+0,APRIL 29,*,*,1885 - Women admitted to Oxford University examinations for the first time . #Newline1945 - Surrender of Germans in Italy to the Allies,onthisday.aiml
+0,APRIL 30,*,*,311 - Legal recognition of Christianity in the Roman Empire . #Newline1789 - Inauguration of George Washington as first president of the USA . #Newline1945 - Suicide of Hitler . #Newline1975 - End of Vietnam War,onthisday.aiml
+0,MAY 01,*,*,1851 - Opening of the Great Exhibition . #Newline1931 - Opening of the Empire State Building . #Newline1960 - U-2 spy plane shot down over the USSR . #Newline1961 - Betting shops legalised in Britain . #Newline1978 - First May Day Bank Holiday in Great Britain,onthisday.aiml
+0,MAY 02,*,*,1936 - Emperor Haile Selassie fled Abyssinia in the face of Italian invasion . #Newline1982 - Sinking of the Argentinian battleship General Belgrano,onthisday.aiml
+0,MAY 03,*,*,1926 - Start of the General Strike . #Newline1951 - Opening of the Festival of Britain . #Newline1968 - First heart transplant in Britain,onthisday.aiml
+0,MAY 04,*,*,1780 - Running of the first Derby stakes (won by Diomed) . #Newline1979 - Conservative election victory (Margaret Thatcher became Britain's first woman Prime Minister) . #Newline1982 - HMS Sheffield sunk by Exocet missile during the Falklands War . #Newline1989 - Colonel Oliver North convicted of supplying arms to the Contras,onthisday.aiml
+0,MAY 05,*,*,1821 - Death of Napoleon Bonaparte . #Newline1980 - Storming of the Iranian Embassy by SAS,onthisday.aiml
+0,MAY 06,*,*,1626 - Manhattan Island purchased by Peter Minuit . #Newline1910 - Death of King Edward VII . #Newline1937 - Hindenburg airship disaster in New Jersey . #Newline1954 - Running of the first four-minute mile (by Roger Bannister at Oxford) . #Newline1974 - Resignation of German Chancellor Willy Brandt#Comma because of a spy scandal,onthisday.aiml
+0,MAY 07,*,*,1915 - Torpedoing of the liner Lusitania off the Irish Coast . #Newline1945 - The final surrender of German forces (at Rheims),onthisday.aiml
+0,MAY 08,*,*,1961 - Diplomat George Blake jailed for over 40 years for espionage . #Newline1984 - Thames Barrier opened,onthisday.aiml
+0,MAY 09,*,*,1946 - Abdication of Victor Emmanuel III of Italy . #Newline1955 - West Germany admitted to NATO,onthisday.aiml
+0,MAY 10,*,*,1857 - Start of the Indian mutiny . #Newline1940 - Churchill appointed Prime Minister on the resignation of Chamberlain . #Newline1941 - Worst day of the London Blitz . #Newline1941 - Rudolf Hess landed in Scotland . #Newline1981 - Francois Mitterand elected President of France,onthisday.aiml
+0,MAY 11,*,*,1812 - Assassination of Prime Minister Spencer Perceval . #Newline1985 - Forty people killed at Bradford City football ground in a fire,onthisday.aiml
+0,MAY 12,*,*,1926 - End of the General Strike . #Newline1949 - End of the Russian blockade of Berlin . #Newline1969 - Voting age lowered to 18,onthisday.aiml
+0,MAY 13,*,*,1981 - Assassination attempt on Pope John Paul II in Rome,onthisday.aiml
+0,MAY 14,*,*,1940 - Local Defence Volunteer Force (Home Guard) formed . #Newline1948 - State of Israel proclaimed,onthisday.aiml
+0,MAY 15,*,*,1957 - Britain's first "H" bomb test,onthisday.aiml
+0,MAY 16,*,*,1763 - Dr Johnson met James Boswell for the first time . #Newline1929 - First Academy Awards ceremony . #Newline1943 - "Dambusters" raid by 617 Squadron . #Newline1983 - First use of wheel clamps in London,onthisday.aiml
+0,MAY 17,*,*,1900 - Relief of Mafeking,onthisday.aiml
+0,MAY 18,*,*,1804 - Napoleon Bonaparte proclaimed Emperor of France,onthisday.aiml
+0,MAY 19,*,*,1536 - Execution of Anne Boleyn . #Newline1898 - Death of Gladstone . #Newline1980 - Eruption of Mount St Helens in Washington State#Comma USA,onthisday.aiml
+0,MAY 20,*,*,1506 - Death of Christopher Columbus . #Newline1956 - USA's first "H" bomb test (over Bikini Atoll),onthisday.aiml
+0,MAY 21,*,*,1916 - Introduction of British Summertime . #Newline1927 - Charles Lindbergh completed his solo Atlantic crossing,onthisday.aiml
+0,MAY 22,*,*,1972 - First visit of an American President (Richard Nixon) to USSR,onthisday.aiml
+0,MAY 23,*,*,1701 - Execution of Captain Kidd,onthisday.aiml
+0,MAY 24,*,*,1844 - First transmission of a Morse message on a US telegraph line (from Washington to Baltimore) . #Newline1941 - Sinking of HMS Hood by German battleship Bismarck,onthisday.aiml
+0,MAY 25,*,*,1871 - Passing of the Bank Holiday Act which created public holidays at Easter#Comma Whit and Christmas . #Newline1951 - "Disappearance" of Burgess and Maclean,onthisday.aiml
+0,MAY 26,*,*,1865 - End of the American Civil War . #Newline1868 - Last public execution in England (at Newgate Prison) . #Newline1950 - Petrol rationing ended in Britain,onthisday.aiml
+0,MAY 27,*,*,1679 - Passing of the Habeas Corpus Act . #Newline1936 - Maiden voyage of the Queen Mary . #Newline1941 - Sinking of the German battleship Bismarck . #Newline1964 - Death of Nehru,onthisday.aiml
+0,MAY 28,*,*,1967 - Completion of solo circumnavigation of the globe by Francis Chichester . #Newline1972 - Death of the Duke of Windsor,onthisday.aiml
+0,MAY 29,*,*,1453 - Fall of Constantinople to the Turks . #Newline1660 - Restoration of the monarchy. Charles II returned to Lndon . #Newline1871 - First British bank holiday . #Newline1953 - Hillary and Tenzing reached the summit of Everest . #Newline1985 - Heysel Stadium disaster in Brussels,onthisday.aiml
+0,MAY 30,*,*,1431 - Joan of Arc burned at the stake at Rouen . #Newline1593 - Christopher Marlowe killed in a tavern brawl in London . #Newline1959 - First hovercraft flight,onthisday.aiml
+0,MAY 31,*,*,1669 - Last entry in the diary of Samuel Pepys . #Newline1902 - End of the Boer War . #Newline1916 - Battle of Jutland . #Newline1961 - South Africa declared a republic and left the British Commonwealth,onthisday.aiml
+0,JUNE 01,*,*,1946 - Television licences introduced in Britain (£2) . #Newline1957 - The first Premium Bond winner drawn,onthisday.aiml
+0,JUNE 02,*,*,1868 - First Trade Union Congress convened . #Newline1953 - Coronation of HM Queen Elizabeth II . #Newline1962 - Britain's first legal casino opened (in Brighton) . #Newline1964 - Founding of the PLO,onthisday.aiml
+0,JUNE 03,*,*,1937 - Marriage of the Duke of Windsor to Mrs Simpson . #Newline1956 - Abolition of third class rail travel on British Railways,onthisday.aiml
+0,JUNE 04,*,*,1913 - Suffragette Emily Davison threw herself under the King's horse in the Derby . #Newline1940 - Completion of the Dunkirk evacuation . #Newline1989 - Protests in Tiananmen Square#Comma Beijing#Comma crushed by tanks,onthisday.aiml
+0,JUNE 05,*,*,1963 - Resignation of John Profumo . #Newline1967 - Six-day Arab-Israeli War began . #Newline1968 - Assassination of Senator Robert Kennedy in Los Angeles,onthisday.aiml
+0,JUNE 06,*,*,1844 - YMCA founded by George Williams . #Newline1944 - D-Day. Allied invasion of Normandy . #Newline1984 - Indian troops stormed the Golden Temple at Amritsar,onthisday.aiml
+0,JUNE 07,*,*,1329 - Death of Robert the Bruce . #Newline1929 - Vatican State created . #Newline1942 - Battle of Midway,onthisday.aiml
+0,JUNE 08,*,*,632 - Death of the Prophet Mohammed . #Newline1924 - Disappearance of Mallory and Irvine near the summit of Mount Everest,onthisday.aiml
+0,JUNE 09,*,*,1898 - Britain signed a 99-year lease on Hong Kong . #Newline1959 - First atomic powered submarine launched (USS George Washington) . #Newline1975 - First live radio broadcast from the House of Commons,onthisday.aiml
+0,JUNE 10,*,*,1829 - First Oxford - Cambridge boat race (at Henley) . #Newline1921 - Birth of HRH Prince Philip,onthisday.aiml
+0,JUNE 11,*,*,1940 - War declared on the Allies by Italy,onthisday.aiml
+0,JUNE 12,*,*,1667 - First successful blood transfusion performed (by Jean Baptiste Denys),onthisday.aiml
+0,JUNE 13,*,*,1900 - Beginning of the Boxer uprising in China . #Newline1944 - First V1 flying bomb attack on Britain,onthisday.aiml
+0,JUNE 14,*,*,1645 - Battle of Naseby . #Newline1800 - Battle of Marengo . #Newline1919 - Alcock and Brown made the first nonstop trans-Atlantic flight . #Newline1982 - Surrender of the Argentine forces in the Falklands,onthisday.aiml
+0,JUNE 15,*,*,1215 - Magna Carta signed . #Newline1381 - Killing of Wat Tyler#Comma Kentish rebel leader,onthisday.aiml
+0,JUNE 16,*,*,1903 - Formation of the Ford Motor Corporation . #Newline1958 - First yellow lines painted on British streets . #Newline1961 - Rudolph Nureyev defected to the west in Paris . #Newline1963 - Valentina Tereschkova became the first woman to travel in space . #Newline1976 - Riots in Soweto township#Comma near Johannesburg,onthisday.aiml
+0,JUNE 17,*,*,1775 - Battle of Bunker Hill . #Newline1972 - Five men arrested breaking into the Watergate building in Washington . #Newline1982 - Body of Roberto Calvi found hanging under Blackfriars Bridge,onthisday.aiml
+0,JUNE 18,*,*,1812 - USA declared war on Britain . #Newline1815 - Battle of Waterloo,onthisday.aiml
+0,JUNE 19,*,*,1829 - Formation of the Metropolitan Police . #Newline1953 - Execution of Russian spies Ethel and Julius Rosenberg in Sing Sing Prison,onthisday.aiml
+0,JUNE 20,*,*,1756 - 146 employees of the East India Company imprisoned in the "Black Hole of Calcutta" . #Newline1819 - Steamship Savannah became the first steamship to cross the Atlantic . #Newline1837 - Death of King William IV and accession of Queen Victoria to the throne . #Newline1928 - Death of explorer Roald Amundsen in a plane crash in Spitzbergen,onthisday.aiml
+0,JUNE 21,*,*,1854 - First Victoria Cross won (awarded retrospectively) . #Newline1942 - Tobruk fell to Rommel,onthisday.aiml
+0,JUNE 22,*,*,1814 - First match played at the present Lords Cricket Ground . #Newline1941 - German invasion of USSR . #Newline1979 - Jeremy Thorpe found not guilty of plotting to murder Norman Scott,onthisday.aiml
+0,JUNE 23,*,*,1757 - Battle of Plessey . #Newline1956 - Nasser became president of Egypt in unopposed election,onthisday.aiml
+0,JUNE 24,*,*,1314 - Battle of Bannockburn . #Newline1859 - Battle of Solferino - which led to the formation of the Red Cross,onthisday.aiml
+0,JUNE 25,*,*,1876 - Battle of Little Bighorn (Custer's last stand) . #Newline1950 - North Korea invaded South Korea precipitating the Korean War . #Newline1953 - John Christie sentenced to death for the murder of four women,onthisday.aiml
+0,JUNE 26,*,*,1917 - The first American troops arrived in France (under the command of General Pershing),onthisday.aiml
+0,JUNE 27,*,*,1743 - Battle of Dettingen (George II became the last British monarch to lead his troops into battle) . #Newline1905 - Mutiny aboard the Russian battleship Potemkin . #Newline1906 - First Grand Prix (at Le Mans),onthisday.aiml
+0,JUNE 28,*,*,1914 - Assassination of Archduke Franz Ferdinand at Sarajevo (precipitating World War I) . #Newline1919 - Treaty of Versailles signed,onthisday.aiml
+0,JUNE 29,*,*,1966 - Introduction of Barclaycard in Britain,onthisday.aiml
+0,JUNE 30,*,*,1859 - Blondin crossed the Niagra Fals on a tightrope . #Newline1894 - Tower Bridge opened to traffic,onthisday.aiml
+0,JULY 01,*,*,1837 - First registration of births#Comma marriages and deaths in Britain . #Newline1863 - Battle of Gettysburg . #Newline1937 - Introduction of 999 emergency number in Britain,onthisday.aiml
+0,JULY 02,*,*,1644 - Battle of Marston Moor . #Newline1850 - Death of Sir Robert Peel . #Newline1865 - Founding of the Salvation Army . #Newline1964 - Civil Rights Act in the USA signed by President Johnson,onthisday.aiml
+0,JULY 03,*,*,1898 - Captain Joshua Slocum completed his solo circumnavigation of the globe . #Newline1916 - Beginning of the Battle of the Somme . #Newline1976 - Rescue of hostages at Entebbe Airport#Comma Uganda#Comma by Israeli commandos,onthisday.aiml
+0,JULY 04,*,*,1776 - US Declaration of Independence approved by the American Congress . #Newline1848 - Publication of the Communist manifesto . #Newline1892 - Keir Hardie elected first Socialist MP (Holytown#Comma Lanarkshire),onthisday.aiml
+0,JULY 05,*,*,1948 - Introduction of the National Health Service,onthisday.aiml
+0,JULY 06,*,*,1535 - Execution of Sir Thomas More . #Newline1952 - Last London tram ran . #Newline1988 - Explosion aboard the Piper Alpha oil rig - over 160 men killed,onthisday.aiml
+0,JULY 07,*,*,1982 - Intruder Michael Fagan found in the Queen's bedroom . #Newline1985 - Live Aid concerts in London and Philadelphia,onthisday.aiml
+0,JULY 08,*,*,1822 - Death of Shelley,onthisday.aiml
+0,JULY 09,*,*,1877 - First Wimbledon Lawn Tennis Championships . #Newline1938 - Gas masks issued to the population in the UK . #Newline1984 - Serious damage to York Minster when it was struck by lightning,onthisday.aiml
+0,JULY 10,*,*,1900 - Paris Metro system opened . #Newline1958 - The first parking meters came into operation in London . #Newline1985 - Explosion aboard the Greenpeace ship Rainbow Warrior in Auckland harbour,onthisday.aiml
+0,JULY 11,*,*,1979 - Return to earth of Skylab 1 after six years,onthisday.aiml
+0,JULY 12,*,*,1910 - Death of the Honourable Charles Rolls in an aeroplane crash,onthisday.aiml
+0,JULY 13,*,*,1793 - Murder of Jean Paul Marat . #Newline1837 - Queen Victoria became the first monarch to take up residence at Buckingham Palace . #Newline1955 - The hanging of Ruth Ellis (the last woman to be hanged in Britain),onthisday.aiml
+0,JULY 14,*,*,1789 - The storming of the Bastille . #Newline1865 - Ascent of the Matterhorn by Edward Whymper . #Newline1867 - First demonstration of dynamite (by Alfred Nobel),onthisday.aiml
+0,JULY 15,*,*,1099 - Capture of Jerusalem by Godfrey and Robert of Flanders . #Newline1857 - The massacre of Cawnpore . #Newline1912 - Introduction of Social Insurance Scheme in Britain . #Newline1945 - Blackout lifted in Britain,onthisday.aiml
+0,JULY 16,*,*,1885 - First successful treatment of rabies (by Pasteur) . #Newline1918 - Assassination of Tsar Nicholas II of Russia and his family . #Newline1945 - First explosion of an atomic bomb (at Los Alamos#Comma New Mexico),onthisday.aiml
+0,JULY 17,*,*,1841 - First edition of Punch published . #Newline1917 - British Royal Family's name changed to Windsor . #Newline1945 - Potsdam Conference began,onthisday.aiml
+0,JULY 18,*,*,64 BC - Burning of Rome . #Newline1870 - Dogma of Papal Infallibility proclaimed by the Vatican Council . #Newline1925 - Mein Kampf published . #Newline1936 - Beginning of Spanish Civil War . #Newline1969 - Chappaquidick incident involving Senator Edward Kenedy and Mary Jo Kopechne,onthisday.aiml
+0,JULY 19,*,*,1545 - The Mary Rose sank in the Solent . #Newline1903 - The first Tour de France completed,onthisday.aiml
+0,JULY 20,*,*,1837 - Opening of Euston Station (the first railway station in London) . #Newline1944 - Attempted assassination of Hitler by officers led by von Stauffenberg,onthisday.aiml
+0,JULY 21,*,*,1798 - Battle of the Pyramids . #Newline1861 - Battle of Bull Run . #Newline1904 - Completion of the trans-Siberian railway . #Newline1969 - Moon landing of Apollo II,onthisday.aiml
+0,JULY 22,*,*,1812 - Battle of Salamanca . #Newline1934 - Shooting of gangster John Dillinger by FBI agents,onthisday.aiml
+0,JULY 23,*,*,1967 - Death of British cyclist Tommy Simpson while competing in the Tour de France . #Newline1986 - Marriage of Prince Andrew and Sarah Ferguson,onthisday.aiml
+0,JULY 24,*,*,1883 - Death of Captain Matthew Webb while attempting to swim the rapids above Niagra Falls,onthisday.aiml
+0,JULY 25,*,*,1909 - First crossing of the English Channel by aeroplane (Louis Bleriot) . #Newline1943 - Mussolini deposed in Italy . #Newline1959 - First crossing of the English Channel by hovercraft,onthisday.aiml
+0,JULY 26,*,*,1908 - Formation of the FBI in Washington . #Newline1952 - Abdication of King Farouk of Egypt . #Newline1956 - Egyptian government nationalised the Suez Canal . #Newline1978 - Birth of Louise Brown at Oldham General Hospital (world's first test tube baby),onthisday.aiml
+0,JULY 27,*,*,1949 - Maiden flight of the De Havilland Comet#Comma the world's first jet airliner . #Newline1953 - End of the Korean War . #Newline1980 - Death of the Shah of Iran#Comma in exile in Egypt,onthisday.aiml
+0,JULY 28,*,*,1794 - Execution of Robespierre . #Newline1959 - Introduction of postcodes by the Post Office (in Norwich),onthisday.aiml
+0,JULY 29,*,*,1588 - Defeat of the Spanish Armada . #Newline1890 - Death from self-inflicted bullet wound of van Gogh . #Newline1907 - Formation of the Boy Scouts by Sir Robert Baden-Powell . #Newline1981 - Marriage of the Prince of Wales and Lady Diana Spencer,onthisday.aiml
+0,JULY 30,*,*,1898 - Death of Bismarck . #Newline1930 - First ever soccer World Cup Final (Uruguay 4 Argentina 2) . #Newline1935 - First Penguin paperback published (Ariel#Comma A Life of Shelley) . #Newline1949 - HMS Amethyst reached Hong Kong after running the gauntlet of Chinese communist troops in the Yangtse River . #Newline1966 - England beat West Germany 4-2 to win soccer's World Cup,onthisday.aiml
+0,JULY 31,*,*,1910 - Arrest of Dr Crippen aboard the SS Montrose . #Newline1917 - Beginning of the Battle of Passchendaele . #Newline1919 - Weimar Republic established in Germany . #Newline1963 - First ever renouncement of a peerage by a British peer (Viscount Stansgate#Comma Anthony Wedgewood Benn),onthisday.aiml
+0,AUGUST 01,*,*,1714 - Death of Queen Anne . #Newline1798 - Battle of the Nile . #Newline1975 - Ratification of the Helsinki Agreement on Human Rights,onthisday.aiml
+0,AUGUST 02,*,*,1100 - Death of King William II whilst hunting in the New Forest . #Newline1876 - Shooting of Wild Bill Hickock by Jack McCall in Deadwood . #Newline1973 - Summerland fire at Douglas#Comma Isle of Man#Comma 30 people killed,onthisday.aiml
+0,AUGUST 03,*,*,1778 - Opening of La Scala Opera House in Milan . #Newline1916 - Execution of Sir Roger Casement for treason . #Newline1926 - London's first traffic lights operational (at Piccadilly Circus),onthisday.aiml
+0,AUGUST 04,*,*,1900 - Birth of HM Queen Elizabeth#Comma Queen Mother . #Newline1914 - Britain declared war on Germany,onthisday.aiml
+0,AUGUST 05,*,*,1858 - Opening of the first trans-Atlantic cable . #Newline1891 - First use of traveller's cheques . #Newline1962 - Body of Marilyn Monroe found at her Californian home,onthisday.aiml
+0,AUGUST 06,*,*,1926 - Gertrude Ederie became the first woman to swim the English Channel . #Newline1945 - First atomic bomb dropped on Hiroshima,onthisday.aiml
+0,AUGUST 07,*,*,NOTHING HAPPENED,onthisday.aiml
+0,AUGUST 08,*,*,1786 - First ascent of Mont Blanc (by Michel Gabriel Piccard) . #Newline1963 - The great train robbery at Cheddington#Comma Buckinghamshire . #Newline1974 - Resignation of US President Richard Nixon,onthisday.aiml
+0,AUGUST 09,*,*,1945 - Atomic bomb dropped on Nagasaki . #Newline1969 - Murder of actress Sharon Tate#Comma wife of film director Roman Polanski#Comma and four other people at her Hollywood home,onthisday.aiml
+0,AUGUST 10,*,*,1895 - First promenade concert held at the Queens Hall#Comma London . #Newline1897 - Formation of the RAC,onthisday.aiml
+0,AUGUST 11,*,*,NOTHING HAPPENED,onthisday.aiml
+0,AUGUST 12,*,*,1887 - First sound recording made (by Thomas Edison) . #Newline1908- First Model T Ford produced,onthisday.aiml
+0,AUGUST 13,*,*,1704 - Battle of Blenheim . #Newline1961 - Construction of the Berlin Wall began . #Newline1964 - Last judicial executions in Britain (Peter Allen at Walton Prison and John Walby at Strangeways),onthisday.aiml
+0,AUGUST 14,*,*,1945 - Unconditional surrender of Japan thus ending World War II . #Newline1969 - Deployment of British troops in Northern Ireland,onthisday.aiml
+0,AUGUST 15,*,*,1057 - Death of Macbeth . #Newline1947 - Indian independence from Britain,onthisday.aiml
+0,AUGUST 16,*,*,1819 - Peterloo massacre in Manchester . #Newline1977 - Death of Elvis Presley,onthisday.aiml
+0,AUGUST 17,*,*,1896 - Discovery of gold in the Klondike . #Newline1988 - Death of President Zia ul-Haq of Pakistan in a plane crash,onthisday.aiml
+0,AUGUST 18,*,*,1959 - Launch of the Morris Mini by BMC,onthisday.aiml
+0,AUGUST 19,*,*,1960 - US spy plane pilot Garey Powers sentenced to 10 years' imprisonment by Soviet court . #Newline1960 - Summons issued against Penguin books for planning to publish Lady Chatterley's Lover,onthisday.aiml
+0,AUGUST 20,*,*,1968 - Invasion of Czechoslovakia by the Soviet Union . #Newline1989 - The Marchioness pleasureboat disaster on the Thames#Comma 51 people drowned,onthisday.aiml
+0,AUGUST 21,*,*,1911 - The Mona Lisa was stolen from the Louvre in Paris . #Newline1930 - Birth of Princess Margaret . #Newline1940 - Assassination of Trotsky in Mexico City . #Newline1959 - Hawaii became 50th State of the USA . #Newline1988 - Liberalisation of licensing laws in England and Wales,onthisday.aiml
+0,AUGUST 22,*,*,1485 - Battle of Bosworth Field . #Newline1642 - Start of the English Civil War. King Charles I raised his standard at Nottingham . #Newline1922 - Shooting of Irish Nationalist#Comma Michael Collins . #Newline1985 - Fire disaster at Manchester Airport#Comma 55 people killed,onthisday.aiml
+0,AUGUST 23,*,*,1914 - Start of the Battle of Mons . #Newline1926 - Death of Rudolph Valentino,onthisday.aiml
+0,AUGUST 24,*,*,79 AD - Eruption of Mount Vesuvius burying the cities of Pompeii and Herculaneum . #Newline1572 - St Bartholomew's Day massacre in Paris . #Newline1942 - Death of the Duke of Kent when his plane crashed,onthisday.aiml
+0,AUGUST 25,*,*,1875 - Captain Webb became the first man to swim the Englisg Channel . #Newline1919 - First scheduled international air service inaugurated (between London and Paris) . #Newline1944 - Liberation of Paris,onthisday.aiml
+0,AUGUST 26,*,*,1346 - Battle of Crecy . #Newline1920 - 19th Amendment to the US Constitution gave women the vote in federal elections . #Newline1936 - First transmission of BBC television programmes,onthisday.aiml
+0,AUGUST 27,*,*,1883 - Eruption of the volcano Krakatoa . #Newline1967 - Suicide of former Beatles' manager Brian Epstein . #Newline1979 - Murder of Lord Louis Mountbatten by the IRA,onthisday.aiml
+0,AUGUST 28,*,*,1963 - Civil Rights rally in Washington culminating in Dr Martin Luther King's famous speech,onthisday.aiml
+0,AUGUST 29,*,*,1885 - First motorbike patented (by Gottleib Daimler) . #Newline1966 - The Beatles' last live concert (at Candlestick Park#Comma San Francisco),onthisday.aiml
+0,AUGUST 30,*,*,30 BC - Suicide of Cleopatra#Comma Egyptian Queen . #Newline1860 - First British tram became operational (in Birkenhead) . #Newline1918 - First ever British police strike . #Newline1941 - Beginning of the Siege of Leningrad,onthisday.aiml
+0,AUGUST 31,*,*,1422 - Death of King Henry V . #Newline1888 - First of the "Jack the Ripper" murders,onthisday.aiml
+0,SEPTEMBER 01,*,*,1715 - Death of Louis XVI of France . #Newline1923 - 300#Comma000 killed by an earthquake in Japan . #Newline1939 - German invasion of Poland,onthisday.aiml
+0,SEPTEMBER 02,*,*,1666 - Start of the Great Fire of London . #Newline1945 - Formal surrender of Japan on board the aircraft carrier Missouri,onthisday.aiml
+0,SEPTEMBER 03,*,*,1658 - Death of Oliver Cromwell . #Newline1939 - Britain and France declared war on Germany,onthisday.aiml
+0,SEPTEMBER 04,*,*,1870 - Napoleon III of France deposed . #Newline1965 - Death of Albert Schweitzer in Gabon,onthisday.aiml
+0,SEPTEMBER 05,*,*,1920 - Fatty Arbuckle charged with the murder of starlet Virginia Rappe . #Newline1972 - Slaughter of Israeli athletes at the Munich Olympic Games by the Palestinian Black September Movement,onthisday.aiml
+0,SEPTEMBER 06,*,*,1522 - Completion of the first circumnavigation of the world (by the Vittoria) . #Newline1852 - First free lending library in Britain opened (in London) . #Newline1879 - First British telephone exchange opened (in Manchester) . #Newline1880 - First cricket Test Match in England (at the Oval) . #Newline1966 - Assassination of South African prime minister Hendrik Verwoed,onthisday.aiml
+0,SEPTEMBER 07,*,*,1533 - Birth of Elizabeth I . #Newline1812 - Battle of Borodino . #Newline1838 - Rescue of the survivors on the SS Forfarshire by Grace Darling . #Newline1892 - First world heavyweight title fight under Queensberry rules (Corbett beat Sullivan) . #Newline1940 - Beginning of the London blitz . #Newline1943 - Surrender of Italy to the allies,onthisday.aiml
+0,SEPTEMBER 08,*,*,1888 - First matches of the new Football League played . #Newline1935 - Shooting of senator Huey Long of Louisiana (he died two days later) . #Newline1944 - First V2 bombs fired at London,onthisday.aiml
+0,SEPTEMBER 09,*,*,1087 - Death of William the Conqueror . #Newline1513 - Battle of Flodden Field and death of James IV of Scotland . #Newline1911 - First airmail service in Britain inaugurated . #Newline1958 - Notting Hill race riots . #Newline1975 - Martina Navratilova defected to the west . #Newline1976 - Death of Mao Tse-tung,onthisday.aiml
+0,SEPTEMBER 10,*,*,1894 - George Smith became the first man to be convicted of drunken driving in Britain,onthisday.aiml
+0,SEPTEMBER 11,*,*,1973 - Military coup in Chile. President Allende killed . #Newline1978 - BBC World Service newsreader Geori Markov stabbed with a poisoned umbrella in a London street (he died four days later) . #Newline2001 - Destruction of the World Trade Centre by terrorists,onthisday.aiml
+0,SEPTEMBER 12,*,*,1878 - Erection of Cleopata's Needle . #Newline1960 - Introduction of MOT vehicle testing . #Newline1974 - Haile Selassie of Ethiopia overthrown in a military coup . #Newline1977 - Death of Steve Biko in police custody in South Africa,onthisday.aiml
+0,SEPTEMBER 13,*,*,1759 - Battle of Quebec,onthisday.aiml
+0,SEPTEMBER 14,*,*,1752 - Adoption of the Gregorian calendar in Britain . #Newline1812 - Napoleon entered Moscow . #Newline1854 - Beginning of the Crimean War . #Newline1868 - The first recorded "hole in one" (by Tom Morris at Prestwick) . #Newline1901 - Death of President McKinley of the USA after being shot on 6th September,onthisday.aiml
+0,SEPTEMBER 15,*,*,1830 - Opening of the Liverpool and Manchester railway and the death of Liverpool MP William Huskisson (the first man in Britain to be killed by a train) . #Newline1916 - First use of tanks in battle . #Newline1940 - The climax of the Battle of Britain#Comma 185 German planes shot down in one day . #Newline1975 - The start of the Civil War in Beirut,onthisday.aiml
+0,SEPTEMBER 16,*,*,1861 - First Post Office Savings Banks openend in Britain . #Newline1968 - Introduction of two-tier postal system in Britain (1st Class 5d#Comma 2nd Class 4d),onthisday.aiml
+0,SEPTEMBER 17,*,*,1931 - First demonstration of long playing records . #Newline1944 - Arnhem landings . #Newline1980 - Assassination of ex-president Somoza of Nicaragua,onthisday.aiml
+0,SEPTEMBER 18,*,*,1879 - Blackpool illuminations switched on for the first time . #Newline1961 - Death of Dag Hammarskjoeld#Comma Secretary General of the UN#Comma in an air crash in Northern Rhodesia . #Newline1981 - France abolished the use of the guillotine,onthisday.aiml
+0,SEPTEMBER 19,*,*,1356 - Battle of Poitiers . #Newline1783 - First manned balloon flight (by the Montgolfier Brothers) . #Newline1893 - New Zealand became the first country to grant women the vote . #Newline1955 - Military coup in Argentina#Comma Juan Peron overthrown . #Newline1960 - First parking tickets were issued in London,onthisday.aiml
+0,SEPTEMBER 20,*,*,1967 - QEII launched . #Newline1984 - Forty people killed when a truck filled with explosives crashed into the US Embassy in Beirut,onthisday.aiml
+0,SEPTEMBER 21,*,*,1745 - Battle of Prestonpans,onthisday.aiml
+0,SEPTEMBER 22,*,*,1934 - Gresford Colliery disaster - 262 miners killed . #Newline1955 - Commercial television in Britain for the first time. First ITV transmission . #Newline1980 - Founding of the Solidarity movement in Gdansk#Comma Poland,onthisday.aiml
+0,SEPTEMBER 23,*,*,1940 - George Cross instituted . #Newline1973 - Peron re-elected President of Argentina,onthisday.aiml
+0,SEPTEMBER 24,*,*,1776 - Britain's oldest classic horse race#Comma the St Leger#Comma run for the first time . #Newline1980 - Start of the Iran-Iraq war,onthisday.aiml
+0,SEPTEMBER 25,*,*,1818 - First blood transfusion using human blood performed (at Guy's Hospital#Comma London) . #Newline1897 - First motor bus service in Britain (opened in Bradford) . #Newline1957 - Race riots at Little Rock#Comma Arkansas,onthisday.aiml
+0,SEPTEMBER 26,*,*,1580 - Circumnavigation of the globe completed by Sir Francis Drake . #Newline1934 - The launch of the Queen Mary,onthisday.aiml
+0,SEPTEMBER 27,*,*,1825 - Stockton-Darlington railway opened . #Newline1938 - Launch of the Queen Elizabeth,onthisday.aiml
+0,SEPTEMBER 28,*,*,1970 - Death of President Nasser of Egypt . #Newline1978 - Death of Pope John Paul I,onthisday.aiml
+0,SEPTEMBER 29,*,*,1399 - Abdication of King Richard II . #Newline1952 - Death of John Cobb on Loch Ness while attempting a world water speed record . #Newline1983 - Lady Mary Donaldson elected first woman Lord Mayor of London,onthisday.aiml
+0,SEPTEMBER 30,*,*,1938 - Prime Minister Neville Chamberlain returned from Germany#Comma making his famous "Peace in our time" speech . #Newline1955 - Death of James Dean in a motor crash,onthisday.aiml
+0,OCTOBER 01,*,*,1918 - Arab forces led by T. E. Lawrence captured Damascus from the Turks . #Newline1938 - German troops marched into the Sudentenland . #Newline1985 - Street riots in Toxteth#Comma Liverpool,onthisday.aiml
+0,OCTOBER 02,*,*,1187 - Capture of Jerusalem by Moslem forces led by Saladin . #Newline1901 - Launch of Holland 1 (the Royal Nay's first submarine) . #Newline1935 - Invasion of Abyssinia by Italian forces,onthisday.aiml
+0,OCTOBER 03,*,*,1929 - The Kingdom of Serbs#Comma Croats and Slovenes was renamed Yugoslavia . #Newline1952 - Britain's first atomic bomb exploded (at the Monte Bello Islands#Comma North of Australia),onthisday.aiml
+0,OCTOBER 04,*,*,1883 - Founding of the Boys Brigade by Sir William Smith . #Newline1957 - Launch of Sputnik I satellite . #Newline1959 - Luna III photographed the dark side of the Moon,onthisday.aiml
+0,OCTOBER 05,*,*,1930 - Crash of the airship R101 near Paris#Comma 48 people killed . #Newline1936 - Start of the Jarrow hunger march . #Newline1952 - The end of tea rationing in Britain,onthisday.aiml
+0,OCTOBER 06,*,*,1973 - Start of Arab-Israeli war when Egypt and Syria attacked Israel . #Newline1981 - Assassination of Egyptian President Anwar Sadat,onthisday.aiml
+0,OCTOBER 07,*,*,1571 - Battle of Lepanto . #Newline1985 - Palastinian terrorists seized the Italian liner Achille Lauro,onthisday.aiml
+0,OCTOBER 08,*,*,1871 - Fire destroyed much of Chicago . #Newline1952 - Harrow rail disaster#Comma 112 people killed . #Newline1965 - Opening of Britain's tallest building (the Post Office Tower) . #Newline1967 - First use of the breathalyser in Britain,onthisday.aiml
+0,OCTOBER 09,*,*,1914 - Start of the Battle of Ypres . #Newline1967 - Che Guevara shot dead in Bolivia,onthisday.aiml
+0,OCTOBER 10,*,*,1899 - Start of the Boer War . #Newline1903 - Womens Social and Political Union formed by Mrs Emmeline Pankhurst&gt;br/&gt;#Newline1973 - American Vice-president Spiro Agnew resigned because of a tax scandal,onthisday.aiml
+0,OCTOBER 11,*,*,1957 - Jodrell Bank radio telescope became operational . #Newline1982 - Raising of the Mary Rose in Portsmouth harbour,onthisday.aiml
+0,OCTOBER 12,*,*,1901 - The Executive Mansion in Washington was officially renamed The White House . #Newline1915 - Execution of Nurse Edith Cavell by a German firing squad in Brussels . #Newline1984 - The Grand Hotel in Brighton was badly damaged by an IRA bomb during the week of the Conservative party conference,onthisday.aiml
+0,OCTOBER 13,*,*,54 AD - Roman emperor Claudius poisoned . #Newline1988 - Results of dating tests on the shroud of Turin proved that it is medieval in origin,onthisday.aiml
+0,OCTOBER 14,*,*,1066 - Battle of Hastings . #Newline1913 - Mining disaster at Sengenhydd#Comma South Wales. Over 400 miners killed . #Newline1939 - The battleship Royal Oak torpedoed and sunk in Scapa Flow . #Newline1947 - Sound barrier broken for the first time (by Chuck Yeager in California) . #Newline1969 - The 50p coin came into circulation in the UK,onthisday.aiml
+0,OCTOBER 15,*,*,1917 - Execution of Dutch spy Mata Hari in Paris . #Newline1945 - Execution of Pierre Lavall#Comma head of the Vichy government in France . #Newline1946 - Suicide of Herman Goering in Nuremberg Prison . #Newline1962 - Founding of Amnesty International in London . #Newline1984 - Nikita Khrushchev deposed while on holiday on the Black Sea coast . #Newline1987 - Britain's worst storms since records began,onthisday.aiml
+0,OCTOBER 16,*,*,1793 - Execution of Marie Antoinette . #Newline1834 - Fire swept through the Palace of Westminster . #Newline1859 - Raid on the Harpers Ferry arsenal#Comma Virginia by John Brown . #Newline1902 - First Borstal institution opened (in Borstal#Comma Kent) . #Newline1964 - China exploded her first nuclear bomb . #Newline1964 - Return of the first Labour Government for 13 years at the general election . #Newline1978 - Karol Wojtyla#Comma Archbishop of Krakow#Comma elected Pope,onthisday.aiml
+0,OCTOBER 17,*,*,1651 - Battle of Worcester . #Newline1777 - British forces surrendered to the American colonists at Saratoga . #Newline1956 - Opening of Britain's first nuclear power station (at Calder Hall),onthisday.aiml
+0,OCTOBER 18,*,*,1887 - USA purchased Alaska from Russia . #Newline1922 - Founding of the British Broadcasting Company (forerunner of the British Broadcasting Corporation) . #Newline1963 - Resignation of the Prime minister Harold Macmillan . #Newline1977 - Hijacked German airliner stormed by German anti-terrorist troops at Mogadishu airport,onthisday.aiml
+0,OCTOBER 19,*,*,1216 - Death of King John . #Newline1987 - Black Monday. Billions of pounds wiped off the value of shares,onthisday.aiml
+0,OCTOBER 20,*,*,1935 - Mao Tse-tung's communist army completed their long march at Yenan . #Newline1968 - Marriage of Jackie Kennedy#Comma widow of the late President John kennedy#Comma to Aristotle Onassis . #Newline1973 - Official opening of the Sydney Opera House,onthisday.aiml
+0,OCTOBER 21,*,*,1805 - Battle of Trafalgar. Death of Horatio Nelson . #Newline1958 - Women peers took their seats in the House of Lords for the first time . #Newline1966 - Aberfan disaster. 116 children and 28 adults killed,onthisday.aiml
+0,OCTOBER 22,*,*,1797 - First parachute jump made (by Andre-Jacques Garnerin from a hot-air balloon in Paris) . #Newline1931 - Al Capone sentenced to 11 years imprisonment for tax evasion . #Newline1962 - The Cuban missile crisis. USA imposed a naval blockade against Cuba . #Newline1962 - William Vassall jailed for 18 years for passing naval secrets to the Soviet Union,onthisday.aiml
+0,OCTOBER 23,*,*,42 BC - Suicide of Brutus . #Newline1642 - Battle of Edgehill . #Newline1956 - Start of Hungarian revolt against Soviet rule . #Newline1972 - Launch of the Access credit card in Britain . #Newline1977 - Jockey Lester Piggot jailed for three years for tax evasion,onthisday.aiml
+0,OCTOBER 24,*,*,1537 - Death of Queen Jane Seymour#Comma third wife of Henry VIII#Comma shortly after giving birth to Edward VI . #Newline1908 - Mrs Emmeline Pankhurst and her daughter Christabel sentenced to imprisonment for inciting riot . #Newline1924 - Publication of the Zinoviev letter#Comma purporting to be from high Soviet sources inciting insurrection in Britain . #Newline1929 - Black Thursday - the Wall Street Crash,onthisday.aiml
+0,OCTOBER 25,*,*,1415 - Battle of Agincourt . #Newline1854 - Charge of the Light Brigade at Balaclava . #Newline1961 - First edition of Private Eye magazine published,onthisday.aiml
+0,OCTOBER 26,*,*,899 - Death of Alfred the Great . #Newline1881 - Gunfight at the OK Corral#Comma Tombstone Arizona . #Newline1986 - Jeffrey Archer resigned as deputy chairman of the Conservative party after allegations of his involvement with a prostitute,onthisday.aiml
+0,OCTOBER 27,*,*,1951 - Conservative win in the general election. Churchill Prime Minister again at the age of 77,onthisday.aiml
+0,OCTOBER 28,*,*,1636 - Founding of Harvard University . #Newline1962 - Khrushchev announced that the USSR would withdraw all its missiles from Cuba#Comma thus ending the Cuban missile crisis,onthisday.aiml
+0,OCTOBER 29,*,*,1618 - Execution of Sir Walter Raleigh . #Newline1863 - Founding of the Red Cross . #Newline1982 - Lindy Chamberlain convicted of the murder of her nine-week old child in Australia (the Dingo Baby case),onthisday.aiml
+0,OCTOBER 30,*,*,1905 - Aspirin went on sale in Britain for the first time . #Newline1938 - Widespread panic in the USA when Orson Welles's adaptation of War of the Worlds was broadcast . #Newline1942 - Beginning of the Battle of El Alamein,onthisday.aiml
+0,OCTOBER 31,*,*,1951 - Introduction of zebra crossings in Britain . #Newline1984 - Assassination of Mrs Indira Gandhi#Comma Prime Minister of India,onthisday.aiml
+0,NOVEMBER 01,*,*,1755 - Much of Lisbon destroyed by an earthquake. Tens of thousands killed. . #Newline1956 - First Premium Bonds went on sale,onthisday.aiml
+0,NOVEMBER 02,*,*,1917 - Publication of the Balfour declaration#Comma promising Britain's support for the establishment of a Jewish state. . #Newline1959 - Official opening of the first stretch of the M1 motorway,onthisday.aiml
+0,NOVEMBER 03,*,*,1957 - Soviet Union launched a dog (Laika) into space in Sputnik 2,onthisday.aiml
+0,NOVEMBER 04,*,*,1918 - Death of the poet Wilfred Own on the Western Front . #Newline1946 - Founding of UNESCO . #Newline1979 - Storming of the US Embassy in Tehran by Iranian students. Staff and guards held hostage,onthisday.aiml
+0,NOVEMBER 05,*,*,1605 - Discovery of the Gunpowder Plot . #Newline1854 - Battle of Inkerman . #Newline1909 - First Woolworth store in Britain opened (in Liverpool) . #Newline1927 - Britain's first automatic traffic lights installed (in Wolverhampton),onthisday.aiml
+0,NOVEMBER 06,*,*,1924 - Conservative victory in general election. Baldwin Prime Minister,onthisday.aiml
+0,NOVEMBER 07,*,*,1885 - Completion of the Canadian Pacific Railway . #Newline1974 - Murder of Sandra Rivett#Comma nanny in the household of Lord Lucan,onthisday.aiml
+0,NOVEMBER 08,*,*,1923 - The Beer Hall Putsch. Attempt by Hitler and his followers to seize power in Munich . #Newline1932 - Election of FD Roosevelt as president of the USA . #Newline1987 - Bomb planted by the IRA exploded at a Remembrance Day service in Enniskillen. Eleven people killed.,onthisday.aiml
+0,NOVEMBER 09,*,*,1859 - Flogging abolished in the British Army . #Newline1960 - John F Kennedy won the American Presidential election . #Newline1970 - Death of Charles de Gaulle,onthisday.aiml
+0,NOVEMBER 10,*,*,1982 - Death of Leonid Brezhnev . #Newline1989 - Work began on the demolition of the Berlin Wall,onthisday.aiml
+0,NOVEMBER 11,*,*,1918 - Signing of the armistice. End of World War I . #Newline1921 - First "Poppy Day" . #Newline1965 - Unilateral declaration of Independence by Ian Smith's Rhodesian government,onthisday.aiml
+0,NOVEMBER 12,*,*,1035 - Death of King Canute#Comma English king and early deck chair pioneer,onthisday.aiml
+0,NOVEMBER 13,*,*,1907 - First helicopter flight (by Paul Cornu#Comma near Lisieux in Normandy) . #Newline1947 - Resignation of Chancellor of the Exchequer#Comma Hugh Dalton#Comma after his admission that he had leaked budget secrets,onthisday.aiml
+0,NOVEMBER 14,*,*,1922 - First regular radio broadcast (a news bulletin) . #Newline1948 - Birth of HRH Prince of Wales . #Newline1952 - First publiacation of music charts in Britain (in the New Musical Express) . #Newline1963 - Eruption of the Surtsey volcano near Iceland . #Newline1969 - Transmission of first colour TV programms by BBC1 and ITV . #Newline1973 - Marriage of Princess Anne and Captain Mark Phillips,onthisday.aiml
+0,NOVEMBER 15,*,*,1899 - Morning Post correspondent#Comma Winston Churchill#Comma captured by Boers in South Africa . #Newline1969 - Screening of first TV advertisement in colour in Britain (Birds Eye Peas) . #Newline1983 - Mass protests as the first Cruise Missiles arrived at Greenham Common,onthisday.aiml
+0,NOVEMBER 16,*,*,1869 - Opening of the Suez Canal,onthisday.aiml
+0,NOVEMBER 17,*,*,1558 - Death of Mary I . #Newline1800 - First Congress of the USA . #Newline1959 - Duty free goods on sale in British airports for the first time (Prestwick and Renfrew),onthisday.aiml
+0,NOVEMBER 18,*,*,1626 - Consecration of St Peters in Rome . #Newline1928 - Showing of the first sound cartoon film (Steamboat Willie starring Micky Mouse) . #Newline1983 - Mrs Janet Walton of Liverpool gave birth to sextuplets . #Newline1987 - Kings Cross Underground disaster. A fire started on an escalator resulting in the death of 30 people,onthisday.aiml
+0,NOVEMBER 19,*,*,1863 - Abraham Lincoln delivered his "Gettysburg Address,onthisday.aiml
+0,NOVEMBER 20,*,*,1906 - Founding of the Rolls Royce company . #Newline1945 - Beginning of the Nuremburg war crimes trials . #Newline1947 - Marriage of HRH Princess Elizabeth and LT. Philip Mountbatten . #Newline1979 - Russian spy Anthony Blunt stripped of his knighthood,onthisday.aiml
+0,NOVEMBER 21,*,*,1831 - Farady delivered his lecture to the Royal Society on his experiments,onthisday.aiml
+0,NOVEMBER 22,*,*,1497 - Vasco de Gama rounded the Cape of Good Hope . #Newline1774 - Suicide of Clive of India . #Newline1946 - The first ballpoint pens went on sale . #Newline1963 - Assassination of President John F Kennedy in Dallas,onthisday.aiml
+0,NOVEMBER 23,*,*,1499 - Execution of Perkin Warbeck (pretender to the English throne) . #Newline1852 - The first pillar box came into use . #Newline1910 - Execution of Dr Crippin at Holloway,onthisday.aiml
+0,NOVEMBER 24,*,*,1859 - Publication of darwin's Origin of Species . #Newline1963 - Murder of Lee Harvey Oswald by Jack Ruby in Dallas,onthisday.aiml
+0,NOVEMBER 25,*,*,1952 - The opening of Agatha Christie's play The Mousetrap at the Ambassadors Theatre#Comma London . #Newline1953 - Hungary became the first overseas country to win a soccer international on English soil when they beat England 6-3 at Wembley,onthisday.aiml
+0,NOVEMBER 26,*,*,1942 - Siege of Stalingrad lifted by Russian forces,onthisday.aiml
+0,NOVEMBER 27,*,*,1914 - Britain's first two police women began work (in Grantham#Comma Lincolnshire) . #Newline1942 - Scuttling of the French fleet at Toulon . #Newline1967 - President de Gaulle vetoed Britain's application to join the EEC . #Newline1975 - Murder of Ross McWhirter by an IRA terrorist,onthisday.aiml
+0,NOVEMBER 28,*,*,1660 - Founding of the Royal Society . #Newline1905 - Founding of Sinn Fein by Arthur Griffen,onthisday.aiml
+0,NOVEMBER 29,*,*,1530 - Death of Cardinal Wolsey . #Newline1929 - Admiral Richard Byrd became the first man to fly over the South Pole,onthisday.aiml
+0,NOVEMBER 30,*,*,1840 - The remains of Napoleon Bonaparte were returned to Paris from St Helena . #Newline1936 - Crystal Palace destroyed by fire,onthisday.aiml
+0,DECEMBER 01,*,*,1942 - Publication of the Beverage Report,onthisday.aiml
+0,DECEMBER 02,*,*,1697 - Wren's new St Pauls Cathedral opened . #Newline1804 - Napoleon crowned Emperor of France . #Newline1805 - Battle of Austerlitz . #Newline1901 - Launch of the safety razor by King C Gillette . #Newline1942 - World's first nuclear chain reaction (at the University of Chicago),onthisday.aiml
+0,DECEMBER 03,*,*,1967 - World's first heart transplant (at the Groote Schuur Hospital#Comma Capetown by Dr Christiaan Barnard. The recipient was Louis Washkansky and the donor was Denise Darvall),onthisday.aiml
+0,DECEMBER 04,*,*,1791 - Britain's oldest Sunday newspaper#Comma The Observer#Comma was published for the first time . #Newline1961 - The birth control pill became available on the National Health,onthisday.aiml
+0,DECEMBER 05,*,*,1872 - The Mary Celeste found unmanned and drifting near the Azores . #Newline1904 - The Russian fleet was destroyed by the Japanese at Port Arthur . #Newline1933 - Prohibition came to an end in the USA . #Newline1958 - Opening of Britain's first motorway (the Preston Bypass),onthisday.aiml
+0,DECEMBER 06,*,*,1877 - First recording of a human voice (by Edison) . #Newline1921 - Creation of the Irish Free State (and partition of Ireland) . #Newline1975 - Beginning of the Balcombe Street siege (it ended on 12th December without bloodshed),onthisday.aiml
+0,DECEMBER 07,*,*,1732 - Opening of Covent Garden Opera House (then called the Theatre Royal) . #Newline1916 - Lloyd George became Prime Minister of Britain's coalition government . #Newline1941 - Japanese attack on US fleet in Pearl Harbour,onthisday.aiml
+0,DECEMBER 08,*,*,1980 - John Lennon shot dead by Mark Chapman outside the Dakota building in New York,onthisday.aiml
+0,DECEMBER 09,*,*,1868 - Gladstone became Prime Minister for the first time . #Newline1960 - First screening of Coronation Street,onthisday.aiml
+0,DECEMBER 10,*,*,1768 - Founding of the Royal Academy . #Newline1901 - Nobel prizes were awarded for the first time . #Newline1984 - Leak of poisonous gas at Union Carbide factory#Comma Bhopal India. Over 2#Comma000 killed,onthisday.aiml
+0,DECEMBER 11,*,*,1894 - The first ever Motor Show opened (in Paris) . #Newline1936 - Abdication of King Edward VIII . #Newline1952 - Derek Bentley and Christopher Craig found guilty of the murder of PC Sydney Miles. Craig who pulled the trigger was too young to hang but Bentley was executed a month later,onthisday.aiml
+0,DECEMBER 12,*,*,1988 - Clapham Junction rail disaster#Comma 35 people killed and over 100 injured,onthisday.aiml
+0,DECEMBER 13,*,*,1779 - The first Smithfield Show . #Newline1878 - Britain's first street lighting was turned on (at the Holborn Viaduct in London) . #Newline1939 - Battle of the River Plate,onthisday.aiml
+0,DECEMBER 14,*,*,1799 - Death of George Washington . #Newline1861 - Death of Prince Albert . #Newline1911 - Roald Amundsen reached the South Pole . #Newline1918 - Women vote for the first time in a British general election. Countess Markievicz became the first woman elected to the House of Commons (although she never took her seat),onthisday.aiml
+0,DECEMBER 15,*,*,1916 - End of the Battle of Verdun#Comma 700#Comma000 dead,onthisday.aiml
+0,DECEMBER 16,*,*,1773 - The Boston Tea Party#Comma signalling the beginning of the American War of Independence . #Newline1944 - Beginning of the Ardennes offensive . #Newline1944 - Band leader Glenn Miller presumed dead when his aircraft went missing over the English Channel,onthisday.aiml
+0,DECEMBER 17,*,*,1903 - First aeroplane flight (by the Wright Brothers at North Carolina) . #Newline1939 - Scuttling of the German battleship Graf Spee in the River Plate,onthisday.aiml
+0,DECEMBER 18,*,*,1865 - Ratification of the thirteenth amendment to the US constitution (abolishing slavery) . #Newline1912 - Discovery of the (later discredited): "Piltdown man" skull,onthisday.aiml
+0,DECEMBER 19,*,*,1984 - Britain and China signed the agreement which returned Hong Kong to China in 1997,onthisday.aiml
+0,DECEMBER 20,*,*,1915 - Evacuation of allied forces from their positions at Gallipoli . #Newline1989 - Overthrow of Panamanian general Manuel Noriega by invading American forces,onthisday.aiml
+0,DECEMBER 21,*,*,1620 - Landing of the Pilgrim Fathers at Plymouth Rock#Comma Massachusetts . #Newline1913 - Publication of the world's first crossword puzzle (in The New York World) . #Newline1988 - The Lockerbie disaster. Nearly 300 people were killed when a terrorist group destroyed a jumbo jet over the Scottish town of Lockerbie,onthisday.aiml
+0,DECEMBER 22,*,*,1965 - 70 mph speed limit introduced in Britain,onthisday.aiml
+0,DECEMBER 23,*,*,1948 - Execution of Japanese Prime Minister Hideki Tojo for war crimes,onthisday.aiml
+0,DECEMBER 24,*,*,1914 - The first bomb to be dropped by plane on British soil fell on Dover . #Newline1979 - Invasion of Afghanistan by Soviet troops,onthisday.aiml
+0,DECEMBER 25,*,*,1066 - Coronation of William the Conqueror . #Newline1932 - First royal Christmas broadcast by reigning monarch . #Newline1941 - Hong Kong fell to Japanese forces . #Newline1972 - Massive earthquake devastated the Nicaraguan capital Managua . #Newline1989 - Assassination of Romanian dictator Nicolae Ceaucescu and his wife,onthisday.aiml
+0,DECEMBER 26,*,*,1898 - Discovery of radium by Pierre and Marie Curie . #Newline1908 - Jack Johnson became the first black world heavyweight champion by beating Tommy Burns in Australia . #Newline1943 - Sinking of the German battleship Scharnhorst,onthisday.aiml
+0,DECEMBER 27,*,*,1879 - Tay railway bridge disaster. The bridge collapsed under the weight of a train#Comma 90 people were killed,onthisday.aiml
+0,DECEMBER 28,*,*,1065 - Westminster Abbey was consecrated . #Newline1856 - Woodrow Wilson (President of the USA) was born.,onthisday.aiml
+0,DECEMBER 29,*,*,1170 - Murder of Thomas Becket in Canterbury Cathedral . #Newline1930 - Radio Luxembourg began broadcasts . #Newline1952 - Discovery of a coelacanth off the coast of South Africa (the fish was believed to have been extinct for several millions of years),onthisday.aiml
+0,DECEMBER 30,*,*,1916 - Murder of the Russian mystic Rasputin,onthisday.aiml
+0,DECEMBER 31,*,*,1695 - Introduction of the window tax . #Newline1960 - The farthing ceased to be legal tender at midnight,onthisday.aiml

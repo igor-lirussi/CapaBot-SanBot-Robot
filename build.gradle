@@ -23,8 +23,8 @@ android {
     defaultConfig {
         applicationId "com.sanbot.capaBot"
         minSdkVersion 23
-        versionCode 20190824
-        versionName "3.0.0"
+        versionCode 20190902
+        versionName "3.0.8"
 
         android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
