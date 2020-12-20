@@ -28,17 +28,16 @@ After the first installation, the app will be available in the section “APP Ma
 *   Ab AIML engine
 
 ## Changelog
-
-**Version 1.0.0** - Initial release
-**Version 2.4.0** - added calendar and autonomously charge
-**Version 2.6.9** - added web activity
-**Version 3.0.3** - added AIML conversational engine
-**Version 3.0.8** - final Thesis version
-**Version 4.0.0** - fixed AIML and AIML conversational engine
+<br>**Version 1.0.0** - Initial release
+<br>**Version 2.4.0** - added calendar and autonomously charge
+<br>**Version 2.6.9** - added web activity
+<br>**Version 3.0.3** - added AIML conversational engine
+<br>**Version 3.0.8** - final Thesis version
+<br>**Version 4.0.0** - fixed AIML and AIML conversational engine
 
 ## Authors
 
-*   **Igor Lirussi** @ IST Institute for System and Robotics - University of Lisbon (PT)
+*   **Igor Lirussi** @ ISR Institute for System and Robotics - University of Lisbon (PT)
 
 ## License
 
