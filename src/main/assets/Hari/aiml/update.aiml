@@ -16,10 +16,10 @@
 <!--  -->
 <!-- For more information see http://www.alicebot.org -->
 <category><pattern>VERSION</pattern>
-<template>version 3.1.0</template>
+<template>version <bot name="version"/></template>
 </category>
 <category><pattern>BUILD</pattern>
-<template>august 2019</template>
+<template><bot name="build"/></template>
 </category>
 
 </aiml>

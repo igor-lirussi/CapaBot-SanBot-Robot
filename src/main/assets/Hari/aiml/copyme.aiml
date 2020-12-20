@@ -26,21 +26,22 @@ Ok I will copy everything you say.
 <category> 
 <pattern>_</pattern>
 <template>
-<think>
-<set name="inp"><star/></set>
-</think>
-	<condition name="inp"> 
-		<li value="NOW YOU CAN STOP"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="YOU CAN STOP"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="DO NOT COPY ME"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="PLEASE STOP IT"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="CAN YOU STOP THAT"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="CAN YOU STOP COPYING ME"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="STOP COPYING ME"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="STOP COPYING"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="STOP IT"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="STOP THAT"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
-		<li value="STOP"><think><set name="topic"></set></think><srai>XSTOPCOPYING</srai></li>
+    <think>
+        <set name="inp"><uppercase><star/></uppercase></set>
+    </think>
+	<condition name="inp">
+		<li value="NOW YOU CAN STOP"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="YOU CAN STOP"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="DO NOT COPY ME"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="PLEASE STOP IT"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="CAN YOU PLEASE STOP"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="CAN YOU STOP THAT"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="CAN YOU STOP COPYING ME"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="STOP COPYING ME"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="STOP COPYING"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="STOP IT"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="STOP THAT"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
+		<li value="STOP"><think><set name="topic">unknown</set></think><srai>XSTOPCOPYING</srai></li>
 		<li><star/></li>
 	</condition>
 </template>
@@ -50,12 +51,12 @@ Ok I will copy everything you say.
 <category>
 <pattern>XSTOPCOPYING</pattern>
 <template>
-<think>
-<set name="topic">COPYME</set>
-</think>
+    <think>
+        <set name="topic">COPYME</set>
+    </think>
 	<condition name="stopit"> 
 		<li value="0"><think><set name="stopit">1</set><set name="topic">COPYME</set></think>No I am having fun.</li>
-		<li value="1"><think><set name="topic"></set></think>Ok, I'll stop it now. Hope I didn't annoy you too much.</li>
+		<li value="1"><think><set name="topic">unknown</set></think>Ok, I'll stop it now. Hope I didn't annoy you too much.</li>
 	</condition>
 
 </template>

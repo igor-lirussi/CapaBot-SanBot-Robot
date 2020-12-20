@@ -23,8 +23,8 @@ android {
     defaultConfig {
         applicationId "com.sanbot.capaBot"
         minSdkVersion 23
-        versionCode 20190902
-        versionName "3.0.8"
+        versionCode 20200222
+        versionName "4.0.1" //change also proprieties.txt in Hari folder
 
         android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }

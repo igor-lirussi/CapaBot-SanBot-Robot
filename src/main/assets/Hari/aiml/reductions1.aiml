@@ -534,6 +534,9 @@
 <category><pattern>SPEAK SPANISH *</pattern>
 <template><srai>LANGUAGE</srai></template>
 </category>
+<category><pattern>WHAT LANGUAGE *</pattern>
+<template><srai>LANGUAGE</srai></template>
+</category>
 <category><pattern>TELL ME WHAT * IS</pattern>
 <template><srai>WHAT IS <star/></srai></template>
 </category>
@@ -989,6 +992,12 @@
 </category>
 <category><pattern>WHAT IS YOUR FATHER NAME</pattern>
 <template><srai>BOTMASTER</srai></template>
+</category>
+<category><pattern>WHO ARE YOUR PARENTS</pattern>
+<template><srai>PARENTS</srai></template>
+</category>
+<category><pattern>DO YOU HAVE PARENTS</pattern>
+<template><srai>PARENTS</srai></template>
 </category>
 <category><pattern>WHAT IS YOUR FAVORITE ARTIST</pattern>
 <template><srai>WHO IS YOUR FAVORITE ARTIST</srai></template>
@@ -2056,6 +2065,9 @@
 <template><srai>WHAT IS YOUR NAME</srai></template>
 </category>
 <category><pattern>WHAT IS YOUR FAVORITE COUNTRY</pattern>
+<template><srai>NATIONALITY</srai></template>
+</category>
+<category><pattern>WHAT IS YOUR NATIONALITY</pattern>
 <template><srai>NATIONALITY</srai></template>
 </category>
 <category><pattern>WHAT IS YOUR FAVORITE ICE CREAM</pattern>

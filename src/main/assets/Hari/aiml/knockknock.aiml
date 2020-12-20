@@ -53,6 +53,12 @@
 </category>
 
 <category>
+<pattern>WHO IS IT</pattern>
+<that>KNOCK KNOCK</that>
+<template><srai>who is there</srai></template>
+</category>
+
+<category>
 <pattern>WHO IS THEIR</pattern>
 <that>KNOCK KNOCK</that>
 <template><srai>who is there</srai></template>

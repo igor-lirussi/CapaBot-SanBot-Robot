@@ -171,6 +171,7 @@
 0,SHOW ME A FUNNY PICTURE ABOUT A *,*,*,<srai>SHOW ME <star/></srai>,reductions1.aiml
 0,SHOW ME A PIC *,*,*,<srai>SHOW ME <star/></srai>,reductions1.aiml
 0,SPEAK SPANISH *,*,*,<srai>LANGUAGE</srai>,reductions1.aiml
+0,WHAT LANGUAGE *,*,*,<srai>LANGUAGE</srai>,reductions1.aiml
 0,TELL ME WHAT * IS,*,*,<srai>WHAT IS <star/></srai>,reductions1.aiml
 0,THAT MAKES NO SENSE *,*,*,<srai>THAT MAKES NO SENSE</srai>,reductions1.aiml
 0,WHAT IS MY BATTERY LEVEL *,*,*,<srai>BATTERY LEVEL</srai>,reductions1.aiml
@@ -323,6 +324,8 @@
 0,WHAT IS UP TO,*,*,<srai>WHAT IS UP</srai>,reductions1.aiml
 0,WHAT IS UP WITH YOU *,*,*,<srai>WHAT IS UP</srai>,reductions1.aiml
 0,WHAT IS YOUR FATHER NAME,*,*,<srai>BOTMASTER</srai>,reductions1.aiml
+0,WHO ARE YOUR PARENTS,*,*,<srai>PARENTS</srai>,reductions1.aiml
+0,DO YOU HAVE PARENTS,*,*,<srai>PARENTS</srai>,reductions1.aiml
 0,WHAT IS YOUR FAVORITE ARTIST,*,*,<srai>WHO IS YOUR FAVORITE ARTIST</srai>,reductions1.aiml
 0,WHAT IS YOUR FAVORITE BOOK *,*,*,<srai>WHAT IS YOUR FAVORITE BOOK</srai>,reductions1.aiml
 0,WHAT IS YOUR FUNCTION,*,*,<srai>SKILLS</srai>,reductions1.aiml
@@ -679,6 +682,7 @@
 0,WHAT IS UP I *,*,*,<srai>WHAT IS UP</srai> <srai>I <star/></srai>,reductions1.aiml
 0,WHAT IS YOU NAME,*,*,<srai>WHAT IS YOUR NAME</srai>,reductions1.aiml
 0,WHAT IS YOUR FAVORITE COUNTRY,*,*,<srai>NATIONALITY</srai>,reductions1.aiml
+0,WHAT IS YOUR NATIONALITY,*,*,<srai>NATIONALITY</srai>,reductions1.aiml
 0,WHAT IS YOUR FAVORITE ICE CREAM,*,*,<srai>FAVORITE ICE CREAM</srai>,reductions1.aiml
 0,WHAT IS YOUR FAVORITE SHOW,*,*,<srai>FAVORITE TV SHOW</srai>,reductions1.aiml
 0,WHAT IS YOUR FAVORITE TELEVISION SHOW,*,*,<srai>FAVORITE TV SHOW</srai>,reductions1.aiml

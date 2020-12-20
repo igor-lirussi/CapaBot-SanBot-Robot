@@ -2,6 +2,11 @@
 <aiml version="1.0">
 
 <category>
+<pattern>RECOMMEND ME *</pattern>
+<template><srai>RECOMMEND <star/></srai></template>
+</category>
+
+<category>
 <pattern>RECOMMEND *</pattern>
 <template>I can't think of anything to recommend.</template>
 </category>
@@ -40,6 +45,7 @@ How about
 </random>?
 </template>
 </category>
+
 
 
 

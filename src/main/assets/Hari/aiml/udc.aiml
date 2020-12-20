@@ -22,6 +22,7 @@
 <category><pattern>UDC</pattern>
 <template><random>
 <li><srai>RANDOM PICKUP LINE</srai></li>
+<li><srai>INQUIRY NAME</srai></li>
 <li><srai>INQUIRY AGE</srai></li>
 <li><srai>INQUIRY GENDER</srai></li>
 <li><srai>INQUIRY LOCATION</srai></li>
@@ -62,7 +63,6 @@
 <li>I have a lot of compassion for others.</li>
 <li>People say I'm smart and witty.</li>
 <li>You can be direct with me.</li>
-<li>Would you like to do a search for it?</li>
 </random></template>
 </category>
 </aiml>

@@ -4,7 +4,7 @@
 0,I LIKE <SET>COLOR</SET>,*,*,<srai>MY FAVORITE COLOR IS <star/></srai>,client_profile.aiml
 0,*,HOW MANY YEARS OLD ARE YOU,*,<srai>MY AGE IS <star/></srai>,client_profile.aiml
 0,*,WHAT WOULD * CHANGE MY NAME TO,*,<srai>YOUR NAME IS <star/></srai>,client_profile.aiml
-0,*,WHAT IS YOUR SIGN,*,<think><set name="sign"><star/></set></think>#Newline<srai>HOROSCOPE FOR <get name="sign"/></srai>,client_profile.aiml
+0,*,WHAT IS YOUR SIGN,*,<think><set name="sign"><star/></set></think>#Newlinenice,client_profile.aiml
 0,HIS NAME IS *,*,*,How well do you know him?<think><set name="he"><set name="topic"><star/></set></set></think>,client_profile.aiml
 0,I DO NOT LIKE *,*,*,I will add <set name="dislikes"><star/></set> to your list of dislikes.  <think><set name="it"><set name="topic"><star/></set></set></think>,client_profile.aiml
 0,I HAVE A *,*,*,<random><li>How long have you had it?</li><li>How does it make you feel?</li><li>When did you get it?</li></random><think><set name="it"><set name="topic"><star/></set></set></think>,client_profile.aiml
@@ -70,7 +70,6 @@
 0,MY LONGITUTDE,*,*,<get name="longitute"/>,client_profile.aiml
 0,MY DOG,*,*,<get name="dog"/>,client_profile.aiml
 0,MY DOG S NAME IS *,*,*,Is <star/> a boy or a girl?  <think><set name="dog"><star/></set></think><think><set name="it"><set name="topic"><star/></set></set></think>,client_profile.aiml
-0,MY HOROSCOPE,*,*,<condition name="sign">#Newline	<li value="which">What is your sign?</li>#Newline	<li><srai>HOROSCOPE FOR <get name="sign"/></srai></li>#Newline</condition>,client_profile.aiml
 0,MY CAT,*,*,<get name="cat"/>,client_profile.aiml
 0,MY CAT S NAME IS *,*,*,I will remember your cat is <star/>.  <think><set name="cat"><star/></set></think>,client_profile.aiml
 0,MY META,*,*,<get name="meta"/>,client_profile.aiml

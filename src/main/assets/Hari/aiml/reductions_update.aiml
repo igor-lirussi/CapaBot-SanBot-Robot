@@ -39,6 +39,9 @@
 <category><pattern>* WHO DO *</pattern>
 <template><srai>WHO DO <star index="2"/></srai></template>
 </category>
+<category><pattern>HOW MANY THINGS DO YOU KNOW</pattern>
+<template><srai>SIZE</srai></template>
+</category>
 <category><pattern>ACCESS * FOR ME</pattern>
 <template><srai>ACCESS <star/></srai></template>
 </category>
@@ -1354,7 +1357,10 @@
 <template><srai>LOCATION</srai></template>
 </category>
 <category><pattern>WHAT IS MY HOROSCOPE FOR *</pattern>
-<template><srai>HOROSCOPE FOR <star/></srai></template>
+<template><srai>WHAT IS THE HOROSCOPE FOR <star/></srai></template>
+</category>
+<category><pattern>WHAT IS THE HOROSCOPE FOR *</pattern>
+<template><srai>HOROSCOPE</srai></template>
 </category>
 <category><pattern>WHAT IS YOUR MIDDLE NAME</pattern>
 <template><srai>MIDDLE NAME</srai></template>
@@ -2030,9 +2036,6 @@
 </category>
 <category><pattern>DO YOU WANT TO BE MY FRIEND</pattern>
 <template><srai>CAN WE BE FRIENDS</srai></template>
-</category>
-<category><pattern>HOROSCOPE</pattern>
-<template><srai>MY HOROSCOPE</srai></template>
 </category>
 <category><pattern>HOW DO YOU PRONOUNCE YOUR NAME</pattern>
 <template><srai>WHAT IS YOUR NAME</srai></template>

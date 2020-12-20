@@ -20,13 +20,12 @@
 <think>
 	<set name="score">0</set>
 </think>
-This is a test made up of 10 simple multiple choice questions that will help you see what sort of personality you have. Say START to begin the test.
+This is a test made up of 10 simple multiple choice questions that will help you see what sort of personality you have. Say START TEST to begin the test.
 </template>
 </category>
 
 <category>
-<pattern>START</pattern>
-<that>This is a test made up of 10 simple multiple choice questions that will help you see what sort of personality you have. Say START to begin the test.</that>
+<pattern>START TEST</pattern>
 <template>
 <srai>ptquestion1</srai>
 </template>
@@ -65,8 +64,8 @@ Please answer either A, B or C for question 1 or QUIT to finish the test.
 <that>_ ANSWER * FOR QUESTION 1 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD1</srai><srai>PTADD1</srai><srai>ptquestion2</srai></li>
@@ -104,8 +103,8 @@ Please answer either A, B, C, D or E for question 2 or QUIT to finish the test.
 <that>_ ANSWER * FOR QUESTION 2 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD3</srai><srai>ptquestion3</srai></li>
@@ -145,8 +144,8 @@ Please answer either A, B, C, D or E for question 3 or QUIT to finish the test.
 <that>_ ANSWER * FOR QUESTION 3 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD1</srai><srai>ptquestion4</srai></li>
@@ -185,8 +184,8 @@ Please answer either A, B, C or D for question 4 or QUIT to finish the test.
 <that>_ ANSWER * FOR QUESTION 4 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD1</srai><srai>ptquestion5</srai></li>
@@ -224,8 +223,8 @@ Please answer either A, B, C or D for question 5 or QUIT to finish the test.
 <that>_ ANSWER * FOR QUESTION 5 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD1</srai><srai>PTADD1</srai><srai>ptquestion6</srai></li>
@@ -262,8 +261,8 @@ Please answer either A, B or C for question 6 or QUIT to finish the test.
 <that>_ ANSWER * FOR QUESTION 6 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD3</srai><srai>ptquestion7</srai></li>
@@ -299,8 +298,8 @@ Please answer either A, B or C for question 7 or QUIT to finish the test.
 <that>_ ANSWER * FOR QUESTION 7 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD3</srai><srai>ptquestion8</srai></li>
@@ -340,8 +339,8 @@ Please answer either A, B, C, D, E, F or G for question 8 or QUIT to finish the 
 <that>_ ANSWER * FOR QUESTION 8 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD3</srai><srai>ptquestion9</srai></li>
@@ -383,8 +382,8 @@ Please answer either A, B, C, D or E for question 9 or QUIT to finish the test.
 <that>_ ANSWER * FOR QUESTION 9 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD3</srai><srai>PTADD1</srai><srai>ptquestion10</srai></li>
@@ -425,8 +424,8 @@ Please answer either A, B, C, D, E or F for question 10 or QUIT to finish the te
 <that>_ ANSWER * FOR QUESTION 10 OR QUIT TO FINISH THE TEST</that>
 <template>
 <think>
-	<set name="topic"></set>
-	<set name="choice"><star/></set>
+	<set name="topic">unknown</set>
+	<set name="choice"><uppercase><star/></uppercase></set>
 </think>
 	<condition name="choice">
 		<li value="A"><srai>PTADD3</srai><srai>PTADD1</srai><srai>ptworkoutscore</srai></li>

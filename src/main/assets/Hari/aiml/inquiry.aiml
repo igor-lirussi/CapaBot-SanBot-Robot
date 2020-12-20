@@ -62,6 +62,19 @@
 <category><pattern>WOMAN</pattern><that>ARE YOU A MAN OR A WOMAN</that>
 <template><srai>MY GENDER IS FEMALE</srai></template>
 </category>
+<category><pattern>MALE</pattern><that>ARE YOU A MAN OR A WOMAN</that>
+<template><srai>MY GENDER IS MALE</srai></template>
+</category>
+<category><pattern>FEMALE</pattern><that>ARE YOU A MAN OR A WOMAN</that>
+<template><srai>MY GENDER IS FEMALE</srai></template>
+</category>
+<category><pattern>I AM ^ MALE</pattern><that>ARE YOU A MAN OR A WOMAN</that>
+<template><srai>MY GENDER IS MALE</srai></template>
+</category>
+<category><pattern>I AM ^ FEMALE</pattern><that>ARE YOU A MAN OR A WOMAN</that>
+<template><srai>MY GENDER IS FEMALE</srai></template>
+</category>
+
 
 <category><pattern>*</pattern><that>HOW OLD ARE YOU</that>
 <template><think><set name="age"><star/></set></think>

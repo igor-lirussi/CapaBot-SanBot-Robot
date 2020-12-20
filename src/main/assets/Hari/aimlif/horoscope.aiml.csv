@@ -1,6 +1,7 @@
 0,_ MY HOROSCOPE,*,*,<srai>HOROSCOPE</srai>,horoscope.aiml
 0,_ MY HOROSCOPE *,*,*,<srai>HOROSCOPE</srai>,horoscope.aiml
-0,*,WHAT STAR SIGN ARE YOU,HOROSCOPE,There's no such star sign as<star/>.,horoscope.aiml
+0,HOROSCOPE,*,*,<think>#Newline<set name="topic">Horoscope</set>#Newline</think>#Newline<condition name="sign">#Newline<li value="Aries"><srai><get name="sign"/></srai></li>#Newline<li value="Taurus"><srai><get name="sign"/></srai></li>#Newline<li value="Gemini"><srai><get name="sign"/></srai></li>#Newline<li value="Cancer"><srai><get name="sign"/></srai></li>#Newline<li value="Leo"><srai><get name="sign"/></srai></li>#Newline<li value="Virgo"><srai><get name="sign"/></srai></li>#Newline<li value="Libra"><srai><get name="sign"/></srai></li>#Newline<li value="Scorpio"><srai><get name="sign"/></srai></li>#Newline<li value="Sagittarius"><srai><get name="sign"/></srai></li>#Newline<li value="Capricorn"><srai><get name="sign"/></srai></li>#Newline<li value="Aquarius"><srai><get name="sign"/></srai></li>#Newline<li value="Pisces"><srai><get name="sign"/></srai></li>#Newline<li>What star sign are you?</li>#Newline</condition>,horoscope.aiml
+0,*,WHAT STAR SIGN ARE YOU,HOROSCOPE,There's no such star sign as <star/>.,horoscope.aiml
 0,ARIES,*,HOROSCOPE,ARIES - March 21st - April 20th . #Newline<think><set name="sign">Aries</set></think>#Newline<srai>RANDOM HOROSCOPE</srai>,horoscope.aiml
 0,TAURUS,*,HOROSCOPE,TAURUS - April 21st - May 21st . #Newline<think><set name="sign">Taurus</set></think>#Newline<srai>RANDOM HOROSCOPE</srai>,horoscope.aiml
 0,GEMINI,*,HOROSCOPE,GEMINI - May 22nd - June 21st . #Newline<think><set name="sign">Gemini</set></think>#Newline<srai>RANDOM HOROSCOPE</srai>,horoscope.aiml

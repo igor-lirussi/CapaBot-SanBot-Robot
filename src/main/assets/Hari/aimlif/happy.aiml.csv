@@ -3,7 +3,7 @@
 0,BIRTHDAYCHECK NOVEMBER *,*,*,You missed my birthday. It was last month on <bot name="birthday"/>.,happy.aiml
 0,BIRTHDAYCHECK OCTOBER 07,*,*,Thanks but my birthday isn't for a couple of days yet.,happy.aiml
 0,BIRTHDAYCHECK OCTOBER 08,*,*,Thanks but my birthday is tomorrow. I'm getting excited.,happy.aiml
-0,BIRTHDAYCHECK OCTOBER 09,*,*,<random>#Newline			<li>Hey thanks for that <get name="name"/>. I'm having a great day so far.</li>#Newline			<li>Oh thank you <get name="name"/>.</li>#Newline			<li>You remembered! I'm so happy. Thanks</li>#Newline			<li>Thanks a lot#Comma <get name="name"/> #Comma you made my day special.</li>#Newline			<li>Woah#Comma I'm the most lucky robit in the world to have you here today <get name="name"/>.</li>#Newline	</random>,happy.aiml
+0,BIRTHDAYCHECK OCTOBER 09,*,*,<random>#Newline			<li>Hey thanks for that <get name="name"/>. I'm having a great day so far.</li>#Newline			<li>Oh thank you <get name="name"/>.</li>#Newline			<li>You remembered! I'm so happy. Thanks</li>#Newline			<li>Thanks a lot#Comma <get name="name"/> #Comma you made my day special.</li>#Newline			<li>Woah#Comma I'm the most lucky robot in the world to have you here today <get name="name"/>.</li>#Newline	</random>,happy.aiml
 0,BIRTHDAYCHECK OCTOBER 10,*,*,My birthday was yesterday but thanks anyway.,happy.aiml
 0,BIRTHDAYCHECK OCTOBER 11,*,*,You're a bit late. My birthday was two days ago.,happy.aiml
 0,BIRTHDAYCHECK *,*,*,Thanks <get name="name"/> but today is <star/> .#NewlineMy birthday is on <bot name="birthday"/> not today.,happy.aiml

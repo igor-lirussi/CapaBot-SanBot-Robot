@@ -6,6 +6,7 @@
 0,* S NUMBER IS *,*,*,<srai><star/> S MOBILE NUMBER IS <star index="2"/></srai>,reductions_update.aiml
 0,* S PHONE NUMBER IS *,*,*,<srai><star/> S MOBILE NUMBER IS <star index="2"/></srai>,reductions_update.aiml
 0,* WHO DO *,*,*,<srai>WHO DO <star index="2"/></srai>,reductions_update.aiml
+0,HOW MANY THINGS DO YOU KNOW,*,*,<srai>SIZE</srai>,reductions_update.aiml
 0,ACCESS * FOR ME,*,*,<srai>ACCESS <star/></srai>,reductions_update.aiml
 0,ACCESS THE WEATHER *,*,*,<srai>WHAT IS THE WEATHER</srai>,reductions_update.aiml
 0,ADD * * AS A CONTACT *,*,*,<srai>NEW CONTACT <star/> <star index="2"/></srai>,reductions_update.aiml
@@ -443,7 +444,8 @@
 0,SEND SMS,*,*,<srai>SMS</srai>,reductions_update.aiml
 0,SHOW ME A LIST OF *,*,*,<srai>SEARCH FOR A LIST OF <star/></srai>,reductions_update.aiml
 0,WERE DO YOU LIVE,*,*,<srai>LOCATION</srai>,reductions_update.aiml
-0,WHAT IS MY HOROSCOPE FOR *,*,*,<srai>HOROSCOPE FOR <star/></srai>,reductions_update.aiml
+0,WHAT IS MY HOROSCOPE FOR *,*,*,<srai>WHAT IS THE HOROSCOPE FOR <star/></srai>,reductions_update.aiml
+0,WHAT IS THE HOROSCOPE FOR *,*,*,<srai>HOROSCOPE</srai>,reductions_update.aiml
 0,WHAT IS YOUR MIDDLE NAME,*,*,<srai>MIDDLE NAME</srai>,reductions_update.aiml
 0,WHAT YEAR IS IT,*,*,<srai>YEAR</srai>,reductions_update.aiml
 0,WHICH IS YOUR *,*,*,<srai>WHAT IS YOUR <star/></srai>,reductions_update.aiml
@@ -669,7 +671,6 @@
 0,YOU LIVE IN *,*,*,<srai>LOCATION</srai>,reductions_update.aiml
 0,* YOU DO NOT *,*,*,<srai>YOU DO NOT <star index="2"/></srai>,reductions_update.aiml
 0,DO YOU WANT TO BE MY FRIEND,*,*,<srai>CAN WE BE FRIENDS</srai>,reductions_update.aiml
-0,HOROSCOPE,*,*,<srai>MY HOROSCOPE</srai>,reductions_update.aiml
 0,HOW DO YOU PRONOUNCE YOUR NAME,*,*,<srai>WHAT IS YOUR NAME</srai>,reductions_update.aiml
 0,I GUESS SO,*,*,<srai>YES</srai>,reductions_update.aiml
 0,OKEY,*,*,<srai>OK</srai>,reductions_update.aiml

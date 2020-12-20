@@ -12,6 +12,7 @@
 
 
 <!-- These categories deal with Happy Birthday. My bot's birthday is October 9, 2018. -->
+<!-- Correct also proprieties.txt and bot_profile.aiml! -->
 <!-- Remember to put 2 figures in the date so March 8 becomes March 08 -->
 
 <category>
@@ -71,7 +72,7 @@ Thanks but my birthday is tomorrow. I'm getting excited.
 			<li>Oh thank you <get name="name"/>.</li>
 			<li>You remembered! I'm so happy. Thanks</li>
 			<li>Thanks a lot, <get name="name"/> , you made my day special.</li>
-			<li>Woah, I'm the most lucky robit in the world to have you here today <get name="name"/>.</li>
+			<li>Woah, I'm the most lucky robot in the world to have you here today <get name="name"/>.</li>
 	</random>
 </template>
 </category>

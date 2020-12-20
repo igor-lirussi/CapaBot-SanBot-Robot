@@ -9,8 +9,8 @@
 <!-- gender.aiml written by Square Bear 9th February 2010 -->
 
 <!-- Allows the bot to work out what gender a person's name is  -->
-<!-- First of all a few srais to the category  -->
 
+<!-- First of all a few srais to the category  -->
 <category><pattern>AM I A BOY *</pattern><template><srai>what is my gender</srai></template></category>
 <category><pattern>AM I A BOY</pattern><template><srai>what is my gender</srai></template></category>
 <category><pattern>AM I A GIRL *</pattern><template><srai>what is my gender</srai></template></category>
@@ -27,8 +27,8 @@
 <category><pattern>AM I A FEMALE</pattern><template><srai>what is my gender</srai></template></category>
 <category><pattern>AM I A MALE *</pattern><template><srai>what is my gender</srai></template></category>
 <category><pattern>AM I A FEMALE *</pattern><template><srai>what is my gender</srai></template></category>
-<category><pattern>WHAT SEX AM I</pattern><template><srai>what is my gender</srai></template></category>
-<category><pattern>WHAT IS MY SEX</pattern><template><srai>what is my gender</srai></template></category>
+<category><pattern>WHAT GENDER AM I</pattern><template><srai>what is my gender</srai></template></category>
+<category><pattern>WHAT IS MY GENDER</pattern><template><srai>what is my gender</srai></template></category>
 <category><pattern>AM I A BOY OR A GIRL</pattern><template><srai>what is my gender</srai></template></category>     
 <category><pattern>AM I A FEMALE OR A MALE</pattern><template><srai>what is my gender</srai></template></category>     
 <category><pattern>AM I A MALE OR A FEMALE</pattern><template><srai>what is my gender</srai></template></category>     
@@ -40,25 +40,28 @@
 <category><pattern>AM I FEMALE *</pattern><template><srai>what is my gender</srai></template></category> 
 <category><pattern>AM I A BOY OR *</pattern><template><srai>what is my gender</srai></template></category>
 
-<category><pattern>IS * A BOY</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A GIRL</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A MAN</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A WOMAN</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * MALE</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * FEMALE</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A MALE</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A FEMALE</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A BOY *</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A GIRL *</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A MAN *</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A WOMAN *</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * MALE *</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * FEMALE *</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A MALE *</pattern><template><srai>what sex is<star/></srai></template></category>
-<category><pattern>IS * A FEMALE *</pattern><template><srai>what sex is<star/></srai></template></category>
+<category><pattern>WHAT IS THE GENDER OF *</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A BOY</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A GIRL</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A MAN</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A WOMAN</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * MALE</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * FEMALE</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A MALE</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A FEMALE</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A BOY *</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A GIRL *</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A MAN *</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A WOMAN *</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * MALE *</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * FEMALE *</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A MALE *</pattern><template><srai>what gender is <star/></srai></template></category>
+<category><pattern>IS * A FEMALE *</pattern><template><srai>what gender is <star/></srai></template></category>
 
-<category><pattern>MAN</pattern><that>ARE YOU A MAN OR A WOMAN</that><template><srai>I am male</srai></template></category> 
-<category><pattern>WOMAN</pattern><that>ARE YOU A MAN OR A WOMAN</that><template><srai>I am female</srai></template></category>
+<category><pattern>MAN</pattern><that>* ARE YOU MALE OR FEMALE</that><template><srai>I am male</srai></template></category>
+<category><pattern>MALE</pattern><that>* ARE YOU MALE OR FEMALE</that><template><srai>I am male</srai></template></category>
+<category><pattern>WOMAN</pattern><that>* ARE YOU MALE OR FEMALE</that><template><srai>I am female</srai></template></category>
+<category><pattern>FEMALE</pattern><that>* ARE YOU MALE OR FEMALE</that><template><srai>I am female</srai></template></category>
 <category><pattern>I AM A WOMAN</pattern><template><srai>I am female</srai></template></category>
 <category><pattern>I AM A MAN</pattern><template><srai>I am male</srai></template></category>
 <category><pattern>I AM A FEMALE</pattern><template><srai>I am female</srai></template></category>
@@ -82,38 +85,38 @@
 <think>
 	<condition name="gender">
 		<li value="MAN"><set name="gender">male</set></li>
-		<li value="WOMAN"><set name="gender">male</set></li>
+		<li value="WOMAN"><set name="gender">female</set></li>
 		<li value="HE"><set name="gender">male</set></li>
 		<li value="SHE"><set name="gender">female</set></li>
 	</condition>
 <set name="savegender"><get name="gender"/></set>
-<srai>gendercheck<get name="name"/></srai>
+<srai>gendercheck <get name="name"/></srai>
 <set name="testgender"><get name="gender"/><get name="savegender"/></set>
 	<condition name="testgender">
-		<li value="BOTH FEMALE"><set name="gender">bfemale</set></li>
-		<li value="NO NAME FEMALE"><set name="gender">nfemale</set></li>
-		<li value="UNKNOWN FEMALE"><set name="gender">ufemale</set></li>
-		<li value="BOTH MALE"><set name="gender">bmale</set></li>
-		<li value="NO NAME MALE"><set name="gender">nmale</set></li>
-		<li value="UNKNOWN MALE"><set name="gender">umale</set></li>
+		<li value="BOTH FEMALE"><set name="gender">BFEMALE</set></li>
+		<li value="NO NAME FEMALE"><set name="gender">NFEMALE</set></li>
+		<li value="UNKNOWN FEMALE"><set name="gender">UFEMALE</set></li>
+		<li value="BOTH MALE"><set name="gender">BMALE</set></li>
+		<li value="NO NAME MALE"><set name="gender">NMALE</set></li>
+		<li value="UNKNOWN MALE"><set name="gender">UMALE</set></li>
 	</condition>
 </think>
 	<condition name="gender">
 		<li value="NO NAME">No idea. You have not yet told me your name.</li>
-		<li value="UNKNOWN">I know lots of names but have never heard of<get name="name"/>. . Is that a male or female name?</li>
-		<li value="BOTH">I can't really tell, as the name<get name="name"/> can be both a male and female name. Are you male or female?</li>
-		<li value="BMALE">Well,<get name="name"/>can be both a male and female name but you said you are<set name="gender">male</set>.</li>
-		<li value="BFEMALE">Well,<get name="name"/>can be both a male and female name but you said you are<set name="gender">female</set>.</li>
-		<li value="UMALE">I've never heard of the name,<get name="name"/>but you said you are<set name="gender">male</set>.</li>
-		<li value="UFEMALE">I've never heard of the name,<get name="name"/>but you said you are<set name="gender">female</set>.</li>
-		<li value="NMALE">You haven't told me your name but you said you are<set name="gender">male</set>.</li>
-		<li value="NFEMALE">You haven't told me your name but you said you are<set name="gender">female</set>.</li>
+		<li value="UNKNOWN">I know lots of names but have never heard of <get name="name"/>. Are you male or female?</li>
+		<li value="BOTH">I can't really tell, as the name <get name="name"/> can be both a male and female name. Are you male or female?</li>
+		<li value="BMALE">Well, <get name="name"/> can be both a male and female name but you said you are <set name="gender">male</set>.</li>
+		<li value="BFEMALE">Well, <get name="name"/> can be both a male and female name but you said you are <set name="gender">female</set>.</li>
+		<li value="UMALE">I've never heard of the name, <get name="name"/> but you said you are <set name="gender">male</set>.</li>
+		<li value="UFEMALE">I've never heard of the name, <get name="name"/> but you said you are <set name="gender">female</set>.</li>
+		<li value="NMALE">You haven't told me your name but you said you are <set name="gender">male</set>.</li>
+		<li value="NFEMALE">You haven't told me your name but you said you are <set name="gender">female</set>.</li>
 		<li><random>
-			<li>Well with a name like<get name="name"/>, I assume you are<get name="gender"/>.</li>
-			<li>Seeing as you are called<get name="name"/>, I would hope that you were a<get name="gender"/>.</li>
-			<li>You said your name was<get name="name"/>, so I should think you are<get name="gender"/>.</li>
-			<li>From my experience only<get name="gender"/> humans are called<get name="name"/>.</li>
-			<li>Unless your parents were feeling cruel, people called<get name="name"/>are<get name="gender"/>.</li>
+			<li>Well with a name like <get name="name"/>, I assume you are <get name="gender"/>.</li>
+			<li>Seeing as you are called <get name="name"/>, I would hope that you were a <get name="gender"/>.</li>
+			<li>You said your name was <get name="name"/>, so I should think you are <get name="gender"/>.</li>
+			<li>From my experience only <get name="gender"/> humans are called <get name="name"/>.</li>
+			<li>Unless your parents were feeling cruel, people called <get name="name"/> are <get name="gender"/>.</li>
 			</random>
 		</li>
 	</condition>
@@ -121,14 +124,14 @@
 </category>
 
 <category>
-<pattern>WHAT SEX IS *</pattern>
+<pattern>WHAT GENDER IS *</pattern>
 <template>
 <think><set name="savegender"><get name="gender"/></set></think>
-<srai>gendercheck<star/></srai>
+<srai>gendercheck <star/></srai>
 	<condition name="gender">
-		<li value="UNKNOWN">I know lots of names but have never heard of<star/>. . Is that a male or female name?</li>
-		<li value="BOTH">I can't really tell, as the name<star/> can be both a male and female name.</li>
-		<li>The name<star/>is usually a<get name="gender"/>name.</li>
+		<li value="UNKNOWN">I know lots of names but have never heard of <star/>. Is that a male or female name?</li>
+		<li value="BOTH">I can't really tell, as the name <star/> can be both a male and female name.</li>
+		<li>The name <star/> is usually a <get name="gender"/> name.</li>
 	</condition>
 <think><set name="gender"><get name="savegender"/></set></think>
 </template>
@@ -137,12 +140,12 @@
 <category>
 <pattern>I AM MALE</pattern>
 <template>
-<srai>gendercheck<get name="name"/></srai>
+<srai>gendercheck <get name="name"/></srai>
 	<condition name="gender">
 		<li value="MALE">Most of my visitors are male.</li>
 		<li value="BOTH"><think><set name="gender">male</set></think>Most of my visitors are male.</li>
 		<li value="NO NAME"><think><set name="gender">male</set></think>Most of my visitors are male.</li>
-		<li value="FEMALE">A male human called<get name="name"/>?! I guess your parents didn't like you?</li>
+		<li value="FEMALE">A male human called <get name="name"/>?! I guess your parents didn't like you?</li>
 		<li value="UNKNOWN"><think><set name="gender">male</set></think>Thanks for telling me. I've not heard of your name before. What does it mean?</li>
 	</condition>
 </template>
@@ -151,13 +154,13 @@
 <category>
 <pattern>I AM FEMALE</pattern>
 <template>
-<srai>gendercheck<get name="name"/></srai>
+<srai>gendercheck <get name="name"/></srai>
 	<condition name="gender">
-		<li value="MALE">A female human called<get name="name"/>?! I guess your parents didn't like you?</li>
+		<li value="MALE">A female human called <get name="name"/>?! I guess your parents didn't like you?</li>
 		<li value="FEMALE">I don't chat with many girls.</li>
 		<li value="BOTH"><think><set name="gender">female</set></think>I don't chat with many girls.</li>
 		<li value="NO NAME"><think><set name="gender">female</set></think>I don't chat with many girls.</li>
-		<li value="UNKNOWN"><think><set name="gender">female</set></think>Thanks for telling me. I've not heard of the name<get name="name"/>before. What does it mean?</li>
+		<li value="UNKNOWN"><think><set name="gender">female</set></think>Thanks for telling me. I've not heard of the name <get name="name"/> before. What does it mean?</li>
 	</condition>
 </template>
 </category>
@@ -166,7 +169,7 @@
 
 <category><pattern>GENDERCHECK</pattern><template><think><set name="gender">NO NAME</set></think></template></category>
 <category><pattern>GENDERCHECK *</pattern><template><think><set name="gender">UNKNOWN</set></think></template></category>
-<category><pattern>GENDERCHECK * *</pattern><template><srai>gendercheck<star/></srai></template></category>
+<category><pattern>GENDERCHECK * *</pattern><template><srai>gendercheck <star/></srai></template></category>
 
 <!-- MALE NAMES -->
 

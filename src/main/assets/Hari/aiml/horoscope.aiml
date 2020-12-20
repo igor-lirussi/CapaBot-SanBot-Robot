@@ -30,14 +30,21 @@
 <think>
 <set name="topic">Horoscope</set>
 </think>
-<condition>
-<li name="sign" value="*">
-<random>
-<li><srai><get name="sign"/></srai></li>
-</random>
-</li>
+<condition name="sign">
+<li value="Aries"><srai><get name="sign"/></srai></li>
+<li value="Taurus"><srai><get name="sign"/></srai></li>
+<li value="Gemini"><srai><get name="sign"/></srai></li>
+<li value="Cancer"><srai><get name="sign"/></srai></li>
+<li value="Leo"><srai><get name="sign"/></srai></li>
+<li value="Virgo"><srai><get name="sign"/></srai></li>
+<li value="Libra"><srai><get name="sign"/></srai></li>
+<li value="Scorpio"><srai><get name="sign"/></srai></li>
+<li value="Sagittarius"><srai><get name="sign"/></srai></li>
+<li value="Capricorn"><srai><get name="sign"/></srai></li>
+<li value="Aquarius"><srai><get name="sign"/></srai></li>
+<li value="Pisces"><srai><get name="sign"/></srai></li>
 <li>What star sign are you?</li>
-</condition>  
+</condition>
 </template>
 </category>
 
@@ -45,7 +52,7 @@
 <category>
 <pattern>*</pattern>
 <that>WHAT STAR SIGN ARE YOU</that>
-<template>There's no such star sign as<star/>.
+<template>There's no such star sign as <star/>.
 </template>
 </category>
 </topic>

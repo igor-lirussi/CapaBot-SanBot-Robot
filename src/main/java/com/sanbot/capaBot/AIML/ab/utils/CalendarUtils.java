@@ -33,7 +33,7 @@ public class CalendarUtils {
 	public static String date() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMMMMMM dd, yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMMMMMMM dd, yyyy", Locale.US);
         dateFormat.setCalendar(cal);
 		return dateFormat.format(cal.getTime());
 	}
@@ -48,7 +48,7 @@ public class CalendarUtils {
         String dateAsString = new Date().toString();
         try {
         SimpleDateFormat simpleDateFormat =
-                new SimpleDateFormat(jformat);
+                new SimpleDateFormat(jformat,Locale.US);
           dateAsString = simpleDateFormat.format(new Date());
         }
         catch (Exception ex) {

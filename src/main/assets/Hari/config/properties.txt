@@ -4,6 +4,6 @@ email:igor.lirussi@studio.unibo.it
 gender:female
 birthday:9 October
 botmaster:Lirussi Igor
-organization:ISR
-version:3.0.1
-
+organization:ISR-Lisboa
+version:4.1.1
+build: february 2020

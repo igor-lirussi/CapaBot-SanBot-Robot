@@ -27,6 +27,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="BH900CTRC8" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -58,53 +59,54 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3680">
-              <caret line="282" column="14" selection-start-line="282" selection-start-column="10" selection-end-line="282" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>conclu</find>
-      <find>||</find>
-      <find>speecj</find>
-      <find>paused</find>
-      <find>busy</find>
-      <find>getResult</find>
-      <find>early</find>
-      <find>you can</find>
-      <find>xmlAddToNodeNow</find>
-      <find>xmlStatsCreateFile</find>
-      <find>&quot;IGOR-BAS&quot;</find>
-      <find>Log</find>
-      <find>colorFlashButton</find>
-      <find>StringUtils</find>
-      <find>askLoud</find>
-      <find>knowYouMeeting</find>
-      <find>extra</find>
-      <find>noResponse</find>
-      <find>good</find>
-      <find>sound</find>
-      <find>wanderOnNow</find>
-      <find>Bot</find>
-      <find>log</find>
-      <find>mysettin</find>
-      <find>getStrin</find>
-      <find>Manager</find>
+      <find>&gt;nationality&lt;</find>
+      <find>&lt;get name=&quot;name&quot;/&gt;</find>
+      <find>&lt;get name=&quot;gender&quot;/&gt;</find>
+      <find>gendercheck</find>
+      <find>010011010101100111011</find>
+      <find>&gt;KNOCK KNOCK&lt;</find>
+      <find>set name=&quot;topic&quot;</find>
+      <find>&quot;topic&quot;&gt;unk</find>
+      <find>&quot;topic&quot;&gt;not</find>
+      <find>nothing</find>
+      <find>&lt;set name=&quot;topic&quot;&gt;&lt;/set&gt;</find>
+      <find>size/</find>
+      <find>I know a lo</find>
+      <find>topic</find>
+      <find>that's be</find>
+      <find>SEX</find>
+      <find>I know</find>
+      <find>&lt;get name</find>
+      <find>are you</find>
+      <find>are you a ma</find>
+      <find>are you a</find>
+      <find>ARE YOU A MAN OR A WOM</find>
+      <find>horosco</find>
+      <find>HOROSCOPE</find>
+      <find>condition</find>
+      <find>are you</find>
+      <find>client p</find>
+      <find>&lt;set name=&quot;choice&quot;&gt;&lt;star/&gt;&lt;/set&gt;</find>
+      <find>uppercase/</find>
+      <find>what happe</find>
     </findStrings>
     <replaceStrings>
       <replace>TAG</replace>
       <replace>Robot</replace>
+      <replace>&lt;set name=&quot;topic&quot;&gt;unknown&lt;/set&gt;</replace>
+      <replace>gender</replace>
+      <replace>GENDER</replace>
+      <replace>&lt;set name=&quot;choice&quot;&gt;&lt;uppercase&gt;&lt;star/&gt;&lt;uppercase/&gt;&lt;/set&gt;</replace>
+      <replace>/uppercase</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\VisLab\SanBot_Material\capaBot\capaBot</dir>
+      <dir>D:\VisLab\SanBot_Material\capaBot\capaBot\src\main\assets\Hari</dir>
+      <dir>D:\VisLab\SanBot_Material\capaBot\capaBot\src\main\assets\Hari\aiml</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -113,31 +115,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/History.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Inflector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/InflectorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/MagicNumbers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/MagicStrings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Nodemapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/NodemapperOperator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/ParseState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Path.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/PCAIMLProcessorExtension.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/PreProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Properties.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/StarBindings.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Stars.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Timer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/TripleStore.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Tuple.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Verbs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/DomUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/IntervalUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/IOUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/MemoryUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/NetworkUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/AIMLProcessor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/CalendarUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/JapaneseUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/AB.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Sraix.java" />
@@ -148,7 +129,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/TestAB.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Predicates.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyChargeActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java" />
@@ -164,6 +144,28 @@
         <option value="$PROJECT_DIR$/../../chatBots/AIML_DOWNLOADED/pandora-downloaded/aiml/README.md" />
         <option value="$USER_HOME$/Desktop/MyShakeActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyShakeActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/update.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/happy.aiml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/CalendarUtils.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/reductions1.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/jokes.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/onthisday.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/recommendations.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/familiar.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/utilities.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/copyme.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/bot_profile.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/shutup.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/gender.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/inquiry.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/client_profile.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/sraix.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/reductions_update.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/horoscope.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/config/properties.txt" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/yomama.aiml" />
+        <option value="$PROJECT_DIR$/src/main/assets/Hari/aiml/drphil.aiml" />
       </list>
     </option>
   </component>
@@ -180,8 +182,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -208,6 +208,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -362,6 +364,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22163388" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -382,8 +385,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Logcat" order="8" sideWeight="0.49848714" weight="0.81178397" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49924356" weight="0.32733223" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5045386" side_tool="true" visible="true" weight="0.23076923" />
-      <window_info anchor="bottom" id="Build" order="11" sideWeight="0.49546143" visible="true" weight="0.23076923" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5075643" side_tool="true" visible="true" weight="0.23076923" />
+      <window_info anchor="bottom" id="Build" order="11" sideWeight="0.4924357" visible="true" weight="0.23076923" />
       <window_info anchor="bottom" id="Android Profiler" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Preview" order="0" weight="0.32980332" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
@@ -397,219 +400,57 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/InflectorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/MemoryUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/AIMLProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/ChatTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/CalendarUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/IntervalUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/DomUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/maps/verb2sp2verb1sp.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/IOUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/sets/name.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/config/copyright.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/config/denormal.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
+        <state relative-caret-position="-2275" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/NetworkUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/config/normal.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/JapaneseUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/config/person.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Utilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/config/person2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/bot_profile.aiml" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/AB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7580">
-          <caret line="385" column="40" selection-start-line="385" selection-start-column="40" selection-end-line="385" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/config/predicates.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/config/gender.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Predicates.java">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DRa0.935/program-ab/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/MemStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Sraix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-        </state>
+        <state relative-caret-position="-1020" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/TestAB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../chatBots/AIML_DOWNLOADED/pandora-downloaded/aiml/seasons.aiml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../chatBots/AIML_DOWNLOADED/currentevents/aiml/udc.aiml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-160" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/pandora/jokes.aiml" />
-    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/jokes.aiml" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/Bot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="160" selection-start-line="160" selection-end-line="160" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300">
-          <caret line="168" column="44" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWeatherDownloadAsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_dark_weather.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_calendar.xml">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
-          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/grid_element_layout.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        <state relative-caret-position="2520">
+          <caret line="206" column="9" selection-start-line="201" selection-start-column="8" selection-end-line="206" selection-end-column="9" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/weather_element_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8020">
+        <state relative-caret-position="8540">
           <caret line="477" column="47" selection-start-line="477" selection-start-column="47" selection-end-line="477" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -617,138 +458,250 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2080">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarDownloadAsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="45" column="42" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyWebActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="144" column="117" selection-start-line="144" selection-start-column="117" selection-end-line="144" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyXMLSuggestionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5492">
-          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtilsXML.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../chatBots/AIML_DOWNLOADED/pandora-downloaded/aiml/learn.aiml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../chatBots/AIML_DOWNLOADED/pandora-downloaded/aiml/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="143" column="58" selection-start-line="143" selection-start-column="58" selection-end-line="143" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyChargeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyProjectStoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1300">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="271" column="77" selection-start-line="271" selection-start-column="77" selection-end-line="273" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyPresentActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="337" column="20" selection-start-line="337" selection-start-column="20" selection-end-line="337" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="48" lean-forward="true" selection-start-line="18" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/MyShakeActivity.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/hand2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/handred.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyShakeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#4908#5450#0" expanded="true" />
-            <element signature="e#5449#5450#0" expanded="true" />
-            <element signature="e#5498#5655#0" expanded="true" />
-            <element signature="e#5654#5655#0" expanded="true" />
-            <element signature="e#7286#7317#0" expanded="true" />
-            <element signature="e#7938#8070#0" expanded="true" />
-            <element signature="e#8069#8070#0" expanded="true" />
-            <element signature="e#8181#8484#0" expanded="true" />
-            <element signature="e#8293#8320#0" expanded="true" />
-            <element signature="e#8483#8484#0" expanded="true" />
-            <element signature="e#11852#11885#0" expanded="true" />
-            <element signature="e#13117#13300#0" expanded="true" />
-            <element signature="e#13299#13300#0" expanded="true" />
-            <element signature="e#13367#13399#0" expanded="true" />
-            <element signature="e#13756#13786#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/hand.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1120">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+        <state relative-caret-position="200">
+          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/CalendarUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3680">
-          <caret line="282" column="14" selection-start-line="282" selection-start-column="10" selection-end-line="282" selection-end-column="14" />
+        <state relative-caret-position="360">
+          <caret line="58" column="28" selection-start-line="58" selection-start-column="28" selection-end-line="58" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/binary.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="11" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/currency.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/dialog.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/date.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/favorites.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/filterinsults.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2826" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/filterprofanity.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2100" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/filerinappropriate.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11015" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/happy.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="13" column="73" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/jokes.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="168" column="10" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/limericks.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/onthisday.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/ontology.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/personality.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="177" column="83" selection-start-line="177" selection-start-column="78" selection-end-line="177" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/reductions1.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="2538" column="21" selection-start-line="2538" selection-start-column="16" selection-end-line="2538" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/familiar.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/bot_profile.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="30" column="82" selection-start-line="30" selection-start-column="82" selection-end-line="30" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/knockknock.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="155" column="47" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/copyme.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/inquiry.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="73" column="26" selection-start-line="73" selection-start-column="26" selection-end-line="73" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/gender.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="63" column="50" lean-forward="true" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/shutup.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="43" column="109" selection-start-line="43" selection-start-column="109" selection-end-line="43" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/horoscope.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/client_profile.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="644" column="34" lean-forward="true" selection-start-line="644" selection-start-column="34" selection-end-line="644" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/config/properties.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/yomama.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/utilities.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3540">
+          <caret line="177" column="6" selection-start-line="177" selection-start-column="1" selection-end-line="177" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/update.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/udc.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/train.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/that.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/sraix.aiml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/seasons.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="980">
+          <caret line="49" column="23" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/reductions_update.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30360">
+          <caret line="1521" column="25" selection-start-line="1521" selection-start-column="20" selection-end-line="1521" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/recommendations.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/drphil.aiml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="427" column="52" selection-start-line="427" selection-start-column="52" selection-end-line="427" selection-end-column="52" />
         </state>
       </provider>
     </entry>

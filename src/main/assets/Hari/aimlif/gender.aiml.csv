@@ -12,8 +12,7 @@
 0,AM I A FEMALE,*,*,<srai>what is my gender</srai>,gender.aiml
 0,AM I A MALE *,*,*,<srai>what is my gender</srai>,gender.aiml
 0,AM I A FEMALE *,*,*,<srai>what is my gender</srai>,gender.aiml
-0,WHAT SEX AM I,*,*,<srai>what is my gender</srai>,gender.aiml
-0,WHAT IS MY SEX,*,*,<srai>what is my gender</srai>,gender.aiml
+0,WHAT GENDER AM I,*,*,<srai>what is my gender</srai>,gender.aiml
 0,AM I A BOY OR A GIRL,*,*,<srai>what is my gender</srai>,gender.aiml
 0,AM I A FEMALE OR A MALE,*,*,<srai>what is my gender</srai>,gender.aiml
 0,AM I A MALE OR A FEMALE,*,*,<srai>what is my gender</srai>,gender.aiml
@@ -24,22 +23,27 @@
 0,AM I MALE *,*,*,<srai>what is my gender</srai>,gender.aiml
 0,AM I FEMALE *,*,*,<srai>what is my gender</srai>,gender.aiml
 0,AM I A BOY OR *,*,*,<srai>what is my gender</srai>,gender.aiml
-0,IS * A BOY,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A GIRL,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A MAN,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A WOMAN,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * MALE,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * FEMALE,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A MALE,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A FEMALE,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A BOY *,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A GIRL *,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A MAN *,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A WOMAN *,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * MALE *,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * FEMALE *,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A MALE *,*,*,<srai>what sex is<star/></srai>,gender.aiml
-0,IS * A FEMALE *,*,*,<srai>what sex is<star/></srai>,gender.aiml
+0,WHAT IS THE GENDER OF *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A BOY,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A GIRL,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A MAN,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A WOMAN,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * MALE,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * FEMALE,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A MALE,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A FEMALE,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A BOY *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A GIRL *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A MAN *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A WOMAN *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * MALE *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * FEMALE *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A MALE *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,IS * A FEMALE *,*,*,<srai>what gender is <star/></srai>,gender.aiml
+0,MAN,* ARE YOU MALE OR FEMALE,*,<srai>I am male</srai>,gender.aiml
+0,MALE,* ARE YOU MALE OR FEMALE,*,<srai>I am male</srai>,gender.aiml
+0,WOMAN,* ARE YOU MALE OR FEMALE,*,<srai>I am female</srai>,gender.aiml
+0,FEMALE,* ARE YOU MALE OR FEMALE,*,<srai>I am female</srai>,gender.aiml
 0,I AM A FEMALE,*,*,<srai>I am female</srai>,gender.aiml
 0,I AM A MALE,*,*,<srai>I am male</srai>,gender.aiml
 0,I AM A BOY,*,*,<srai>I am male</srai>,gender.aiml
@@ -50,11 +54,11 @@
 0,I AM * GIRL,*,*,<srai>I am female</srai><srai>I AM<star/></srai>,gender.aiml
 0,I AM A * BOY,*,*,<srai>I am male</srai><srai>I AM<star/></srai>,gender.aiml
 0,I AM A * GIRL,*,*,<srai>I am female</srai><srai>I AM<star/></srai>,gender.aiml
-0,WHAT IS MY GENDER,*,*,<think>#Newline	<condition name="gender">#Newline		<li value="MAN"><set name="gender">male</set></li>#Newline		<li value="WOMAN"><set name="gender">male</set></li>#Newline		<li value="HE"><set name="gender">male</set></li>#Newline		<li value="SHE"><set name="gender">female</set></li>#Newline	</condition>#Newline<set name="savegender"><get name="gender"/></set>#Newline<srai>gendercheck<get name="name"/></srai>#Newline<set name="testgender"><get name="gender"/><get name="savegender"/></set>#Newline	<condition name="testgender">#Newline		<li value="BOTH FEMALE"><set name="gender">bfemale</set></li>#Newline		<li value="NO NAME FEMALE"><set name="gender">nfemale</set></li>#Newline		<li value="UNKNOWN FEMALE"><set name="gender">ufemale</set></li>#Newline		<li value="BOTH MALE"><set name="gender">bmale</set></li>#Newline		<li value="NO NAME MALE"><set name="gender">nmale</set></li>#Newline		<li value="UNKNOWN MALE"><set name="gender">umale</set></li>#Newline	</condition>#Newline</think>#Newline	<condition name="gender">#Newline		<li value="NO NAME">No idea. You have not yet told me your name.</li>#Newline		<li value="UNKNOWN">I know lots of names but have never heard of<get name="name"/>. . Is that a male or female name?</li>#Newline		<li value="BOTH">I can't really tell#Comma as the name<get name="name"/> can be both a male and female name. Are you male or female?</li>#Newline		<li value="BMALE">Well#Comma<get name="name"/>can be both a male and female name but you said you are<set name="gender">male</set>.</li>#Newline		<li value="BFEMALE">Well#Comma<get name="name"/>can be both a male and female name but you said you are<set name="gender">female</set>.</li>#Newline		<li value="UMALE">I've never heard of the name#Comma<get name="name"/>but you said you are<set name="gender">male</set>.</li>#Newline		<li value="UFEMALE">I've never heard of the name#Comma<get name="name"/>but you said you are<set name="gender">female</set>.</li>#Newline		<li value="NMALE">You haven't told me your name but you said you are<set name="gender">male</set>.</li>#Newline		<li value="NFEMALE">You haven't told me your name but you said you are<set name="gender">female</set>.</li>#Newline		<li><random>#Newline			<li>Well with a name like<get name="name"/>#Comma I assume you are<get name="gender"/>.</li>#Newline			<li>Seeing as you are called<get name="name"/>#Comma I would hope that you were a<get name="gender"/>.</li>#Newline			<li>You said your name was<get name="name"/>#Comma so I should think you are<get name="gender"/>.</li>#Newline			<li>From my experience only<get name="gender"/> humans are called<get name="name"/>.</li>#Newline			<li>Unless your parents were feeling cruel#Comma people called<get name="name"/>are<get name="gender"/>.</li>#Newline			</random>#Newline		</li>#Newline	</condition>,gender.aiml
-0,WHAT SEX IS *,*,*,<think><set name="savegender"><get name="gender"/></set></think>#Newline<srai>gendercheck<star/></srai>#Newline	<condition name="gender">#Newline		<li value="UNKNOWN">I know lots of names but have never heard of<star/>. . Is that a male or female name?</li>#Newline		<li value="BOTH">I can't really tell#Comma as the name<star/> can be both a male and female name.</li>#Newline		<li>The name<star/>is usually a<get name="gender"/>name.</li>#Newline	</condition>#Newline<think><set name="gender"><get name="savegender"/></set></think>,gender.aiml
+0,WHAT IS MY GENDER,*,*,<think>#Newline	<condition name="gender">#Newline		<li value="MAN"><set name="gender">male</set></li>#Newline		<li value="WOMAN"><set name="gender">female</set></li>#Newline		<li value="HE"><set name="gender">male</set></li>#Newline		<li value="SHE"><set name="gender">female</set></li>#Newline	</condition>#Newline<set name="savegender"><get name="gender"/></set>#Newline<srai>gendercheck <get name="name"/></srai>#Newline<set name="testgender"><get name="gender"/><get name="savegender"/></set>#Newline	<condition name="testgender">#Newline		<li value="BOTH FEMALE"><set name="gender">BFEMALE</set></li>#Newline		<li value="NO NAME FEMALE"><set name="gender">NFEMALE</set></li>#Newline		<li value="UNKNOWN FEMALE"><set name="gender">UFEMALE</set></li>#Newline		<li value="BOTH MALE"><set name="gender">BMALE</set></li>#Newline		<li value="NO NAME MALE"><set name="gender">NMALE</set></li>#Newline		<li value="UNKNOWN MALE"><set name="gender">UMALE</set></li>#Newline	</condition>#Newline</think>#Newline	<condition name="gender">#Newline		<li value="NO NAME">No idea. You have not yet told me your name.</li>#Newline		<li value="UNKNOWN">I know lots of names but have never heard of <get name="name"/>. Are you male or female?</li>#Newline		<li value="BOTH">I can't really tell#Comma as the name <get name="name"/> can be both a male and female name. Are you male or female?</li>#Newline		<li value="BMALE">Well#Comma <get name="name"/> can be both a male and female name but you said you are <set name="gender">male</set>.</li>#Newline		<li value="BFEMALE">Well#Comma <get name="name"/> can be both a male and female name but you said you are <set name="gender">female</set>.</li>#Newline		<li value="UMALE">I've never heard of the name#Comma <get name="name"/> but you said you are <set name="gender">male</set>.</li>#Newline		<li value="UFEMALE">I've never heard of the name#Comma <get name="name"/> but you said you are <set name="gender">female</set>.</li>#Newline		<li value="NMALE">You haven't told me your name but you said you are <set name="gender">male</set>.</li>#Newline		<li value="NFEMALE">You haven't told me your name but you said you are <set name="gender">female</set>.</li>#Newline		<li><random>#Newline			<li>Well with a name like <get name="name"/>#Comma I assume you are <get name="gender"/>.</li>#Newline			<li>Seeing as you are called <get name="name"/>#Comma I would hope that you were a <get name="gender"/>.</li>#Newline			<li>You said your name was <get name="name"/>#Comma so I should think you are <get name="gender"/>.</li>#Newline			<li>From my experience only <get name="gender"/> humans are called <get name="name"/>.</li>#Newline			<li>Unless your parents were feeling cruel#Comma people called <get name="name"/> are <get name="gender"/>.</li>#Newline			</random>#Newline		</li>#Newline	</condition>,gender.aiml
+0,WHAT GENDER IS *,*,*,<think><set name="savegender"><get name="gender"/></set></think>#Newline<srai>gendercheck <star/></srai>#Newline	<condition name="gender">#Newline		<li value="UNKNOWN">I know lots of names but have never heard of <star/>. Is that a male or female name?</li>#Newline		<li value="BOTH">I can't really tell#Comma as the name <star/> can be both a male and female name.</li>#Newline		<li>The name <star/> is usually a <get name="gender"/> name.</li>#Newline	</condition>#Newline<think><set name="gender"><get name="savegender"/></set></think>,gender.aiml
 0,GENDERCHECK,*,*,<think><set name="gender">NO NAME</set></think>,gender.aiml
 0,GENDERCHECK *,*,*,<think><set name="gender">UNKNOWN</set></think>,gender.aiml
-0,GENDERCHECK * *,*,*,<srai>gendercheck<star/></srai>,gender.aiml
+0,GENDERCHECK * *,*,*,<srai>gendercheck <star/></srai>,gender.aiml
 0,GENDERCHECK AARON,*,*,<think><set name="gender">male</set></think>,gender.aiml
 0,GENDERCHECK ABBI,*,*,<think><set name="gender">male</set></think>,gender.aiml
 0,GENDERCHECK ABDUL,*,*,<think><set name="gender">male</set></think>,gender.aiml

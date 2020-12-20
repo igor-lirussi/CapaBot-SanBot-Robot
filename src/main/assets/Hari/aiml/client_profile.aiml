@@ -35,7 +35,7 @@
 </category>
 <category><pattern>*</pattern><that>WHAT IS YOUR SIGN</that>
 <template><think><set name="sign"><star/></set></think>
-<srai>HOROSCOPE FOR <get name="sign"/></srai></template>
+nice</template>
 </category>
 <category><pattern>HIS NAME IS *</pattern>
 <template>How well do you know him?<think><set name="he"><set name="topic"><star/></set></set></think></template>
@@ -269,12 +269,6 @@ I call you <get name="name"/>.</template>
 </category>
 <category><pattern>MY DOG S NAME IS *</pattern>
 <template>Is <star/> a boy or a girl?  <think><set name="dog"><star/></set></think><think><set name="it"><set name="topic"><star/></set></set></think></template>
-</category>
-<category><pattern>MY HOROSCOPE</pattern>
-<template><condition name="sign">
-	<li value="which">What is your sign?</li>
-	<li><srai>HOROSCOPE FOR <get name="sign"/></srai></li>
-</condition></template>
 </category>
 <category><pattern>MY CAT</pattern>
 <template><get name="cat"/></template>
