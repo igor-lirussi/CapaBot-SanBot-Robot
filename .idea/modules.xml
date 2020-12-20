@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/capaBot.iml" filepath="$PROJECT_DIR$/capaBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CapaBot-SanBot-Robot.iml" filepath="$PROJECT_DIR$/CapaBot-SanBot-Robot.iml" />
     </modules>
   </component>
 </project>

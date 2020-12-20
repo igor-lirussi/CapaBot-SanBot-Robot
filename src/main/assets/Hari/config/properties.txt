@@ -6,4 +6,4 @@ birthday:9 October
 botmaster:Lirussi Igor
 organization:ISR-Lisboa
 version:4.1.1
-build: february 2020
+build: december 2020
