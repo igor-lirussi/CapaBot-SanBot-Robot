@@ -24,7 +24,7 @@ After the first installation, the app will be available in the section “APP Ma
 
 *   Java
 *   Sanbot OpenSDK
-*   icalendar 4 java
+*   icalendar 4 java 3.0.0
 *   Ab AIML engine
 
 ## Changelog
