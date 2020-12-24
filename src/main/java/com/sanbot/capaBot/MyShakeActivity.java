@@ -13,17 +13,17 @@ import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.beans.EmotionsType;
 import com.sanbot.opensdk.function.beans.LED;
-import com.sanbot.opensdk.function.beans.handmotion.AbsoluteAngleHandMotion;
-import com.sanbot.opensdk.function.beans.handmotion.NoAngleHandMotion;
-import com.sanbot.opensdk.function.beans.handmotion.RelativeAngleHandMotion;
 import com.sanbot.opensdk.function.beans.headmotion.LocateAbsoluteAngleHeadMotion;
 import com.sanbot.opensdk.function.beans.headmotion.RelativeAngleHeadMotion;
-import com.sanbot.opensdk.function.unit.HandMotionManager;
+import com.sanbot.opensdk.function.beans.wing.AbsoluteAngleWingMotion;
+import com.sanbot.opensdk.function.beans.wing.NoAngleWingMotion;
+import com.sanbot.opensdk.function.beans.wing.RelativeAngleWingMotion;
 import com.sanbot.opensdk.function.unit.HardWareManager;
 import com.sanbot.opensdk.function.unit.HeadMotionManager;
 import com.sanbot.opensdk.function.unit.SpeechManager;
 import com.sanbot.opensdk.function.unit.SystemManager;
 import com.sanbot.opensdk.function.unit.WheelMotionManager;
+import com.sanbot.opensdk.function.unit.WingMotionManager;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.TouchSensorListener;
 
 import butterknife.BindView;
@@ -50,7 +50,7 @@ public class MyShakeActivity extends TopBaseActivity {
     //robot managers
     private SpeechManager speechManager; //voice, speechRec
     private HeadMotionManager headMotionManager;    //head movements
-    private HandMotionManager handMotionManager;    //hands movements
+    private WingMotionManager wingMotionManager;    //hands movements
     private SystemManager systemManager; //emotions
     private HardWareManager hardWareManager; //leds //touch sensors //voice locate //gyroscope
     private WheelMotionManager wheelMotionManager; //wheels
@@ -62,11 +62,11 @@ public class MyShakeActivity extends TopBaseActivity {
     Handler incitement = new Handler();
 
     //hand motion
-    private byte handAb = AbsoluteAngleHandMotion.PART_RIGHT;
-    private byte handRe = RelativeAngleHandMotion.PART_RIGHT;
-    NoAngleHandMotion noAngleHandMotionUP = new NoAngleHandMotion(NoAngleHandMotion.PART_RIGHT, 5, NoAngleHandMotion.ACTION_UP);
-    NoAngleHandMotion noAngleHandMotionDOWN = new NoAngleHandMotion(NoAngleHandMotion.PART_RIGHT, 5, NoAngleHandMotion.ACTION_DOWN);
-    NoAngleHandMotion noAngleHandMotionSTOP = new NoAngleHandMotion(NoAngleHandMotion.PART_RIGHT, 5, NoAngleHandMotion.ACTION_STOP);
+    private byte handAb = AbsoluteAngleWingMotion.PART_RIGHT;
+    private byte handRe = RelativeAngleWingMotion.PART_RIGHT;
+    NoAngleWingMotion noAngleWingMotionUP = new NoAngleWingMotion(NoAngleWingMotion.PART_RIGHT, 5, NoAngleWingMotion.ACTION_UP);
+    NoAngleWingMotion noAngleWingMotionDOWN = new NoAngleWingMotion(NoAngleWingMotion.PART_RIGHT, 5, NoAngleWingMotion.ACTION_DOWN);
+    NoAngleWingMotion noAngleWingMotionSTOP = new NoAngleWingMotion(NoAngleWingMotion.PART_RIGHT, 5, NoAngleWingMotion.ACTION_STOP);
 
     //head motion
     LocateAbsoluteAngleHeadMotion locateAbsoluteAngleHeadMotion = new LocateAbsoluteAngleHeadMotion(
@@ -89,7 +89,7 @@ public class MyShakeActivity extends TopBaseActivity {
         //init managers
         speechManager = (SpeechManager) getUnitManager(FuncConstant.SPEECH_MANAGER);
         headMotionManager = (HeadMotionManager) getUnitManager(FuncConstant.HEADMOTION_MANAGER);
-        handMotionManager = (HandMotionManager) getUnitManager(FuncConstant.HANDMOTION_MANAGER);
+        wingMotionManager = (WingMotionManager) getUnitManager(FuncConstant.WINGMOTION_MANAGER);
         hardWareManager = (HardWareManager) getUnitManager(FuncConstant.HARDWARE_MANAGER);
         systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
         wheelMotionManager = (WheelMotionManager) getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
@@ -108,8 +108,8 @@ public class MyShakeActivity extends TopBaseActivity {
             @Override
             public void run() {
                 //hands down
-                AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH, 8, 180);
-                handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+                AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 180);
+                wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
                 //head up
                 headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
                 //calls first meeting presentation
@@ -180,8 +180,8 @@ public class MyShakeActivity extends TopBaseActivity {
         speechManager.startSpeak(getString(R.string.i_am_sanbot), MySettings.getSpeakDefaultOption());
 
         //hand up
-        AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 70);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(handAb, 5, 70);
+        wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         //rotate body
         rotateAtRelativeAngle(wheelMotionManager, 350);
         //rotate head
@@ -237,50 +237,50 @@ public class MyShakeActivity extends TopBaseActivity {
         /*
         //absolute shaking
         sleepy(1);
-        absoluteAngleHandMotion = new AbsoluteAngleHandMotion( handAb, 8, 50);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        absoluteAngleWingMotion = new AbsoluteAngleWingMotion( handAb, 8, 50);
+        wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         sleepy(1);
-        absoluteAngleHandMotion = new AbsoluteAngleHandMotion( handAb, 8, 70);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        absoluteAngleWingMotion = new AbsoluteAngleWingMotion( handAb, 8, 70);
+        wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         sleepy(1);
-        absoluteAngleHandMotion = new AbsoluteAngleHandMotion( handAb, 8, 50);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        absoluteAngleWingMotion = new AbsoluteAngleWingMotion( handAb, 8, 50);
+        wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         sleepy(1);
-        absoluteAngleHandMotion = new AbsoluteAngleHandMotion( handAb, 8, 70);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        absoluteAngleWingMotion = new AbsoluteAngleWingMotion( handAb, 8, 70);
+        wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         */
 
         /*
         //relative shaking
-        RelativeAngleHandMotion relativeAngleHandMotionUP = new RelativeAngleHandMotion(handRe, 10, RelativeAngleHandMotion.ACTION_UP, 10);
-        RelativeAngleHandMotion relativeAngleHandMotionDOWN = new RelativeAngleHandMotion(handRe, 10, RelativeAngleHandMotion.ACTION_DOWN, 10);
-        handMotionManager.doRelativeAngleMotion(relativeAngleHandMotionDOWN);
+        RelativeAngleWingMotion relativeAngleWingMotionUP = new RelativeAngleWingMotion(handRe, 10, RelativeAngleWingMotion.ACTION_UP, 10);
+        RelativeAngleWingMotion relativeAngleWingMotionDOWN = new RelativeAngleWingMotion(handRe, 10, RelativeAngleWingMotion.ACTION_DOWN, 10);
+        wingMotionManager.doRelativeAngleMotion(relativeAngleWingMotionDOWN);
         sleepy(1);
-        handMotionManager.doRelativeAngleMotion(relativeAngleHandMotionUP);
+        wingMotionManager.doRelativeAngleMotion(relativeAngleWingMotionUP);
         sleepy(1);
-        handMotionManager.doRelativeAngleMotion(relativeAngleHandMotionDOWN);
+        wingMotionManager.doRelativeAngleMotion(relativeAngleWingMotionDOWN);
         sleepy(1);
-        handMotionManager.doRelativeAngleMotion(relativeAngleHandMotionUP);
+        wingMotionManager.doRelativeAngleMotion(relativeAngleWingMotionUP);
         sleepy(1);
         */
 
 
         //motion without angle
-        handMotionManager.doNoAngleMotion(noAngleHandMotionUP);
+        wingMotionManager.doNoAngleMotion(noAngleWingMotionUP);
         sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionDOWN);
+        wingMotionManager.doNoAngleMotion(noAngleWingMotionDOWN);
         sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionUP);
+        wingMotionManager.doNoAngleMotion(noAngleWingMotionUP);
         sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionDOWN);
+        wingMotionManager.doNoAngleMotion(noAngleWingMotionDOWN);
         sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionUP);
+        wingMotionManager.doNoAngleMotion(noAngleWingMotionUP);
         sleepy(0.5);
-        handMotionManager.doNoAngleMotion(noAngleHandMotionDOWN);
+        wingMotionManager.doNoAngleMotion(noAngleWingMotionDOWN);
 
 
         //hands down (reset position)
-        handMotionManager.doNoAngleMotion(new NoAngleHandMotion(NoAngleHandMotion.PART_BOTH, 5,NoAngleHandMotion.ACTION_RESET));
+        wingMotionManager.doNoAngleMotion(new NoAngleWingMotion(NoAngleWingMotion.PART_BOTH, 5,NoAngleWingMotion.ACTION_RESET));
 
         //back rotation
         rotateAtRelativeAngle(wheelMotionManager, 10);
@@ -307,8 +307,8 @@ public class MyShakeActivity extends TopBaseActivity {
         //remove incitement if it's still there
         incitement.removeCallbacksAndMessages(null);
         //hand down
-        AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(handAb, 5, 180);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(handAb, 5, 180);
+        wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         //back rotation
         rotateAtRelativeAngle(wheelMotionManager, 10);
         //back head
