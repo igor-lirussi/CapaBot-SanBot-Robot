@@ -34,22 +34,22 @@ import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.beans.FaceRecognizeBean;
 import com.sanbot.opensdk.function.beans.LED;
 import com.sanbot.opensdk.function.beans.StreamOption;
-import com.sanbot.opensdk.function.beans.handmotion.AbsoluteAngleHandMotion;
-import com.sanbot.opensdk.function.beans.handmotion.NoAngleHandMotion;
-import com.sanbot.opensdk.function.beans.handmotion.RelativeAngleHandMotion;
 import com.sanbot.opensdk.function.beans.headmotion.LocateAbsoluteAngleHeadMotion;
 import com.sanbot.opensdk.function.beans.headmotion.RelativeAngleHeadMotion;
 import com.sanbot.opensdk.function.beans.speech.Grammar;
 import com.sanbot.opensdk.function.beans.speech.RecognizeTextBean;
 import com.sanbot.opensdk.function.beans.speech.SpeakStatus;
+import com.sanbot.opensdk.function.beans.wing.AbsoluteAngleWingMotion;
+import com.sanbot.opensdk.function.beans.wing.NoAngleWingMotion;
+import com.sanbot.opensdk.function.beans.wing.RelativeAngleWingMotion;
 import com.sanbot.opensdk.function.unit.HDCameraManager;
-import com.sanbot.opensdk.function.unit.HandMotionManager;
 import com.sanbot.opensdk.function.unit.HardWareManager;
 import com.sanbot.opensdk.function.unit.HeadMotionManager;
 import com.sanbot.opensdk.function.unit.ModularMotionManager;
 import com.sanbot.opensdk.function.unit.SpeechManager;
 import com.sanbot.opensdk.function.unit.SystemManager;
 import com.sanbot.opensdk.function.unit.WheelMotionManager;
+import com.sanbot.opensdk.function.unit.WingMotionManager;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.GyroscopeListener;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.PIRListener;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.TouchSensorListener;
@@ -125,7 +125,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     private HDCameraManager hdCameraManager; //video, faceRec
     private SpeechManager speechManager; //voice, speechRec
     private HeadMotionManager headMotionManager;    //head movements
-    private HandMotionManager handMotionManager;    //hands movements
+    private WingMotionManager wingMotionManager;    //hands movements
     private SystemManager systemManager; //emotions
     private HardWareManager hardWareManager; //leds //touch sensors //voice locate //gyroscope
     private ModularMotionManager modularMotionManager; //wander
@@ -158,11 +158,11 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     boolean paused = false;
 
     //hand motion
-    private byte handAb = AbsoluteAngleHandMotion.PART_LEFT;
-    private byte handRe = RelativeAngleHandMotion.PART_LEFT;
-    NoAngleHandMotion noAngleHandMotionUP = new NoAngleHandMotion(NoAngleHandMotion.PART_LEFT, 5, NoAngleHandMotion.ACTION_UP);
-    NoAngleHandMotion noAngleHandMotionDOWN = new NoAngleHandMotion(NoAngleHandMotion.PART_LEFT, 5, NoAngleHandMotion.ACTION_DOWN);
-    NoAngleHandMotion noAngleHandMotionSTOP = new NoAngleHandMotion(NoAngleHandMotion.PART_LEFT, 5, NoAngleHandMotion.ACTION_STOP);
+    private byte handAb = AbsoluteAngleWingMotion.PART_LEFT;
+    private byte handRe = RelativeAngleWingMotion.PART_LEFT;
+    NoAngleWingMotion noAngleWingMotionUP = new NoAngleWingMotion(NoAngleWingMotion.PART_LEFT, 5, NoAngleWingMotion.ACTION_UP);
+    NoAngleWingMotion noAngleWingMotionDOWN = new NoAngleWingMotion(NoAngleWingMotion.PART_LEFT, 5, NoAngleWingMotion.ACTION_DOWN);
+    NoAngleWingMotion noAngleWingMotionSTOP = new NoAngleWingMotion(NoAngleWingMotion.PART_LEFT, 5, NoAngleWingMotion.ACTION_STOP);
 
     //head motion
     LocateAbsoluteAngleHeadMotion locateAbsoluteAngleHeadMotion = new LocateAbsoluteAngleHeadMotion(
@@ -188,7 +188,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         hdCameraManager = (HDCameraManager) getUnitManager(FuncConstant.HDCAMERA_MANAGER);
         speechManager = (SpeechManager) getUnitManager(FuncConstant.SPEECH_MANAGER);
         headMotionManager = (HeadMotionManager) getUnitManager(FuncConstant.HEADMOTION_MANAGER);
-        handMotionManager = (HandMotionManager) getUnitManager(FuncConstant.HANDMOTION_MANAGER);
+        wingMotionManager = (WingMotionManager) getUnitManager(FuncConstant.HANDMOTION_MANAGER);
         hardWareManager = (HardWareManager) getUnitManager(FuncConstant.HARDWARE_MANAGER);
         systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
         modularMotionManager = (ModularMotionManager) getUnitManager(FuncConstant.MODULARMOTION_MANAGER);
@@ -229,8 +229,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             @Override
             public void run() {
                 //hands down
-                AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH, 8, 180);
-                handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+                AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 180);
+                wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
                 //head up
                 headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
                 //initially sets the wander to on
@@ -641,8 +641,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             @Override
             public void run() {
                 //hands down
-                AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH, 8, 180);
-                handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+                AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 180);
+                wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
                 //head up
                 headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
                 //initially sets the wander to on

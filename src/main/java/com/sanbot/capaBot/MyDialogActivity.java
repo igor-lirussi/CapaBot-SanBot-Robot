@@ -27,17 +27,17 @@ import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.beans.EmotionsType;
 import com.sanbot.opensdk.function.beans.LED;
-import com.sanbot.opensdk.function.beans.handmotion.AbsoluteAngleHandMotion;
 import com.sanbot.opensdk.function.beans.headmotion.LocateAbsoluteAngleHeadMotion;
 import com.sanbot.opensdk.function.beans.speech.Grammar;
 import com.sanbot.opensdk.function.beans.speech.RecognizeTextBean;
-import com.sanbot.opensdk.function.unit.HandMotionManager;
+import com.sanbot.opensdk.function.beans.wing.AbsoluteAngleWingMotion;
 import com.sanbot.opensdk.function.unit.HardWareManager;
 import com.sanbot.opensdk.function.unit.HeadMotionManager;
 import com.sanbot.opensdk.function.unit.ModularMotionManager;
 import com.sanbot.opensdk.function.unit.SpeechManager;
 import com.sanbot.opensdk.function.unit.SystemManager;
 import com.sanbot.opensdk.function.unit.WheelMotionManager;
+import com.sanbot.opensdk.function.unit.WingMotionManager;
 import com.sanbot.opensdk.function.unit.interfaces.hardware.GyroscopeListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.RecognizeListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.WakenListener;
@@ -83,7 +83,7 @@ public class MyDialogActivity extends TopBaseActivity {
     private HardWareManager hardWareManager;    //leds
     private HeadMotionManager headMotionManager;    //head movements
     private WheelMotionManager wheelMotionManager;    //head movements
-    private HandMotionManager handMotionManager;    //head movements
+    private WingMotionManager wingMotionManager;    //head movements
     private ModularMotionManager modularMotionManager; //follow
 
     LocateAbsoluteAngleHeadMotion locateAbsoluteAngleHeadMotion = new LocateAbsoluteAngleHeadMotion(
@@ -120,7 +120,7 @@ public class MyDialogActivity extends TopBaseActivity {
         hardWareManager = (HardWareManager) getUnitManager(FuncConstant.HARDWARE_MANAGER);
         headMotionManager = (HeadMotionManager) getUnitManager(FuncConstant.HEADMOTION_MANAGER);
         wheelMotionManager = (WheelMotionManager)getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
-        handMotionManager = (HandMotionManager)getUnitManager(FuncConstant.HANDMOTION_MANAGER);
+        wingMotionManager = (WingMotionManager)getUnitManager(FuncConstant.HANDMOTION_MANAGER);
         modularMotionManager = (ModularMotionManager) getUnitManager(FuncConstant.MODULARMOTION_MANAGER);
 
         //listeners
@@ -412,15 +412,15 @@ public class MyDialogActivity extends TopBaseActivity {
                         if (lastRecognizedSentence.contains("hands up")) {
                             recognizedWhatToDo = true;
                             //hands up
-                            AbsoluteAngleHandMotion absoluteAngleHandMotion1 = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH, 8, 0);
-                            handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion1);
+                            AbsoluteAngleWingMotion absoluteAngleWingMotion1 = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 0);
+                            wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion1);
                             systemManager.showEmotion(EmotionsType.SNICKER);
                             speechManager.startSpeak("put your hands up in the air!", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             sleepy(2);
                             //hands down
-                            AbsoluteAngleHandMotion absoluteAngleHandMotion2 = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_BOTH, 8, 180);
-                            handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion2);
+                            AbsoluteAngleWingMotion absoluteAngleWingMotion2 = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 180);
+                            wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion2);
                             askOther();
                         }
                         if (lastRecognizedSentence.contains("test")) {
@@ -790,16 +790,16 @@ public class MyDialogActivity extends TopBaseActivity {
         int cardinalrotation = rotateAtCardinalAngle(wheelMotionManager, currentCardinalAngle, desiredCardinalAngle);
         sleepy(4);
         //indicate
-        AbsoluteAngleHandMotion absoluteAngleHandMotion = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_LEFT, 5, 70);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_LEFT, 5, 70);
+        wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         //speak direction
         speechManager.startSpeak("in that direction!", MySettings.getSpeakDefaultOption());
         concludeSpeak(speechManager);
         //rotate back
         rotateAtRelativeAngle(wheelMotionManager, -cardinalrotation);
         //hand down
-        absoluteAngleHandMotion = new AbsoluteAngleHandMotion(AbsoluteAngleHandMotion.PART_LEFT, 5, 180);
-        handMotionManager.doAbsoluteAngleMotion(absoluteAngleHandMotion);
+        absoluteAngleWingMotion = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_LEFT, 5, 180);
+        wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         sleepy(2);
     }
 
