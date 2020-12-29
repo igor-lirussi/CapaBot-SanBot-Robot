@@ -16,8 +16,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="121f80a0-9ad8-4fe0-898d-29ae46dc4e7c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,26 +68,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="454" column="30" selection-start-line="454" selection-start-column="26" selection-end-line="454" selection-end-column="30" />
+            <state relative-caret-position="-2420">
+              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyUtils.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/video/VisionMediaDecoder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="162">
+              <caret line="194" column="7" lean-forward="true" selection-start-line="194" selection-start-column="7" selection-end-line="194" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,7 +92,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyShakeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
+            <state relative-caret-position="4520">
               <caret line="262" column="18" selection-start-line="262" selection-start-column="8" selection-end-line="262" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -111,17 +113,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyPresentActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
+            <state relative-caret-position="300">
               <caret line="51" column="58" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="93" column="8" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="8" />
+            <state relative-caret-position="201">
+              <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,7 +152,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
+            <state relative-caret-position="8540">
               <caret line="477" column="47" selection-start-line="477" selection-start-column="47" selection-end-line="477" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -219,7 +221,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/MemoryUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/NetworkUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/AIMLProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/AIML/ab/utils/JapaneseUtils.java" />
@@ -270,6 +271,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyPresentActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/video/VisionMediaDecoder.java" />
       </list>
     </option>
   </component>
@@ -305,14 +307,21 @@
             </path>
             <path>
               <item name="CapaBot-SanBot-Robot" type="1abcf292:AndroidViewProjectNode" />
+              <item name="CapaBot-SanBot-Robot" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="capaBot" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="video" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CapaBot-SanBot-Robot" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -543,8 +552,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Logcat" order="8" sideWeight="0.49848714" weight="0.81178397" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49924356" weight="0.32733223" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51059" side_tool="true" visible="true" weight="0.23076923" />
-      <window_info anchor="bottom" id="Build" order="11" sideWeight="0.48940998" visible="true" weight="0.23076923" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51134646" side_tool="true" visible="true" weight="0.23076923" />
+      <window_info anchor="bottom" id="Build" order="11" sideWeight="0.48865354" visible="true" weight="0.23076923" />
       <window_info anchor="bottom" id="Android Profiler" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Preview" order="0" weight="0.32980332" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
@@ -564,18 +573,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/jokes.aiml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="168" column="10" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/limericks.aiml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/assets/Hari/aiml/onthisday.aiml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-11">
@@ -829,14 +826,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MySettings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
+        <state relative-caret-position="160">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyShakeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
+        <state relative-caret-position="4520">
           <caret line="262" column="18" selection-start-line="262" selection-start-column="8" selection-end-line="262" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -853,7 +850,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyPresentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
+        <state relative-caret-position="300">
           <caret line="51" column="58" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="58" />
         </state>
       </provider>
@@ -874,7 +871,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyCalendarActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
+        <state relative-caret-position="8540">
           <caret line="477" column="47" selection-start-line="477" selection-start-column="47" selection-end-line="477" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -882,17 +879,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="454" column="30" selection-start-line="454" selection-start-column="26" selection-end-line="454" selection-end-column="30" />
+        <state relative-caret-position="201">
+          <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyDialogActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/video/VideoManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="93" column="8" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="8" />
+        <state relative-caret-position="148">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2420">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/video/VisionMediaDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="194" column="7" lean-forward="true" selection-start-line="194" selection-start-column="7" selection-end-line="194" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

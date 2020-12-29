@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.sanbot.capaBot.video.VisionMediaDecoder;
 import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.beans.FaceRecognizeBean;
@@ -65,6 +66,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -135,6 +137,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     Handler checkBatteryStatusHandler = new Handler();
 
     //video stuff
+    private VisionMediaDecoder mediaDecoder;
+    private List<Integer> handleList = new ArrayList<>();
     MediaCodec mediaCodec;
     long decodeTimeout = 16000;
     MediaCodec.BufferInfo videoBufferInfo = new MediaCodec.BufferInfo();
