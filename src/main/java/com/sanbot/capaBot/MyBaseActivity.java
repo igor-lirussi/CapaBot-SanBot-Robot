@@ -139,6 +139,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     //video stuff
     private VisionMediaDecoder mediaDecoder;
     private List<Integer> handleList = new ArrayList<>();
+    private int mWidth, mHeight;
     MediaCodec mediaCodec;
     long decodeTimeout = 16000;
     MediaCodec.BufferInfo videoBufferInfo = new MediaCodec.BufferInfo();
@@ -199,6 +200,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         wheelMotionManager = (WheelMotionManager) getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
         //for video view on screen
         svMedia.getHolder().addCallback(this);
+        mediaDecoder = new VisionMediaDecoder();
         //float button of the system
         systemManager.switchFloatBar(true, getClass().getName());
 
@@ -341,13 +343,15 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //media
         hdCameraManager.setMediaListener(new MediaStreamListener() {
             @Override
-            public void getVideoStream(int i, byte[] bytes, int i1, int i2) {
-                if (!paused) {
-                    try {
-                        showViewData(ByteBuffer.wrap(bytes));
-                    } catch (IllegalStateException e ) {
-                        //do nothing
+            public void getVideoStream(int handle, byte[] bytes, int width, int height) {
+                if (mediaDecoder != null) {
+                    if (width != mWidth || height != mHeight) {
+                        mediaDecoder.onCreateCodec(width, height);
+                        mWidth = width;
+                        mHeight = height;
                     }
+                    mediaDecoder.drawVideoSample(ByteBuffer.wrap(bytes));
+                    Log.i(TAG, "getVideoStream: Video data:" + bytes.length);
                 }
             }
 
@@ -355,7 +359,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             public void getAudioStream(int i, byte[] bytes) {
 
             }
-
         });
         //voice
         //Set wakeup/sleep sleep callback
@@ -594,34 +597,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         });
     }
 
-
-
-    /**
-     * Display video stream
-     * @param sampleData data received from camera
-     */
-    private void showViewData(ByteBuffer sampleData) {
-        try {
-            int inIndex = mediaCodec.dequeueInputBuffer(decodeTimeout);
-            if (inIndex >= 0) {
-                ByteBuffer buffer = videoInputBuffers[inIndex];
-                int sampleSize = sampleData.limit();
-                buffer.clear();
-                buffer.put(sampleData);
-                buffer.flip();
-                mediaCodec.queueInputBuffer(inIndex, 0, sampleSize, 0, 0);
-            }
-            int outputBufferId = mediaCodec.dequeueOutputBuffer(videoBufferInfo, decodeTimeout);
-            if (outputBufferId >= 0) {
-                mediaCodec.releaseOutputBuffer(outputBufferId, true);
-            } else {
-                Log.e("showviewdata", "dequeueOutputBuffer() error");
-            }
-
-        } catch (Exception e) {
-            //Log.e("showviewdata", "An error occurred", e);
-        }
-    }
 
     @Override
     protected void onMainServiceConnected() {
