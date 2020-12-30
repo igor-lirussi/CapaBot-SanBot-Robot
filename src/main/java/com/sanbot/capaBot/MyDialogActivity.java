@@ -171,13 +171,6 @@ public class MyDialogActivity extends TopBaseActivity {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int pos,long id)
             {
-                //todo remove
-
-                //starts weather activity
-                Intent myIntent = new Intent(MyDialogActivity.this, MyWeatherActivity.class);
-                MyDialogActivity.this.startActivity(myIntent);
-                //terminates
-                finish();
                 youCanSay = getString(R.string.you_can_say)+" " + examples[pos];
                 Toast.makeText(getApplicationContext(), youCanSay, Toast.LENGTH_SHORT).show();
                 speechManager.startSpeak("Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
