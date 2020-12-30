@@ -32,6 +32,7 @@ import com.google.gson.Gson;
 import com.sanbot.capaBot.video.VisionMediaDecoder;
 import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
+import com.sanbot.opensdk.beans.OperationResult;
 import com.sanbot.opensdk.function.beans.FaceRecognizeBean;
 import com.sanbot.opensdk.function.beans.LED;
 import com.sanbot.opensdk.function.beans.StreamOption;
@@ -140,10 +141,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     private VisionMediaDecoder mediaDecoder;
     private List<Integer> handleList = new ArrayList<>();
     private int mWidth, mHeight;
-    MediaCodec mediaCodec;
-    long decodeTimeout = 16000;
-    MediaCodec.BufferInfo videoBufferInfo = new MediaCodec.BufferInfo();
-    ByteBuffer[] videoInputBuffers;
 
 
     /*** MY VARIABLES ***/
@@ -658,9 +655,13 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         streamOption.setChannel(StreamOption.MAIN_STREAM);
         streamOption.setDecodType(StreamOption.HARDWARE_DECODE);
         streamOption.setJustIframe(false);
-        hdCameraManager.openStream(streamOption);
-        //Configuration MediaCodec
-        startDecoding(holder.getSurface());
+        OperationResult operationResult = hdCameraManager.openStream(streamOption);
+        Log.i(TAG, "surfaceCreated: operationResult=" + operationResult.getResult());
+        int result = Integer.valueOf(operationResult.getResult());
+        if (result != -1) {
+            handleList.add(result);
+        }
+        mediaDecoder.setSurface(holder.getSurface());
     }
 
     @Override
@@ -670,43 +671,15 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        //Turn off media streaming
-        stopDecoding();
-    }
-
-    /**
-     * Initialize the video codec
-     *
-     * @param surface surface where start decoding
-     */
-    private void startDecoding(Surface surface) {
-        if (mediaCodec != null) {
-            return;
+        Log.i(TAG, "surfaceDestroyed: ");
+        //Close media stream
+        if (handleList.size() > 0) {
+            for (int handle : handleList) {
+                Log.i(TAG, "surfaceDestroyed: " + hdCameraManager.closeStream(handle));
+            }
         }
-        try {
-            mediaCodec = MediaCodec.createDecoderByType("video/avc");
-            MediaFormat format = MediaFormat.createVideoFormat(
-                    "video/avc", 1280, 720);
-            mediaCodec.configure(format, surface, null, 0);
-            mediaCodec.start();
-            videoInputBuffers = mediaCodec.getInputBuffers();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    /**
-     * End video codec
-     */
-    private void stopDecoding() {
-        if (mediaCodec != null) {
-            mediaCodec.stop();
-            mediaCodec.release();
-            mediaCodec = null;
-            Log.i("showviewdata", "stopDecoding");
-        }
-        videoInputBuffers = null;
+        handleList = null;
+        mediaDecoder.stopDecoding();
     }
 
     //debug buttons
