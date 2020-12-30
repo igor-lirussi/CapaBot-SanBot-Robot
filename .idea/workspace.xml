@@ -16,7 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="121f80a0-9ad8-4fe0-898d-29ae46dc4e7c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,22 +59,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8609">
-              <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+            <state relative-caret-position="320">
+              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#12209#14512#0" expanded="true" />
+                <element signature="e#14511#14512#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/video/VisionMediaDecoder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="-2270">
               <caret line="78" column="33" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -159,9 +160,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&gt;KNOCK KNOCK&lt;</find>
-      <find>set name=&quot;topic&quot;</find>
-      <find>&quot;topic&quot;&gt;unk</find>
       <find>&quot;topic&quot;&gt;not</find>
       <find>nothing</find>
       <find>&lt;set name=&quot;topic&quot;&gt;&lt;/set&gt;</find>
@@ -189,6 +187,9 @@
       <find>hand</find>
       <find>Hand</find>
       <find>mediaDecoder</find>
+      <find>videoInputBuffers</find>
+      <find>surfaceCreated</find>
+      <find>buffer</find>
     </findStrings>
     <replaceStrings>
       <replace>TAG</replace>
@@ -270,10 +271,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="83" />
+    <option name="y" value="-20" />
     <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -524,10 +525,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-586" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22163388" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15618336" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Captures" order="2" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -546,8 +547,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
       <window_info anchor="bottom" id="Logcat" order="8" sideWeight="0.49848714" weight="0.81178397" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49924356" weight="0.32733223" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51134646" side_tool="true" visible="true" weight="0.23076923" />
-      <window_info anchor="bottom" id="Build" order="11" sideWeight="0.48865354" visible="true" weight="0.23076923" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.51119405" side_tool="true" visible="true" weight="0.15276273" />
+      <window_info anchor="bottom" id="Build" order="11" sideWeight="0.48880598" visible="true" weight="0.15276273" />
       <window_info anchor="bottom" id="Android Profiler" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Preview" order="0" weight="0.32980332" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
@@ -890,22 +891,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/video/VisionMediaDecoder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8609">
-          <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+        <state relative-caret-position="-2270">
+          <caret line="78" column="33" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/video/VisionMediaDecoder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sanbot/capaBot/MyBaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="78" column="33" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="33" />
+        <state relative-caret-position="320">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#12209#14512#0" expanded="true" />
+            <element signature="e#14511#14512#0" expanded="true" />
           </folding>
         </state>
       </provider>

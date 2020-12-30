@@ -4,8 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.media.MediaCodec;
-import android.media.MediaFormat;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -14,7 +12,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -83,7 +80,6 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static com.sanbot.capaBot.MyUtils.compensationSanbotAngle;
 import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 import static com.sanbot.capaBot.MyUtils.rotateAtRelativeAngle;
-import static com.sanbot.capaBot.MyUtils.temporaryEmotion;
 
 /**
  *  presents the robot to the visitor / say hello to already-known people
