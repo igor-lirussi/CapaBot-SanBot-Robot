@@ -42,11 +42,16 @@ import com.sanbot.opensdk.function.unit.interfaces.hardware.GyroscopeListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.RecognizeListener;
 import com.sanbot.opensdk.function.unit.interfaces.speech.WakenListener;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -360,7 +365,7 @@ public class MyDialogActivity extends TopBaseActivity {
                         //deletes "no response action"
                         noResponseAction.removeCallbacksAndMessages(null);
 
-                        /*
+
                         //---- INTERACTION PART ----
                         //basic interaction
                         if (lastRecognizedSentence.contains("hello") || lastRecognizedSentence.equals("hi")|| lastRecognizedSentence.contains("your name")) {
@@ -377,7 +382,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             concludeSpeak(speechManager);
                             askOther();
                         }
-                        if (/*(lastRecognizedSentence.contains("what") || lastRecognizedSentence.contains("tell")) &&*/ /* lastRecognizedSentence.contains("time")) {
+                        if (/*(lastRecognizedSentence.contains("what") || lastRecognizedSentence.contains("tell")) &&*/ lastRecognizedSentence.contains("time")) {
                             recognizedWhatToDo = true;
                             String time_sentence = "It's " + new SimpleDateFormat("HH:mm", Locale.ITALY).format(Calendar.getInstance().getTime());
                             speechManager.startSpeak(time_sentence, MySettings.getSpeakDefaultOption());
@@ -387,12 +392,6 @@ public class MyDialogActivity extends TopBaseActivity {
                         if (lastRecognizedSentence.contains("hear")) {
                             recognizedWhatToDo = true;
                             speechManager.startSpeak("I can hear you.", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            askOther();
-                        }
-                        if (lastRecognizedSentence.contains("polish")) {
-                            recognizedWhatToDo = true;
-                            speechManager.startSpeak("Polish people are in my heart but I cannot understand them.", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             askOther();
                         }
@@ -589,8 +588,8 @@ public class MyDialogActivity extends TopBaseActivity {
                         }
 
 
-
-                        //not recognized asked action
+                        /*
+                        //not recognized ask to repeat
                         if (!recognizedWhatToDo) {
                             systemManager.showEmotion(EmotionsType.QUESTION);
                             speechManager.startSpeak(getString(R.string.please_repeat) , MySettings.getSpeakDefaultOption());
