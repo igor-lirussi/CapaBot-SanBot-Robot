@@ -66,7 +66,12 @@ import static com.sanbot.capaBot.MyUtils.sleepy;
 
 
 /**
- * answers to specific speech requests
+ * Handles the Dialog with a person
+ * Gets the pronounced sentence with speech recognition and answers with Text to Speech.
+ * if specific intentions are recognized starts another activity to handle them
+ * if the dialog is open (no tasks asked) the Conversational Engine handles an answer.
+ *
+ * NOTE: "wake up" in this context (according to the SDK) means start listening, "sleep" means stop listening
  */
 public class MyDialogActivity extends TopBaseActivity {
 
@@ -103,7 +108,7 @@ public class MyDialogActivity extends TopBaseActivity {
     private int currentCardinalAngle = 0;
 
     int noResponse = 0;
-    boolean infiniteWakeup = true;
+    boolean infiniteWakeup = true; //to force the robot always listening (it goes to listening sleep after some seconds)s
     String youCanSay;
 
     public Bot bot;
@@ -131,7 +136,7 @@ public class MyDialogActivity extends TopBaseActivity {
         //listeners
         initListener();
 
-        //wake button
+        //wake button, useful for people that have to wait so much to speak that the robot goes to sleep
         wakeButton.setVisibility(View.GONE);
         wakeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,10 +145,11 @@ public class MyDialogActivity extends TopBaseActivity {
             }
         });
 
+        //exit button
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //force sleep
+                //force stop listening
                 infiniteWakeup = false;
                 speechManager.doSleep();
                 //starts base activity
@@ -154,7 +160,8 @@ public class MyDialogActivity extends TopBaseActivity {
             }
         });
 
-        //GridView examples, to light it remember to pass the array position at the greenFlashButton function
+        //GridView examples, (this array inflates the view)
+        // to light one remember to pass position of this array at the greenFlashButton function (or colorFlashButton)
         final String[] examples = new String[]{
                 "shake my hand",
                 "where is the meeting-room?",
@@ -174,17 +181,18 @@ public class MyDialogActivity extends TopBaseActivity {
         gridExamples.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
-            public void onItemClick(AdapterView<?> av, View v, int pos,long id)
+            public void onItemClick(AdapterView<?> av, View v, int pos, long id)
             {
                 youCanSay = getString(R.string.you_can_say)+" " + examples[pos];
                 Toast.makeText(getApplicationContext(), youCanSay, Toast.LENGTH_SHORT).show();
                 speechManager.startSpeak("Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
                 wakeUpListening();
+
             }
         });
 
 
-        //ask, wake up, up head
+        //Robot head up, ask what to do, and wake up listening
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -198,7 +206,7 @@ public class MyDialogActivity extends TopBaseActivity {
             }
         }, 200);
 
-        //CHAT BOT
+        //CHAT BOT SETUP
         long startTime = System.nanoTime();
         //checking SD card availability
         boolean availableSD = isSDCARDAvailable();
@@ -290,11 +298,13 @@ public class MyDialogActivity extends TopBaseActivity {
 
             @Override
             public void gyroscopeData(float v, float v1, float v2) {
+                /*
                 //gyroscope received
                 Log.i("gyro", "GYRO first: " + v + ", second: " + v1 + ", third: " + v2);
                 // get the angle corrected
                 currentCardinalAngle = compensationSanbotAngle(v);
                 Log.i("compass", "compass: " + currentCardinalAngle);
+                */
             }
         });
         //Set wakeup, sleep callback
@@ -354,7 +364,7 @@ public class MyDialogActivity extends TopBaseActivity {
                 //here can start the computation on the text recognized
 
                 //IGOR: must not exceed 200ms (or less?) don't trust the documentation(500ms), I had to create an handler
-                //handler so the function could return quickly true, otherwise the robot answers random things over your answers.
+                //separate handler so the function could return quickly true, otherwise the robot answers random things over your answers.
                 speechResponseHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -576,7 +586,7 @@ public class MyDialogActivity extends TopBaseActivity {
                                 speechManager.startSpeak(getString(R.string.thanks_you_kind), MySettings.getSpeakDefaultOption());
                                 concludeSpeak(speechManager);
                             }
-                            //force sleep
+                            //force listening sleep
                             infiniteWakeup = false;
                             speechManager.doSleep();
 
@@ -651,6 +661,7 @@ public class MyDialogActivity extends TopBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //stop infinite listening
         infiniteWakeup = false;
         speechManager.doSleep();
         //if person pushes "back" before the normal termination
@@ -680,7 +691,7 @@ public class MyDialogActivity extends TopBaseActivity {
         return z;
     }
 
-    /*
+
     public void colorFlashButton( View view_passed, int color_passed) {
         //update ui
         view_passed.setBackgroundColor(getColor(color_passed));
@@ -689,7 +700,7 @@ public class MyDialogActivity extends TopBaseActivity {
     public void greenFlashButton( View view_passed) {
         colorFlashButton(view_passed, R.color.colorGreen);
     }
-*/
+
     /**
      * asking if something else is needed
      * @param seconds seconds after start to ask
@@ -867,7 +878,7 @@ public class MyDialogActivity extends TopBaseActivity {
         }
     }
 
-    //CHATBOT
+    //CHATBOT FUNCTIONS
     //check SD card availability
     public static boolean isSDCARDAvailable(){
         return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)? true :false;

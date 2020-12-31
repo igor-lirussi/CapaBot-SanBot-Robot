@@ -21,8 +21,8 @@ public class MySettings {
     //initial soundRotationAllowed state, defines if rotation when detecting sound is allowed
     private static boolean soundRotationAllowed = false;
 
-    //after first meeting presentation robot asks if can help
-    private static boolean dialogAfterPresentation = true;
+    //at first meeting, (if face not recognized) presentation of the robot with hand before dialog
+    private static boolean presentationBeforeDialog = true;
 
     //handshakesTextView countHandshakes
     private static int countHandshakes = -1;
@@ -81,8 +81,8 @@ public class MySettings {
 
     public static void setSoundRotationAllowed(boolean set) { soundRotationAllowed = set; }
 
-    public static boolean isDialogAfterPresentation() {
-        return dialogAfterPresentation;
+    public static boolean isPresentationBeforeDialog() {
+        return presentationBeforeDialog;
     }
 
 

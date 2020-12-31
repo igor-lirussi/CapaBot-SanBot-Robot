@@ -82,7 +82,12 @@ import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 import static com.sanbot.capaBot.MyUtils.rotateAtRelativeAngle;
 
 /**
- *  presents the robot to the visitor / say hello to already-known people
+ * Starting Activity.
+ *  Handles the default state of the robot, looking for someone to help.
+ *  The robot (optionally) wanders around.
+ *  The process of sound localization redirects the robot towards noise/calls.
+ *  Face Localization is active to start dialog (DialogActivity) if somebody is looking at the robot.
+ *  if the battery is low the robot goes to the ChargeActivity to go back to charging station.
  */
 public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Callback {
 
@@ -147,7 +152,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     private boolean justGreeted = false;
 
     Handler wanderHandler = new Handler();
-    Handler incitement = new Handler();
 
     private CountDownTimer countDownPresentationLocked;
 
@@ -197,7 +201,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //float button of the system
         systemManager.switchFloatBar(true, getClass().getName());
 
-        //permissions
+        //check app permissions
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE}, 12);
         }
@@ -210,7 +214,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{INTERNET}, 12);
         }
-        //LOAD handshakes
+        //LOAD handshakes stats
         MySettings.initializeXML();
         MySettings.loadHandshakes();
 
@@ -260,18 +264,20 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         }, 1000*MySettings.getSeconds_checkingBattery());
 
 
-        //update view
+        //update view (to update handshakes)
         updateView();
 
-        //when created is not busy
+        //when everything initialized is not busy
         busy = false;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //kill the handlers
         checkBatteryStatusHandler.removeCallbacksAndMessages(null);
         wanderHandler.removeCallbacksAndMessages(null);
+        //stop moving
         wanderOffNow();
     }
 
@@ -282,7 +288,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //face recognition
         hdCameraManager.setMediaListener(new FaceRecognizeListener() {
             @Override
-            public void recognizeResult(List<FaceRecognizeBean> list) {
+            public void recognizeResult(@NonNull List<FaceRecognizeBean> list) {
                 //taking face info
                 StringBuilder sb = new StringBuilder();
                 for (FaceRecognizeBean bean : list) {
@@ -313,12 +319,12 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                             MySettings.incrementInteractionFace();
                             if (user_name != null) {
                                 //PERSON IS KNOWN
-                                //I know you function, passing the name
+                                //passing the name
                                 knowYouMeeting(user_name);
                             } else {
                                 //PERSON UNKNOWN
-                                //deactivated unknown presentation and used knowYou
-                                //riseHand();
+                                //deactivated riseHand presentation, the face recognition is too weak and the robot keeps presenting itself
+                                //if(MySettings.isPresentationBeforeDialog()) {riseHand();}
                                 knowYouMeeting("");
                             }
                         } else {
@@ -349,7 +355,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             }
 
             @Override
-            public void getAudioStream(int i, byte[] bytes) {
+            public void getAudioStream(int i, @NonNull byte[] bytes) {
 
             }
         });
@@ -374,7 +380,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //Speech recognition callback
         speechManager.setOnSpeechListener(new RecognizeListener() {
             @Override
-            public void onRecognizeText(RecognizeTextBean recognizeTextBean) {
+            public void onRecognizeText( @NonNull RecognizeTextBean recognizeTextBean) {
 
             }
 
@@ -422,6 +428,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
             @Override
             public void onPIRCheckResult(boolean isCheck, int part) {
                 if(part != 1) {
+                    //if it's the back PIR
                     Log.i(TAG, "PIR back triggered -> rotating");
                     if (!busy && MySettings.isSoundRotationAllowed()) {
                         //flicker led
@@ -541,8 +548,9 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         switchButtonWander.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    //toggle wander enabled
                     if (!busy) {
-                        // The toggle is enabled
+                        // wander in settings enabled
                         MySettings.setWanderAllowed(true);
                         Toast.makeText(MyBaseActivity.this, "wander-allowed enabled", Toast.LENGTH_SHORT).show();
                         //sets the wander to on immediately
@@ -605,6 +613,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     @Override
     protected void onResume() {
         super.onResume();
+        //resume after another activity occurred (typically Dialog)
         paused = false;
         updateView();
         busy = false;
@@ -623,6 +632,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 wanderOnNow();
             }
         }, 1000);
+        //stops the robot to start another recognition for X seconds
         justGreeted = true;
         presentationLock.setVisibility(View.VISIBLE);
         //if there is a previous timer this is cancelled
@@ -646,7 +656,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        //Set parameters and open the media stream
+        //Set parameters and open the media stream for video
         StreamOption streamOption = new StreamOption();
         streamOption.setChannel(StreamOption.MAIN_STREAM);
         streamOption.setDecodType(StreamOption.HARDWARE_DECODE);
@@ -694,6 +704,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
             case R.id.firstMeeting:
                 wanderOffNow();
+                knowYouMeeting("");
+                break;
         }
     }
 

@@ -140,7 +140,7 @@ public final class MyUtils {
         }, seconds_passed * 1000);
     }
     public static void temporaryEmotion(final SystemManager systemManager, EmotionsType emotionPassed) {
-        //if no 2nd argument 10 seconds
+        //if no 2nd argument holds it for 10 seconds
         temporaryEmotion(systemManager, emotionPassed, 10);
     }
 

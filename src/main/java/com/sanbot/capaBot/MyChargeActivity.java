@@ -25,6 +25,11 @@ import butterknife.ButterKnife;
 import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 import static com.sanbot.capaBot.MyUtils.sleepy;
 
+/**
+ * When the robot is low on battery sends the robot to charge
+ * if the robot is moved/unplugged/poked sends back the robot to charge
+ * once finished charging starts back the BaseActivity
+ */
 public class MyChargeActivity extends TopBaseActivity {
 
 
@@ -48,7 +53,7 @@ public class MyChargeActivity extends TopBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         register(MyChargeActivity.class);
-        //todo cehck if works better with no "screen always on"
+        //todo check if works better with no "screen always on"
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState);
@@ -93,9 +98,9 @@ public class MyChargeActivity extends TopBaseActivity {
             public void run() {
                 //show emotion
                 systemManager.showEmotion(EmotionsType.SLEEP);
-                //to avoid bounce let's check every time
+                //to avoid bounce let's check every time if it's charging
                 modularMotionManager.switchCharge(true);
-                //if still not charging (glitch) switch charge off and then on
+                //if still not charging (glitch of SDK) switch charge off and then on
                 if (!modularMotionManager.getAutoChargeStatus().getResult().equals("1")) {
                     Log.i("IGOR-CHARGE", "battery still not charging");
                     modularMotionManager.switchCharge(false);
