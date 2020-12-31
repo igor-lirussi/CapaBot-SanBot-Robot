@@ -132,7 +132,7 @@ public class MyDialogActivity extends TopBaseActivity {
         hardWareManager = (HardWareManager) getUnitManager(FuncConstant.HARDWARE_MANAGER);
         headMotionManager = (HeadMotionManager) getUnitManager(FuncConstant.HEADMOTION_MANAGER);
         wheelMotionManager = (WheelMotionManager)getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
-        wingMotionManager = (WingMotionManager)getUnitManager(FuncConstant.HANDMOTION_MANAGER);
+        wingMotionManager = (WingMotionManager)getUnitManager(FuncConstant.WINGMOTION_MANAGER);
         modularMotionManager = (ModularMotionManager) getUnitManager(FuncConstant.MODULARMOTION_MANAGER);
 
         //listeners

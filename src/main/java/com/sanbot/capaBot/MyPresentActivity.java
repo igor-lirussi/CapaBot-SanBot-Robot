@@ -73,7 +73,7 @@ public class MyPresentActivity extends TopBaseActivity {
         //initialize managers
         speechManager = (SpeechManager) getUnitManager(FuncConstant.SPEECH_MANAGER);
         headMotionManager = (HeadMotionManager) getUnitManager(FuncConstant.HEADMOTION_MANAGER);
-        wingMotionManager = (WingMotionManager) getUnitManager(FuncConstant.HANDMOTION_MANAGER);
+        wingMotionManager = (WingMotionManager) getUnitManager(FuncConstant.WINGMOTION_MANAGER);
         hardWareManager = (HardWareManager) getUnitManager(FuncConstant.HARDWARE_MANAGER);
         systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
         wheelMotionManager = (WheelMotionManager) getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
