@@ -75,6 +75,8 @@ import static com.sanbot.capaBot.MyUtils.sleepy;
  */
 public class MyDialogActivity extends TopBaseActivity {
 
+    private final static String TAG = "IGOR-DIAL";
+
     //view
     @BindView(R.id.tv_speech_recognize_result)
     TextView tvSpeechRecognizeResult;
@@ -210,7 +212,7 @@ public class MyDialogActivity extends TopBaseActivity {
         long startTime = System.nanoTime();
         //checking SD card availability
         boolean availableSD = isSDCARDAvailable();
-        Log.i("IGOR-SPEECH", "SD available: " + availableSD);
+        Log.i(TAG, "SD available: " + availableSD);
         //receiving the assets from the app directory
         AssetManager assets = getResources().getAssets();
         //creating a new directory in the device
@@ -251,7 +253,7 @@ public class MyDialogActivity extends TopBaseActivity {
         }
         //get the working directory
         MagicStrings.root_path = Environment.getExternalStorageDirectory().toString() + "/hari";
-        Log.i("IGOR-SPEECH","Working Directory = " + MagicStrings.root_path);
+        Log.i(TAG,"Working Directory = " + MagicStrings.root_path);
         AIMLProcessor.extension =  new PCAIMLProcessorExtension();
         //Assign the AIML files to bot for processing
         bot = new Bot("Hari", MagicStrings.root_path, "chat");
@@ -259,16 +261,16 @@ public class MyDialogActivity extends TopBaseActivity {
         String[] args = null;
         mainFunction(args);
 
-        Log.i("IGOR-SPEECH", "DURATION BOT millisec: " + (System.nanoTime() - startTime)/1000000);
+        Log.i(TAG, "DURATION BOT millisec: " + (System.nanoTime() - startTime)/1000000);
 
 
-        Log.i("IGOR-SPEECH","-START SILENT PRESENTATION");
+        Log.i(TAG,"-START SILENT PRESENTATION");
         //grabbing the name from the previous activity
         Intent intent = getIntent();
         String name_received = "";
         try {
             name_received = intent.getExtras().getString("name");
-        } catch (NullPointerException e) { Log.e("IGOR-SPEECH","no name received in the intent");}
+        } catch (NullPointerException e) { Log.e(TAG,"no name received in the intent");}
 
         //if the name is passed/exists
         if(name_received!= null && !name_received.equals("")) {
@@ -276,12 +278,12 @@ public class MyDialogActivity extends TopBaseActivity {
             String silent_presentation = "my name is " + name_received;
             //the silent presentation is given to the conversational engine that memorizes the name
             String response = chat.multisentenceRespond(silent_presentation);
-            Log.i("IGOR-SPEECH", "Human: " + silent_presentation);
-            Log.i("IGOR-SPEECH", "Robot: " + response);
+            Log.i(TAG, "Human: " + silent_presentation);
+            Log.i(TAG, "Robot: " + response);
         } else {
-            Log.i("IGOR-SPEECH","-NAME NOT PASSED");
+            Log.i(TAG,"-NAME NOT PASSED");
         }
-        Log.i("IGOR-SPEECH","-FINISH SILENT PRESENTATION");
+        Log.i(TAG,"-FINISH SILENT PRESENTATION");
 
     }
 
@@ -316,12 +318,12 @@ public class MyDialogActivity extends TopBaseActivity {
 
             @Override
             public void onWakeUp() {
-                Log.i("IGOR-DIAL", "WAKE UP callback");
+                Log.i(TAG, "WAKE UP callback");
             }
 
             @Override
             public void onSleep() {
-                Log.i("IGOR-DIAL", "SLEEP callback");
+                Log.i(TAG, "SLEEP callback");
                 //infiniteWakeup is a custom variable to control the duration
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
@@ -369,7 +371,7 @@ public class MyDialogActivity extends TopBaseActivity {
                     @Override
                     public void run() {
 
-                        Log.i("IGOR-DIAL", ">>>>Recognized voice: "+ lastRecognizedSentence);
+                        Log.i(TAG, ">>>>Recognized voice: "+ lastRecognizedSentence);
                         boolean recognizedWhatToDo = false;
 
                         //deletes "no response action"
@@ -612,17 +614,17 @@ public class MyDialogActivity extends TopBaseActivity {
                         long startTime = System.nanoTime();
                         String response = chat.multisentenceRespond(lastRecognizedSentence);
 
-                        Log.i("IGOR-SPEECH","Human: "+lastRecognizedSentence);
-                        Log.i("IGOR-SPEECH","Robot: " + response);
+                        Log.i(TAG,"Human: "+lastRecognizedSentence);
+                        Log.i(TAG,"Robot: " + response);
 
-                        Log.i("IGOR-SPEECH", "DURATION COMPUTED RESPONSE millisec: " + (System.nanoTime() - startTime)/1000000);
+                        Log.i(TAG, "DURATION COMPUTED RESPONSE millisec: " + (System.nanoTime() - startTime)/1000000);
                         speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
                         concludeSpeak(speechManager);
                         wakeUpListening();
                     }
                 });
 
-                //Log.i("IGOR-DIAL", "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
+                //Log.i(TAG, "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
                 return true;
             }
 
@@ -668,7 +670,7 @@ public class MyDialogActivity extends TopBaseActivity {
         MyBaseActivity.busy = false;
         //deletes "no response action" and all the handlers
         noResponseAction.removeCallbacksAndMessages(null);
-        Log.i("IGOR-DIAL", "destroy, noResponseHandler deleted");
+        Log.i(TAG, "destroy, noResponseHandler deleted");
     }
 
     /* *****MY FUNCTIONS ***** */
@@ -735,7 +737,7 @@ public class MyDialogActivity extends TopBaseActivity {
         //normal face
         //systemManager.showEmotion(EmotionsType.NORMAL);
         //activate no response handler
-        Log.i("IGOR-DIAL", "wakeup answer-active, noResponseHandler activated");
+        Log.i(TAG, "wakeup answer-active, noResponseHandler activated");
         noResponseAction.removeCallbacksAndMessages(null);
         noResponseAction.postDelayed(new Runnable() {
             @Override
@@ -751,8 +753,8 @@ public class MyDialogActivity extends TopBaseActivity {
                         //sends to the bot the "NO RESPONSE" code
                         String response = chat.multisentenceRespond("NORESP");
 
-                        Log.i("IGOR-SPEECH","Human @not responded@");
-                        Log.i("IGOR-SPEECH","Robot: " + response);
+                        Log.i(TAG,"Human @not responded@");
+                        Log.i(TAG,"Robot: " + response);
                         speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
                         concludeSpeak(speechManager);
                         wakeUpListening();
@@ -808,7 +810,7 @@ public class MyDialogActivity extends TopBaseActivity {
 
     public void showRandomFace() {
         double random_num = Math.random();
-        Log.i("IGOR-DIAL", "Random for face = " + random_num);
+        Log.i(TAG, "Random for face = " + random_num);
         //probability not to show any face
         if (random_num > 0.5) {
             //showing random face
@@ -895,7 +897,7 @@ public class MyDialogActivity extends TopBaseActivity {
     //Request and response of user and the bot
     public static void mainFunction (String[] args) {
         MagicBooleans.trace_mode = false;
-        Log.i("IGOR-SPEECH","trace mode = " + MagicBooleans.trace_mode);
+        Log.i(TAG,"trace mode = " + MagicBooleans.trace_mode);
         Graphmaster.enableShortCuts = true;
     }
 

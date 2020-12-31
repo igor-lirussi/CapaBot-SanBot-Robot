@@ -36,6 +36,7 @@ import static com.sanbot.capaBot.MyUtils.temporaryEmotion;
 
 public class MyShakeActivity extends TopBaseActivity {
 
+    private final static String TAG = "IGOR-SHK";
 
     @BindView(R.id.handshakes_sa)
     TextView handshakes;
@@ -146,7 +147,7 @@ public class MyShakeActivity extends TopBaseActivity {
                             case 9:
                                 Log.i("hwmanager", "touching hand left");
                                 if (waitingTouchPosition) {
-                                    Log.i("IGOR-SHK", "shake hand called");
+                                    Log.i(TAG, "shake hand called");
                                     shakeHand();
                                 }
                                 break;
@@ -154,7 +155,7 @@ public class MyShakeActivity extends TopBaseActivity {
                                 Log.i("hwmanager", "touching hand right" );
                                 //if is waiting in the position
                                 if (waitingTouchPosition) {
-                                    Log.i("IGOR-SHK", "shake hand called");
+                                    Log.i(TAG, "shake hand called");
                                     shakeHand();
                                 }
                                 break;
@@ -189,7 +190,7 @@ public class MyShakeActivity extends TopBaseActivity {
 
         //waiting touch
         waitingTouchPosition = true;
-        Log.i("IGOR-SHK", "waitingTouchPosition = true");
+        Log.i(TAG, "waitingTouchPosition = true");
 
         //waiting touch too much start waiting
         waitingTouchHandler.postDelayed(new Runnable() {
@@ -215,11 +216,11 @@ public class MyShakeActivity extends TopBaseActivity {
         //cancel "waiting touch too much" response
         waitingTouchHandler.removeCallbacksAndMessages(null);
         incitement.removeCallbacksAndMessages(null);
-        Log.i("IGOR-SHK", "handler waitingTouchHandler deleted!");
+        Log.i(TAG, "handler waitingTouchHandler deleted!");
 
         //waiting touch false, no more waiting
         waitingTouchPosition = false;
-        Log.i("IGOR-SHK", "waitingTouchPosition = false ");
+        Log.i(TAG, "waitingTouchPosition = false ");
 
         speechManager.startSpeak("Hi", MySettings.getSpeakDefaultOption());
         MySettings.incrementHandshakes();
@@ -300,10 +301,10 @@ public class MyShakeActivity extends TopBaseActivity {
     }
 
     public void timeWaitingExpired() {
-        Log.i("IGOR-SHK", "no touched hand in time");
+        Log.i(TAG, "no touched hand in time");
         //waiting touch false
         waitingTouchPosition = false;
-        Log.i("IGOR-SHK", "waitingTouchPosition = false ");
+        Log.i(TAG, "waitingTouchPosition = false ");
         //remove incitement if it's still there
         incitement.removeCallbacksAndMessages(null);
         //hand down

@@ -34,6 +34,7 @@ import static com.sanbot.capaBot.MyWeatherActivity.updatedField;
 
 public class MyWeatherDownloadAsyncTask extends AsyncTask< String, Void, String > {
 
+    private final static String TAG = "IGOR-WEATHER-ASYNC";
 
     private static String OPEN_WEATHER_MAP_API = "ebef12b878c57f10161c411d4620ce5e";
     private static String DARKSKY_API = "9c096d766f224ca50a27b01941c69c02";
@@ -53,6 +54,7 @@ public class MyWeatherDownloadAsyncTask extends AsyncTask< String, Void, String 
 
     @Override
     protected void onPreExecute() {
+        Log.i(TAG, "setting visible the loader icon");
         super.onPreExecute();
         loader.setVisibility(View.VISIBLE);
     }
@@ -61,20 +63,20 @@ public class MyWeatherDownloadAsyncTask extends AsyncTask< String, Void, String 
     protected String doInBackground(String... args) {
         String request = "https://api.darksky.net/forecast/"+DARKSKY_API+"/"+latitude+","+longitude+"?units=si";
         //String request = "http://api.openweathermap.org/data/2.5/weather?q=" + args[0] + "&units=metric&appid=" + OPEN_WEATHER_MAP_API;
-        Log.i("IGORWEATHER", "request:"+request);
+        Log.i(TAG, "request:"+request);
         String xml = null;
         try {
             xml = getJSONStringFromURL(request);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.i("IGORWEATHER", "XML RECEIVED:"+xml);
+        Log.i(TAG, "XML RECEIVED:"+xml);
         return xml;
     }
 
     @Override
     protected void onPostExecute(String xml) {
-        Log.i("IGORWEATHER", "XML PROCESSED:"+xml);
+        Log.i(TAG, "XML PROCESSED:"+xml);
         try {
             if (xml != null) {
                 JSONObject json = new JSONObject(xml);
@@ -83,10 +85,10 @@ public class MyWeatherDownloadAsyncTask extends AsyncTask< String, Void, String 
                 processDarkSkyJSON(json);
 
                 loader.setVisibility(View.GONE);
-
+                Log.i(TAG, "Progress OK");
                 listener.giveProgress("OK", weeklySummary);
             } else {
-                Log.i("IGORWEATHER", "Error, xml null");
+                Log.i(TAG, "Error, xml null");
                 Toast.makeText(context, "Error, xml null", Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
@@ -99,6 +101,7 @@ public class MyWeatherDownloadAsyncTask extends AsyncTask< String, Void, String 
     }
 
     void processDarkSkyJSON (JSONObject json) {
+        Log.i(TAG, "Processing DARKSKY Json");
         try {
             //take stuff from json
             //position
@@ -120,7 +123,7 @@ public class MyWeatherDownloadAsyncTask extends AsyncTask< String, Void, String 
                 JSONObject day = daysJSONArray.getJSONObject(i);
                 // create dynamic LinearLayout
                 if (day != null) {
-                    Log.i("IGORWEATHER", "Creating day "+ i);
+                    Log.i(TAG, "Creating day "+ i);
                     //inflate day with element
                     LinearLayout clickableColumn = (LinearLayout) inflater.inflate(
                             R.layout.weather_element_layout, forecastContainerLL);
@@ -158,6 +161,7 @@ public class MyWeatherDownloadAsyncTask extends AsyncTask< String, Void, String 
     }
 
     void processOpenWeatherJSON(JSONObject json) {
+        Log.i(TAG, "Processing OpenWeather Json");
         try{
             JSONObject details = json.getJSONArray("weather").getJSONObject(0);
             JSONObject main = json.getJSONObject("main");

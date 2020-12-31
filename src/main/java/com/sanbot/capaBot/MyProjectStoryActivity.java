@@ -29,6 +29,8 @@ import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 
 public class MyProjectStoryActivity extends TopBaseActivity {
 
+    private final static String TAG = "IGOR-PROJ";
+
     @BindView(R.id.exit)
     Button exitButton;
 
@@ -66,7 +68,7 @@ public class MyProjectStoryActivity extends TopBaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.i("IGOR-PROJ", "handler called to open projector");
+                Log.i(TAG, "handler called to open projector");
                 //OPEN PROJECTOR
                 projectorManager.switchProjector(true);
                 //mode from settings
@@ -86,11 +88,13 @@ public class MyProjectStoryActivity extends TopBaseActivity {
         videoView.start();
         videoView.pause();
 
+        Log.i(TAG, "Video Ready, waiting the projector to be ON");
+
         //handler to start video when the projector is effectively started (needs 10 seconds)
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.i("IGOR-PROJ", "start video called");
+                Log.i(TAG, "start video called");
                 //start video
                 videoView.start();
             }
@@ -111,6 +115,7 @@ public class MyProjectStoryActivity extends TopBaseActivity {
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
+                Log.i(TAG, "Video Finished");
                 //close projector
                 projectorManager.switchProjector(false);
                 //end sentence

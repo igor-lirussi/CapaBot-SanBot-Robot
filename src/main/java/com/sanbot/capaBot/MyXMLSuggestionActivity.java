@@ -50,6 +50,8 @@ import static com.sanbot.capaBot.MyUtilsXML.xmlAddSuggestion;
 
 public class MyXMLSuggestionActivity extends TopBaseActivity {
 
+    private final static String TAG = "IGOR-XML";
+
     @BindView(R.id.inputText)
     EditText inputText;
     @BindView(R.id.inputName)
@@ -134,6 +136,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
         switch (view.getId()) {
             case R.id.send:
                 //on save click
+                Log.i(TAG, "SAVE clicked");
                 //controls suggestion is not empty
                 if (!inputText.getText().toString().isEmpty()) {
                     //name anonymous
@@ -153,6 +156,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
 
                     //toast to tell saved
                     Toast.makeText(MyXMLSuggestionActivity.this, R.string.saved, Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, "Suggestion saved");
 
                     //force sleep
                     infiniteWakeup = false;
@@ -167,6 +171,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
                 } else {
                     //toast to ask filling suggestion
                     Toast.makeText(MyXMLSuggestionActivity.this, getString(R.string.leave_a_suggestion_or_a_comment), Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, "Text not present");
                 }
                 break;
         }
@@ -185,12 +190,12 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
 
             @Override
             public void onWakeUp() {
-                Log.i("IGOR-XML", "WAKEUP callback");
+                Log.i(TAG, "WAKEUP callback");
             }
 
             @Override
             public void onSleep() {
-                Log.i("IGOR-XML", "SLEEP callback");
+                Log.i(TAG, "SLEEP callback");
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -213,7 +218,6 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
 
                 //long startTime = System.nanoTime();
                 lastRecognizedSentence = grammar.getText().toLowerCase();
-
                 //IGOR: must not exceed 200ms (or less?) don't trust the documentation(500ms), I had to create an handler
                 //handler so the function could return quickly true, otherwise the robot answers random things over your answers.
                 new Handler().post(new Runnable() {
@@ -221,12 +225,12 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
                     public void run() {
                         //recognized
                         inputText.append(lastRecognizedSentence + " ");
-                        Log.i("IGOR-XML", ">>>>Recognized voice: "+ lastRecognizedSentence);
+                        Log.i(TAG, ">>>>Recognized voice: "+ lastRecognizedSentence);
 
                     }
                 });
 
-                //Log.i("IGOR-XML", "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
+                //Log.i(TAG, "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
                 return true;
             }
 
@@ -253,6 +257,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
         String xmlstrResult = "failed";
         //WRITE
         try {
+            Log.i(TAG, "Testing WRITE");
             fileXML.createNewFile();
             FileOutputStream fileos = new FileOutputStream(fileXML);
             XmlSerializer xmlSerializer = Xml.newSerializer();
@@ -289,6 +294,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
 
         //ADD
         try {
+            Log.i(TAG, "Testing ADD");
             InputStream inpstr = new FileInputStream(fileXML);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -321,6 +327,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
         }
         //READ
         try {
+            Log.i(TAG, "Testing READ");
             InputStream inpstr = new FileInputStream(fileXML);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

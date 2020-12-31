@@ -27,6 +27,8 @@ import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 
 public class MyWebActivity extends TopBaseActivity {
 
+    private final static String TAG = "IGOR-WEB";
+
     boolean infiniteWakeup = true;
 
     private SpeechManager speechManager;    //speech
@@ -61,6 +63,7 @@ public class MyWebActivity extends TopBaseActivity {
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
+        Log.i(TAG, "Loading URL");
         //laod url
         Intent intent = getIntent();
         String url = intent.getExtras().getString("url");
@@ -80,12 +83,12 @@ public class MyWebActivity extends TopBaseActivity {
 
             @Override
             public void onWakeUp() {
-                Log.i("IGOR-WEB", "WAKE UP callback");
+                Log.i(TAG, "WAKE UP callback");
             }
 
             @Override
             public void onSleep() {
-                Log.i("IGOR-WEB", "SLEEP callback");
+                Log.i(TAG, "SLEEP callback");
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -100,6 +103,7 @@ public class MyWebActivity extends TopBaseActivity {
             @Override
             public boolean onRecognizeResult(@NonNull Grammar grammar) {
                 lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
+                Log.i(TAG, "Recognized Result: " + lastRecognizedSentence);
                 new Handler().post(new Runnable() {
                     @Override
                     public void run() {
@@ -139,6 +143,7 @@ public class MyWebActivity extends TopBaseActivity {
                             if (lastRecognizedSentence.contains(separator)) {
                                 place = StringUtils.substringAfter(lastRecognizedSentence, separator);
                                 newPlace = true;
+                                Log.i(TAG, "New Place detected: " + place);
                             }
                         }
                         if(newPlace) {
@@ -146,7 +151,7 @@ public class MyWebActivity extends TopBaseActivity {
                             //Computing URL
                             place = place.replace(" ", "+");
                             String url = "https://www.google.com/maps/search/" + place;
-                            Log.i("IGOR-WEB", url);
+                            Log.i(TAG, url);
                             //loading URL in the web-view
                             myWebView.loadUrl(url);
                         }

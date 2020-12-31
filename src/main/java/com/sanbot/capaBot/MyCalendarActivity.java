@@ -48,6 +48,7 @@ import static com.sanbot.capaBot.MyWeatherActivity.isNetworkAvailable;
 
 public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDownloadAsyncTask.AsyncTaskListener{
 
+    private final static String TAG = "IGOR-CAL";
 
     @BindView(R.id.exit)
     Button exitButton;
@@ -132,7 +133,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
         MonthLoader.MonthChangeListener mMonthChangeListener = new MonthLoader.MonthChangeListener() {
             @Override
             public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-                Log.i("IGOR-CAL", "onMonthChange called "+newMonth+" "+newYear);/*
+                Log.i(TAG, "onMonthChange called "+newMonth+" "+newYear);/*
                 ArrayList<WeekViewEvent> eventsMonth = new ArrayList<WeekViewEvent>();
                 //put in the list only the events of the month required
                 for (int i = 0; i < events.size(); i++) {
@@ -296,12 +297,12 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
 
             @Override
             public void onWakeUp() {
-                //Log.i("IGOR-CAL", "WAKE UP callback");
+                //Log.i(TAG, "WAKE UP callback");
             }
 
             @Override
             public void onSleep() {
-                //Log.i("IGOR-CAL", "SLEEP callback");
+                //Log.i(TAG, "SLEEP callback");
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -386,7 +387,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
 
     public void taskLoadUp() {
         if (isNetworkAvailable(getApplicationContext())) {
-            Log.i("IGOR-CAL", "network ok");
+            Log.i(TAG, "network ok");
             //for every url
             for (String anUrlsCalendar : urlsCalendar) {
                 //launch a task
@@ -401,7 +402,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
     @Override
     public void giveCalendar(Calendar calendar) {
         //calendar passed
-        Log.i("IGOR-CAL","calendar number components: " + calendar.getComponents().size());
+        Log.i(TAG,"calendar number components: " + calendar.getComponents().size());
         //for every event
         for (Object o : calendar.getComponents()) {
             Component component = (Component) o;
@@ -413,7 +414,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                 //summary event
                 summary = component.getProperties("SUMMARY").get(0).getValue();
             }
-            //Log.i("IGOR-CAL", "-component>>>" + summary);
+            //Log.i(TAG, "-component>>>" + summary);
             try {
                 //if has a start time
                 if (component.getProperties("DTSTART").size()>0) {
@@ -422,16 +423,16 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                     for (Iterator j = component.getProperties("DTSTART").iterator(); j.hasNext();) {
                         Property property = (Property) j.next();
                         start_str = property.getValue();
-                        //Log.i("IGOR-CAL", "Property DTSTART [" + property.getName() + " <<>> " + property.getValue() + "]");
+                        //Log.i(TAG, "Property DTSTART [" + property.getName() + " <<>> " + property.getValue() + "]");
                     }
                     try {
                         //parsing the string to date with hour
                         startDate = SDFH.parse(start_str);
-                        //Log.i("IGOR-CAL", "Property DTSTART parsed with hour: " + startDate);
+                        //Log.i(TAG, "Property DTSTART parsed with hour: " + startDate);
                     } catch (ParseException e) {
                         //parsing the string to date
                         startDate = SDF.parse(start_str);
-                        //Log.i("IGOR-CAL", "Property DTSTART parsed only day: " + startDate);
+                        //Log.i(TAG, "Property DTSTART parsed only day: " + startDate);
                     }
                     java.util.Calendar startCal = java.util.Calendar.getInstance();
                     startCal.setTime(startDate);
@@ -444,18 +445,18 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                         for (Iterator j = component.getProperties("DTEND").iterator(); j.hasNext();) {
                             Property property = (Property) j.next();
                             end_str = property.getValue();
-                            //Log.i("IGOR-CAL", "Property DTEND   [" + property.getName() + " <<>> " + property.getValue() + "]");
+                            //Log.i(TAG, "Property DTEND   [" + property.getName() + " <<>> " + property.getValue() + "]");
                         }
                         try {
                             //parsing the string to date with hour
                             endDate = SDFH.parse(end_str);
-                            //Log.i("IGOR-CAL", "Property DTEND parsed with hour: " + endDate);
+                            //Log.i(TAG, "Property DTEND parsed with hour: " + endDate);
                             endCal = java.util.Calendar.getInstance();
                             endCal.setTime(endDate);
                         } catch (ParseException e) {
                             //parsing the string to date
                             endDate = SDF.parse(end_str);
-                            //Log.i("IGOR-CAL", "Property DTSTART parsed only day: " + endDate);
+                            //Log.i(TAG, "Property DTSTART parsed only day: " + endDate);
                             endCal = java.util.Calendar.getInstance();
                             endCal.setTime(endDate);
                             //if the end day is the same I put the end hour at 24
@@ -465,7 +466,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                         }
 
                     } else {
-                        //Log.i("IGOR-CAL", "Property DTEND NOT FOUND");
+                        //Log.i(TAG, "Property DTEND NOT FOUND");
                         //end time at the end of the same day
                         endCal = (java.util.Calendar) startCal.clone();
                         endCal.set(java.util.Calendar.HOUR_OF_DAY, 24);
@@ -477,19 +478,19 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                     //event.setColor(getResources().getColor(R.color.colorPrimary, null));
                     //put the event in the list
                     events.add(event);
-                    //Log.i("IGOR-CAL", "added: " + startDate + ">->" + endDate + "  Summary: " + summary);
+                    //Log.i(TAG, "added: " + startDate + ">->" + endDate + "  Summary: " + summary);
                 } else{
                     //no start-time not added
-                    Log.e("IGOR-CAL", "NOT ADDED (DTSTART not found) component details:" + component.toString());
+                    Log.e(TAG, "NOT ADDED (DTSTART not found) component details:" + component.toString());
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
-                Log.e("IGOR-CAL", "PARSE EXCEPTION component details:" + component.toString());
+                Log.e(TAG, "PARSE EXCEPTION component details:" + component.toString());
             }
         }
         //finished this thread
         finishedThreadsCount++;
-        Log.i("IGOR-CAL", "FINISHED THREAD " + finishedThreadsCount);
+        Log.i(TAG, "FINISHED THREAD " + finishedThreadsCount);
 
         //notify update to UI
         runOnUiThread(new Runnable() {

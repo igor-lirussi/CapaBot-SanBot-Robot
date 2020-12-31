@@ -32,6 +32,7 @@ import static com.sanbot.capaBot.MyUtils.sleepy;
  */
 public class MyChargeActivity extends TopBaseActivity {
 
+    private final static String TAG = "IGOR-CHARGE";
 
     @BindView(R.id.exit)
     Button exitButton;
@@ -102,13 +103,13 @@ public class MyChargeActivity extends TopBaseActivity {
                 modularMotionManager.switchCharge(true);
                 //if still not charging (glitch of SDK) switch charge off and then on
                 if (!modularMotionManager.getAutoChargeStatus().getResult().equals("1")) {
-                    Log.i("IGOR-CHARGE", "battery still not charging");
+                    Log.i(TAG, "battery still not charging");
                     modularMotionManager.switchCharge(false);
                     modularMotionManager.switchCharge(true);
                 }
                 //grab battery value
                 int battery_value = systemManager.getBatteryValue();
-                Log.i("IGOR-CHARGE", "battery: "+ battery_value);
+                Log.i(TAG, "battery: "+ battery_value);
                 //update UI
                 progressBar.setProgress(battery_value);
                 batteryPercent.setText(battery_value+" %");

@@ -34,6 +34,7 @@ import javax.xml.transform.stream.StreamResult;
  */
 public final class MyUtilsXML {
 
+    private final static String TAG = "IGOR-XML";
 
     /**
      *  Takes the string-value from an sub-element (tag) that's inside the element passed
@@ -73,6 +74,7 @@ public final class MyUtilsXML {
      * @return the file created
      */
     public static File createFileInXMLDirectory(String fileName) {
+        Log.i(TAG, "checking or creating XML file");
         //open a directory
         File fileDir = new File(Environment.getExternalStorageDirectory() + "/" + "CAPABOTXML" + "/");
         if (!fileDir.exists()) {
@@ -93,6 +95,7 @@ public final class MyUtilsXML {
     public static void initializeXMLfromFile(File fileXML) {
         //initialize and create the structure of the file as XML
         try {
+            Log.i(TAG, "initializing XML file with random things");
             fileXML.createNewFile();
             FileOutputStream fileos = new FileOutputStream(fileXML);
             XmlSerializer xmlSerializer = Xml.newSerializer();
@@ -134,6 +137,7 @@ public final class MyUtilsXML {
     public static void xmlSuggestionsCreateFile(File fileXML) {
         //CREATE
         try {
+            Log.i(TAG, "creating structure for suggestions XML file");
             fileXML.createNewFile();
             FileOutputStream fileos = new FileOutputStream(fileXML);
             XmlSerializer xmlSerializer = Xml.newSerializer();
@@ -173,6 +177,7 @@ public final class MyUtilsXML {
 
     public static void xmlAddSuggestion(File fileXML, String name_passed, String suggestion_passed) {
         try {
+            Log.i(TAG, "adding suggestion XML file");
             InputStream inpstr;
             try {
                 inpstr = new FileInputStream(fileXML);
@@ -218,6 +223,7 @@ public final class MyUtilsXML {
     public static String xmlReadSuggestionTextOf(File fileXML, String name_passed) {
         //READ
         try {
+            Log.i(TAG, "reading suggestion XML file");
             //open doc
             InputStream inpstr;
             try {
@@ -262,6 +268,7 @@ public final class MyUtilsXML {
     public static void xmlStatsCreateFile(File fileXML) {
         //CREATE
         try {
+            Log.i(TAG, "creating structure stats XML file");
             fileXML.createNewFile();
             FileOutputStream fileos = new FileOutputStream(fileXML);
             XmlSerializer xmlSerializer = Xml.newSerializer();

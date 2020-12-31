@@ -14,6 +14,7 @@ import java.net.URL;
 
 public class MyCalendarDownloadAsyncTask extends AsyncTask< String, Void, String > {
 
+    private final static String TAG = "IGOR-CAL-ASYNC";
 
     private AsyncTaskListener listener;
 
@@ -33,7 +34,7 @@ public class MyCalendarDownloadAsyncTask extends AsyncTask< String, Void, String
 
     protected String doInBackground(String... args) {
         urlCalendar = args[0];
-        Log.i("IGOR-CAL-ASYNC", "request Calendar:" + urlCalendar);
+        Log.i(TAG, "request Calendar:" + urlCalendar);
         Calendar calendar;
         //open stream
         try {
@@ -44,7 +45,7 @@ public class MyCalendarDownloadAsyncTask extends AsyncTask< String, Void, String
         //build
         try {
             calendar = new CalendarBuilder().build(is);
-            //Log.i("IGOR-CAL-ASYNC", "calendar RECEIVED:" +  calendar.toString());
+            //Log.i(TAG, "calendar RECEIVED:" +  calendar.toString());
             //give calendar to all the classes that implement AsyncTaskListener
             listener.giveCalendar(calendar);
         } catch (IOException e) {

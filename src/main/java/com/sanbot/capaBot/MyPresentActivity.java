@@ -40,6 +40,7 @@ import static com.sanbot.capaBot.MyUtils.sleepy;
 
 public class MyPresentActivity extends TopBaseActivity {
 
+    private final static String TAG = "IGOR-PRS";
 
     @BindView(R.id.exit)
     Button exitButton;
@@ -93,7 +94,7 @@ public class MyPresentActivity extends TopBaseActivity {
             }
         }, 1000);
 
-        //realeased sound at the end
+        //released sound at the end
         mp1 = MediaPlayer.create(MyPresentActivity.this,R.raw.lalala);
         mp1.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
              @Override
@@ -120,6 +121,7 @@ public class MyPresentActivity extends TopBaseActivity {
                     public void onTouch(int part) {
                         try {
                             if (speechManager.isSpeaking().getResult().equals("1") && finishedPresentation) {
+                                Log.i(TAG, "Touching occurred");
                                 switch (part) {
                                     case 1:
                                         speechManager.startSpeak("You are touching the right part of my jaw", MySettings.getSpeakDefaultOption());
@@ -179,12 +181,12 @@ public class MyPresentActivity extends TopBaseActivity {
 
             @Override
             public void onWakeUp() {
-                Log.i("IGOR-PRS", "WAKE UP callback");
+                Log.i(TAG, "WAKE UP callback");
             }
 
             @Override
             public void onSleep() {
-                Log.i("IGOR-PRS", "SLEEP callback");
+                Log.i(TAG, "SLEEP callback");
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -201,6 +203,7 @@ public class MyPresentActivity extends TopBaseActivity {
             @Override
             public boolean onRecognizeResult(@NonNull Grammar grammar) {
                 lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
+                Log.i(TAG, "Recognized: "+ lastRecognizedSentence);
                 new Handler().post(new Runnable() {
                     @Override
                     public void run() {
@@ -265,6 +268,7 @@ public class MyPresentActivity extends TopBaseActivity {
     private void startPresentation() {
         new Thread(new Runnable() {
             public void run(){
+                Log.i(TAG, "Presentation Started");
                 //intro
                 speechManager.startSpeak("I'm SanBot, a robot of the ISR. My main purpose is to help people ", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
@@ -394,6 +398,7 @@ public class MyPresentActivity extends TopBaseActivity {
     }
 
     private void goToDialogAndExit(boolean res) {
+        Log.i(TAG, "Finished presentation");
         //force sleep
         infiniteWakeup = false;
         speechManager.doSleep();

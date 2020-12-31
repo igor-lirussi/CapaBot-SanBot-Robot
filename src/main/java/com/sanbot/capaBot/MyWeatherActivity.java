@@ -27,6 +27,8 @@ import static com.sanbot.capaBot.MyUtils.concludeSpeak;
 
 public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownloadAsyncTask.AsyncTaskListener {
 
+    private final static String TAG = "IGOR-WEATHER";
+
     private SpeechManager speechManager;    //speech
 
     static ProgressBar loader;
@@ -107,12 +109,12 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
 
             @Override
             public void onWakeUp() {
-                Log.i("IGOR-ANS", "WAKE UP callback");
+                Log.i(TAG, "WAKE UP callback");
             }
 
             @Override
             public void onSleep() {
-                Log.i("IGOR-ANS", "SLEEP callback");
+                Log.i(TAG, "SLEEP callback");
                 if (infiniteWakeup) {
                     //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
                     speechManager.doWakeUp();
@@ -157,7 +159,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
 
     public void taskLoadUp(String query) {
         if (isNetworkAvailable(getApplicationContext())) {
-            Log.i("IGORWEATHER", "network ok");
+            Log.i(TAG, "network ok, launching Async task");
             MyWeatherDownloadAsyncTask task = new MyWeatherDownloadAsyncTask(this, forecastContainerLL);
             task.execute(query);
         } else {
@@ -178,6 +180,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
     public void giveProgress(String progress, String summary) {
         summaryToSay = summary;
         //finished task
+        Log.i(TAG, "Async Task finished: "+ progress);
         if (progress.equals("OK")) {
             //new thread not to lock the UI with the sleep
             new Thread(new Runnable() {
