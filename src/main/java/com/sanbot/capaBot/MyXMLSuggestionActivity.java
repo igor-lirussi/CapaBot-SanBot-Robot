@@ -77,7 +77,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        register(MyShakeActivity.class);
+        register(MyXMLSuggestionActivity.class);
         //screen always on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

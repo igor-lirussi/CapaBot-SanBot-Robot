@@ -106,7 +106,7 @@ dependencies {
     implementation 'joda-time:joda-time:2.10.3'
     implementation 'io.apisense:rhino-android:1.1.1'
     implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
-    implementation  files('libs/sanmoku-0.0.5.jar')
-    implementation  files('libs/sanmoku-feature-ex-0.0.1.jar')
+    implementation files('libsq/sanmoku-0.0.5.jar')
+    implementation files('libs/sanmoku-feature-ex-0.0.1.jar')
 
 }
