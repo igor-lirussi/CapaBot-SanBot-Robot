@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sanbot.capaBot">
 
+    <!-- permissions-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +19,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- no touching response from system -->
+        <!-- ACTIVITIES -->
         <activity
             android:name=".MyBaseActivity"
             android:exported="true"
@@ -21,7 +29,16 @@
                 <action android:name="android.intent.action.MAIN" /> <!-- activity first -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- no system reacting to "hi! sanbot" -->
+        </activity>
+
+        <activity android:name=".MyCalendarActivity">
+            <meta-data
+                android:name="RECOGNIZE_MODE"
+                android:value="1" />
+        </activity>
+
+        <activity android:name=".MyChargeActivity" />
+
         <activity
             android:name=".MyDialogActivity"
             android:hardwareAccelerated="true"
@@ -30,56 +47,49 @@
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
+
+        <activity android:name=".MyPresentActivity" />
+
         <activity
             android:name=".MyProjectStoryActivity"
-            android:hardwareAccelerated="true" /> <!-- ACTIVITIES -->
-        <!-- base navigation activity -->
+            android:hardwareAccelerated="true" />
+
         <activity
             android:name=".MyShakeActivity"
-            android:hardwareAccelerated="true" /> <!-- dialog activity -->
-        <activity android:name=".MyXMLSuggestionActivity">
-            <meta-data
-                android:name="RECOGNIZE_MODE"
-                android:value="1" />
-        </activity> <!-- Projector story activity -->
+            android:hardwareAccelerated="true" />
+
         <activity android:name=".MyWeatherActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
-        </activity> <!-- shake hand activity -->
-        <activity android:name=".MyCalendarActivity">
-            <meta-data
-                android:name="RECOGNIZE_MODE"
-                android:value="1" />
-        </activity> <!-- suggestion activity -->
-        <activity android:name=".MyPresentActivity" /> <!-- provider -->
-        <activity android:name=".MyChargeActivity" /> <!-- weather -->
+        </activity>
+
         <activity android:name=".MyWebActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
-        </activity> <!-- calendar -->
+        </activity>
 
+        <activity android:name=".MyXMLSuggestionActivity">
+            <meta-data
+                android:name="RECOGNIZE_MODE"
+                android:value="1" />
+        </activity>
+
+        <!-- no touching response from system -->
         <meta-data
             android:name="FORBID_TOUCH"
-            android:value="true" /> <!-- self presentation -->
+            android:value="true" />
         <meta-data
             android:name="FORBID_WAKE_RESPONSE"
-            android:value="true" /> <!-- charge robot autonomously -->
+            android:value="true" />
         <meta-data
             android:name="RECOGNIZE_MODE"
-            android:value="1" /> <!-- web page display -->
+            android:value="1" />
         <provider
             android:name="com.sanbot.opensdk.utils.GrammarProvider"
             android:authorities="com.qihancloud.capaBot.grammar"
             android:exported="true" />
     </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
