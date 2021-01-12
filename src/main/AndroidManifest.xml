@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TestConversationalEngineActivity"></activity>
         <!-- ACTIVITIES -->
         <activity
             android:name=".MyBaseActivity"
@@ -57,7 +56,13 @@
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
-        </activity> <!-- no touching response from system -->
+        </activity>
+
+        <activity android:name=".TestConversationalEngineActivity">
+        </activity>
+
+
+
         <meta-data
             android:name="FORBID_TOUCH"
             android:value="true" />
