@@ -2,15 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sanbot.capaBot">
-
-    <!-- permissions-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <!-- permissions -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".TestConversationalEngineActivity"></activity>
         <!-- ACTIVITIES -->
         <activity
             android:name=".MyBaseActivity"
@@ -30,15 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MyCalendarActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
-
         <activity android:name=".MyChargeActivity" />
-
         <activity
             android:name=".MyDialogActivity"
             android:hardwareAccelerated="true"
@@ -47,36 +36,28 @@
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
-
         <activity android:name=".MyPresentActivity" />
-
         <activity
             android:name=".MyProjectStoryActivity"
             android:hardwareAccelerated="true" />
-
         <activity
             android:name=".MyShakeActivity"
             android:hardwareAccelerated="true" />
-
         <activity android:name=".MyWeatherActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
-
         <activity android:name=".MyWebActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
         </activity>
-
         <activity android:name=".MyXMLSuggestionActivity">
             <meta-data
                 android:name="RECOGNIZE_MODE"
                 android:value="1" />
-        </activity>
-
-        <!-- no touching response from system -->
+        </activity> <!-- no touching response from system -->
         <meta-data
             android:name="FORBID_TOUCH"
             android:value="true" />
@@ -86,10 +67,18 @@
         <meta-data
             android:name="RECOGNIZE_MODE"
             android:value="1" />
+
         <provider
             android:name="com.sanbot.opensdk.utils.GrammarProvider"
             android:authorities="com.qihancloud.capaBot.grammar"
             android:exported="true" />
     </application>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

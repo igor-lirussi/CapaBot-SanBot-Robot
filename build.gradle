@@ -90,7 +90,7 @@ dependencies {
 
     //sanbotsuff
     implementation(name: 'SanbotOpenSdk_2.0.1.10', ext: 'aar')
-    implementation 'com.google.code.gson:gson:2.8.2'
+    //implementation 'com.google.code.gson:gson:2.8.2'
     //implementation files('libs/gson-2.2.4.jar')
 
     //icalendar 4 java
@@ -106,7 +106,7 @@ dependencies {
     implementation 'joda-time:joda-time:2.10.3'
     implementation 'io.apisense:rhino-android:1.1.1'
     implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
-    implementation files('libsq/sanmoku-0.0.5.jar')
+    implementation files('libs/sanmoku-0.0.5.jar')
     implementation files('libs/sanmoku-feature-ex-0.0.1.jar')
 
 }

@@ -105,8 +105,6 @@
     <orderEntry type="library" name="Gradle: __local_aars__:D.\VisLab\SanBot_Material\CapaBot-SanBot-Robot\libs\gson-2.2.4.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:D.\VisLab\SanBot_Material\CapaBot-SanBot-Robot\libs\sanmoku-0.0.5.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:D.\VisLab\SanBot_Material\CapaBot-SanBot-Robot\libs\sanmoku-feature-ex-0.0.1.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:D.\VisLab\SanBot_Material\CapaBot-SanBot-Robot\libsq\sanmoku-0.0.5.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.2@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.mnode.ical4j:ical4j:2.2.4@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.26@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.8.1@jar" level="project" />
