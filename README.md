@@ -34,6 +34,7 @@ After the first installation, the app will be available in the section “APP Ma
 <br>**Version 3.0.3** - added AIML conversational engine
 <br>**Version 3.0.8** - final Thesis version
 <br>**Version 4.0.0** - fixed AIML and AIML conversational engine
+<br>**Version 5.0.0** - passed at the new SDK 2.0.1.10
 
 ## Authors
 
