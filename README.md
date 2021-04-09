@@ -2,6 +2,7 @@
 
 The code aims to give Sanbot robot basic interaction abilities. It wanders around avoiding obstacles, going back to the charging station when needed. The robot turns towards sources of noise, or voices, so its attention can be called.
 During the movement. a face detection module is used to trigger a voice interaction. (it includes a speech recognition module, a conversational engine to formulate the answers and the speech synthesis). The dialogue can be purpose-less, this means that no task is pursued except a normal and pleasant interaction. It is capable also of a task-oriented interaction, implemented in many example modules. Some allow Sanbot to present itself, project a story (of the organization) show the events in a synced calendar, shake hands, tell the weather, give directions, save suggestions from the customers, display web pages for info.
+You can find a more in deep discussion [here](https://amslaurea.unibo.it/19120/)
 
 ## Pipeline Implemented
 ![Alt text](readme-images/Pipeline.jpg?raw=true "Pipeline")
