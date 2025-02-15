@@ -24,8 +24,9 @@ android {
     compileSdkVersion 26
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.sanbot.capaBot"
-        minSdkVersion 23
+        minSdkVersion 19
         versionCode 20201220
         versionName "4.1.1" //change also proprieties.txt in Hari folder
 
@@ -78,6 +79,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {

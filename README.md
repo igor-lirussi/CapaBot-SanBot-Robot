@@ -5,21 +5,23 @@ During the movement. a face detection module is used to trigger a voice interact
 
 #### You can find a more in deep discussion [here](https://amslaurea.unibo.it/19120/)
 
-## Pipeline Implemented
-![Alt text](readme-images/Pipeline.jpg?raw=true "Pipeline")
-
-## Installation and Run
-Clone the repository. <br>
-Android studio is strongly suggested to open the project, the tablet in the robot runs with Android. <br>
-Connect the robot to the computer with the cable, press the green play button :arrow_forward: this allows Android Studio, once compiled the project, to upload it in the robot.
-
 <!--
 ## Video of the Result
 [![Sanbot Interaction](http://i3.ytimg.com/)](https://youtu.be/)
 -->
 
-## Run from the Robot
-After the first installation, the app will be available in the section “APP Market”->”Come into my life” -> “Purchased APP”
+## Pipeline Implemented
+![Alt text](readme-images/Pipeline.jpg?raw=true "Pipeline")
+
+## Installation App and/or Code Repo
+Robot has to be in Developer Mode, press the Light-Button on the head 7 times, in the Settings>About, tap on "Robot Version" till "Developer mode open". Connect the robot to the computer with the usb cable.
+- You can upload in the robot the already [compiled apk](https://github.com/igor-lirussi/CapaBot-SanBot-Robot/releases/latest) with  `adb install –r –d CapaBot-SanBot-Robot-debug.apk` 
+For the code, clone the repository. <br>
+Android studio is strongly suggested to open this project, the tablet in the robot runs with Android. <br>
+Connect the robot to the computer with the cable, press the green play button :arrow_forward: this allows Android Studio, once compiled the code of the project, to upload the app in the robot.
+
+## Run App from the Robot
+After the first installation, the app will be available in the section “APP Market” -> ”Come into my life” -> “Purchased APP”
 
 
 ## Built With
