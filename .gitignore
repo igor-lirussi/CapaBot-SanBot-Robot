@@ -1,4 +1,42 @@
-/build
-.idea/workspace.xml
-.idea/tasks.xml
+# Build output
+/build/
+**/build/                
+.gradle/
+
+# IDE config
+.idea/                   
+*.iml                    
+
+# Local config
 local.properties
+
+# Logs
+*.log
+
+# Java class files
+*.class
+
+# Native build / external outputs
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing and Keystore files
+*.jks
+*.keystore
+*.key
+*.pem
+
+# Google Services (Firebase)
+google-services.json
+google-services.plist
+
+# Kotlin specific
+*.kotlin_module
+
+# Jetpack Compose cache (opzionale)
+.compose-cache/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
