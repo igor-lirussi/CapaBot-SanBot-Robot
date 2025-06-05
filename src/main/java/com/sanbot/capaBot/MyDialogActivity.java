@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -696,7 +697,7 @@ public class MyDialogActivity extends TopBaseActivity {
 
     public void colorFlashButton( View view_passed, int color_passed) {
         //update ui
-        view_passed.setBackgroundColor(getColor(color_passed));
+        view_passed.setBackgroundColor(ContextCompat.getColor(view_passed.getContext(), color_passed));
     }
 
     public void greenFlashButton( View view_passed) {
@@ -815,7 +816,7 @@ public class MyDialogActivity extends TopBaseActivity {
         if (random_num > 0.5) {
             //showing random face
             int min = 0, max = 20;
-            int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
+            int randomNum = (int) (Math.random() * ((max - min) + 1)) + min;
             switch (randomNum) {
                 case 1:
                     systemManager.showEmotion(EmotionsType.ABUSE);

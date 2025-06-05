@@ -5,6 +5,7 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -232,7 +233,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
         endTime.add(java.util.Calendar.HOUR, 1);
         endTime.set(java.util.Calendar.MONTH, newMonth-1);
         WeekViewEvent event = new WeekViewEvent(1, "demo-event 1", startTime, endTime);
-        event.setColor(getResources().getColor(R.color.colorPrimary, null));
+        event.setColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
         events.add(event);
 
         startTime = java.util.Calendar.getInstance();

@@ -16,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Responsible for video decoding and display
  */
 public class VisionMediaDecoder {
-    private String TAG = "decoder：";
+    private String TAG = "IGOR-video-decoder：";
 
     /**
      * Decoding timeout
@@ -82,7 +82,7 @@ public class VisionMediaDecoder {
                 buffer.put(sampleData);
                 buffer.flip();
                 // Log.i("DecodeActivity", "" + buffer.toString());
-                Log.i(TAG, "showVideo: Get the video pointer position！");
+                // Log.i(TAG, "showVideo: Get the video pointer position！");
                 videoDecoder.queueInputBuffer(inIndex, 0, sampleSize, 0, 0);
             }
             // output, 1 microseconds = 100,0000 / 1 second

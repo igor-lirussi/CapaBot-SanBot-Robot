@@ -350,7 +350,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                         mHeight = height;
                     }
                     mediaDecoder.drawVideoSample(ByteBuffer.wrap(bytes));
-                    Log.i(TAG, "getVideoStream: Video data:" + bytes.length);
+                    // Log.i(TAG, "getVideoStream: Video data:" + bytes.length);
                 }
             }
 

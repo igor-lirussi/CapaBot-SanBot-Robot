@@ -1,10 +1,12 @@
 package com.sanbot.capaBot;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -374,24 +376,25 @@ public class MyPresentActivity extends TopBaseActivity {
     private void changeImage(final String image) {
         runOnUiThread(new Runnable() {
             public void run() {
+                Context context = getContext();
                 switch (image) {
                     case "project":
-                        imagePresentation.setImageDrawable(getDrawable(R.drawable.project));
+                        imagePresentation.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.project));
                         break;
                     case "overview":
-                        imagePresentation.setImageDrawable(getDrawable(R.drawable.overview));
+                        imagePresentation.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.overview));
                         break;
                     case "education":
-                        imagePresentation.setImageDrawable(getDrawable(R.drawable.presentedu));
+                        imagePresentation.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.presentedu));
                         break;
                     case "public":
-                        imagePresentation.setImageDrawable(getDrawable(R.drawable.presentpub));
+                        imagePresentation.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.presentpub));
                         break;
                     case "health":
-                        imagePresentation.setImageDrawable(getDrawable(R.drawable.presenthealtcare));
+                        imagePresentation.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.presenthealtcare));
                         break;
                     default:
-                        imagePresentation.setImageDrawable(getDrawable(R.drawable.presentsanbot));
+                        imagePresentation.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.presentsanbot));
                 }
             }
         });
