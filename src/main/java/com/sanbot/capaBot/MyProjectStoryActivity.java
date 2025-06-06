@@ -81,8 +81,8 @@ public class MyProjectStoryActivity extends TopBaseActivity {
 
         //videoview play video
         videoView = findViewById(R.id.myvideoview);
-        //videoView.setVideoURI(Uri.parse("https://youtu.be/0tzLFqZLbxc"));
-        videoView.setVideoURI(Uri.parse(Environment.getExternalStorageDirectory().getPath() +"/CAPABOT/isr.mp4"));
+        //videoView.setVideoURI(Uri.parse("https://www.youtube.com/watch?v=HO2pyUKodq0"));
+        videoView.setVideoURI(Uri.parse(Environment.getExternalStorageDirectory().getPath() +"/CAPABOT/video-projected.mp4"));
         videoView.setMediaController(new MediaController(this));
         videoView.requestFocus();
         videoView.start();

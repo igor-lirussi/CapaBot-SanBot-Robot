@@ -710,7 +710,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     }
 
     public void storeImage(Bitmap bitmap){
-        String dir = Environment.getExternalStorageDirectory()+ "/FACE_REG/IMG/" + "DCIM/";
+        String dir = Environment.getExternalStorageDirectory().getPath() +"/CAPABOT/";
         final File f = new File(dir);
         if (!f.exists()) {
             final boolean mkdirs = f.mkdirs();

@@ -73,7 +73,7 @@ public class TestConversationalEngineActivity extends TopBaseActivity {
         //receiving the assets from the app directory
         AssetManager assets = getResources().getAssets();
         //creating a new directory in the device
-        File jayDir = new File(Environment.getExternalStorageDirectory().toString() + "/hari/bots/Hari");
+        File jayDir = new File(Environment.getExternalStorageDirectory().getPath() + "/CAPABOT" + "/hari/bots/Hari");
         boolean dir_check = jayDir.mkdirs();
         if (jayDir.exists()) {
             //Reading the file
@@ -109,7 +109,7 @@ public class TestConversationalEngineActivity extends TopBaseActivity {
             }
         }
         //get the working directory
-        MagicStrings.root_path = Environment.getExternalStorageDirectory().toString() + "/hari";
+        MagicStrings.root_path = Environment.getExternalStorageDirectory().getPath() + "/CAPABOT" + "/hari";
         Log.i(TAG,"Working Directory = " + MagicStrings.root_path);
         AIMLProcessor.extension =  new PCAIMLProcessorExtension();
         //Assign the AIML files to bot for processing

@@ -67,7 +67,7 @@ public final class MyUtilsXML {
 
 
     /**
-     * creates a file in the directory of CAPABOTXML
+     * creates a file in the directory of CAPABOT/XML
      * the file is not initialized, so if you want to add stuff to the xml
      * before you have to initialize the XML with initializeXMLfromFile() function.
      * @param fileName the name of the file
@@ -76,7 +76,7 @@ public final class MyUtilsXML {
     public static File createFileInXMLDirectory(String fileName) {
         Log.i(TAG, "checking or creating XML file");
         //open a directory
-        File fileDir = new File(Environment.getExternalStorageDirectory() + "/" + "CAPABOTXML" + "/");
+        File fileDir = new File(Environment.getExternalStorageDirectory().getPath() + "/CAPABOT" + "/XML/");
         if (!fileDir.exists()) {
             //if no directory it is created
             final boolean mkdirs = fileDir.mkdirs();
