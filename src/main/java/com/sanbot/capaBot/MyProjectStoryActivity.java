@@ -18,6 +18,12 @@ import com.sanbot.opensdk.beans.FuncConstant;
 import com.sanbot.opensdk.function.unit.ProjectorManager;
 import com.sanbot.opensdk.function.unit.SpeechManager;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -81,8 +87,15 @@ public class MyProjectStoryActivity extends TopBaseActivity {
 
         //videoview play video
         videoView = findViewById(R.id.myvideoview);
+        //copy to storage if doesn't exist
+        String externalPath = Environment.getExternalStorageDirectory().getPath() + "/CAPABOT/video-projected.mp4";
+        File videoFile = new File(externalPath);
+        if (!videoFile.exists()) {
+            copyRawResourceToStorage(R.raw.video_projected, videoFile);
+        }
+
         //videoView.setVideoURI(Uri.parse("https://www.youtube.com/watch?v=HO2pyUKodq0"));
-        videoView.setVideoURI(Uri.parse(Environment.getExternalStorageDirectory().getPath() +"/CAPABOT/video-projected.mp4"));
+        videoView.setVideoURI(Uri.parse(externalPath));
         videoView.setMediaController(new MediaController(this));
         videoView.requestFocus();
         videoView.start();
@@ -151,4 +164,28 @@ public class MyProjectStoryActivity extends TopBaseActivity {
         //so I can't use this for operation: "ending activity" in the code,
         //better call finishThisActivity()
     }
+
+    private void copyRawResourceToStorage(int resId, File outFile) {
+        try {
+            File dir = outFile.getParentFile();
+            if (dir != null && !dir.exists()) {
+                dir.mkdirs();
+            }
+
+            InputStream in = getResources().openRawResource(resId);
+            OutputStream out = new FileOutputStream(outFile);
+
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = in.read(buffer)) > 0) {
+                out.write(buffer, 0, len);
+            }
+
+            in.close();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
