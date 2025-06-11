@@ -214,44 +214,56 @@ public class MyDialogActivity extends TopBaseActivity {
         //checking SD card availability
         boolean availableSD = isSDCARDAvailable();
         Log.i(TAG, "SD available: " + availableSD);
-        //receiving the assets from the app directory
-        AssetManager assets = getResources().getAssets();
         //creating a new directory in the device
-        File jayDir = new File(Environment.getExternalStorageDirectory().getPath() + "/CAPABOT" + "/hari/bots/Hari");
-        boolean dir_check = jayDir.mkdirs();
-        if (jayDir.exists()) {
-            //Reading the file
-            try {
-                //for every subdirectory
-                for (String dir : assets.list("Hari")) {
-                    //create the subdirectory in the device
-                    File subdir = new File(jayDir.getPath() + "/" + dir);
-                    boolean subdir_check = subdir.mkdirs();
-                    //for every file in the subdirectory
-                    for (String file : assets.list("Hari/" + dir)) {
-                        //create file in subdirectory
-                        File f = new File(jayDir.getPath() + "/" + dir + "/" + file);
-                        if (f.exists()) {
-                            continue;
+        File botBaseDir = new File(Environment.getExternalStorageDirectory().getPath() + "/CAPABOT" + "/hari/bots/Hari");
+        if (!botBaseDir.exists()) {
+            if (botBaseDir.mkdirs()) {
+                Log.i(TAG, "Directory created: " + botBaseDir.getAbsolutePath());
+                // COPY ASSETS
+                //Reading the file
+                try {
+                    //receiving the assets from the app directory
+                    AssetManager assets = getResources().getAssets();
+                    //for every subdirectory
+                    for (String dir : assets.list("Hari")) {
+                        //create the subdirectory in the device
+                        File subdir = new File(botBaseDir.getPath() + "/" + dir);
+                        if (!subdir.exists()) {
+                            subdir.mkdirs();
                         }
-                        InputStream in = null;
-                        OutputStream out = null;
-                        in = assets.open("Hari/" + dir + "/" + file);
-                        out = new FileOutputStream(jayDir.getPath() + "/" + dir + "/" + file);
-                        //copy file from assets to the mobile's SD card or any secondary memory
-                        //function is below
-                        copyFile(in, out);
-                        in.close();
-                        in = null;
-                        out.flush();
-                        out.close();
-                        out = null;
+                        //for every file in the subdirectory
+                        for (String file : assets.list("Hari/" + dir)) {
+                            //create file in subdirectory
+                            File f = new File(botBaseDir.getPath() + "/" + dir + "/" + file);
+                            if (f.exists()) {
+                                continue;
+                            }
+                            InputStream in = null;
+                            OutputStream out = null;
+                            in = assets.open("Hari/" + dir + "/" + file);
+                            out = new FileOutputStream(botBaseDir.getPath() + "/" + dir + "/" + file);
+                            //copy file from assets to the mobile's SD card or any secondary memory
+                            //function is below
+                            copyFile(in, out);
+                            in.close();
+                            in = null;
+                            out.flush();
+                            out.close();
+                            out = null;
+                            Log.i(TAG, "Files copied! in: " + botBaseDir.getAbsolutePath());
+                        }
                     }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } else {
+                Log.e(TAG, "Failed to create bot directory at " + botBaseDir.getAbsolutePath());
+                return;
             }
+        } else {
+            Log.i(TAG, "Bot directory already exists. Skipping asset copy.");
         }
+
         //get the working directory
         MagicStrings.root_path = Environment.getExternalStorageDirectory().getPath() + "/CAPABOT" + "/hari";
         Log.i(TAG,"Working Directory = " + MagicStrings.root_path);
@@ -262,7 +274,7 @@ public class MyDialogActivity extends TopBaseActivity {
         String[] args = null;
         mainFunction(args);
 
-        Log.i(TAG, "DURATION BOT millisec: " + (System.nanoTime() - startTime)/1000000);
+        Log.i(TAG, "TIME TO LOAD BOT millisec: " + (System.nanoTime() - startTime)/1000000);
 
 
         Log.i(TAG,"-START SILENT PRESENTATION");
@@ -447,40 +459,54 @@ public class MyDialogActivity extends TopBaseActivity {
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
+                            return;
                         }
                         if (lastRecognizedSentence.contains("map")) {
                             recognizedWhatToDo = true;
                             //greenFlashButton(gridExamples.getChildAt(5));
                             speechManager.startSpeak("OK let's see the map", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
-                            //compute the url to pass (default is lisbon)
-                            String url = "https://www.google.com/maps/place/Lisbon";
+                            //compute the place to pass
+                            String place = MySettings.getCityMap();
                             //if any separator is said the place after is passed in the url
                             String[] separators = {" of ", " in ", " on "};
                             for (String separator : separators) {
                                 if (lastRecognizedSentence.contains(separator)) {
-                                    String place = StringUtils.substringAfter(lastRecognizedSentence, separator);
-                                    url = "https://www.google.com/maps/place/" + place;
-                                    Log.e("IGOR", url);
+                                    place = StringUtils.substringAfter(lastRecognizedSentence, separator);
                                 }
                             }
-                            //starts weather activity
+                            String url = "https://www.google.com/maps/place/" + place;
+                            Log.i("IGOR", url);
+                            //starts web activity
                             Intent myIntent = new Intent(MyDialogActivity.this, MyWebActivity.class);
                             myIntent.putExtra("url", url);
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
+                            return;
                         }
                         if (lastRecognizedSentence.contains("weather")) {
                             recognizedWhatToDo = true;
                             //greenFlashButton(gridExamples.getChildAt(5));
                             speechManager.startSpeak("OK let's see the weather", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
+                            //compute the place to pass
+                            String place = MySettings.getCityWeather();
+                            //if any separator is said the place after is passed in the url
+                            String[] separators = {" of ", " in ", " on "};
+                            for (String separator : separators) {
+                                if (lastRecognizedSentence.contains(separator)) {
+                                    place = StringUtils.substringAfter(lastRecognizedSentence, separator);
+                                }
+                            }
+                            Log.i("IGOR", place);
                             //starts weather activity
                             Intent myIntent = new Intent(MyDialogActivity.this, MyWeatherActivity.class);
+                            myIntent.putExtra("place", place);
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
+                            return;
                         }
                         if (lastRecognizedSentence.contains("calendar")) {
                             recognizedWhatToDo = true;
@@ -491,6 +517,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
+                            return;
                         }
                         if (lastRecognizedSentence.contains("present yourself")) {
                             recognizedWhatToDo = true;
@@ -501,6 +528,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
+                            return;
                         }
                         if (lastRecognizedSentence.contains("charge") || lastRecognizedSentence.contains("battery")) {
                             recognizedWhatToDo = true;
@@ -511,6 +539,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
+                            return;
                         }
                         if (lastRecognizedSentence.contains("meeting")) {
                             recognizedWhatToDo = true;
@@ -545,6 +574,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
+                            return;
                         }
                         if (lastRecognizedSentence.contains("lab") || lastRecognizedSentence.contains("laboratory")) {
                             recognizedWhatToDo = true;
@@ -567,6 +597,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             MyDialogActivity.this.startActivity(myIntent);
                             //terminates
                             finish();
+                            return;
                         }
 
                         //exits if answer is "no time" or "nothing"
@@ -598,6 +629,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             MyDialogActivity.this.startActivity(myIntent);
 
                             finish();
+                            return;
                         }
 
 
@@ -611,7 +643,7 @@ public class MyDialogActivity extends TopBaseActivity {
                         }
                         */
                         showRandomFace();
-                        //chatbot
+                        //CHATBOT PART
                         long startTime = System.nanoTime();
                         String response = chat.multisentenceRespond(lastRecognizedSentence);
 
@@ -776,6 +808,7 @@ public class MyDialogActivity extends TopBaseActivity {
                         MyDialogActivity.this.startActivity(myIntent);
                         //terminates
                         finish();
+                        return;
                 }
             }
         }, 1000 * MySettings.getSeconds_waitingResponse());
@@ -884,11 +917,11 @@ public class MyDialogActivity extends TopBaseActivity {
     //CHATBOT FUNCTIONS
     //check SD card availability
     public static boolean isSDCARDAvailable(){
-        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)? true :false;
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
     //copying the file
     private void copyFile(InputStream in, OutputStream out) throws IOException {
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[8192];
         int read;
         while((read = in.read(buffer)) != -1){
             out.write(buffer, 0, read);

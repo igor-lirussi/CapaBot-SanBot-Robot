@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
             android:text="date"
-            android:textSize="20sp"
+            android:textSize="40sp"
             />
         <TextView
             android:id="@+id/weather_icon"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
             android:fontFamily="@font/weathericons"
-            android:textSize="90sp"
+            android:textSize="130sp"
             />
 
         <TextView
@@ -30,13 +30,13 @@
             android:text="details"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+            android:textSize="40sp" />
         <TextView
             android:id="@+id/current_temperature_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
-            android:text="temperature min-max"
+            android:text="temperature"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20sp" />
+            android:textSize="40sp" />
 </LinearLayout>

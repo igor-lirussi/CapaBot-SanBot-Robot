@@ -35,7 +35,6 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
     static TextView cityField, summaryField, updatedField;
     static LinearLayout forecastContainerLL;
     Button exitButton;
-    String city = "Lisbon,PT";
     String summaryToSay = "";
 
     boolean infiniteWakeup = true;
@@ -46,6 +45,12 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_dark_weather);
+
+        //get place passed
+        Intent intent = getIntent();
+        String placePassed = intent.getExtras().getString("place");
+        Log.i(TAG, "Passed Place: " + placePassed);
+
 
         speechManager = (SpeechManager) getUnitManager(FuncConstant.SPEECH_MANAGER);
 
@@ -63,7 +68,9 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
             }
         });
 
-        taskLoadUp(city);
+        //CREATE THE ASYNC TASK
+        taskLoadUp(placePassed);
+
         /*
         cityField.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,7 +136,11 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
 
             @Override
             public boolean onRecognizeResult(@NonNull Grammar grammar) {
-                //String lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
+                String lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
+                Log.i(TAG, "Speech recognized: " + lastRecognizedSentence);
+                //ANYTHING SAID doesn't matter
+                speechManager.startSpeak("Ok", MySettings.getSpeakDefaultOption());
+                concludeSpeak(speechManager);
                 finishThisActivity();
                 return true;
             }
@@ -164,6 +175,9 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
             task.execute(query);
         } else {
             Toast.makeText(this, "No Internet Connection", Toast.LENGTH_LONG).show();
+            speechManager.startSpeak("No Internet Connection", MySettings.getSpeakDefaultOption());
+            concludeSpeak(speechManager);
+            finishThisActivity();
         }
     }
 
@@ -185,7 +199,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
             //new thread not to lock the UI with the sleep
             new Thread(new Runnable() {
                 public void run() {
-                    speechManager.startSpeak(summaryToSay, MySettings.getSpeakDefaultOption());
+                    speechManager.startSpeak(summaryToSay, MySettings.getSpeakSlowOption());
                     concludeSpeak(speechManager);
                     speechManager.startSpeak("Are you satisfied?", MySettings.getSpeakDefaultOption());
                     concludeSpeak(speechManager);
@@ -204,6 +218,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
         MyWeatherActivity.this.startActivity(myIntent);
         //finish
         finish();
+        return;
     }
 }
 
