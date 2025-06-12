@@ -40,6 +40,10 @@
             android:name=".MyProjectStoryActivity"
             android:hardwareAccelerated="true" />
         <activity
+            android:name=".MySettings"
+            android:windowSoftInputMode="stateHidden"
+            android:hardwareAccelerated="true" />
+        <activity
             android:name=".MyShakeActivity"
             android:hardwareAccelerated="true" />
         <activity android:name=".MyWeatherActivity">

@@ -341,6 +341,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
+                            return;
                         }
                         if (lastRecognizedSentence.equals("no") ||lastRecognizedSentence.contains("so and so") ) {
                             //sad
@@ -349,6 +350,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
+                            return;
                         }
                         if (lastRecognizedSentence.contains("exit") ) {
                             speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
@@ -356,6 +358,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
+                            return;
                         }
                     }
                 });

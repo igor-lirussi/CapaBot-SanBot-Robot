@@ -17,18 +17,33 @@
                 android:layout_width="1280px"
                 android:layout_height="720px" />
             <TextView
-                android:textSize="40sp"
                 android:layout_width="1280px"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:layout_marginTop="20dp"
+                android:textSize="40sp"
                 android:shadowColor="@color/colorBlack"
+                android:shadowRadius="2"
                 android:shadowDx="2"
                 android:shadowDy="2"
-                android:shadowRadius="2"
                 android:gravity="center"
                 android:padding="0dp"
-                android:text="what I see (no data recorded)" />
+                android:text="@string/whatSee" />
+            <TextView
+                android:id="@+id/presentationLock"
+                android:layout_width="1280px"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginTop="80dp"
+                android:text="@string/presentation_locked"
+                android:textSize="30sp"
+                android:textColor="@color/colorRed"
+                android:shadowColor="@color/colorBlack"
+                android:shadowRadius="2"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:visibility="gone" />
         </RelativeLayout>
 
         <LinearLayout
@@ -43,14 +58,16 @@
                 <TextView
                     android:id="@+id/battery_base"
                     android:textSize="40sp"
+                    android:shadowRadius="2"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/colorPrimary"
                     android:padding="0dp"
                     android:layout_marginEnd="30dp"
-                    android:text="Battery: " />
-
+                    android:text="@string/battery" />
                 <Button
                     android:id="@+id/exit"
                     android:layout_width="wrap_content"
@@ -59,6 +76,10 @@
                     android:layout_gravity="center"
                     android:textColor="@color/colorPrimary"
                     android:textSize="30sp"
+                    android:shadowRadius="2"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:background="@drawable/button_borders"
                     android:text="@string/exit"
                     />
             </LinearLayout>
@@ -68,22 +89,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:src="@drawable/compass" />
-            <Switch
-                android:id="@+id/switchWander"
+            <Button
+                android:id="@+id/settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:switchMinWidth="56dp"
-                android:layout_margin="5dp"
-                android:text="@string/wander"
-                android:checked="false"/>
-            <Switch
-                android:id="@+id/switchSoundRot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:switchMinWidth="56dp"
-                android:layout_margin="5dp"
-                android:text="@string/rotation_at_sound"
-                android:checked="true"/>
+                android:layout_gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp"
+                android:shadowRadius="2"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:padding="5sp"
+                android:background="@drawable/button_borders"
+                android:text="@string/settings"
+                />
 
             <LinearLayout
                 android:id="@+id/DEBUG"
@@ -91,13 +110,42 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/knowYouMeeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:background="@color/colorPrimaryLight"
+                        android:gravity="center"
+                        android:text="@string/knowyoumeeting" />
+
+                    <TextView
+                        android:id="@+id/firstMeeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_margin="5dp"
+                        android:background="@color/colorPrimaryLight"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/firstmeeting" />
+
+                    <TextView
+                        android:id="@+id/textCompass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/heading" />
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/name_face"
-                    android:textSize="23sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="10dp"
                     android:text="@string/face_name" />
 
                 <TextView
@@ -105,48 +153,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="5dp"
                     android:text="@string/time_of_detection" />
 
                 <TextView
                     android:id="@+id/info_face"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="@string/face_information" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center">
-                    <TextView
-                        android:id="@+id/knowYouMeeting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:padding="5dp"
-                        android:layout_margin="5dp"
-                        android:background="@color/colorPrimaryLight"
-                        android:gravity="center"
-                        android:text="@string/knowyoumeeting"
-                        />
-                    <TextView
-                        android:id="@+id/firstMeeting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:padding="5dp"
-                        android:layout_margin="5dp"
-                        android:background="@color/colorPrimaryLight"
-                        android:gravity="center"
-                        android:text="@string/firstmeeting"
-                        />
-
-                        <TextView
-                            android:id="@+id/textCompass"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/heading" />
-                </LinearLayout>
+                    android:gravity="center"
+                    android:text="@string/face_information" />
 
             </LinearLayout>
         </LinearLayout>
@@ -171,19 +185,9 @@
         android:layout_gravity="center"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp"
+        android:background="@drawable/button_borders"
         android:text="@string/start_interaction"
         />
-
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/presentationLock"
-        android:textSize="30sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/colorRed"
-        android:padding="10dp"
-        android:text="@string/presentation_locked"/>
 
     <ImageView
         android:visibility="gone"

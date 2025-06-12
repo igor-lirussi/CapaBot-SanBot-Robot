@@ -174,7 +174,12 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
             MyWeatherDownloadAsyncTask task = new MyWeatherDownloadAsyncTask(this, forecastContainerLL);
             task.execute(query);
         } else {
-            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_LONG).show();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MyWeatherActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+                }
+            });
             speechManager.startSpeak("No Internet Connection", MySettings.getSpeakDefaultOption());
             concludeSpeak(speechManager);
             finishThisActivity();

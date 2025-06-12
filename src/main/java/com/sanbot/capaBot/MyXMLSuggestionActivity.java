@@ -113,6 +113,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
                 MyXMLSuggestionActivity.this.startActivity(myIntent);
                 //terminates activity
                 finish();
+                return;
             }
         });
 
@@ -168,6 +169,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
 
                     //terminates activity
                     finish();
+                    return;
                 } else {
                     //toast to ask filling suggestion
                     Toast.makeText(MyXMLSuggestionActivity.this, getString(R.string.leave_a_suggestion_or_a_comment), Toast.LENGTH_SHORT).show();

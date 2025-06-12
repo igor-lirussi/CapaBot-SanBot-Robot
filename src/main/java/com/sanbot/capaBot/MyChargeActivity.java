@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
@@ -81,7 +82,7 @@ public class MyChargeActivity extends TopBaseActivity {
         Context context = getContext();
         //progress bar layout
         progressBar.setProgressDrawable(ContextCompat.getDrawable(context, R.drawable.progressbar));
-        //set bar progress
+        //update UI
         progressBar.setProgress(systemManager.getBatteryValue());
         batteryPercent.setText(systemManager.getBatteryValue()+" %");
 
@@ -92,6 +93,14 @@ public class MyChargeActivity extends TopBaseActivity {
                 concludeSpeak(speechManager);
                 //activate auto charge
                 modularMotionManager.switchCharge(true);
+                if (MySettings.isDebug()) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MyChargeActivity.this, "Autocharge ON", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         }, 1000);
 
@@ -108,7 +117,16 @@ public class MyChargeActivity extends TopBaseActivity {
                 if (!modularMotionManager.getAutoChargeStatus().getResult().equals("1")) {
                     Log.i(TAG, "battery still not charging");
                     modularMotionManager.switchCharge(false);
+                    sleepy(1);
                     modularMotionManager.switchCharge(true);
+                    if (MySettings.isDebug()) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MyChargeActivity.this, "Autocharge ON, cuz battery still not charging", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
                 //grab battery value
                 int battery_value = systemManager.getBatteryValue();
@@ -133,6 +151,14 @@ public class MyChargeActivity extends TopBaseActivity {
 
 
     private void finishCharging() {
+        if (MySettings.isDebug()) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MyChargeActivity.this, "Autocharge OFF, ended charging", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
         //kill loop check handler
         checkBatteryStatus.removeCallbacksAndMessages(null);
         //sentence
@@ -140,17 +166,26 @@ public class MyChargeActivity extends TopBaseActivity {
         concludeSpeak(speechManager);
         //deactivate auto charge
         modularMotionManager.switchCharge(false);
+        //if battery below LOW exit button is pressed early, deactivate autocharge not to go back immediately to it
+        if (systemManager.getBatteryValue() <= MySettings.getBatteryLOW()) {
+            MySettings.setAutoChargeAllowed(false);
+            speechManager.startSpeak("I deactivated autocharge, go to settings to activate it back", MySettings.getSpeakDefaultOption());
+            concludeSpeak(speechManager);
+        }
         //go ahead 20 cm
-        DistanceWheelMotion distanceWheelMotion = new DistanceWheelMotion(
-                DistanceWheelMotion.ACTION_FORWARD_RUN,  5,20
-        );
-        wheelMotionManager.doDistanceMotion(distanceWheelMotion);
+        if (MySettings.isWanderAllowed()){
+            DistanceWheelMotion distanceWheelMotion = new DistanceWheelMotion(
+                    DistanceWheelMotion.ACTION_FORWARD_RUN,  5,20
+            );
+            wheelMotionManager.doDistanceMotion(distanceWheelMotion);
+        }
         sleepy(5);
         //starts base activity
         Intent myIntent = new Intent(MyChargeActivity.this, MyBaseActivity.class);
         MyChargeActivity.this.startActivity(myIntent);
         //finish
         finish();
+        return;
     }
 
 

@@ -13,10 +13,10 @@ During the movement. a face detection module is used to trigger a voice interact
 ## Pipeline Implemented
 ![Alt text](readme-images/Pipeline.jpg?raw=true "Pipeline")
 
-## Installation App and/or Code Repo
+## Install App and/or Code Repo
 Robot has to be in Developer Mode, press the Light-Button on the head 7 times, in the Settings>About, tap on "Robot Version" till "Developer mode open". Connect the robot to the computer with the usb cable.
 - You can upload in the robot the already [compiled apk](https://github.com/igor-lirussi/CapaBot-SanBot-Robot/releases/latest) with  `adb install –r –d CapaBot-SanBot-Robot-debug.apk` 
-For the code, clone the repository. <br>
+- To build it yourself from the code, clone the repository. <br>
 Android studio is strongly suggested to open this project, the tablet in the robot runs with Android. <br>
 Connect the robot to the computer with the cable, press the green play button :arrow_forward: this allows Android Studio, once compiled the code of the project, to upload the app in the robot.
 

@@ -19,9 +19,8 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.Switch;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -112,10 +111,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     TextView time_face;
     @BindView(R.id.info_face)
     TextView infoFace;
-    @BindView(R.id.switchWander)
-    Switch switchButtonWander;
-    @BindView(R.id.switchSoundRot)
-    Switch switchSoundRotation;
     @BindView(R.id.handshakes)
     TextView handshakesTextView;
     @BindView(R.id.presentationLock)
@@ -124,6 +119,10 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     Button startInteraction;
     @BindView(R.id.exit)
     Button exitButt;
+    @BindView(R.id.settings)
+    Button settingsButt;
+    @BindView(R.id.DEBUG)
+    LinearLayout debugLayout;
 
     //robot managers
     private HDCameraManager hdCameraManager; //video, faceRec
@@ -134,9 +133,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     private HardWareManager hardWareManager; //leds //touch sensors //voice locate //gyroscope
     private ModularMotionManager modularMotionManager; //wander
     private WheelMotionManager wheelMotionManager;
-
-
-    Handler checkBatteryStatusHandler = new Handler();
 
     //video stuff
     private VisionMediaDecoder mediaDecoder;
@@ -152,6 +148,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     private boolean justGreeted = false;
 
     Handler wanderHandler = new Handler();
+    Handler checkBatteryStatusHandler = new Handler();
 
     private CountDownTimer countDownPresentationLocked;
 
@@ -186,6 +183,11 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //set view
         setContentView(R.layout.activity_base);
         ButterKnife.bind(this);
+        if(MySettings.isDebug()){
+            debugLayout.setVisibility(View.VISIBLE);
+        } else {
+            debugLayout.setVisibility(View.GONE);
+        }
         //initialize managers
         hdCameraManager = (HDCameraManager) getUnitManager(FuncConstant.HDCAMERA_MANAGER);
         speechManager = (SpeechManager) getUnitManager(FuncConstant.SPEECH_MANAGER);
@@ -228,7 +230,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         initViewListeners();
 
         //initialize body
-        new Handler().postDelayed(new Runnable() {
+        wanderHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 //hands down
@@ -249,15 +251,21 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 //grab battery value
                 int battery_value = systemManager.getBatteryValue();
                 Log.i("IGOR-BAS-BAT", "Battery: "+ battery_value);
+                //if battery connected deactivate autocharge
+                if (systemManager.getBatteryStatus() == systemManager.STATUS_CHARGE_LINE || systemManager.getBatteryStatus() == systemManager.STATUS_CHARGE_PILE) {
+                    MySettings.setAutoChargeAllowed(false);
+                    Log.i("IGOR-BAS-BAT", "Battery charging already with line or charge pile");
+                }
                 //check if the charge is low
-                if (battery_value <= MySettings.getBatteryLOW()) {
+                if (MySettings.isAutoChargeAllowed() && (battery_value <= MySettings.getBatteryLOW())) {
                     //starts charge activity
                     Intent myIntent = new Intent(MyBaseActivity.this, MyChargeActivity.class);
                     MyBaseActivity.this.startActivity(myIntent);
                     //finish
                     finish();
+                    return;
                 } else {
-                    //re-post the same handler in X seconds
+                    //otherwise re-post the same handler in X seconds
                     checkBatteryStatusHandler.postDelayed(this, 1000 * MySettings.getSeconds_checkingBattery());
                 }
             }
@@ -306,7 +314,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 //time of detection
                 time_face.setText(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ITALY).format(Calendar.getInstance().getTime()));
 
-                Log.i(TAG,">>>>FACE DETECTED: " + user_name );
+                Log.i(TAG,">>>>FACE DETECTED " + user_name );
 
                 //selects function
                 if (!busy) {
@@ -320,12 +328,12 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                             if (user_name != null) {
                                 //PERSON IS KNOWN
                                 //passing the name
-                                knowYouMeeting(user_name);
+                                startInteraction(user_name);
                             } else {
                                 //PERSON UNKNOWN
                                 //deactivated riseHand presentation, the face recognition is too weak and the robot keeps presenting itself
                                 //if(MySettings.isPresentationBeforeDialog()) {riseHand();}
-                                knowYouMeeting("");
+                                startInteraction("");
                             }
                         } else {
                             Log.i(TAG, "justGreeted = true, detection aborted");
@@ -544,38 +552,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     }
 
     private void initViewListeners() {
-        //wander switch button
-        switchButtonWander.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    //toggle wander enabled
-                    if (!busy) {
-                        // wander in settings enabled
-                        MySettings.setWanderAllowed(true);
-                        Toast.makeText(MyBaseActivity.this, "wander-allowed enabled", Toast.LENGTH_SHORT).show();
-                        //sets the wander to on immediately
-                        wanderOnNow();
-                    } else {
-                        Toast.makeText(MyBaseActivity.this, "no wander, i'm busy", Toast.LENGTH_SHORT).show();
-                        switchButtonWander.setChecked(false);
-                    }
-                } else {
-                    //toggle disabled
-                    MySettings.setWanderAllowed(false);
-                    Toast.makeText(MyBaseActivity.this, "wander-allowed disabled ", Toast.LENGTH_SHORT).show();
-                    //sets the wander to off immediately
-                    wanderOffNow();
-                }
-            }
-        });
-        //rotation movement switch
-        switchSoundRotation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //toggled
-                MySettings.setSoundRotationAllowed(isChecked);
-                Toast.makeText(MyBaseActivity.this, "Rotation at sound: " + isChecked, Toast.LENGTH_SHORT).show();
-            }
-        });
         //start interaction button
         startInteraction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -584,7 +560,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                     wanderOffNow();
                     //increment stats of button interaction
                     MySettings.incrementInteractionButton();
-                    knowYouMeeting("");
+                    startInteraction("");
                 }
             }
         });
@@ -592,8 +568,23 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         exitButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                wanderHandler.removeCallbacksAndMessages(null);
                 wanderOffNow();
                 finish();
+                return;
+            }
+        });
+        //settings button
+        settingsButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wanderOffNow();
+                //starts settings activity
+                Intent myIntent = new Intent(MyBaseActivity.this, MySettings.class);
+                MyBaseActivity.this.startActivity(myIntent);
+                //finish
+                finish();
+                return;
             }
         });
     }
@@ -618,7 +609,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         updateView();
         busy = false;
         //new Handler to start walking again
-        new Handler().postDelayed(new Runnable() {
+        wanderHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 //hands down
@@ -634,7 +625,9 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         }, 1000);
         //stops the robot to start another recognition for X seconds
         justGreeted = true;
-        presentationLock.setVisibility(View.VISIBLE);
+        if(MySettings.isDebug()){
+            presentationLock.setVisibility(View.VISIBLE);
+        }
         //if there is a previous timer this is cancelled
         if(countDownPresentationLocked != null) {
             countDownPresentationLocked.cancel();
@@ -699,12 +692,12 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
             case R.id.knowYouMeeting:
                 wanderOffNow();
-                knowYouMeeting("debugger");
+                startInteraction("debugger");
                 break;
 
             case R.id.firstMeeting:
                 wanderOffNow();
-                knowYouMeeting("");
+                startInteraction("");
                 break;
         }
     }
@@ -730,61 +723,70 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
     }
 
-    public void knowYouMeeting(String person_name) {
-
-        //starts greeting with this person passing
-        busy = true;
-        //say hi
-        speechManager.startSpeak(getString(R.string.hi) + person_name, MySettings.getSpeakDefaultOption());
-        concludeSpeak(speechManager);
-
-        // 50% say Good morning/afternoon/ecc...
-        double random_num = Math.random();
-        Log.i(TAG, "Random = " + random_num);
-        if (random_num < 0.5) {
-            int hours = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-            if (hours < 6) {
-                speechManager.startSpeak(getString(R.string.early_morning), MySettings.getSpeakDefaultOption());
-            } else if (hours < 12) {
-                speechManager.startSpeak(getString(R.string.morning), MySettings.getSpeakDefaultOption());
-            } else if (hours < 18) {
-                speechManager.startSpeak(getString(R.string.afternoon), MySettings.getSpeakDefaultOption());
-            } else if (hours <= 24) {
-                speechManager.startSpeak(getString(R.string.night), MySettings.getSpeakDefaultOption());
-            }
+    public void startInteraction(String person_name) {
+        if (!busy) {
+            //starts greeting with this person passing
+            busy = true;
+            //say hi
+            speechManager.startSpeak(getString(R.string.hi) + person_name, MySettings.getSpeakDefaultOption());
             concludeSpeak(speechManager);
-        }
 
-        //start the dialog activity.
-        Intent myIntent = new Intent(MyBaseActivity.this, MyDialogActivity.class);
-        //insert the name of the person in the annex
-        myIntent.putExtra("name", person_name);
-        MyBaseActivity.this.startActivity(myIntent);
-        //terminate this activity
-        finish();
+            // 50% say Good morning/afternoon/ecc...
+            double random_num = Math.random();
+            Log.i(TAG, "Random = " + random_num);
+            if (random_num < 0.5) {
+                int hours = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+                if (hours < 6) {
+                    speechManager.startSpeak(getString(R.string.early_morning), MySettings.getSpeakDefaultOption());
+                } else if (hours < 12) {
+                    speechManager.startSpeak(getString(R.string.morning), MySettings.getSpeakDefaultOption());
+                } else if (hours < 18) {
+                    speechManager.startSpeak(getString(R.string.afternoon), MySettings.getSpeakDefaultOption());
+                } else if (hours <= 24) {
+                    speechManager.startSpeak(getString(R.string.night), MySettings.getSpeakDefaultOption());
+                }
+                concludeSpeak(speechManager);
+            }
+
+            //start the dialog activity.
+            Intent myIntent = new Intent(MyBaseActivity.this, MyDialogActivity.class);
+            //insert the name of the person in the annex
+            myIntent.putExtra("name", person_name);
+            MyBaseActivity.this.startActivity(myIntent);
+            //terminate this activity
+            finish();
+        }
     }
 
 
 
     public void wanderOnNow() {
         if (!busy) {
-            //Toast.makeText(MyBaseActivity.this, "Wander " + MySettings.isWanderAllowed()+" now", Toast.LENGTH_SHORT).show();
+            if (MySettings.isDebug()){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MyBaseActivity.this, "Wander " + MySettings.isWanderAllowed()+" now", Toast.LENGTH_SHORT).show();
+                    }
+                });}
             modularMotionManager.switchWander(MySettings.isWanderAllowed());
             Log.i(TAG, "Wander " + MySettings.isWanderAllowed() + " now");
         }
     }
 
     public void wanderOffNow() {
-        //Toast.makeText(MyBaseActivity.this, "Wander off now", Toast.LENGTH_SHORT).show();
+        if (MySettings.isDebug()) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MyBaseActivity.this, "Wander off now", Toast.LENGTH_SHORT).show();
+                }
+            });}
         modularMotionManager.switchWander(false);
         Log.i(TAG, "Wander forced off now");
     }
 
     public void updateView() {
-        //update the switch wander button
-        switchButtonWander.setChecked(MySettings.isWanderAllowed());
-        //update the switch rotation button
-        switchSoundRotation.setChecked(MySettings.isSoundRotationAllowed());
         //update handshakesTextView
         String handshakesStr = getString(R.string.handshakes) + " " + MySettings.getHandshakes();
         handshakesTextView.setText(handshakesStr);

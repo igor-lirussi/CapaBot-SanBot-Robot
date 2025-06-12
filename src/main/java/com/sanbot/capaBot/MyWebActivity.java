@@ -120,6 +120,7 @@ public class MyWebActivity extends TopBaseActivity {
                             concludeSpeak(speechManager);
                             //finish
                             finishThisActivity();
+                            return;
                         }
                         if (lastRecognizedSentence.equals("no") ||lastRecognizedSentence.contains("so and so") ) {
                             //sad
@@ -128,6 +129,7 @@ public class MyWebActivity extends TopBaseActivity {
                             concludeSpeak(speechManager);
                             //finish
                             finishThisActivity();
+                            return;
                         }
                         if (lastRecognizedSentence.contains("exit")) {
                             speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
@@ -135,6 +137,7 @@ public class MyWebActivity extends TopBaseActivity {
                             concludeSpeak(speechManager);
                             //finish
                             finishThisActivity();
+                            return;
                         }
 
                         boolean newPlace = false;
@@ -196,5 +199,6 @@ public class MyWebActivity extends TopBaseActivity {
         MyWebActivity.this.startActivity(myIntent);
         //finish
         finish();
+        return;
     }
 }

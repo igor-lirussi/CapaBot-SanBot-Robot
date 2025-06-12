@@ -222,22 +222,27 @@ public class MyPresentActivity extends TopBaseActivity {
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
-                        }
-                        if (lastRecognizedSentence.equals("no") ||lastRecognizedSentence.contains("so and so") ) {
+                            return;
+                        } else if (lastRecognizedSentence.equals("no") ||lastRecognizedSentence.contains("so and so") ) {
                             //sad
                             speechManager.startSpeak("I'm sad to hear this", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.GOODBYE);
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
-                        }
-                        if (lastRecognizedSentence.contains("exit")) {
+                            return;
+                        } else if (lastRecognizedSentence.contains("exit")) {
                             speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.SMILE);
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
+                            return;
+                        } else {
+                            speechManager.startSpeak("I didn't understand, are you satisfied? yes or no?", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
                         }
+
                     }
                 });
                 return true;
@@ -272,7 +277,7 @@ public class MyPresentActivity extends TopBaseActivity {
             public void run(){
                 Log.i(TAG, "Presentation Started");
                 //intro
-                speechManager.startSpeak("I'm SanBot, a robot of the ISR. My main purpose is to help people ", MySettings.getSpeakDefaultOption());
+                speechManager.startSpeak("I'm SanBot, a humanoid robot. My main purpose is to help people ", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
 
                 //DISPLAY
@@ -293,7 +298,7 @@ public class MyPresentActivity extends TopBaseActivity {
                 concludeSpeak(speechManager);
 
                 //ACTUATORS
-                speechManager.startSpeak("I can move my head", MySettings.getSpeakDefaultOption());
+                speechManager.startSpeak("I can move my head like this", MySettings.getSpeakDefaultOption());
                 //head movement
                 AbsoluteAngleHeadMotion absoluteAngleHeadMotion = new AbsoluteAngleHeadMotion(
                         AbsoluteAngleHeadMotion.ACTION_HORIZONTAL,130

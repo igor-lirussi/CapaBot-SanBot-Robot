@@ -298,6 +298,7 @@ public class MyShakeActivity extends TopBaseActivity {
 
         //finish
         finish();
+        return;
     }
 
     public void timeWaitingExpired() {
@@ -336,6 +337,7 @@ public class MyShakeActivity extends TopBaseActivity {
 
         //finish
         finish();
+        return;
     }
 
 

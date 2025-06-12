@@ -139,7 +139,7 @@ public class MyDialogActivity extends TopBaseActivity {
         //listeners
         initListener();
 
-        //wake button, useful for people that have to wait so much to speak that the robot goes to sleep
+        //wake button, useful for people that wait so much to speak that the robot goes to sleep
         wakeButton.setVisibility(View.GONE);
         wakeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,7 +190,6 @@ public class MyDialogActivity extends TopBaseActivity {
                 Toast.makeText(getApplicationContext(), youCanSay, Toast.LENGTH_SHORT).show();
                 speechManager.startSpeak("Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
                 wakeUpListening();
-
             }
         });
 
@@ -332,6 +331,14 @@ public class MyDialogActivity extends TopBaseActivity {
             @Override
             public void onWakeUp() {
                 Log.i(TAG, "WAKE UP callback");
+                if (MySettings.isDebug()) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MyDialogActivity.this, "Listening now", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
 
             @Override
@@ -385,7 +392,7 @@ public class MyDialogActivity extends TopBaseActivity {
                     public void run() {
 
                         Log.i(TAG, ">>>>Recognized voice: "+ lastRecognizedSentence);
-                        boolean recognizedWhatToDo = false;
+                        boolean recognizedWhatToDo = false; //given a recognized result for now we don't know what to do
 
                         //deletes "no response action"
                         noResponseAction.removeCallbacksAndMessages(null);
@@ -447,7 +454,7 @@ public class MyDialogActivity extends TopBaseActivity {
                             concludeSpeak(speechManager);
                             askOther();
                         }
-                        //---- PURPOSE  PART ----
+                        //---- PURPOSE PART ----
                         if (lastRecognizedSentence.contains("shake")) {
                             recognizedWhatToDo = true;
                             //increments stats request handshake
@@ -642,18 +649,22 @@ public class MyDialogActivity extends TopBaseActivity {
                             wakeUpListening();
                         }
                         */
+                        //not recognized pass to CHATBOT
+                        if (!recognizedWhatToDo) {
+                            //CHATBOT PART
+                            long startTime = System.nanoTime();
+                            String response = chat.multisentenceRespond(lastRecognizedSentence);
+
+                            Log.i(TAG, "Human: " + lastRecognizedSentence);
+                            Log.i(TAG, "Robot: " + response);
+
+                            Log.i(TAG, "DURATION COMPUTED RESPONSE millisec: " + (System.nanoTime() - startTime) / 1000000);
+                            speechManager.startSpeak(response, MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            wakeUpListening();
+                        }
+
                         showRandomFace();
-                        //CHATBOT PART
-                        long startTime = System.nanoTime();
-                        String response = chat.multisentenceRespond(lastRecognizedSentence);
-
-                        Log.i(TAG,"Human: "+lastRecognizedSentence);
-                        Log.i(TAG,"Robot: " + response);
-
-                        Log.i(TAG, "DURATION COMPUTED RESPONSE millisec: " + (System.nanoTime() - startTime)/1000000);
-                        speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
-                        concludeSpeak(speechManager);
-                        wakeUpListening();
                     }
                 });
 
@@ -844,7 +855,6 @@ public class MyDialogActivity extends TopBaseActivity {
 
     public void showRandomFace() {
         double random_num = Math.random();
-        Log.i(TAG, "Random for face = " + random_num);
         //probability not to show any face
         if (random_num > 0.5) {
             //showing random face
