@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,8 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
     private final static String TAG = "IGOR-WEATHER";
 
     private SpeechManager speechManager;    //speech
+    Handler speechResponseHandler = new Handler();
+    String lastRecognizedSentence = "";
 
     static ProgressBar loader;
     static TextView cityField, summaryField, updatedField;
@@ -136,12 +139,20 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
 
             @Override
             public boolean onRecognizeResult(@NonNull Grammar grammar) {
-                String lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
-                Log.i(TAG, "Speech recognized: " + lastRecognizedSentence);
-                //ANYTHING SAID doesn't matter
-                speechManager.startSpeak("Ok", MySettings.getSpeakDefaultOption());
-                concludeSpeak(speechManager);
-                finishThisActivity();
+                lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
+
+                //IGOR: must not exceed 200ms (or less?) don't trust the documentation(500ms), I had to create an handler
+                //separate handler so the function could return quickly true, otherwise the robot answers random things over your answers.
+                speechResponseHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "Speech recognized: " + lastRecognizedSentence);
+                        //ANYTHING SAID doesn't matter
+                        speechManager.startSpeak("ok", MySettings.getSpeakDefaultOption());
+                        concludeSpeak(speechManager);
+                        finishThisActivity();
+                    }
+                });
                 return true;
             }
 
@@ -215,6 +226,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
     }
 
     private void finishThisActivity() {
+        Log.i(TAG, "finishing weather activity");
         //force sleep
         infiniteWakeup = false;
         speechManager.doSleep();

@@ -733,7 +733,6 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
             // 50% say Good morning/afternoon/ecc...
             double random_num = Math.random();
-            Log.i(TAG, "Random = " + random_num);
             if (random_num < 0.5) {
                 int hours = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
                 if (hours < 6) {

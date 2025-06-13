@@ -194,20 +194,6 @@ public class MyDialogActivity extends TopBaseActivity {
         });
 
 
-        //Robot head up, ask what to do, and wake up listening
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //head up
-                headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
-                //ask
-                speechManager.startSpeak(getString(R.string.what_could_do), MySettings.getSpeakDefaultOption());
-                concludeSpeak(speechManager);
-                //wake up
-                wakeUpListening();
-            }
-        }, 200);
-
         //CHAT BOT SETUP
         long startTime = System.nanoTime();
         //checking SD card availability
@@ -297,6 +283,24 @@ public class MyDialogActivity extends TopBaseActivity {
         }
         Log.i(TAG,"-FINISH SILENT PRESENTATION");
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Robot head up, ask what to do, and wake up listening
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //head up
+                headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
+                //ask
+                speechManager.startSpeak(getString(R.string.what_could_do), MySettings.getSpeakDefaultOption());
+                concludeSpeak(speechManager);
+                //wake up
+                wakeUpListening();
+            }
+        }, 200);
     }
 
     /**
@@ -429,7 +433,7 @@ public class MyDialogActivity extends TopBaseActivity {
                         }
                         if (lastRecognizedSentence.contains("what") && lastRecognizedSentence.contains("do")) {
                             recognizedWhatToDo = true;
-                            speechManager.startSpeak("I can give directions, shake hands, tell the time, project a video and more...", MySettings.getSpeakDefaultOption());
+                            speechManager.startSpeak("I can give information to public and directions, teach something or just keep company, shake hands, tell the time and weather, project a video and more...", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             askOther();
                         }
@@ -699,10 +703,6 @@ public class MyDialogActivity extends TopBaseActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
     @Override
     protected void onDestroy() {
