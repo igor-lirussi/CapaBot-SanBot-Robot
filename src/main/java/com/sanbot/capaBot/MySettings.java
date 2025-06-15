@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -62,6 +63,8 @@ public class MySettings extends TopBaseActivity {
 
     @BindView(R.id.debugMode)
     Switch switchDebugMode;
+    @BindView(R.id.projectCeiling)
+    Switch switchProjectCeiling;
     @BindView(R.id.testConvEng)
     Button testConvEngButt;
 
@@ -88,6 +91,7 @@ public class MySettings extends TopBaseActivity {
         switchButtonWander.setChecked(isWanderAllowed());
         switchSoundRotation.setChecked(isSoundRotationAllowed());
         switchAutocharge.setChecked(isAutoChargeAllowed());
+        switchProjectCeiling.setChecked(isProject_on_ceiling());
         //update city settings
         cityWeatherInpText.setText(getCityWeather());
         cityMapInpText.setText(getCityMap());
@@ -100,7 +104,6 @@ public class MySettings extends TopBaseActivity {
         //update battery settings
         batteryLowInpText.setText(String.valueOf(getBatteryLOW()));
         batteryOKInpText.setText(String.valueOf(getBatteryOK()));
-        //debug
         
         //LISTENERS
         //debug switch
@@ -125,6 +128,12 @@ public class MySettings extends TopBaseActivity {
         switchAutocharge.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setAutoChargeAllowed(isChecked);
+            }
+        });
+        //project on ceiling
+        switchProjectCeiling.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setProject_on_ceiling(isChecked);
             }
         });
         //city listeners
@@ -336,7 +345,8 @@ public class MySettings extends TopBaseActivity {
     private static int countHandshakes = -1;
 
     //projector mode : WALL/CEILING
-    private static int projectorMode = ProjectorManager.MODE_CEILING;
+    private static boolean project_on_ceiling = false;
+    private static int projectorMode = ProjectorManager.MODE_WALL;
 
 
     //SPEAK settings  language/speed/intonation
@@ -453,6 +463,19 @@ public class MySettings extends TopBaseActivity {
 
     public static boolean isPresentationBeforeDialog() {
         return presentationBeforeDialog;
+    }
+
+    public static boolean isProject_on_ceiling() {
+        return project_on_ceiling;
+    }
+
+    public static void setProject_on_ceiling(boolean project_on_ceiling) {
+        MySettings.project_on_ceiling = project_on_ceiling;
+        if (project_on_ceiling) {
+            projectorMode = ProjectorManager.MODE_CEILING;
+        } else {
+            projectorMode = ProjectorManager.MODE_WALL;
+        }
     }
 
     public static int getProjectorMode() {

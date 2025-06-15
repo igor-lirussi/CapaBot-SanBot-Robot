@@ -75,10 +75,10 @@ public class MyProjectStoryActivity extends TopBaseActivity {
             @Override
             public void run() {
                 Log.i(TAG, "handler called to open projector");
-                //OPEN PROJECTOR
-                projectorManager.switchProjector(true);
                 //mode from settings
                 projectorManager.setMode(MySettings.getProjectorMode());
+                //OPEN PROJECTOR
+                projectorManager.switchProjector(true);
                 //voice introduction
                 speechManager.startSpeak(getString(R.string.show_video), MySettings.getSpeakDefaultOption());
             }

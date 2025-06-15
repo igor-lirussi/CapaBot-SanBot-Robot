@@ -244,6 +244,16 @@
                 android:textSize="25sp"
                 android:checked="false"/>
 
+            <Switch
+                android:id="@+id/projectCeiling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="36dp"
+                android:layout_margin="5dp"
+                android:text="project on ceiling"
+                android:textSize="25sp"
+                android:checked="false"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
