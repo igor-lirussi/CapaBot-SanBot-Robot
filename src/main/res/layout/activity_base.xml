@@ -189,6 +189,18 @@
         android:text="@string/start_interaction"
         />
 
+    <TextView
+        android:id="@+id/loading"
+        android:textSize="40sp"
+        android:textColor="@color/colorPrimary"
+        android:shadowRadius="2"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Loading..." />
+
     <ImageView
         android:visibility="gone"
         android:id="@+id/iv_capture"

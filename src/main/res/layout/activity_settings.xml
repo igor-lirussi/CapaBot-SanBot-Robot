@@ -313,6 +313,16 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="30sp" />
 
+            <TextView
+                android:id="@+id/developer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="Developed by Igor Lirussi"
+                android:textColor="@color/colorPrimary"
+                android:textSize="35sp" />
+
         </LinearLayout>
     </LinearLayout>
 

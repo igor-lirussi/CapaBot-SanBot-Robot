@@ -117,6 +117,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     TextView presentationLock;
     @BindView(R.id.start_interaction)
     Button startInteraction;
+    @BindView(R.id.loading)
+    TextView loadingText;
     @BindView(R.id.exit)
     Button exitButt;
     @BindView(R.id.settings)
@@ -149,6 +151,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
     Handler wanderHandler = new Handler();
     Handler checkBatteryStatusHandler = new Handler();
+    Handler checkBotReadyHandler = new Handler();
 
     private CountDownTimer countDownPresentationLocked;
 
@@ -183,6 +186,9 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         //set view
         setContentView(R.layout.activity_base);
         ButterKnife.bind(this);
+        //set visibility of loading and button
+        loadingText.setVisibility(View.VISIBLE);
+        startInteraction.setVisibility(View.GONE);
         if(MySettings.isDebug()){
             debugLayout.setVisibility(View.VISIBLE);
         } else {
@@ -270,6 +276,24 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                 }
             }
         }, 1000*MySettings.getSeconds_checkingBattery());
+
+
+        //cyclic check bot loaded
+        checkBotReadyHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("IGOR-BAS-BOT", "BOT: "+ MyApp.botReady);
+                if (MyApp.botReady){
+                    loadingText.setVisibility(View.GONE);
+                    startInteraction.setVisibility(View.VISIBLE);
+                    checkBotReadyHandler.removeCallbacksAndMessages(null);
+                    updateView();
+                } else {
+                    //otherwise re-post the same handler in X seconds
+                    checkBotReadyHandler.postDelayed(this, 500);
+                }
+            }
+        }, 500);
 
 
         //update view (to update handshakes)
@@ -578,13 +602,15 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
         settingsButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                wanderOffNow();
-                //starts settings activity
-                Intent myIntent = new Intent(MyBaseActivity.this, MySettings.class);
-                MyBaseActivity.this.startActivity(myIntent);
-                //finish
-                finish();
-                return;
+                if (!busy) {
+                    wanderOffNow();
+                    //starts settings activity
+                    Intent myIntent = new Intent(MyBaseActivity.this, MySettings.class);
+                    MyBaseActivity.this.startActivity(myIntent);
+                    //finish
+                    finish();
+                    return;
+                }
             }
         });
     }
@@ -724,7 +750,8 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     }
 
     public void startInteraction(String person_name) {
-        if (!busy) {
+        if (!busy && MyApp.botReady) {
+            Log.i(TAG, "START INTERACTION! now busy");
             //starts greeting with this person passing
             busy = true;
             //say hi
