@@ -186,10 +186,16 @@ public class MyDialogActivity extends TopBaseActivity {
             @Override
             public void onItemClick(AdapterView<?> av, View v, int pos, long id)
             {
-                youCanSay = getString(R.string.you_can_say)+" " + examples[pos];
-                Toast.makeText(getApplicationContext(), youCanSay, Toast.LENGTH_SHORT).show();
-                speechManager.startSpeak("Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
-                wakeUpListening();
+                if(!MySettings.isTaskButtonsEnabled()) {
+                    youCanSay = getString(R.string.you_can_say) + " " + examples[pos];
+                    Toast.makeText(getApplicationContext(), youCanSay, Toast.LENGTH_SHORT).show();
+                    speechManager.startSpeak("Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
+                    wakeUpListening();
+                }else{
+                    Grammar grammarTmp = new Grammar();
+                    grammarTmp.setText(examples[pos]);
+                    speechManager.onRecognizeResult(grammarTmp);
+                }
             }
         });
 

@@ -65,6 +65,8 @@ public class MySettings extends TopBaseActivity {
     Switch switchDebugMode;
     @BindView(R.id.projectCeiling)
     Switch switchProjectCeiling;
+    @BindView(R.id.taskButtonsEnabled)
+    Switch switchTaskButtonsEnabled;
     @BindView(R.id.testConvEng)
     Button testConvEngButt;
 
@@ -92,6 +94,7 @@ public class MySettings extends TopBaseActivity {
         switchSoundRotation.setChecked(isSoundRotationAllowed());
         switchAutocharge.setChecked(isAutoChargeAllowed());
         switchProjectCeiling.setChecked(isProject_on_ceiling());
+        switchTaskButtonsEnabled.setChecked(isTaskButtonsEnabled());
         //update city settings
         cityWeatherInpText.setText(getCityWeather());
         cityMapInpText.setText(getCityMap());
@@ -134,6 +137,12 @@ public class MySettings extends TopBaseActivity {
         switchProjectCeiling.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setProject_on_ceiling(isChecked);
+            }
+        });
+        //tasks button enabled
+        switchTaskButtonsEnabled.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setTaskButtonsEnabled(isChecked);
             }
         });
         //city listeners
@@ -348,6 +357,8 @@ public class MySettings extends TopBaseActivity {
     private static boolean project_on_ceiling = false;
     private static int projectorMode = ProjectorManager.MODE_WALL;
 
+    //task buttons enabled
+    private static boolean taskButtonsEnabled = false;
 
     //SPEAK settings  language/speed/intonation
     private static SpeakOption speakDefaultOption = new SpeakOption();
@@ -481,6 +492,11 @@ public class MySettings extends TopBaseActivity {
     public static int getProjectorMode() {
         return projectorMode;
     }
+
+
+    public static boolean isTaskButtonsEnabled() {  return taskButtonsEnabled; }
+
+    public static void setTaskButtonsEnabled(boolean taskButtonsEnabled) { MySettings.taskButtonsEnabled = taskButtonsEnabled; }
 
     public static SpeakOption getSpeakDefaultOption() {
         return speakDefaultOption;
