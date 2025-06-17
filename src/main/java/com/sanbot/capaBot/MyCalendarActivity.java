@@ -71,8 +71,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
 
     //calendars to show
     String[] urlsCalendar = {
-            "https://ics.teamup.com/feed/ksdxka67t86rufdom3/0.ics",
-           /* "https://calendar.google.com/calendar/ical/it.portuguese%23holiday%40group.v.calendar.google.com/public/basic.ics"*/
+            "https://calendar.google.com/calendar/ical/it.portuguese%23holiday%40group.v.calendar.google.com/public/basic.ics",
     };
 
     private static final SimpleDateFormat SDF = new SimpleDateFormat("yyyyMMdd", Locale.ITALY);
@@ -514,7 +513,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                     //new thread not to lock the UI with the sleep
                     new Thread(new Runnable() {
                         public void run() {
-                            speechManager.startSpeak("These are the events of the ISR", MySettings.getSpeakDefaultOption());
+                            speechManager.startSpeak("This is your calendar", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             speechManager.startSpeak("Are you satisfied?", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);

@@ -236,7 +236,9 @@ public class MyWeatherDownloadAsyncTask extends AsyncTask< String, Void, String 
                 TextView temperature = forecastContainerLL.getChildAt(dayIndex).findViewById(R.id.current_temperature_field);
                 temperature.setText(String.format(Locale.US,"%.0f°", avgDayTemp));
                 //add day to summary to speak
-                summary.append(String.format(Locale.US, "%s %.0f°. ", mostCommonDesc, avgDayTemp));
+                if(dayIndex==0 || dayIndex==1) { //only for today and tomorrow
+                    summary.append(String.format(Locale.US, "%s %.0f°. ", mostCommonDesc, avgDayTemp));
+                }
                 //increment day index counter
                 dayIndex++;
             }

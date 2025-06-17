@@ -41,6 +41,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
     String summaryToSay = "";
 
     boolean infiniteWakeup = true;
+    private static boolean finishedTellingWeather = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,10 +148,12 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
                     @Override
                     public void run() {
                         Log.i(TAG, "Speech recognized: " + lastRecognizedSentence);
-                        //ANYTHING SAID doesn't matter
-                        speechManager.startSpeak("ok", MySettings.getSpeakDefaultOption());
-                        concludeSpeak(speechManager);
-                        finishThisActivity();
+                        if (finishedTellingWeather) {
+                            //ANYTHING SAID doesn't matter
+                            speechManager.startSpeak("ok", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            finishThisActivity();
+                        }
                     }
                 });
                 return true;
@@ -220,6 +223,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
                     speechManager.startSpeak("Are you satisfied?", MySettings.getSpeakDefaultOption());
                     concludeSpeak(speechManager);
                     speechManager.doWakeUp();
+                    finishedTellingWeather = true;
                 }
             }).start();
         }

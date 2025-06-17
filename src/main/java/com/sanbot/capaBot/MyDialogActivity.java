@@ -797,17 +797,8 @@ public class MyDialogActivity extends TopBaseActivity {
             int min = 0, max = 20;
             int randomNum = (int) (Math.random() * ((max - min) + 1)) + min;
             switch (randomNum) {
-                case 1:
-                    systemManager.showEmotion(EmotionsType.ABUSE);
-                    break;
-                case 2:
-                    systemManager.showEmotion(EmotionsType.ANGRY);
-                    break;
                 case 3:
                     systemManager.showEmotion(EmotionsType.ARROGANCE);
-                    break;
-                case 4:
-                    systemManager.showEmotion(EmotionsType.CRY);
                     break;
                 case 5:
                     systemManager.showEmotion(EmotionsType.FAINT);
