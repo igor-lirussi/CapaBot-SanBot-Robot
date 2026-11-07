@@ -40,3 +40,40 @@ google-services.plist
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+# >>> secrets and local data (managed by ~/Developer/Tooling/repo-audit) >>>
+AuthKey_*.p8
+*.p8
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.jks
+*.keystore
+*.ppk
+.env
+.env.*
+*.env
+!*.env.example
+!.env.example
+!ASC_APP_REFERENCE.env
+!asc_app_reference.env
+*.credentials
+!*.credentials.example
+local.properties
+keystore.properties
+oauth.json
+id_rsa*
+id_ed25519*
+.netrc
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+DerivedData/
+*.xcresult/
+.build/
+node_modules/
+xcuserdata/
+.DS_Store
+# <<< secrets and local data <<<
