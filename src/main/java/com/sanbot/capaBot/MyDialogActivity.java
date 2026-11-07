@@ -1,10 +1,14 @@
 package com.sanbot.capaBot;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.speech.SpeechRecognizer;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -105,7 +109,11 @@ public class MyDialogActivity extends TopBaseActivity {
 
     String lastRecognizedSentence = " ";
     Handler noResponseAction = new Handler();
-    Handler speechResponseHandler = new Handler();
+    /** Off-main so concludeSpeak can wait on Google TTS without deadlocking the UI. */
+    Handler speechResponseHandler;
+    private android.os.HandlerThread speechResponseThread;
+    private AndroidSpeechRecognizer googleSpeech;
+    private static final int REQ_RECORD_AUDIO = 4401;
     ArrayAdapter<String> adapter;
     private int askOtherTimes = 0;
     private int currentCardinalAngle = 0;
@@ -132,6 +140,12 @@ public class MyDialogActivity extends TopBaseActivity {
         wheelMotionManager = (WheelMotionManager)getUnitManager(FuncConstant.WHEELMOTION_MANAGER);
         wingMotionManager = (WingMotionManager)getUnitManager(FuncConstant.WINGMOTION_MANAGER);
         modularMotionManager = (ModularMotionManager) getUnitManager(FuncConstant.MODULARMOTION_MANAGER);
+
+        speechResponseThread = new android.os.HandlerThread("capa-speech-response");
+        speechResponseThread.start();
+        speechResponseHandler = new Handler(speechResponseThread.getLooper());
+
+        initGoogleSpeechRecognizer();
 
         //listeners
         initListener();
@@ -186,7 +200,7 @@ public class MyDialogActivity extends TopBaseActivity {
                 if(!MySettings.isTaskButtonsEnabled()) {
                     youCanSay = getString(R.string.you_can_say) + " " + examples[pos];
                     Toast.makeText(getApplicationContext(), youCanSay, Toast.LENGTH_SHORT).show();
-                    speechManager.startSpeak("Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
+                    MySpeak.speak(speechManager, "Instead of touching, you can be more polite with me and " + youCanSay, MySettings.getSpeakDefaultOption());
                     wakeUpListening();
                 }else{
                     Grammar grammarTmp = new Grammar();
@@ -224,17 +238,28 @@ public class MyDialogActivity extends TopBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //Robot head up, ask what to do, and wake up listening
+        //Robot head up, ask what to do, and wake up listening (speak wait off-main)
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //head up
                 headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
-                //ask
-                speechManager.startSpeak(getString(R.string.what_could_do), MySettings.getSpeakDefaultOption());
-                concludeSpeak(speechManager);
-                //wake up
-                wakeUpListening();
+                if (speechResponseHandler == null) {
+                    wakeUpListening();
+                    return;
+                }
+                speechResponseHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        MySpeak.speak(speechManager, getString(R.string.what_could_do), MySettings.getSpeakDefaultOption());
+                        concludeSpeak(speechManager);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                wakeUpListening();
+                            }
+                        });
+                    }
+                });
             }
         }, 200);
     }
@@ -286,8 +311,12 @@ public class MyDialogActivity extends TopBaseActivity {
                 Log.i(TAG, "SLEEP callback");
                 //infiniteWakeup is a custom variable to control the duration
                 if (infiniteWakeup) {
-                    //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
-                    speechManager.doWakeUp();
+                    if (useGoogleSpeechRecognizer()) {
+                        // MainService sleep is irrelevant; Google STT restarts itself on error/end.
+                    } else {
+                        //recalling wake up to stay awake (not wake-Up-Listening() that resets the Handler)
+                        speechManager.doWakeUp();
+                    }
                 } else {
                     //change button in the view to notify the sleep status
                     imageListen.setVisibility(View.GONE);
@@ -304,311 +333,23 @@ public class MyDialogActivity extends TopBaseActivity {
 
             @Override
             public boolean onRecognizeResult(@NonNull Grammar grammar) {
+                // When Google STT is active, ignore MainService ASR to avoid double replies.
+                if (useGoogleSpeechRecognizer()) {
+                    return true;
+                }
 
                 //start timer
                 //long startTime = System.nanoTime();
                 //cast object received to text string lastRecognizedSentence
+                String text;
                 try {
-                    lastRecognizedSentence = Objects.requireNonNull(grammar.getText()).toLowerCase();
+                    text = Objects.requireNonNull(grammar.getText());
                 } catch (NullPointerException e) {
-                    lastRecognizedSentence = "null";
+                    text = "null";
                 }
-                //recognized part
-                //notify update to UI with a separate thread not to freeze the interface
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //update ui with text recognized
-                        tvSpeechRecognizeResult.setText(lastRecognizedSentence);
-                    }
-                });
+                queueRecognizedUtterance(text);
 
-                //here can start the computation on the text recognized
-
-                //IGOR: must not exceed 200ms (or less?) don't trust the documentation(500ms), I had to create an handler
-                //separate handler so the function could return quickly true, otherwise the robot answers random things over your answers.
-                speechResponseHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        Log.i(TAG, ">>>>Recognized voice: "+ lastRecognizedSentence);
-                        boolean recognizedWhatToDo = false; //given a recognized result for now we don't know what to do
-
-                        //deletes "no response action"
-                        noResponseAction.removeCallbacksAndMessages(null);
-
-
-                        //---- INTERACTION PART ----
-                        //basic interaction
-                        if (lastRecognizedSentence.contains("hello") || lastRecognizedSentence.equals("hi")|| lastRecognizedSentence.contains("your name")) {
-                            recognizedWhatToDo = true;
-                            systemManager.showEmotion(EmotionsType.SMILE);
-                            speechManager.startSpeak("Hi, I'm SanBot", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            askOther();
-                        }
-                        if (lastRecognizedSentence.contains("how are you")) {
-                            recognizedWhatToDo = true;
-                            systemManager.showEmotion(EmotionsType.SMILE);
-                            speechManager.startSpeak("I'm feeling full of energy", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            askOther();
-                        }
-                        if (/*(lastRecognizedSentence.contains("what") || lastRecognizedSentence.contains("tell")) &&*/ lastRecognizedSentence.contains("time")) {
-                            recognizedWhatToDo = true;
-                            String time_sentence = "It's " + new SimpleDateFormat("HH:mm", Locale.ITALY).format(Calendar.getInstance().getTime());
-                            speechManager.startSpeak(time_sentence, MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            askOther();
-                        }
-                        if (lastRecognizedSentence.contains("hear")) {
-                            recognizedWhatToDo = true;
-                            speechManager.startSpeak("I can hear you.", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            askOther();
-                        }
-                        if (lastRecognizedSentence.contains("what") && lastRecognizedSentence.contains("do")) {
-                            recognizedWhatToDo = true;
-                            speechManager.startSpeak("I can give information to public and directions, teach something or just keep company, shake hands, tell the time and weather, project a video and more...", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            askOther();
-                        }
-                        if (lastRecognizedSentence.contains("hands up")) {
-                            recognizedWhatToDo = true;
-                            //hands up
-                            AbsoluteAngleWingMotion absoluteAngleWingMotion1 = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 0);
-                            wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion1);
-                            systemManager.showEmotion(EmotionsType.SNICKER);
-                            speechManager.startSpeak("put your hands up in the air!", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            sleepy(2);
-                            //hands down
-                            AbsoluteAngleWingMotion absoluteAngleWingMotion2 = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 180);
-                            wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion2);
-                            askOther();
-                        }
-                        if (lastRecognizedSentence.contains("test")) {
-                            recognizedWhatToDo = true;
-                            systemManager.showEmotion(EmotionsType.NORMAL);
-                            speechManager.startSpeak("Test OK, stop testing and go working", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            askOther();
-                        }
-                        //---- PURPOSE PART ----
-                        if (lastRecognizedSentence.contains("shake")) {
-                            recognizedWhatToDo = true;
-                            //increments stats request handshake
-                            MySettings.incrementRequestShake();
-                            //greenFlashButton(gridExamples.getChildAt(0));
-                            speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
-                            //starts shake hand activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyShakeActivity.class);
-                            MyDialogActivity.this.startActivity(myIntent);
-                            //terminates
-                            finish();
-                            return;
-                        }
-                        if (lastRecognizedSentence.contains("map")) {
-                            recognizedWhatToDo = true;
-                            //greenFlashButton(gridExamples.getChildAt(5));
-                            speechManager.startSpeak("OK let's see the map", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            //compute the place to pass
-                            String place = MySettings.getCityMap();
-                            //if any separator is said the place after is passed in the url
-                            String[] separators = {" of ", " in ", " on "};
-                            for (String separator : separators) {
-                                if (lastRecognizedSentence.contains(separator)) {
-                                    place = StringUtils.substringAfter(lastRecognizedSentence, separator);
-                                }
-                            }
-                            String url = "https://www.google.com/maps/place/" + place;
-                            Log.i("IGOR", url);
-                            //starts web activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyWebActivity.class);
-                            myIntent.putExtra("url", url);
-                            MyDialogActivity.this.startActivity(myIntent);
-                            //terminates
-                            finish();
-                            return;
-                        }
-                        if (lastRecognizedSentence.contains("weather")) {
-                            recognizedWhatToDo = true;
-                            //greenFlashButton(gridExamples.getChildAt(5));
-                            speechManager.startSpeak("OK let's see the weather", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            //compute the place to pass
-                            String place = MySettings.getCityWeather();
-                            //if any separator is said the place after is passed in the url
-                            String[] separators = {" of ", " in ", " on "};
-                            for (String separator : separators) {
-                                if (lastRecognizedSentence.contains(separator)) {
-                                    place = StringUtils.substringAfter(lastRecognizedSentence, separator);
-                                }
-                            }
-                            Log.i("IGOR", place);
-                            //starts weather activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyWeatherActivity.class);
-                            myIntent.putExtra("place", place);
-                            MyDialogActivity.this.startActivity(myIntent);
-                            //terminates
-                            finish();
-                            return;
-                        }
-                        if (lastRecognizedSentence.contains("calendar")) {
-                            recognizedWhatToDo = true;
-                            speechManager.startSpeak("OK let's see the calendar", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            //starts calendar activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyCalendarActivity.class);
-                            MyDialogActivity.this.startActivity(myIntent);
-                            //terminates
-                            finish();
-                            return;
-                        }
-                        if (lastRecognizedSentence.contains("present yourself")) {
-                            recognizedWhatToDo = true;
-                            speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            //starts present ys activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyPresentActivity.class);
-                            MyDialogActivity.this.startActivity(myIntent);
-                            //terminates
-                            finish();
-                            return;
-                        }
-                        if (lastRecognizedSentence.contains("charge") || lastRecognizedSentence.contains("battery")) {
-                            recognizedWhatToDo = true;
-                            speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            //starts charge activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyChargeActivity.class);
-                            MyDialogActivity.this.startActivity(myIntent);
-                            //terminates
-                            finish();
-                            return;
-                        }
-                        if (lastRecognizedSentence.contains("meeting")) {
-                            recognizedWhatToDo = true;
-                            //greenFlashButton(gridExamples.getChildAt(1));
-                            //increments stats request location
-                            MySettings.incrementRequestLocation();
-                            speechManager.startSpeak(getString(R.string.meeting_room_is), MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            //indicate
-                            indicate(45);
-                            askOther();
-                        }
-
-                        if (lastRecognizedSentence.contains("bathroom") || lastRecognizedSentence.contains("toilet")) {
-                            recognizedWhatToDo = true;
-                            //greenFlashButton(gridExamples.getChildAt(1));
-                            //increments stats request location
-                            MySettings.incrementRequestLocation();
-                            speechManager.startSpeak("the bathroom is south, near the stairs", MySettings.getSpeakDefaultOption());
-                            //indicate
-                            indicate(180);
-                            askOther();
-                        }
-
-                        if ( ( lastRecognizedSentence.contains("show") || lastRecognizedSentence.contains("project") ) && lastRecognizedSentence.contains("video") ) {
-                            recognizedWhatToDo = true;
-                            //greenFlashButton(gridExamples.getChildAt(2));
-                            //increments stats request video
-                            MySettings.incrementRequestVideo();
-                            //starts project activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyProjectStoryActivity.class);
-                            MyDialogActivity.this.startActivity(myIntent);
-                            //terminates
-                            finish();
-                            return;
-                        }
-                        if (lastRecognizedSentence.contains("lab") || lastRecognizedSentence.contains("laboratory")) {
-                            recognizedWhatToDo = true;
-                            //increments stats request location
-                            MySettings.incrementRequestLocation();
-                            //greenFlashButton(gridExamples.getChildAt(1));
-                            speechManager.startSpeak(getString(R.string.lab_is), MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            //indicate
-                            indicate(0);
-                            askOther();
-                        }
-
-                        if (lastRecognizedSentence.contains("suggestion")) {
-                            recognizedWhatToDo = true;
-                            //greenFlashButton(gridExamples.getChildAt(3));
-                            speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
-                            //starts leave suggestion activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyXMLSuggestionActivity.class);
-                            MyDialogActivity.this.startActivity(myIntent);
-                            //terminates
-                            finish();
-                            return;
-                        }
-
-                        //exits if answer is "no time" or "nothing"
-                        if (lastRecognizedSentence.equals("no") || lastRecognizedSentence.contains("nothing") ||
-                                lastRecognizedSentence.contains("no thank you") || lastRecognizedSentence.contains("no time")||
-                                lastRecognizedSentence.contains("go away") || lastRecognizedSentence.contains("exit")) {
-                            recognizedWhatToDo = true;
-                            //greenFlashButton( gridExamples.getChildAt(4) );
-                            speechManager.startSpeak(getString(R.string.see_you), MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            if (lastRecognizedSentence.contains("go away")) {
-                                speechManager.startSpeak("I will go away", MySettings.getSpeakDefaultOption());
-                                concludeSpeak(speechManager);
-                                systemManager.showEmotion(EmotionsType.CRY);
-                                //rotates of 180
-                                rotateAtRelativeAngle(wheelMotionManager, 180);
-                            }
-                            if (lastRecognizedSentence.contains("thank")){
-                                systemManager.showEmotion(EmotionsType.KISS);
-                                speechManager.startSpeak(getString(R.string.thanks_you_kind), MySettings.getSpeakDefaultOption());
-                                concludeSpeak(speechManager);
-                            }
-                            //force listening sleep
-                            infiniteWakeup = false;
-                            speechManager.doSleep();
-
-                            //starts base activity
-                            Intent myIntent = new Intent(MyDialogActivity.this, MyBaseActivity.class);
-                            MyDialogActivity.this.startActivity(myIntent);
-
-                            finish();
-                            return;
-                        }
-
-
-                        /*
-                        //not recognized ask to repeat
-                        if (!recognizedWhatToDo) {
-                            systemManager.showEmotion(EmotionsType.QUESTION);
-                            speechManager.startSpeak(getString(R.string.please_repeat) , MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            wakeUpListening();
-                        }
-                        */
-                        //not recognized pass to CHATBOT
-                        if (!recognizedWhatToDo) {
-                            //CHATBOT PART
-                            long startTime = System.nanoTime();
-                            String response = MyApp.chat.multisentenceRespond(lastRecognizedSentence);
-
-                            Log.i(TAG, "Human: " + lastRecognizedSentence);
-                            Log.i(TAG, "Robot: " + response);
-
-                            Log.i(TAG, "DURATION COMPUTED RESPONSE millisec: " + (System.nanoTime() - startTime) / 1000000);
-                            speechManager.startSpeak(response, MySettings.getSpeakDefaultOption());
-                            concludeSpeak(speechManager);
-                            wakeUpListening();
-                        }
-
-                        showRandomFace();
-                    }
-                });
-
-                //Log.i(TAG, "DURATION millisec: " + (System.nanoTime() - startTime)/1000000);
+                //IGOR: must not exceed 200ms — return quickly so MainService does not answer randomly.
                 return true;
             }
 
@@ -634,6 +375,385 @@ public class MyDialogActivity extends TopBaseActivity {
 
     }
 
+    private void queueRecognizedUtterance(String text) {
+        try {
+            lastRecognizedSentence = Objects.requireNonNull(text).toLowerCase();
+        } catch (NullPointerException e) {
+            lastRecognizedSentence = "null";
+        }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                tvSpeechRecognizeResult.setText(lastRecognizedSentence);
+            }
+        });
+        if (speechResponseHandler == null) {
+            return;
+        }
+        speechResponseHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                        Log.i(TAG, ">>>>Recognized voice: "+ lastRecognizedSentence);
+                        boolean recognizedWhatToDo = false; //given a recognized result for now we don't know what to do
+
+                        //deletes "no response action"
+                        noResponseAction.removeCallbacksAndMessages(null);
+
+
+                        //---- INTERACTION PART ----
+                        //basic interaction
+                        if (lastRecognizedSentence.contains("hello") || lastRecognizedSentence.equals("hi")|| lastRecognizedSentence.contains("your name")) {
+                            recognizedWhatToDo = true;
+                            systemManager.showEmotion(EmotionsType.SMILE);
+                            MySpeak.speak(speechManager, "Hi, I'm SanBot", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            askOther();
+                        }
+                        if (lastRecognizedSentence.contains("how are you")) {
+                            recognizedWhatToDo = true;
+                            systemManager.showEmotion(EmotionsType.SMILE);
+                            MySpeak.speak(speechManager, "I'm feeling full of energy", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            askOther();
+                        }
+                        if (/*(lastRecognizedSentence.contains("what") || lastRecognizedSentence.contains("tell")) &&*/ lastRecognizedSentence.contains("time")) {
+                            recognizedWhatToDo = true;
+                            String time_sentence = "It's " + new SimpleDateFormat("HH:mm", Locale.ITALY).format(Calendar.getInstance().getTime());
+                            MySpeak.speak(speechManager, time_sentence, MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            askOther();
+                        }
+                        if (lastRecognizedSentence.contains("hear")) {
+                            recognizedWhatToDo = true;
+                            MySpeak.speak(speechManager, "I can hear you.", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            askOther();
+                        }
+                        if (lastRecognizedSentence.contains("what") && lastRecognizedSentence.contains("do")) {
+                            recognizedWhatToDo = true;
+                            MySpeak.speak(speechManager, "I can give information to public and directions, teach something or just keep company, shake hands, tell the time and weather, project a video and more...", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            askOther();
+                        }
+                        if (lastRecognizedSentence.contains("hands up")) {
+                            recognizedWhatToDo = true;
+                            //hands up
+                            AbsoluteAngleWingMotion absoluteAngleWingMotion1 = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 0);
+                            wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion1);
+                            systemManager.showEmotion(EmotionsType.SNICKER);
+                            MySpeak.speak(speechManager, "put your hands up in the air!", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            sleepy(2);
+                            //hands down
+                            AbsoluteAngleWingMotion absoluteAngleWingMotion2 = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_BOTH, 8, 180);
+                            wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion2);
+                            askOther();
+                        }
+                        if (lastRecognizedSentence.contains("test")) {
+                            recognizedWhatToDo = true;
+                            systemManager.showEmotion(EmotionsType.NORMAL);
+                            MySpeak.speak(speechManager, "Test OK, stop testing and go working", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            askOther();
+                        }
+                        //---- PURPOSE PART ----
+                        if (lastRecognizedSentence.contains("shake")) {
+                            recognizedWhatToDo = true;
+                            //increments stats request handshake
+                            MySettings.incrementRequestShake();
+                            //greenFlashButton(gridExamples.getChildAt(0));
+                            MySpeak.speak(speechManager, "OK", MySettings.getSpeakDefaultOption());
+                            //starts shake hand activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyShakeActivity.class);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                            return;
+                        }
+                        if (lastRecognizedSentence.contains("map")) {
+                            recognizedWhatToDo = true;
+                            //greenFlashButton(gridExamples.getChildAt(5));
+                            MySpeak.speak(speechManager, "OK let's see the map", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            //compute the place to pass
+                            String place = MySettings.getCityMap();
+                            //if any separator is said the place after is passed in the url
+                            String[] separators = {" of ", " in ", " on "};
+                            for (String separator : separators) {
+                                if (lastRecognizedSentence.contains(separator)) {
+                                    place = StringUtils.substringAfter(lastRecognizedSentence, separator);
+                                }
+                            }
+                            String url = "https://www.google.com/maps/place/" + place;
+                            Log.i("IGOR", url);
+                            //starts web activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyWebActivity.class);
+                            myIntent.putExtra("url", url);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                            return;
+                        }
+                        if (lastRecognizedSentence.contains("weather")) {
+                            recognizedWhatToDo = true;
+                            //greenFlashButton(gridExamples.getChildAt(5));
+                            MySpeak.speak(speechManager, "OK let's see the weather", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            //compute the place to pass
+                            String place = MySettings.getCityWeather();
+                            //if any separator is said the place after is passed in the url
+                            String[] separators = {" of ", " in ", " on "};
+                            for (String separator : separators) {
+                                if (lastRecognizedSentence.contains(separator)) {
+                                    place = StringUtils.substringAfter(lastRecognizedSentence, separator);
+                                }
+                            }
+                            Log.i("IGOR", place);
+                            //starts weather activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyWeatherActivity.class);
+                            myIntent.putExtra("place", place);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                            return;
+                        }
+                        if (lastRecognizedSentence.contains("calendar")) {
+                            recognizedWhatToDo = true;
+                            MySpeak.speak(speechManager, "OK let's see the calendar", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            //starts calendar activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyCalendarActivity.class);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                            return;
+                        }
+                        if (lastRecognizedSentence.contains("present yourself")) {
+                            recognizedWhatToDo = true;
+                            MySpeak.speak(speechManager, "OK", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            //starts present ys activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyPresentActivity.class);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                            return;
+                        }
+                        if (lastRecognizedSentence.contains("charge") || lastRecognizedSentence.contains("battery")) {
+                            recognizedWhatToDo = true;
+                            MySpeak.speak(speechManager, "OK", MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            //starts charge activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyChargeActivity.class);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                            return;
+                        }
+                        if (lastRecognizedSentence.contains("meeting")) {
+                            recognizedWhatToDo = true;
+                            //greenFlashButton(gridExamples.getChildAt(1));
+                            //increments stats request location
+                            MySettings.incrementRequestLocation();
+                            MySpeak.speak(speechManager, getString(R.string.meeting_room_is), MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            //indicate
+                            indicate(45);
+                            askOther();
+                        }
+
+                        if (lastRecognizedSentence.contains("bathroom") || lastRecognizedSentence.contains("toilet")) {
+                            recognizedWhatToDo = true;
+                            //greenFlashButton(gridExamples.getChildAt(1));
+                            //increments stats request location
+                            MySettings.incrementRequestLocation();
+                            MySpeak.speak(speechManager, "the bathroom is south, near the stairs", MySettings.getSpeakDefaultOption());
+                            //indicate
+                            indicate(180);
+                            askOther();
+                        }
+
+                        if ( ( lastRecognizedSentence.contains("show") || lastRecognizedSentence.contains("project") ) && lastRecognizedSentence.contains("video") ) {
+                            recognizedWhatToDo = true;
+                            //greenFlashButton(gridExamples.getChildAt(2));
+                            //increments stats request video
+                            MySettings.incrementRequestVideo();
+                            //starts project activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyProjectStoryActivity.class);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                            return;
+                        }
+                        if (lastRecognizedSentence.contains("lab") || lastRecognizedSentence.contains("laboratory")) {
+                            recognizedWhatToDo = true;
+                            //increments stats request location
+                            MySettings.incrementRequestLocation();
+                            //greenFlashButton(gridExamples.getChildAt(1));
+                            MySpeak.speak(speechManager, getString(R.string.lab_is), MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            //indicate
+                            indicate(0);
+                            askOther();
+                        }
+
+                        if (lastRecognizedSentence.contains("suggestion")) {
+                            recognizedWhatToDo = true;
+                            //greenFlashButton(gridExamples.getChildAt(3));
+                            MySpeak.speak(speechManager, "OK", MySettings.getSpeakDefaultOption());
+                            //starts leave suggestion activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyXMLSuggestionActivity.class);
+                            MyDialogActivity.this.startActivity(myIntent);
+                            //terminates
+                            finish();
+                            return;
+                        }
+
+                        //exits if answer is "no time" or "nothing"
+                        if (lastRecognizedSentence.equals("no") || lastRecognizedSentence.contains("nothing") ||
+                                lastRecognizedSentence.contains("no thank you") || lastRecognizedSentence.contains("no time")||
+                                lastRecognizedSentence.contains("go away") || lastRecognizedSentence.contains("exit")) {
+                            recognizedWhatToDo = true;
+                            //greenFlashButton( gridExamples.getChildAt(4) );
+                            MySpeak.speak(speechManager, getString(R.string.see_you), MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            if (lastRecognizedSentence.contains("go away")) {
+                                MySpeak.speak(speechManager, "I will go away", MySettings.getSpeakDefaultOption());
+                                concludeSpeak(speechManager);
+                                systemManager.showEmotion(EmotionsType.CRY);
+                                //rotates of 180
+                                rotateAtRelativeAngle(wheelMotionManager, 180);
+                            }
+                            if (lastRecognizedSentence.contains("thank")){
+                                systemManager.showEmotion(EmotionsType.KISS);
+                                MySpeak.speak(speechManager, getString(R.string.thanks_you_kind), MySettings.getSpeakDefaultOption());
+                                concludeSpeak(speechManager);
+                            }
+                            //force listening sleep
+                            infiniteWakeup = false;
+                            speechManager.doSleep();
+
+                            //starts base activity
+                            Intent myIntent = new Intent(MyDialogActivity.this, MyBaseActivity.class);
+                            MyDialogActivity.this.startActivity(myIntent);
+
+                            finish();
+                            return;
+                        }
+
+
+                        /*
+                        //not recognized ask to repeat
+                        if (!recognizedWhatToDo) {
+                            systemManager.showEmotion(EmotionsType.QUESTION);
+                            MySpeak.speak(speechManager, getString(R.string.please_repeat) , MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            wakeUpListening();
+                        }
+                        */
+                        //not recognized pass to CHATBOT
+                        if (!recognizedWhatToDo) {
+                            //CHATBOT PART
+                            long startTime = System.nanoTime();
+                            String response = MyApp.chat.multisentenceRespond(lastRecognizedSentence);
+
+                            Log.i(TAG, "Human: " + lastRecognizedSentence);
+                            Log.i(TAG, "Robot: " + response);
+
+                            Log.i(TAG, "DURATION COMPUTED RESPONSE millisec: " + (System.nanoTime() - startTime) / 1000000);
+                            MySpeak.speak(speechManager, response, MySettings.getSpeakDefaultOption());
+                            concludeSpeak(speechManager);
+                            wakeUpListening();
+                        }
+
+                        showRandomFace();
+                    }
+                });
+    }
+
+    private boolean useGoogleSpeechRecognizer() {
+        return MySettings.isGoogleSpeechRecognizerEnabled()
+                && googleSpeech != null
+                && AndroidSpeechRecognizer.isRecognitionAvailable(this);
+    }
+
+    private void initGoogleSpeechRecognizer() {
+        googleSpeech = new AndroidSpeechRecognizer(this);
+        googleSpeech.setListener(new AndroidSpeechRecognizer.Listener() {
+            @Override
+            public void onFinalResult(String text) {
+                queueRecognizedUtterance(text);
+            }
+
+            @Override
+            public void onListeningStarted() {
+                if (MySettings.isDebug()) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MyDialogActivity.this, "Listening (Google)", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onListeningEnded() {
+            }
+
+            @Override
+            public void onError(int errorCode, String message) {
+                Log.w(TAG, "Google STT error " + errorCode + " " + message);
+                if (!infiniteWakeup) {
+                    return;
+                }
+                if (errorCode == SpeechRecognizer.ERROR_SPEECH_TIMEOUT
+                        || errorCode == SpeechRecognizer.ERROR_NO_MATCH
+                        || errorCode == SpeechRecognizer.ERROR_CLIENT
+                        || errorCode == SpeechRecognizer.ERROR_RECOGNIZER_BUSY) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (infiniteWakeup && useGoogleSpeechRecognizer() && googleSpeech != null) {
+                                googleSpeech.startListening();
+                            }
+                        }
+                    }, 400);
+                }
+            }
+        });
+    }
+
+    private void startGoogleListeningWithPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, REQ_RECORD_AUDIO);
+                return;
+            }
+        }
+        if (googleSpeech != null) {
+            googleSpeech.startListening();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQ_RECORD_AUDIO) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (googleSpeech != null) {
+                    googleSpeech.startListening();
+                }
+            } else {
+                Toast.makeText(this, "Microphone permission needed for Google speech", Toast.LENGTH_LONG).show();
+                MySettings.setGoogleSpeechRecognizerEnabled(false);
+                if (speechManager != null) {
+                    speechManager.doWakeUp();
+                }
+            }
+        }
+    }
+
     @Override
     protected void onMainServiceConnected() {
 
@@ -645,11 +765,23 @@ public class MyDialogActivity extends TopBaseActivity {
         super.onDestroy();
         //stop infinite listening
         infiniteWakeup = false;
+        if (googleSpeech != null) {
+            googleSpeech.destroy();
+            googleSpeech = null;
+        }
         speechManager.doSleep();
         //if person pushes "back" before the normal termination
         MyBaseActivity.busy = false;
         //deletes "no response action" and all the handlers
         noResponseAction.removeCallbacksAndMessages(null);
+        if (speechResponseHandler != null) {
+            speechResponseHandler.removeCallbacksAndMessages(null);
+        }
+        if (speechResponseThread != null) {
+            speechResponseThread.quit();
+            speechResponseThread = null;
+            speechResponseHandler = null;
+        }
         Log.i(TAG, "destroy, noResponseHandler deleted");
     }
 
@@ -694,10 +826,10 @@ public class MyDialogActivity extends TopBaseActivity {
             public void run() {
                 askOtherTimes++;
                 if (askOtherTimes == 2) {
-                    speechManager.startSpeak(getString(R.string.please_suggestion), MySettings.getSpeakDefaultOption());
+                    MySpeak.speak(speechManager, getString(R.string.please_suggestion), MySettings.getSpeakDefaultOption());
                     concludeSpeak(speechManager);
                 }
-                speechManager.startSpeak(getString(R.string.something_else), MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, getString(R.string.something_else), MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
                 wakeUpListening();
             }
@@ -709,13 +841,17 @@ public class MyDialogActivity extends TopBaseActivity {
     }
 
     private void wakeUpListening() {
-        speechManager.doWakeUp();
         imageListen.setVisibility(View.VISIBLE);
         wakeButton.setVisibility(View.GONE);
         //head up
         headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
-        //normal face
-        //systemManager.showEmotion(EmotionsType.NORMAL);
+        if (useGoogleSpeechRecognizer()) {
+            Log.i(TAG, "wakeup via Google SpeechRecognizer");
+            startGoogleListeningWithPermission();
+        } else {
+            Log.i(TAG, "wakeup via MainService doWakeUp");
+            speechManager.doWakeUp();
+        }
         //activate no response handler
         Log.i(TAG, "wakeup answer-active, noResponseHandler activated");
         noResponseAction.removeCallbacksAndMessages(null);
@@ -725,7 +861,7 @@ public class MyDialogActivity extends TopBaseActivity {
                 switch (noResponse) {
                     case 1:
                         //first time waiting too much asks for out loud
-                        speechManager.startSpeak("please speak out loud!", MySettings.getSpeakDefaultOption());
+                        MySpeak.speak(speechManager, "please speak out loud!", MySettings.getSpeakDefaultOption());
                         wakeUpListening();
                         noResponse++;
                         break;
@@ -735,7 +871,7 @@ public class MyDialogActivity extends TopBaseActivity {
 
                         Log.i(TAG,"Human @not responded@");
                         Log.i(TAG,"Robot: " + response);
-                        speechManager.startSpeak(response , MySettings.getSpeakDefaultOption());
+                        MySpeak.speak(speechManager, response , MySettings.getSpeakDefaultOption());
                         concludeSpeak(speechManager);
                         wakeUpListening();
                         noResponse++;
@@ -743,13 +879,16 @@ public class MyDialogActivity extends TopBaseActivity {
                     default:
                         //force sleep
                         infiniteWakeup = false;
+                        if (googleSpeech != null) {
+                            googleSpeech.stopListening();
+                        }
                         speechManager.doSleep();
                         //angry emotion
                         systemManager.showEmotion(EmotionsType.ANGRY);
                         //flicker leds
                         hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_FLICKER_RED));
                         //speak
-                        speechManager.startSpeak(getString(R.string.no_answer), MySettings.getSpeakDefaultOption());
+                        MySpeak.speak(speechManager, getString(R.string.no_answer), MySettings.getSpeakDefaultOption());
                         //starts base activity
                         Intent myIntent = new Intent(MyDialogActivity.this, MyBaseActivity.class);
                         MyDialogActivity.this.startActivity(myIntent);
@@ -779,7 +918,7 @@ public class MyDialogActivity extends TopBaseActivity {
         AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_LEFT, 5, 70);
         wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
         //speak direction
-        speechManager.startSpeak("in that direction!", MySettings.getSpeakDefaultOption());
+        MySpeak.speak(speechManager, "in that direction!", MySettings.getSpeakDefaultOption());
         concludeSpeak(speechManager);
         //rotate back
         rotateAtRelativeAngle(wheelMotionManager, -cardinalrotation);

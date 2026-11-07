@@ -565,7 +565,7 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
                                 Log.i("hwmanager", "touching hand right" );
                                 break;
                             case 1 : case 2:
-                                speechManager.startSpeak("ehy, don't touch", MySettings.getSpeakDefaultOption());
+                                MySpeak.speak(speechManager, "ehy, don't touch", MySettings.getSpeakDefaultOption());
 
                         }
                     }
@@ -675,6 +675,10 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        // Resume after pause previously nulled handleList → NPE on add().
+        if (handleList == null) {
+            handleList = new ArrayList<>();
+        }
         //Set parameters and open the media stream for video
         StreamOption streamOption = new StreamOption();
         streamOption.setChannel(StreamOption.MAIN_STREAM);
@@ -697,13 +701,13 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         Log.i(TAG, "surfaceDestroyed: ");
-        //Close media stream
-        if (handleList.size() > 0) {
+        //Close media stream — clear, do not null (surfaceCreated runs again on resume).
+        if (handleList != null && handleList.size() > 0) {
             for (int handle : handleList) {
                 Log.i(TAG, "surfaceDestroyed: " + hdCameraManager.closeStream(handle));
             }
+            handleList.clear();
         }
-        handleList = null;
         mediaDecoder.stopDecoding();
     }
 
@@ -749,38 +753,45 @@ public class  MyBaseActivity extends TopBaseActivity implements SurfaceHolder.Ca
 
     }
 
-    public void startInteraction(String person_name) {
+    public void startInteraction(final String person_name) {
         if (!busy && MyApp.botReady) {
             Log.i(TAG, "START INTERACTION! now busy");
             //starts greeting with this person passing
             busy = true;
-            //say hi
-            speechManager.startSpeak(getString(R.string.hi) + person_name, MySettings.getSpeakDefaultOption());
-            concludeSpeak(speechManager);
+            // Speak + wait off the UI thread so Google TTS callbacks can run.
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    MySpeak.speak(speechManager, getString(R.string.hi) + person_name, MySettings.getSpeakDefaultOption());
+                    concludeSpeak(speechManager);
 
-            // 50% say Good morning/afternoon/ecc...
-            double random_num = Math.random();
-            if (random_num < 0.5) {
-                int hours = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-                if (hours < 6) {
-                    speechManager.startSpeak(getString(R.string.early_morning), MySettings.getSpeakDefaultOption());
-                } else if (hours < 12) {
-                    speechManager.startSpeak(getString(R.string.morning), MySettings.getSpeakDefaultOption());
-                } else if (hours < 18) {
-                    speechManager.startSpeak(getString(R.string.afternoon), MySettings.getSpeakDefaultOption());
-                } else if (hours <= 24) {
-                    speechManager.startSpeak(getString(R.string.night), MySettings.getSpeakDefaultOption());
+                    // 50% say Good morning/afternoon/ecc...
+                    double random_num = Math.random();
+                    if (random_num < 0.5) {
+                        int hours = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+                        if (hours < 6) {
+                            MySpeak.speak(speechManager, getString(R.string.early_morning), MySettings.getSpeakDefaultOption());
+                        } else if (hours < 12) {
+                            MySpeak.speak(speechManager, getString(R.string.morning), MySettings.getSpeakDefaultOption());
+                        } else if (hours < 18) {
+                            MySpeak.speak(speechManager, getString(R.string.afternoon), MySettings.getSpeakDefaultOption());
+                        } else if (hours <= 24) {
+                            MySpeak.speak(speechManager, getString(R.string.night), MySettings.getSpeakDefaultOption());
+                        }
+                        concludeSpeak(speechManager);
+                    }
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent myIntent = new Intent(MyBaseActivity.this, MyDialogActivity.class);
+                            myIntent.putExtra("name", person_name);
+                            MyBaseActivity.this.startActivity(myIntent);
+                            finish();
+                        }
+                    });
                 }
-                concludeSpeak(speechManager);
-            }
-
-            //start the dialog activity.
-            Intent myIntent = new Intent(MyBaseActivity.this, MyDialogActivity.class);
-            //insert the name of the person in the annex
-            myIntent.putExtra("name", person_name);
-            MyBaseActivity.this.startActivity(myIntent);
-            //terminate this activity
-            finish();
+            }, "capa-start-interaction").start();
         }
     }
 

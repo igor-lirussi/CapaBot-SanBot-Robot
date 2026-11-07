@@ -80,7 +80,7 @@ public class MyProjectStoryActivity extends TopBaseActivity {
                 //OPEN PROJECTOR
                 projectorManager.switchProjector(true);
                 //voice introduction
-                speechManager.startSpeak(getString(R.string.show_video), MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, getString(R.string.show_video), MySettings.getSpeakDefaultOption());
             }
         }, 500);
 
@@ -132,9 +132,9 @@ public class MyProjectStoryActivity extends TopBaseActivity {
                 //close projector
                 projectorManager.switchProjector(false);
                 //end sentence
-                speechManager.startSpeak(getString(R.string.good_video), MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, getString(R.string.good_video), MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
-                speechManager.startSpeak(getString(R.string.cooling_projector), MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, getString(R.string.cooling_projector), MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
                 finishThisActivity();
             }

@@ -164,7 +164,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
             @Override
             public void onEventClick(WeekViewEvent event, RectF eventRect) {
                 Toast.makeText(MyCalendarActivity.this, "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
-                speechManager.startSpeak(event.getName()+ " starts at " + getTimeString(event.getStartTime()), MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, event.getName()+ " starts at " + getTimeString(event.getStartTime()), MySettings.getSpeakDefaultOption());
             }
         });
 
@@ -181,7 +181,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
             @Override
             public void onEmptyViewLongPress(java.util.Calendar time) {
                 Toast.makeText(MyCalendarActivity.this, "Empty view long-pressed: " + getTimeString(time), Toast.LENGTH_SHORT).show();
-                speechManager.startSpeak("there is nothing on " + getTimeString(time) , MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "there is nothing on " + getTimeString(time) , MySettings.getSpeakDefaultOption());
             }
 
         });
@@ -323,7 +323,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                     @Override
                     public void run() {
                         if (lastRecognizedSentence.contains("today") ) {
-                            speechManager.startSpeak("These are the events of today", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "These are the events of today", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.SMILE);
                             mWeekView.goToToday();
                         }
@@ -331,12 +331,12 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                                 ||lastRecognizedSentence.contains("sure") ||lastRecognizedSentence.contains("of course") ||lastRecognizedSentence.contains("thank")) {
                             if (lastRecognizedSentence.contains("thank")) {
                                 //thanks
-                                speechManager.startSpeak("thank you", MySettings.getSpeakDefaultOption());
+                                MySpeak.speak(speechManager, "thank you", MySettings.getSpeakDefaultOption());
                                 concludeSpeak(speechManager);
                             }
                             //happy
                             systemManager.showEmotion(EmotionsType.KISS);
-                            speechManager.startSpeak("I'm happy to hear about it", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "I'm happy to hear about it", MySettings.getSpeakDefaultOption());
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
@@ -344,7 +344,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                         }
                         if (lastRecognizedSentence.equals("no") ||lastRecognizedSentence.contains("so and so") ) {
                             //sad
-                            speechManager.startSpeak("I'm sad to hear this", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "I'm sad to hear this", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.GOODBYE);
                             boolean res = concludeSpeak(speechManager);
                             //finish
@@ -352,7 +352,7 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                             return;
                         }
                         if (lastRecognizedSentence.contains("exit") ) {
-                            speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "OK", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.SMILE);
                             boolean res = concludeSpeak(speechManager);
                             //finish
@@ -513,9 +513,9 @@ public class MyCalendarActivity extends TopBaseActivity implements MyCalendarDow
                     //new thread not to lock the UI with the sleep
                     new Thread(new Runnable() {
                         public void run() {
-                            speechManager.startSpeak("This is your calendar", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "This is your calendar", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
-                            speechManager.startSpeak("Are you satisfied?", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "Are you satisfied?", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             speechManager.doWakeUp();
                         }

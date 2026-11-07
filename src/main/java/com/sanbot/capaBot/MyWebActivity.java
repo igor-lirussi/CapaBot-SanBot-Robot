@@ -111,12 +111,12 @@ public class MyWebActivity extends TopBaseActivity {
                                 ||lastRecognizedSentence.contains("sure") ||lastRecognizedSentence.contains("of course") ||lastRecognizedSentence.contains("thank")) {
                             if (lastRecognizedSentence.contains("thank")) {
                                 //thanks
-                                speechManager.startSpeak("thank you", MySettings.getSpeakDefaultOption());
+                                MySpeak.speak(speechManager, "thank you", MySettings.getSpeakDefaultOption());
                                 concludeSpeak(speechManager);
                             }
                             //happy
                             systemManager.showEmotion(EmotionsType.KISS);
-                            speechManager.startSpeak("I'm happy to hear about it", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "I'm happy to hear about it", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             //finish
                             finishThisActivity();
@@ -124,7 +124,7 @@ public class MyWebActivity extends TopBaseActivity {
                         }
                         if (lastRecognizedSentence.equals("no") ||lastRecognizedSentence.contains("so and so") ) {
                             //sad
-                            speechManager.startSpeak("I'm sad to hear this", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "I'm sad to hear this", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.GOODBYE);
                             concludeSpeak(speechManager);
                             //finish
@@ -132,7 +132,7 @@ public class MyWebActivity extends TopBaseActivity {
                             return;
                         }
                         if (lastRecognizedSentence.contains("exit")) {
-                            speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "OK", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.SMILE);
                             concludeSpeak(speechManager);
                             //finish
@@ -150,7 +150,7 @@ public class MyWebActivity extends TopBaseActivity {
                             }
                         }
                         if(newPlace) {
-                            speechManager.startSpeak("OK, let's go to " + place, MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "OK, let's go to " + place, MySettings.getSpeakDefaultOption());
                             //Computing URL
                             place = place.replace(" ", "+");
                             String url = "https://www.google.com/maps/search/" + place;

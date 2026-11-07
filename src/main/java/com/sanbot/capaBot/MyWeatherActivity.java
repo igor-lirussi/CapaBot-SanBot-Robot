@@ -150,7 +150,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
                         Log.i(TAG, "Speech recognized: " + lastRecognizedSentence);
                         if (finishedTellingWeather) {
                             //ANYTHING SAID doesn't matter
-                            speechManager.startSpeak("ok", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "ok", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                             finishThisActivity();
                         }
@@ -194,7 +194,7 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
                     Toast.makeText(MyWeatherActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
                 }
             });
-            speechManager.startSpeak("No Internet Connection", MySettings.getSpeakDefaultOption());
+            MySpeak.speak(speechManager, "No Internet Connection", MySettings.getSpeakDefaultOption());
             concludeSpeak(speechManager);
             finishThisActivity();
         }
@@ -218,9 +218,9 @@ public class MyWeatherActivity extends TopBaseActivity implements MyWeatherDownl
             //new thread not to lock the UI with the sleep
             new Thread(new Runnable() {
                 public void run() {
-                    speechManager.startSpeak(summaryToSay, MySettings.getSpeakSlowOption());
+                    MySpeak.speak(speechManager, summaryToSay, MySettings.getSpeakSlowOption());
                     concludeSpeak(speechManager);
-                    speechManager.startSpeak("Are you satisfied?", MySettings.getSpeakDefaultOption());
+                    MySpeak.speak(speechManager, "Are you satisfied?", MySettings.getSpeakDefaultOption());
                     concludeSpeak(speechManager);
                     speechManager.doWakeUp();
                     finishedTellingWeather = true;

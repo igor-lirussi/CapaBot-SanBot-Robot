@@ -126,43 +126,43 @@ public class MyPresentActivity extends TopBaseActivity {
                                 Log.i(TAG, "Touching occurred");
                                 switch (part) {
                                     case 1:
-                                        speechManager.startSpeak("You are touching the right part of my jaw", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the right part of my jaw", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 2:
-                                        speechManager.startSpeak("You are touching the left part of my jaw", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the left part of my jaw", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 3:
-                                        speechManager.startSpeak("You are touching the left part of my chest", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the left part of my chest", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 4:
-                                        speechManager.startSpeak("You are touching the right part of my chest", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the right part of my chest", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 5:
-                                        speechManager.startSpeak("You are touching the left part of my back-head", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the left part of my back-head", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 6:
-                                        speechManager.startSpeak("You are touching the right part of my back-head", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the right part of my back-head", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 7:
-                                        speechManager.startSpeak("You are touching the left part of my back", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the left part of my back", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 8:
-                                        speechManager.startSpeak("You are touching the right part of my back", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the right part of my back", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 9:
-                                        speechManager.startSpeak("You are touching my left hand", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching my left hand", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 10:
-                                        speechManager.startSpeak("You are touching my right hand", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching my right hand", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 11:
-                                        speechManager.startSpeak("You are touching the middle of my head", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the middle of my head", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 12:
-                                        speechManager.startSpeak("You are touching the left part of my head", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the left part of my head", MySettings.getSpeakDefaultOption());
                                         break;
                                     case 13:
-                                        speechManager.startSpeak("You are touching the right part of my head", MySettings.getSpeakDefaultOption());
+                                        MySpeak.speak(speechManager, "You are touching the right part of my head", MySettings.getSpeakDefaultOption());
                                         break;
                                 }
                             }
@@ -213,33 +213,33 @@ public class MyPresentActivity extends TopBaseActivity {
                                 ||lastRecognizedSentence.contains("sure") ||lastRecognizedSentence.contains("of course") ||lastRecognizedSentence.contains("thank")) {
                             if (lastRecognizedSentence.contains("thank")) {
                                 //thanks
-                                speechManager.startSpeak("thank you", MySettings.getSpeakDefaultOption());
+                                MySpeak.speak(speechManager, "thank you", MySettings.getSpeakDefaultOption());
                                 concludeSpeak(speechManager);
                             }
                             //happy
                             systemManager.showEmotion(EmotionsType.KISS);
-                            speechManager.startSpeak("I'm happy to hear about it", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "I'm happy to hear about it", MySettings.getSpeakDefaultOption());
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
                             return;
                         } else if (lastRecognizedSentence.equals("no") ||lastRecognizedSentence.contains("so and so") ) {
                             //sad
-                            speechManager.startSpeak("I'm sad to hear this", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "I'm sad to hear this", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.GOODBYE);
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
                             return;
                         } else if (lastRecognizedSentence.contains("exit")) {
-                            speechManager.startSpeak("OK", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "OK", MySettings.getSpeakDefaultOption());
                             systemManager.showEmotion(EmotionsType.SMILE);
                             boolean res = concludeSpeak(speechManager);
                             //finish
                             goToDialogAndExit(res);
                             return;
                         } else {
-                            speechManager.startSpeak("I didn't understand, are you satisfied? yes or no?", MySettings.getSpeakDefaultOption());
+                            MySpeak.speak(speechManager, "I didn't understand, are you satisfied? yes or no?", MySettings.getSpeakDefaultOption());
                             concludeSpeak(speechManager);
                         }
 
@@ -277,28 +277,28 @@ public class MyPresentActivity extends TopBaseActivity {
             public void run(){
                 Log.i(TAG, "Presentation Started");
                 //intro
-                speechManager.startSpeak("I'm SanBot, a humanoid robot. My main purpose is to help people ", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "I'm SanBot, a humanoid robot. My main purpose is to help people ", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
 
                 //DISPLAY
-                speechManager.startSpeak("Even if i'm small, I am fully equipped:", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "Even if i'm small, I am fully equipped:", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
                 //show emotion
                 systemManager.showEmotion(EmotionsType.KISS);
-                speechManager.startSpeak("I can change my face expression to show emotions", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "I can change my face expression to show emotions", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
 
-                speechManager.startSpeak(" my body color, ", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, " my body color, ", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
                 //flicker led
                 hardWareManager.setLED(new LED(LED.PART_ALL, LED.MODE_FLICKER_RANDOM));
 
-                speechManager.startSpeak("display things on my tablet and even project on a wall! ", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "display things on my tablet and even project on a wall! ", MySettings.getSpeakDefaultOption());
                 changeImage("project");
                 concludeSpeak(speechManager);
 
                 //ACTUATORS
-                speechManager.startSpeak("I can move my head like this", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "I can move my head like this", MySettings.getSpeakDefaultOption());
                 //head movement
                 AbsoluteAngleHeadMotion absoluteAngleHeadMotion = new AbsoluteAngleHeadMotion(
                         AbsoluteAngleHeadMotion.ACTION_HORIZONTAL,130
@@ -313,7 +313,7 @@ public class MyPresentActivity extends TopBaseActivity {
                 headMotionManager.doAbsoluteAngleMotion(absoluteAngleHeadMotion);
                 sleepy(2);
 
-                speechManager.startSpeak("my arms...", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "my arms...", MySettings.getSpeakDefaultOption());
                 //hand up
                 AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(AbsoluteAngleWingMotion.PART_LEFT, 5, 70);
                 wingMotionManager.doAbsoluteAngleMotion(absoluteAngleWingMotion);
@@ -321,7 +321,7 @@ public class MyPresentActivity extends TopBaseActivity {
                 //hands down (reset position)
                 wingMotionManager.doNoAngleMotion(new NoAngleWingMotion(NoAngleWingMotion.PART_BOTH, 5,NoAngleWingMotion.ACTION_RESET));
 
-                speechManager.startSpeak("and navigate in any direction thanks to my omnidirectional wheels... I can even dance!", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "and navigate in any direction thanks to my omnidirectional wheels... I can even dance!", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
                 //play music
                 int maxVolume = 100;
@@ -345,27 +345,27 @@ public class MyPresentActivity extends TopBaseActivity {
 
                 //SENSORS
                 changeImage("overview");
-                speechManager.startSpeak("I have a microphone and powerful subwoofers to communicate with people, infrared sensors to feel distances, 2 PIR to detect humans, touch sensors all over my body and a wide HD camera and a depth camera to understand the environment. ", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "I have a microphone and powerful subwoofers to communicate with people, infrared sensors to feel distances, 2 PIR to detect humans, touch sensors all over my body and a wide HD camera and a depth camera to understand the environment. ", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
                 //image sensors
 
-                speechManager.startSpeak( "With these capabilities I can assist humans in Education", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager,  "With these capabilities I can assist humans in Education", MySettings.getSpeakDefaultOption());
                 //image education
                 changeImage("education");
                 concludeSpeak(speechManager);
 
-                speechManager.startSpeak(", Public Service ", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, ", Public Service ", MySettings.getSpeakDefaultOption());
                 //image public service
                 changeImage("public");
                 concludeSpeak(speechManager);
 
-                speechManager.startSpeak("and Health-care.", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "and Health-care.", MySettings.getSpeakDefaultOption());
                 //image health care
                 changeImage("health");
                 concludeSpeak(speechManager);
 
                 sleepy(2);
-                speechManager.startSpeak("Are you satisfied? ", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "Are you satisfied? ", MySettings.getSpeakDefaultOption());
                 changeImage("presentsanbot");
                 concludeSpeak(speechManager);
                 //wake up and listen

@@ -89,7 +89,7 @@ public class MyChargeActivity extends TopBaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                speechManager.startSpeak("Time to charge a little bit!", MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, "Time to charge a little bit!", MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
                 //activate auto charge
                 modularMotionManager.switchCharge(true);
@@ -162,14 +162,14 @@ public class MyChargeActivity extends TopBaseActivity {
         //kill loop check handler
         checkBatteryStatus.removeCallbacksAndMessages(null);
         //sentence
-        speechManager.startSpeak("I'm charged "+systemManager.getBatteryValue()+"%, I think it's ok", MySettings.getSpeakDefaultOption());
+        MySpeak.speak(speechManager, "I'm charged "+systemManager.getBatteryValue()+"%, I think it's ok", MySettings.getSpeakDefaultOption());
         concludeSpeak(speechManager);
         //deactivate auto charge
         modularMotionManager.switchCharge(false);
         //if battery below LOW exit button is pressed early, deactivate autocharge not to go back immediately to it
         if (systemManager.getBatteryValue() <= MySettings.getBatteryLOW()) {
             MySettings.setAutoChargeAllowed(false);
-            speechManager.startSpeak("I deactivated autocharge, go to settings to activate it back", MySettings.getSpeakDefaultOption());
+            MySpeak.speak(speechManager, "I deactivated autocharge, go to settings to activate it back", MySettings.getSpeakDefaultOption());
             concludeSpeak(speechManager);
         }
         //go ahead 20 cm

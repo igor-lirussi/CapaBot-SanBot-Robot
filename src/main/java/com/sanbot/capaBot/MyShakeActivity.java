@@ -178,7 +178,7 @@ public class MyShakeActivity extends TopBaseActivity {
         headMotionManager.doAbsoluteLocateMotion(locateAbsoluteAngleHeadMotion);
 
         //self presentation
-        speechManager.startSpeak(getString(R.string.i_am_sanbot), MySettings.getSpeakDefaultOption());
+        MySpeak.speak(speechManager, getString(R.string.i_am_sanbot), MySettings.getSpeakDefaultOption());
 
         //hand up
         AbsoluteAngleWingMotion absoluteAngleWingMotion = new AbsoluteAngleWingMotion(handAb, 5, 70);
@@ -204,7 +204,7 @@ public class MyShakeActivity extends TopBaseActivity {
         incitement.postDelayed(new Runnable() {
             @Override
             public void run() {
-                speechManager.startSpeak(getString(R.string.come_on), MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, getString(R.string.come_on), MySettings.getSpeakDefaultOption());
                 //change image
                 shakeLayout.setBackgroundResource(R.drawable.handred);
             }
@@ -222,7 +222,7 @@ public class MyShakeActivity extends TopBaseActivity {
         waitingTouchPosition = false;
         Log.i(TAG, "waitingTouchPosition = false ");
 
-        speechManager.startSpeak("Hi", MySettings.getSpeakDefaultOption());
+        MySpeak.speak(speechManager, "Hi", MySettings.getSpeakDefaultOption());
         MySettings.incrementHandshakes();
         updateHandshakes();
 
@@ -289,7 +289,7 @@ public class MyShakeActivity extends TopBaseActivity {
         headMotionManager.doRelativeAngleMotion(relativeAngleHeadMotionLeft);
 
         //after shaking sentence
-        speechManager.startSpeak(getString(R.string.glad_meet_you), MySettings.getSpeakDefaultOption());
+        MySpeak.speak(speechManager, getString(R.string.glad_meet_you), MySettings.getSpeakDefaultOption());
         concludeSpeak(speechManager);
 
         //starts dialog activity
@@ -328,7 +328,7 @@ public class MyShakeActivity extends TopBaseActivity {
         }, 10000);
 
         //sad sentence
-        speechManager.startSpeak(getString(R.string.sad_no_shake), MySettings.getSpeakDefaultOption());
+        MySpeak.speak(speechManager, getString(R.string.sad_no_shake), MySettings.getSpeakDefaultOption());
         concludeSpeak(speechManager);
 
         //starts dialog activity

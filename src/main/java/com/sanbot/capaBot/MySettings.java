@@ -1,6 +1,8 @@
 package com.sanbot.capaBot;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -67,6 +69,10 @@ public class MySettings extends TopBaseActivity {
     Switch switchProjectCeiling;
     @BindView(R.id.taskButtonsEnabled)
     Switch switchTaskButtonsEnabled;
+    @BindView(R.id.googleTtsSpeaker)
+    Switch switchGoogleTtsSpeaker;
+    @BindView(R.id.googleSpeechRecognizer)
+    Switch switchGoogleSpeechRecognizer;
     @BindView(R.id.testConvEng)
     Button testConvEngButt;
 
@@ -95,6 +101,8 @@ public class MySettings extends TopBaseActivity {
         switchAutocharge.setChecked(isAutoChargeAllowed());
         switchProjectCeiling.setChecked(isProject_on_ceiling());
         switchTaskButtonsEnabled.setChecked(isTaskButtonsEnabled());
+        switchGoogleTtsSpeaker.setChecked(isGoogleTtsSpeakerEnabled());
+        switchGoogleSpeechRecognizer.setChecked(isGoogleSpeechRecognizerEnabled());
         //update city settings
         cityWeatherInpText.setText(getCityWeather());
         cityMapInpText.setText(getCityMap());
@@ -143,6 +151,18 @@ public class MySettings extends TopBaseActivity {
         switchTaskButtonsEnabled.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 setTaskButtonsEnabled(isChecked);
+            }
+        });
+        // Google TTS on speaker (bypasses Qihan cloud TTS + phantom headset)
+        switchGoogleTtsSpeaker.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setGoogleTtsSpeakerEnabled(isChecked);
+            }
+        });
+        // Google SpeechRecognizer (bypasses Qihan MainService ASR; needs Google Search)
+        switchGoogleSpeechRecognizer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setGoogleSpeechRecognizerEnabled(isChecked);
             }
         });
         //city listeners
@@ -360,6 +380,23 @@ public class MySettings extends TopBaseActivity {
     //task buttons enabled
     private static boolean taskButtonsEnabled = false;
 
+    /**
+     * When true (default), speak via on-device Google TTS to the speaker.
+     * When false, use stock OpenSDK / Qihan cloud TextSpeech.
+     * Persisted in SharedPreferences (unlike most other in-memory settings).
+     */
+    private static boolean googleTtsSpeakerEnabled = true;
+    /** When true, dialog listening uses Android/Google SpeechRecognizer instead of MainService ASR. */
+    private static boolean googleSpeechRecognizerEnabled = true;
+    private static final String PREFS_NAME = "capabot_settings";
+    private static final String PREF_GOOGLE_TTS_SPEAKER = "google_tts_speaker";
+    private static final String PREF_GOOGLE_SPEECH_RECOGNIZER = "google_speech_recognizer";
+    private static final String PREF_CITY_WEATHER = "city_weather";
+    private static final String PREF_CITY_MAP = "city_map";
+    private static final String DEFAULT_CITY_WEATHER = "Udine,IT";
+    private static final String DEFAULT_CITY_MAP = "Udine";
+    private static SharedPreferences prefs;
+
     //SPEAK settings  language/speed/intonation
     private static SpeakOption speakDefaultOption = new SpeakOption();
     private static SpeakOption speakSlowOption = new SpeakOption();
@@ -438,11 +475,21 @@ public class MySettings extends TopBaseActivity {
 
     public static String getCityWeather() { return cityWeather; }
 
-    public static void setCityWeather(String cityWeather) { MySettings.cityWeather = cityWeather;}
+    public static void setCityWeather(String cityWeather) {
+        MySettings.cityWeather = cityWeather != null ? cityWeather : DEFAULT_CITY_WEATHER;
+        if (prefs != null) {
+            prefs.edit().putString(PREF_CITY_WEATHER, MySettings.cityWeather).apply();
+        }
+    }
 
-    public static String getCityMap() {return cityMap; }
+    public static String getCityMap() { return cityMap; }
 
-    public static void setCityMap(String cityMap) { MySettings.cityMap = cityMap;  }
+    public static void setCityMap(String cityMap) {
+        MySettings.cityMap = cityMap != null ? cityMap : DEFAULT_CITY_MAP;
+        if (prefs != null) {
+            prefs.edit().putString(PREF_CITY_MAP, MySettings.cityMap).apply();
+        }
+    }
 
     public static int getSeconds_waitingTouch() { return seconds_waitingTouch; }
     
@@ -497,6 +544,48 @@ public class MySettings extends TopBaseActivity {
     public static boolean isTaskButtonsEnabled() {  return taskButtonsEnabled; }
 
     public static void setTaskButtonsEnabled(boolean taskButtonsEnabled) { MySettings.taskButtonsEnabled = taskButtonsEnabled; }
+
+    /** Call once from {@link MyApp#onCreate()}. */
+    public static void loadPersistedPrefs(Context context) {
+        if (context == null) {
+            return;
+        }
+        prefs = context.getApplicationContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        googleTtsSpeakerEnabled = prefs.getBoolean(PREF_GOOGLE_TTS_SPEAKER, true);
+        googleSpeechRecognizerEnabled = prefs.getBoolean(PREF_GOOGLE_SPEECH_RECOGNIZER, true);
+        cityWeather = prefs.getString(PREF_CITY_WEATHER, DEFAULT_CITY_WEATHER);
+        cityMap = prefs.getString(PREF_CITY_MAP, DEFAULT_CITY_MAP);
+        if (cityWeather == null || cityWeather.trim().isEmpty()) {
+            cityWeather = DEFAULT_CITY_WEATHER;
+        }
+        if (cityMap == null || cityMap.trim().isEmpty()) {
+            cityMap = DEFAULT_CITY_MAP;
+        }
+    }
+
+    public static boolean isGoogleTtsSpeakerEnabled() {
+        return googleTtsSpeakerEnabled;
+    }
+
+    public static void setGoogleTtsSpeakerEnabled(boolean enabled) {
+        googleTtsSpeakerEnabled = enabled;
+        if (prefs != null) {
+            prefs.edit().putBoolean(PREF_GOOGLE_TTS_SPEAKER, enabled).apply();
+        }
+        Log.i(TAG, "Google TTS speaker = " + enabled);
+    }
+
+    public static boolean isGoogleSpeechRecognizerEnabled() {
+        return googleSpeechRecognizerEnabled;
+    }
+
+    public static void setGoogleSpeechRecognizerEnabled(boolean enabled) {
+        googleSpeechRecognizerEnabled = enabled;
+        if (prefs != null) {
+            prefs.edit().putBoolean(PREF_GOOGLE_SPEECH_RECOGNIZER, enabled).apply();
+        }
+        Log.i(TAG, "Google speech recognition = " + enabled);
+    }
 
     public static SpeakOption getSpeakDefaultOption() {
         return speakDefaultOption;

@@ -1,6 +1,7 @@
 package com.sanbot.capaBot;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.sanbot.opensdk.function.beans.EmotionsType;
@@ -31,15 +32,46 @@ public final class MyUtils {
     }
 
 
+    private static final String TAG = "MyUtils";
+    private static final long CONCLUDE_SPEAK_TIMEOUT_MS = 30000L;
+
     /**
-     * waits until the speech is finished
+     * waits until the speech is finished.
+     * Must not block the main looper when Google TTS is used — UtteranceProgressListener
+     * callbacks need the main thread, so a main-thread spin deadlocks CapBot.
      * @param speechManager the speech manager to check
      */
     public static boolean concludeSpeak(SpeechManager speechManager) {
-        try {
-        while (speechManager.isSpeaking().getResult().equals("1")) {
-            sleepy(0.2);
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            // Never spin-wait on UI thread (Google TTS deadlock / ANR).
+            Log.w(TAG, "concludeSpeak: skipped wait on main thread");
+            return true;
         }
+        long deadline = System.currentTimeMillis() + CONCLUDE_SPEAK_TIMEOUT_MS;
+        try {
+            // Wait for local Google TTS first (Settings → Google TTS speaker).
+            while (MySpeak.isLocalSpeaking()) {
+                if (System.currentTimeMillis() > deadline) {
+                    Log.w(TAG, "concludeSpeak: local TTS wait timed out");
+                    break;
+                }
+                sleepy(0.2);
+            }
+            // When Google TTS is enabled, do not wait on OpenSDK cloud isSpeaking —
+            // it often sticks at "1" and freezes the greeting → dialog transition.
+            if (MySettings.isGoogleTtsSpeakerEnabled()) {
+                return true;
+            }
+            if (speechManager == null) {
+                return true;
+            }
+            while (speechManager.isSpeaking().getResult().equals("1")) {
+                if (System.currentTimeMillis() > deadline) {
+                    Log.w(TAG, "concludeSpeak: SpeechManager wait timed out");
+                    break;
+                }
+                sleepy(0.2);
+            }
         } catch (NullPointerException e) {
             //no speech manager
             return false;

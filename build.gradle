@@ -2,7 +2,8 @@ buildscript {
     repositories {
         mavenCentral()
         google()
-        jcenter()
+        maven { url "https://jitpack.io" }
+        // jcenter()
         maven { url "https://maven.google.com" } // Gradle < 4.0
         maven {
             name 'Sonatype SNAPSHOTs'
@@ -11,7 +12,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.5.4'
         configurations {
             all*.exclude group: 'com.google.code.gson'
         }
@@ -21,14 +22,15 @@ buildscript {
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 33
 
     defaultConfig {
         multiDexEnabled true
         applicationId "com.sanbot.capaBot"
         minSdkVersion 19
-        versionCode 20250820
-        versionName "6.0.0" //change also proprieties.txt in Hari folder, config
+        targetSdkVersion 26
+        versionCode 202610284
+        versionName "6.0.5-googletts" //change also proprieties.txt in Hari folder, config
 
         android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
@@ -48,10 +50,18 @@ android {
         abortOnError false
     }
 
-    sourceSets {
-        main {
-            jniLibs.srcDir 'libs'
-        }
+    // Modern NDKs dropped the arm-linux-androideabi strip toolchain AGP 3.5 expects.
+    packagingOptions {
+        doNotStrip '**/*.so'
+    }
+
+    // Native libs live in src/main/jniLibs (not libs/, which also holds jars/AARs).
+}
+
+// AGP 3.5 strip task needs legacy NDK toolchains we don't have; keep unstripped .so.
+tasks.whenTaskAdded { task ->
+    if (task.name != null && task.name.toLowerCase().contains("strip") && task.name.toLowerCase().contains("debugsymbols")) {
+        task.enabled = false
     }
 }
 
@@ -61,7 +71,8 @@ repositories {
     }
     mavenCentral()
     google()
-    jcenter()
+        maven { url "https://jitpack.io" }
+    // jcenter()
     maven { url "https://maven.google.com" } // Gradle < 4.0
     maven {
         name 'Sonatype SNAPSHOTs'
@@ -85,13 +96,13 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation "com.android.support:appcompat-v7:26.+"
+    implementation "com.android.support:appcompat-v7:26.1.0"
     testImplementation 'junit:junit:4.12'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //sanbotsuff
-    implementation(name: 'SanbotOpenSdk_2.0.1.10', ext: 'aar')
+    implementation(name: 'SanbotOpenSDK_2.0.1.10', ext: 'aar')
     //implementation 'com.google.code.gson:gson:2.8.2'
     //implementation files('libs/gson-2.2.4.jar')
 

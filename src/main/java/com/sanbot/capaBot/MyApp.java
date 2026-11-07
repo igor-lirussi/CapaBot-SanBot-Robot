@@ -28,9 +28,19 @@ public class MyApp extends Application {
 
     public static boolean botReady = false;  // flag to check when ready
 
+    private static AndroidTtsSpeaker androidTts;
+
+    public static AndroidTtsSpeaker getAndroidTts() {
+        return androidTts;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Load Settings prefs (Google TTS speaker toggle) then init local TTS early.
+        MySettings.loadPersistedPrefs(this);
+        androidTts = new AndroidTtsSpeaker(this);
 
         //new thread in background to load chatbot
         new Thread(new Runnable() {

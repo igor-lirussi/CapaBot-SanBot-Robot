@@ -124,7 +124,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                speechManager.startSpeak(getString(R.string.can_speak), MySettings.getSpeakDefaultOption());
+                MySpeak.speak(speechManager, getString(R.string.can_speak), MySettings.getSpeakDefaultOption());
                 concludeSpeak(speechManager);
                 speechManager.doWakeUp();
             }
@@ -147,7 +147,7 @@ public class MyXMLSuggestionActivity extends TopBaseActivity {
                         name = inputName.getText().toString();
                     }
                     //thanks the user
-                    speechManager.startSpeak("Thank you", MySettings.getSpeakDefaultOption());
+                    MySpeak.speak(speechManager, "Thank you", MySettings.getSpeakDefaultOption());
                     concludeSpeak(speechManager);
                     //adding the suggestion to the xml
                     xmlAddSuggestion(fileXML, name, inputText.getText().toString().toLowerCase());

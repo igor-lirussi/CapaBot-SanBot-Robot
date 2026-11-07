@@ -263,6 +263,26 @@
                 android:textSize="25sp"
                 android:checked="false"/>
 
+            <Switch
+                android:id="@+id/googleTtsSpeaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="36dp"
+                android:layout_margin="5dp"
+                android:text="Google TTS speaker (local)"
+                android:textSize="25sp"
+                android:checked="true"/>
+
+            <Switch
+                android:id="@+id/googleSpeechRecognizer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="36dp"
+                android:layout_margin="5dp"
+                android:text="Google speech recognition"
+                android:textSize="25sp"
+                android:checked="true"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
